@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de Assets WhatsApp - Palomino Tech</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap');
+    
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      gap: 40px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      background: #111;
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid #333;
+    }
+    canvas {
+      border: 1px solid #444;
+      border-radius: 8px;
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 10px 30px rgba(248, 58, 89, 0.1);
+    }
+    button {
+      background: hsl(350, 89%, 60%);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    button:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Gerador de Imagens WhatsApp (Final)</h1>
+  <p>Imagens tecnológicas 3D no fundo e o seu logo perfeito em vetor por cima.</p>
+
+  <div class="container">
+    <h2>1. Foto de Perfil</h2>
+    <canvas id="profileCanvas" width="1080" height="1080" style="max-width: 400px;"></canvas>
+    <button onclick="downloadCanvas('profileCanvas', 'palomino_tech_perfil.png')">Baixar Foto de Perfil (PNG)</button>
+  </div>
+
+  <div class="container">
+    <h2>2. Foto de Capa</h2>
+    <canvas id="coverCanvas" width="1920" height="1080" style="max-width: 600px;"></canvas>
+    <button onclick="downloadCanvas('coverCanvas', 'palomino_tech_capa.png')">Baixar Foto de Capa (PNG)</button>
+  </div>
+
+  <script>
+    const COLORS = {
+      primary: 'hsl(350, 89%, 60%)',
+      white: '#FFFFFF'
+    };
+
+    function drawRoundedRect(ctx, x, y, w, h, r, fillStyle) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.arcTo(x + w, y, x + w, y + r, r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+      ctx.lineTo(x + r, y + h);
+      ctx.arcTo(x, y + h, x, y + h - r, r);
+      ctx.lineTo(x, y + r);
+      ctx.arcTo(x, y, x + r, y, r);
+      ctx.closePath();
+      if (fillStyle) {
+        ctx.fillStyle = fillStyle;
+        ctx.fill();
+      }
+      
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    function drawHexagon(ctx, x, y, r, strokeColor, strokeWidth) {
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI / 3) * i - Math.PI / 2;
+        const px = x + r * Math.cos(angle);
+        const py = y + r * Math.sin(angle);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      
+      ctx.shadowColor = 'rgba(248, 58, 89, 0.8)';
+      ctx.shadowBlur = 40;
+      ctx.strokeStyle = strokeColor;
+      ctx.lineWidth = strokeWidth;
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+    }
+
+    function drawProfile() {
+      const canvas = document.getElementById('profileCanvas');
+      const ctx = canvas.getContext('2d');
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+
+      const img = new Image();
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(18, 12, 15, 0.5)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.shadowColor = 'rgba(248, 58, 89, 0.3)';
+        ctx.shadowBlur = 80;
+
+        const cardSize = 750;
+        const cardRadius = 180;
+        drawRoundedRect(ctx, cx - cardSize/2, cy - cardSize/2, cardSize, cardSize, cardRadius, 'rgba(22, 13, 16, 0.65)');
+
+        ctx.shadowBlur = 0;
+        drawHexagon(ctx, cx, cy, 200, COLORS.primary, 35);
+      };
+      img.src = '/bg_profile.png';
+    }
+
+    function drawCover() {
+      const canvas = document.getElementById('coverCanvas');
+      const ctx = canvas.getContext('2d');
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+
+      const img = new Image();
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(18, 12, 15, 0.6)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = '800 160px Inter';
+        const textPalomino = 'Palomino ';
+        const textTech = 'Tech';
+        
+        const palominoWidth = ctx.measureText(textPalomino).width;
+        const techWidth = ctx.measureText(textTech).width;
+        
+        const cardSize = 250;
+        const gap = 60;
+        
+        const totalWidth = cardSize + gap + palominoWidth + techWidth;
+        const startX = cx - (totalWidth / 2);
+        
+        // Subir o logo para não ficar atrás da foto de perfil circular do WhatsApp
+        const logoY = cy - 150;
+
+        ctx.shadowColor = 'rgba(248, 58, 89, 0.4)';
+        ctx.shadowBlur = 60;
+
+        const cardRadius = 60;
+        drawRoundedRect(ctx, startX, logoY - cardSize/2, cardSize, cardSize, cardRadius, 'rgba(22, 13, 16, 0.7)');
+
+        ctx.shadowBlur = 0;
+        drawHexagon(ctx, startX + cardSize/2, logoY, 65, COLORS.primary, 12);
+
+        ctx.textBaseline = 'middle';
+        const textX = startX + cardSize + gap;
+        
+        ctx.fillStyle = COLORS.white;
+        ctx.shadowColor = 'rgba(0,0,0,0.8)';
+        ctx.shadowBlur = 30;
+        ctx.fillText(textPalomino, textX, logoY);
+        
+        ctx.fillStyle = COLORS.primary;
+        ctx.shadowColor = 'rgba(248, 58, 89, 0.5)';
+        ctx.shadowBlur = 40;
+        ctx.fillText(textTech, textX + palominoWidth, logoY);
+        
+        ctx.shadowBlur = 0;
+      };
+      img.src = '/bg_cover.png';
+    }
+
+    function downloadCanvas(canvasId, filename) {
+      const canvas = document.getElementById(canvasId);
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    document.fonts.ready.then(() => {
+      setTimeout(() => {
+        drawProfile();
+        drawCover();
+      }, 200);
+    });
+  </script>
+</body>
+</html>
