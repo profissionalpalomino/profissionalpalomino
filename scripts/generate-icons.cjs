@@ -34,10 +34,6 @@ const svg = `
   <!-- Hexagon Outer -->
   <polygon points="256,106 386,181 386,331 256,406 126,331 126,181" 
            fill="url(#roseFill)" stroke="url(#roseStroke)" stroke-width="20" stroke-linejoin="round"/>
-           
-  <!-- Inner P -->
-  <path d="M216 196 L296 196 Q336 196 336 246 Q336 296 296 296 L256 296 L256 356 L216 356 Z" 
-        fill="#ffffff" opacity="0.9" stroke="url(#roseStroke)" stroke-width="4"/>
 </svg>
 `;
 
