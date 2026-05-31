@@ -24,7 +24,7 @@ const projects = [
     telemetry: "STATUS: ACTIVE • DEPLOY: ONLINE 200 OK",
   },
   {
-    title: "Palomino Instagram",
+    title: "Social Media Autopilot (IA)",
     description:
       "Sistema autônomo com agentes de inteligência artificial interligados que planejam, criam roteiros e publicam conteúdos no Instagram sem qualquer fricção.",
     functions: ["Multi-Agentes de IA", "Criação de Conteúdo Autônoma", "Automação de Redes"],
