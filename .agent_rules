@@ -1,0 +1,9 @@
+# Regras Globais de Workflow (Palomino Tech)
+
+Sempre que o usuário solicitar uma alteração de código ou manutenção em um projeto existente, o Agente de IA (Antigravity/Claude/Gemini) DEVE seguir obrigatoriamente este fluxo:
+
+1. **Pull Inicial:** Antes de ler, analisar ou alterar qualquer arquivo fonte, execute `git pull origin <branch>` para garantir que a base de código local está perfeitamente sincronizada com o remoto e evitar conflitos.
+2. **Execução:** Realize as edições de código e testes solicitados pelo usuário.
+3. **Commit e Push Final:** Assim que o trabalho for concluído e validado, execute os comandos de commit (`git add .`, `git commit -m "..."`) e faça o `git push` das alterações automaticamente para o GitHub.
+
+*O objetivo desta regra é manter 100% de sincronia entre os projetos locais e a nuvem, reduzindo a carga mental e o trabalho manual do usuário.*
