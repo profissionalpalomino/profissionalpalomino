@@ -16,7 +16,7 @@ const HeroSection = () => {
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center bg-background pt-24 pb-16 lg:pt-32">
       {/* Dynamic gradient meshes and blurred background blobs */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-[hsl(344,33%,11%)/0.5] to-background" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/40 to-background" />
       <div className="absolute top-[-10%] right-[5%] w-[450px] h-[450px] rounded-full bg-primary/10 blur-[130px] animate-pulse" />
       <div className="absolute bottom-[10%] left-[2%] w-[450px] h-[450px] rounded-full bg-primary/5 blur-[150px]" />
 
@@ -78,7 +78,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.5 }}
-              className="grid grid-cols-3 gap-6 pt-10 border-t border-[#261318]"
+              className="grid grid-cols-3 gap-6 pt-10 border-t border-border"
             >
               {[
                 { value: "100%", label: "Customizado" },
@@ -100,7 +100,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="lg:col-span-5"
           >
-            <div className="relative group overflow-hidden rounded-[2rem] border border-[#261318] bg-card/60 backdrop-blur-xl p-6 sm:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.5)]">
+            <div className="relative group overflow-hidden rounded-[2rem] border border-border bg-white/90 backdrop-blur-xl p-6 sm:p-8 shadow-[var(--shadow-lg)]">
               {/* Outer pink border glow */}
               <div className="absolute inset-0 border border-primary/10 rounded-[2rem] pointer-events-none group-hover:border-primary/20 transition-colors" />
               
@@ -133,7 +133,7 @@ const HeroSection = () => {
                   max="40"
                   value={hours}
                   onChange={(e) => setHours(Number(e.target.value))}
-                  className="w-full h-1.5 bg-[#261318] rounded-lg appearance-none cursor-pointer accent-primary"
+                  className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
                 />
               </div>
 
@@ -152,15 +152,15 @@ const HeroSection = () => {
                   step="5"
                   value={cost}
                   onChange={(e) => setCost(Number(e.target.value))}
-                  className="w-full h-1.5 bg-[#261318] rounded-lg appearance-none cursor-pointer accent-primary"
+                  className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
                 />
               </div>
 
               {/* Outputs display */}
-              <div className="grid grid-cols-2 gap-4 pt-6 border-t border-[#261318] bg-[#1a1013]/30 p-4 rounded-xl">
+              <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border bg-secondary p-4 rounded-xl">
                 <div>
                   <span className="text-[10px] uppercase tracking-wider text-muted-foreground block mb-1">Horas recuperadas / ano</span>
-                  <span className="font-mono font-bold text-xl sm:text-2xl text-foreground text-emerald-400">
+                  <span className="font-mono font-bold text-xl sm:text-2xl text-emerald-600">
                     {savedHoursPerYear} hrs
                   </span>
                 </div>

@@ -4,7 +4,7 @@ const WHATSAPP = "5531984773813";
 
 const Footer = () => {
   return (
-    <footer className="bg-background border-t border-[#261318] py-16 px-5 relative z-10">
+    <footer className="bg-background border-t border-border py-16 px-5 relative z-10">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         
         {/* Brand Logo and descriptor */}
@@ -24,12 +24,12 @@ const Footer = () => {
 
         {/* Telemetry Status indicator */}
         <div className="flex flex-col items-center md:items-start gap-1">
-          <div className="flex items-center gap-2 bg-[#1a1013] border border-[#261318] px-3.5 py-1.5 rounded-full">
+          <div className="flex items-center gap-2 bg-secondary border border-border px-3.5 py-1.5 rounded-full">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span className="font-mono text-[9px] text-emerald-400 font-bold tracking-widest uppercase">
+            <span className="font-mono text-[9px] text-emerald-600 font-bold tracking-widest uppercase">
               SISTEMA OPERACIONAL • LATÊNCIA: 12ms
             </span>
           </div>

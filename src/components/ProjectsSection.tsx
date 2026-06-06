@@ -71,7 +71,7 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
   const next = () => setIdx((i) => (i + 1) % images.length);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl aspect-video bg-black/40 group border border-[#261318]">
+    <div className="relative w-full overflow-hidden rounded-2xl aspect-video bg-gray-100 group border border-border">
       <img
         src={images[idx]}
         alt={`Screenshot do projeto ${title}`}
@@ -116,7 +116,7 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
 
 const ProjectsSection = () => {
   return (
-    <section className="section-padding dark-section relative bg-[#130d0f]">
+    <section className="section-padding relative bg-secondary/50">
       {/* Visual background textures */}
       <div className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
       
@@ -138,7 +138,7 @@ const ProjectsSection = () => {
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
             <AnimatedSection key={i} delay={i * 0.12}>
-              <div className="group border border-[#261318] bg-[#160d10]/60 backdrop-blur-sm rounded-[2rem] h-full flex flex-col transition-all duration-300 hover:border-primary/40 hover:bg-[#160d10]/95 hover:shadow-[0_8px_30px_rgba(244,63,94,0.08)]">
+              <div className="group border border-border bg-white/90 backdrop-blur-sm rounded-[2rem] h-full flex flex-col transition-all duration-300 hover:border-primary/40 hover:bg-white hover:shadow-[0_8px_30px_rgba(244,63,94,0.08)]">
                 
                 {/* Carousel container */}
                 <div className="p-4 pb-0">
@@ -157,7 +157,7 @@ const ProjectsSection = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#261318] text-muted-foreground hover:text-primary transition-all duration-300 border border-transparent hover:border-primary/30"
+                        className="flex h-8 w-8 items-center justify-center rounded-xl bg-gray-100 text-muted-foreground hover:text-primary transition-all duration-300 border border-transparent hover:border-primary/30"
                         aria-label={`Acessar ${project.title}`}
                       >
                         <ExternalLink className="h-4 w-4" />
@@ -185,9 +185,9 @@ const ProjectsSection = () => {
                     </div>
 
                     {/* Telemetry Indicator */}
-                    <div className="pt-4 border-t border-[#261318] flex items-center gap-2">
-                      <Activity className="h-3.5 w-3.5 text-emerald-400 animate-pulse shrink-0" />
-                      <span className="font-mono text-[9px] text-emerald-400 font-semibold tracking-wider uppercase">
+                    <div className="pt-4 border-t border-border flex items-center gap-2">
+                      <Activity className="h-3.5 w-3.5 text-emerald-600 animate-pulse shrink-0" />
+                      <span className="font-mono text-[9px] text-emerald-600 font-semibold tracking-wider uppercase">
                         {project.telemetry}
                       </span>
                     </div>

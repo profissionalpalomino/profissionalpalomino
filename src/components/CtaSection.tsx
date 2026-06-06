@@ -11,7 +11,7 @@ const CtaSection = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-primary/10 blur-[150px] pointer-events-none" />
       
       <div className="container-narrow relative z-10">
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-[#261318] bg-[#1a1013]/60 backdrop-blur-xl p-8 sm:p-12 md:p-16 text-center shadow-[0_12px_45px_rgba(0,0,0,0.6)]">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-white/90 backdrop-blur-xl p-8 sm:p-12 md:p-16 text-center shadow-[var(--shadow-lg)]">
           {/* Subtle inside glow */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
           
@@ -48,7 +48,7 @@ const CtaSection = () => {
                 size="lg"
                 asChild
                 variant="outline"
-                className="border-[#261318] text-foreground bg-card/10 hover:bg-card/30 text-sm font-bold px-8 py-6 rounded-xl backdrop-blur-sm transition-all hover:scale-[1.03]"
+                className="border-border text-foreground hover:bg-secondary text-sm font-bold px-8 py-6 rounded-xl transition-all hover:scale-[1.03]"
               >
                 <a href="mailto:profissionalpalomino@gmail.com">
                   <Mail className="mr-2 h-4 w-4" />

@@ -37,7 +37,7 @@ const Navbar = () => {
       <div 
         className={`w-full transition-all duration-500 border ${
           scrolled 
-            ? "rounded-2xl bg-card/85 backdrop-blur-xl border-[#261318] shadow-[0_8px_32px_rgba(19,13,15,0.8)] px-6 py-3" 
+            ? "rounded-2xl bg-white/90 backdrop-blur-xl border-border shadow-[var(--shadow-md)] px-6 py-3"
             : "rounded-none bg-transparent border-transparent px-5 py-6"
         }`}
       >

@@ -70,11 +70,11 @@ const ServicesSection = () => {
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <AnimatedSection key={i} delay={i * 0.06}>
-              <div className="group relative overflow-hidden rounded-[2rem] border border-[#261318] bg-[#160d10]/60 backdrop-blur-sm p-8 transition-all duration-300 hover:border-primary/40 hover:bg-[#160d10]/90 hover:shadow-[0_8px_30px_rgba(244,63,94,0.1)] hover:-translate-y-1">
+              <div className="group relative overflow-hidden rounded-[2rem] border border-border bg-white/80 backdrop-blur-sm p-8 transition-all duration-300 hover:border-primary/40 hover:bg-white hover:shadow-[0_8px_30px_rgba(244,63,94,0.1)] hover:-translate-y-1">
                 {/* Visual Top Glow Bar */}
                 <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r ${s.color}`} />
                 
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 border border-[#261318] group-hover:border-primary/45 group-hover:bg-primary/10 transition-colors duration-300">
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 border border-border group-hover:border-primary/45 group-hover:bg-primary/10 transition-colors duration-300">
                   <s.icon className="h-6 w-6 text-primary" />
                 </div>
                 
@@ -82,7 +82,7 @@ const ServicesSection = () => {
                 <p className="mt-3 text-xs text-muted-foreground leading-relaxed min-h-[60px]">{s.desc}</p>
                 
                 {/* Tech Badge */}
-                <div className="mt-6 pt-4 border-t border-[#261318] flex items-center justify-between">
+                <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
                   <span className="font-mono text-[10px] text-primary/80 tracking-wider uppercase font-semibold">
                     {s.tech}
                   </span>
