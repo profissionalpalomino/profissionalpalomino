@@ -44,14 +44,14 @@ const projects = [
     telemetry: "STATUS: ACTIVE • ENGINE: AI TRADE ANALYSIS",
   },
   {
-    title: "Palomino Instagram (Motor Multiagente)",
+    title: "AutoPost Instagram",
     description:
-      "Sistema autônomo FastAPI com LangGraph que orquestra agentes de inteligência artificial para planejar e publicar posts. O motor gera as imagens em HTML Tailwind, renderiza painéis limpos e modernos (Clean Light) com Playwright e publica via API.",
-    functions: ["Orquestração LangGraph", "Render HTML -> Imagem", "Design Clean Light"],
+      "Gerador e publicador 100% automático de posts para o Instagram. A inteligência artificial cria os temas, escreve as legendas com hashtags, desenha a imagem do post e publica no seu perfil sozinho de acordo com a sua preferência — sem você precisar perder tempo escrevendo ou desenhando nada.",
+    functions: ["Postagem Automática", "Legendas & Hashtags via IA", "Criação de Imagens Únicas"],
     link: "https://palomino-instagram.profissionalpalomino.cloud/",
     screenshots: ["/screenshot-palomino-instagram.png"],
-    tag: "IA Multi-Agentes",
-    telemetry: "STATUS: ACTIVE • AGENT: LANGGRAPH LOOP OK",
+    tag: "Automação de Redes",
+    telemetry: "STATUS: ACTIVE • AUTOMATIC PUBLISH",
   },
   {
     title: "Barbearias Finder",
