@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
-import { CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Activity } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, Activity } from "lucide-react";
 
 const projects = [
   {
@@ -152,17 +152,7 @@ const ProjectsSection = () => {
                       <span className="text-[10px] font-bold text-primary uppercase tracking-wider font-mono">{project.tag}</span>
                       <h3 className="font-heading text-lg font-bold text-foreground mt-0.5">{project.title}</h3>
                     </div>
-                    {project.link !== "#" && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex h-8 w-8 items-center justify-center rounded-xl bg-gray-100 text-muted-foreground hover:text-primary transition-all duration-300 border border-transparent hover:border-primary/30"
-                        aria-label={`Acessar ${project.title}`}
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </a>
-                    )}
+                    {/* External link button removed to hide sensitive links */}
                   </div>
 
                   <p className="text-muted-foreground text-xs leading-relaxed mb-6 flex-grow">
