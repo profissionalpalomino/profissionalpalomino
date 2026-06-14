@@ -4,14 +4,14 @@ import { CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Activity } from 
 
 const projects = [
   {
-    title: "Barbearias Finder",
+    title: "Alca Party",
     description:
-      "Localizador automatizado de barbearias com extração inteligente de dados e integração direta ao WhatsApp. Uma ferramenta altamente otimizada para prospectar leads locais.",
-    functions: ["Automação & Scraping", "Disparo de Mensagens", "Gestão de Leads"],
-    link: "https://barbearias.profissionalpalomino.cloud/?t=Tz4nJ8vL5cF1dY3",
-    screenshots: ["/screenshot-barbearias-finder.png"],
-    tag: "SaaS Tool",
-    telemetry: "STATUS: ACTIVE • DEPLOY: ONLINE 200 OK",
+      "Aplicativo interativo de festas para convidados e dashboard em tempo real para TV. Permite consultar o cardápio digital de comidas e drinks, pedir músicas na jukebox do Spotify com rate limit e registrar consumo com ranking gamificado.",
+    functions: ["Jukebox Spotify", "Cardápio Digital", "Ranking de Consumo"],
+    link: "https://pizzaparty.simpletechdata.cloud",
+    screenshots: ["/screenshot-alca-party.png"],
+    tag: "PWA & Dashboard",
+    telemetry: "STATUS: ACTIVE • SPEED: REALTIME WEBSOCKET",
   },
   {
     title: "Finanças Pro",
@@ -24,44 +24,44 @@ const projects = [
     telemetry: "STATUS: ACTIVE • DEPLOY: ONLINE 200 OK",
   },
   {
+    title: "Bolão Copa 2026",
+    description:
+      "Sistema de bolão da Copa do Mundo 2026 desenhado para uso familiar e responsivo. Conta com placar ao vivo, ranking de premiação baseado em acertos exatos e leitor inteligente de palpites físicos via Groq Vision (IA).",
+    functions: ["Painel de Jogos", "Ranking de Apostas", "Importador com IA (Groq)"],
+    link: "https://bolao-dindinha.187-77-57-158.sslip.io",
+    screenshots: ["/screenshot-bolao.png"],
+    tag: "Web App",
+    telemetry: "STATUS: ACTIVE • VISION: GROQ PARSER OK",
+  },
+  {
+    title: "Palomino Stickers",
+    description:
+      "Gerenciador inteligente de figurinhas para o álbum da Copa. Permite catalogar figurinhas faltantes e repetidas, colar listas brutas do WhatsApp e utilizar IA para analisar e sugerir combinações otimizadas de troca.",
+    functions: ["Análise com IA", "Parser de WhatsApp", "Gerenciador de Faltantes"],
+    link: "https://figurinhas.profissionalpalomino.cloud",
+    screenshots: ["/screenshot-stickers.png"],
+    tag: "Web App & IA",
+    telemetry: "STATUS: ACTIVE • ENGINE: AI TRADE ANALYSIS",
+  },
+  {
     title: "Palomino Instagram (Motor Multiagente)",
     description:
-      "Sistema autônomo FastAPI com LangGraph que orquestra agentes de inteligência artificial para planejar e publicar posts. O motor gera as imagens em HTML Tailwind, renderiza painéis Dark Cyberpunk com Playwright e publica via API.",
-    functions: ["Orquestração LangGraph", "Render HTML -> Imagem", "Design Dark Cyberpunk"],
+      "Sistema autônomo FastAPI com LangGraph que orquestra agentes de inteligência artificial para planejar e publicar posts. O motor gera as imagens em HTML Tailwind, renderiza painéis limpos e modernos (Clean Light) com Playwright e publica via API.",
+    functions: ["Orquestração LangGraph", "Render HTML -> Imagem", "Design Clean Light"],
     link: "https://palomino-instagram.profissionalpalomino.cloud/",
     screenshots: ["/screenshot-palomino-instagram.png"],
     tag: "IA Multi-Agentes",
     telemetry: "STATUS: ACTIVE • AGENT: LANGGRAPH LOOP OK",
   },
   {
-    title: "Assistente de Agendamentos IA",
+    title: "Barbearias Finder",
     description:
-      "Automação inteligente via n8n que escuta mensagens em um grupo de WhatsApp, interpreta as informações usando inteligência artificial e cria o evento automaticamente no calendário.",
-    functions: ["Extração NLP", "Integração WhatsApp", "Google Calendar API"],
-    link: "#",
-    screenshots: ["/screenshot-automation-calendar.png"],
-    tag: "Automação n8n",
-    telemetry: "STATUS: ACTIVE • WEBHOOK: LISTENING",
-  },
-  {
-    title: "Bill Reminder (Bot WhatsApp)",
-    description:
-      "Bot em Node.js focado em organização financeira que envia lembretes proativos de vencimento de contas fixas via WhatsApp utilizando a Evolution API.",
-    functions: ["Node.js Backend", "Evolution API", "Cron Jobs Diários"],
-    link: "#",
-    screenshots: ["/screenshot-automation-sheets.png"],
-    tag: "Bot WhatsApp",
-    telemetry: "STATUS: ACTIVE • CRON: 08:00 AM",
-  },
-  {
-    title: "Gerador de Propostas Comerciais",
-    description:
-      "Sistema autônomo no n8n que coleta dados do cliente via WhatsApp, processa os requisitos, gera um PDF com a proposta comercial estruturada e envia de volta na conversa.",
-    functions: ["Geração de PDF", "Atendimento Dinâmico", "Automação de Vendas"],
-    link: "https://barbearias.profissionalpalomino.cloud/proposta/",
-    screenshots: ["/screenshot-automation-proposal.png"],
-    tag: "Automação n8n",
-    telemetry: "STATUS: ACTIVE • WEBHOOK: LISTENING",
+      "Localizador automatizado de barbearias com extração inteligente de dados e integração direta ao WhatsApp. Uma ferramenta altamente otimizada para prospectar leads locais.",
+    functions: ["Automação & Scraping", "Disparo de Mensagens", "Gestão de Leads"],
+    link: "https://barbearias.profissionalpalomino.cloud/?t=Tz4nJ8vL5cF1dY3",
+    screenshots: ["/screenshot-barbearias-finder.png"],
+    tag: "SaaS Tool",
+    telemetry: "STATUS: ACTIVE • DEPLOY: ONLINE 200 OK",
   },
 ];
 
