@@ -21,11 +21,11 @@ const CtaSection = () => {
             </span>
             
             <h2 className="font-heading text-3xl font-extrabold text-foreground sm:text-4xl md:text-5xl lg:text-5xl leading-tight">
-              Pronto para colocar sua<br className="hidden sm:block" /> operação no piloto automático?
+              Tem uma ideia?<br className="hidden sm:block" /> A gente coloca no ar.
             </h2>
-            
+
             <p className="mt-4 text-muted-foreground text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
-              Fale conosco sobre os desafios operacionais do seu negócio e desenharemos a automação ou sistema customizado ideal para você.
+              Manda uma mensagem, conta o problema ou a ideia — e a gente já diz se é possível, quanto custa e quanto tempo leva.
             </p>
             
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -35,7 +35,7 @@ const CtaSection = () => {
                 className="bg-primary text-primary-foreground hover:brightness-110 text-sm font-bold px-8 py-6 rounded-xl shadow-[var(--shadow-glow)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(244,63,94,0.3)] hover:scale-[1.03]"
               >
                 <a
-                  href={`https://wa.me/${WHATSAPP}?text=Olá! Gostaria de falar sobre um projeto de desenvolvimento para o meu negócio.`}
+                  href={`https://wa.me/${WHATSAPP}?text=Oi! Vi o portfólio da Palomino Tech e quero conversar sobre um projeto.`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

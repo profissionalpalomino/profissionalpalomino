@@ -2,10 +2,10 @@ import AnimatedSection from "./AnimatedSection";
 import { ClipboardList, LayoutTemplate, Code, Rocket } from "lucide-react";
 
 const steps = [
-  { icon: ClipboardList, num: "01", title: "Alinhamento & Escopo", desc: "Entendemos seu desafio e desenhamos a solução técnica ideal." },
-  { icon: LayoutTemplate, num: "02", title: "Proposta & UI/UX", desc: "Apresentamos o protótipo, cronograma e valores transparentes." },
-  { icon: Code, num: "03", title: "Desenvolvimento Agile", desc: "Construção do software com entregas contínuas e validações." },
-  { icon: Rocket, num: "04", title: "Deploy & Suporte", desc: "Lançamento do produto e garantia de estabilidade contínua." },
+  { icon: ClipboardList, num: "01", title: "Conta pra gente", desc: "Explica o problema ou a ideia. Sem formulário complicado — uma mensagem no WhatsApp já resolve." },
+  { icon: LayoutTemplate, num: "02", title: "A gente propõe", desc: "Mostramos como ficaria, quanto custa e em quanto tempo entrega. Sem surpresa." },
+  { icon: Code, num: "03", title: "A gente constrói", desc: "Desenvolvemos em etapas e você acompanha. Muda algo? A gente ajusta." },
+  { icon: Rocket, num: "04", title: "Vai pro ar", desc: "Entregamos funcionando e te ensinamos a usar. Suporte contínuo incluso." },
 ];
 
 const HowItWorksSection = () => {
@@ -15,10 +15,10 @@ const HowItWorksSection = () => {
         <AnimatedSection>
           <div className="text-center">
             <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
-              Processo de Trabalho
+              Como funciona
             </span>
             <h2 className="text-3xl font-extrabold sm:text-4xl md:text-5xl lg:text-5xl text-foreground">
-              Como transformamos ideias em código
+              Do "tenho uma ideia" ao ar em dias
             </h2>
           </div>
         </AnimatedSection>

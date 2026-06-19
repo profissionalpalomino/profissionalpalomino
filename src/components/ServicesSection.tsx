@@ -1,48 +1,34 @@
 import AnimatedSection from "./AnimatedSection";
-import { MonitorSmartphone, Code2, Bot, Database, CloudCog, ShieldCheck } from "lucide-react";
+import { MonitorSmartphone, Code2, Bot, CloudCog } from "lucide-react";
 
 const services = [
-  { 
-    icon: Code2, 
-    title: "Sistemas Web Sob Medida", 
-    desc: "Plataformas, painéis administrativos, portais de clientes e CRMs desenvolvidos sob medida para acelerar seu fluxo de negócios.", 
-    tech: "React • TypeScript • Tailwind",
-    color: "from-rose-500/20 to-pink-500/10" 
+  {
+    icon: Code2,
+    title: "Sites e Landing Pages",
+    desc: "Site profissional pra sua empresa aparecer no Google, passar credibilidade e converter visita em cliente. Entregamos rápido, sem template genérico.",
+    tech: "Do zero, feito pra você",
+    color: "from-rose-500/20 to-pink-500/10"
   },
-  { 
-    icon: MonitorSmartphone, 
-    title: "Aplicativos Mobile", 
-    desc: "Aplicações nativas e híbridas de alta performance e excelente usabilidade para iOS e Android.", 
-    tech: "React Native • Expo • APIs REST",
-    color: "from-pink-500/20 to-rose-500/10" 
+  {
+    icon: MonitorSmartphone,
+    title: "Aplicativos e Sistemas Web",
+    desc: "Tem uma ideia de app ou precisa de um sistema pra organizar o seu negócio? A gente constrói do zero — bolão, controle de estoque, agendamento, o que precisar.",
+    tech: "Web e Mobile",
+    color: "from-pink-500/20 to-rose-500/10"
   },
-  { 
-    icon: Bot, 
-    title: "Automação de Processos (RPA / IA)", 
-    desc: "Criação de robôs inteligentes que eliminam tarefas repetitivas, disparam notificações e integram dados do cliente.", 
-    tech: "n8n • Python • OpenAI API",
-    color: "from-rose-500/20 to-red-500/10" 
+  {
+    icon: Bot,
+    title: "Automações com IA",
+    desc: "Tarefas que você faz na mão todo dia podem rodar sozinhas: postar no Instagram, disparar mensagem no WhatsApp, gerar relatório, qualificar lead.",
+    tech: "Funciona enquanto você dorme",
+    color: "from-rose-500/20 to-red-500/10"
   },
-  { 
-    icon: Database, 
-    title: "Arquitetura de Bancos de Dados", 
-    desc: "Modelagem estruturada, migração limpa e otimização avançada de queries de bancos relacionais e NoSQL.", 
-    tech: "PostgreSQL • SQLite • Redis",
-    color: "from-red-500/20 to-rose-500/10" 
-  },
-  { 
-    icon: CloudCog, 
-    title: "Integrações de APIs", 
-    desc: "Conectamos de ponta a ponta todos os seus softwares isolados (CRM, ERP, Planilhas, Gateway de Pagamento).", 
-    tech: "Evolution API • Webhooks • JSON",
-    color: "from-rose-600/20 to-pink-600/10" 
-  },
-  { 
-    icon: ShieldCheck, 
-    title: "Infraestrutura & Cloud Devops", 
-    desc: "Hospedagem robusta em servidores dedicados na nuvem com conteinerização, segurança SSL e monitoramento constante.", 
-    tech: "Docker Swarm • Easypanel • VPS",
-    color: "from-pink-600/20 to-rose-600/10" 
+  {
+    icon: CloudCog,
+    title: "Integrações entre Sistemas",
+    desc: "Seu CRM não fala com o financeiro? O WhatsApp não entra no funil? A gente conecta tudo — sem precisar trocar de sistema nem contratar programador pra cada ajuste.",
+    tech: "Seus sistemas conversando",
+    color: "from-rose-600/20 to-pink-600/10"
   },
 ];
 
@@ -56,18 +42,18 @@ const ServicesSection = () => {
         <AnimatedSection>
           <div className="text-center">
             <span className="inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary mb-4 uppercase tracking-wider">
-              Expertise Técnica
+              O que a gente faz
             </span>
             <h2 className="font-heading text-3xl font-extrabold sm:text-4xl md:text-5xl lg:text-5xl text-foreground">
-              Como ajudamos sua empresa a crescer
+              Sem mistério. Aqui é o cardápio.
             </h2>
             <p className="mt-4 text-muted-foreground text-sm sm:text-base max-w-xl mx-auto">
-              Desenvolvemos produtos digitais premium de alto padrão, cuidando de cada linha de código até o deploy final na nuvem.
+              Se tem um problema no seu negócio que você resolve na mão todo dia, a gente provavelmente consegue automatizar ou construir um sistema pra isso.
             </p>
           </div>
         </AnimatedSection>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2">
           {services.map((s, i) => (
             <AnimatedSection key={i} delay={i * 0.06}>
               <div className="group relative overflow-hidden rounded-[2rem] border border-border bg-white/80 backdrop-blur-sm p-8 transition-all duration-300 hover:border-primary/40 hover:bg-white hover:shadow-[0_8px_30px_rgba(244,63,94,0.1)] hover:-translate-y-1">

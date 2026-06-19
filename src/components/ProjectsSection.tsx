@@ -6,18 +6,18 @@ const projects = [
   {
     title: "Alca Party",
     description:
-      "Aplicativo interativo de festas para convidados e dashboard em tempo real para TV. Permite consultar o cardápio digital de comidas e drinks, pedir músicas na jukebox do Spotify com rate limit e registrar consumo com ranking gamificado.",
-    functions: ["Jukebox Spotify", "Cardápio Digital", "Ranking de Consumo"],
+      "A Alca precisava organizar pedidos de música, comida e drinks numa festa sem papel e sem bagunça. Fizemos um app pra todo mundo usar no celular — e um painel na TV mostrando o ranking de consumo em tempo real.",
+    functions: ["Jukebox com Spotify", "Cardápio no Celular", "Ranking ao Vivo na TV"],
     link: "https://pizzaparty.simpletechdata.cloud",
     screenshots: ["/screenshot-alca-party.png"],
-    tag: "PWA & Dashboard",
+    tag: "App de Festa",
     telemetry: "STATUS: ACTIVE • SPEED: REALTIME WEBSOCKET",
   },
   {
     title: "Finanças Pro",
     description:
-      "Plataforma completa de gestão financeira com notificações ativas e lembretes recorrentes via WhatsApp, criada para centralizar pagamentos de forma visual.",
-    functions: ["Dashboard Financeiro", "Gestão de Usuários", "Cron Jobs e Alertas"],
+      "Perder o controle dos boletos e esquecer de pagar custa caro. Fizemos uma plataforma que centraliza todos os pagamentos num painel visual e manda lembretes automáticos no WhatsApp no dia certo.",
+    functions: ["Painel de Contas", "Alerta no WhatsApp", "Histórico Completo"],
     link: "https://financaspro.profissionalpalomino.cloud",
     screenshots: ["/screenshot-financas-pro.png"],
     tag: "Plataforma Web",
@@ -26,8 +26,8 @@ const projects = [
   {
     title: "Bolão Copa 2026",
     description:
-      "Sistema de bolão da Copa do Mundo 2026 desenhado para uso familiar e responsivo. Conta com placar ao vivo, ranking de premiação baseado em acertos exatos e leitor inteligente de palpites físicos via Groq Vision (IA).",
-    functions: ["Painel de Jogos", "Ranking de Apostas", "Importador com IA (Groq)"],
+      "Bolão da Copa com a família não precisa ser planilha. Fizemos um sistema com palpites, ranking ao vivo — e IA que lê o papel escrito à mão e importa os palpites automaticamente, sem digitar nada.",
+    functions: ["Palpites Online", "Ranking em Tempo Real", "IA que Lê Papel Manuscrito"],
     link: "https://bolao-dindinha.187-77-57-158.sslip.io",
     screenshots: ["/screenshot-bolao.png"],
     tag: "Web App",
@@ -36,31 +36,31 @@ const projects = [
   {
     title: "Palomino Stickers",
     description:
-      "Gerenciador inteligente de figurinhas para o álbum da Copa. Permite catalogar figurinhas faltantes e repetidas, colar listas brutas do WhatsApp e utilizar IA para analisar e sugerir combinações otimizadas de troca.",
-    functions: ["Análise com IA", "Parser de WhatsApp", "Gerenciador de Faltantes"],
+      "Controlar figurinhas faltantes e repetidas pelo WhatsApp vira uma bagunça rápido. O app organiza tudo e usa IA pra sugerir as melhores trocas baseadas no que você tem e no que precisa.",
+    functions: ["Catálogo de Faltantes", "Lista do WhatsApp colada direto", "IA de Trocas"],
     link: "https://figurinhas.profissionalpalomino.cloud",
     screenshots: ["/screenshot-stickers.png"],
-    tag: "Web App & IA",
+    tag: "App de Figurinhas",
     telemetry: "STATUS: ACTIVE • ENGINE: AI TRADE ANALYSIS",
   },
   {
     title: "AutoPost Instagram",
     description:
-      "Gerador e publicador 100% automático de posts para o Instagram. A inteligência artificial cria os temas, escreve as legendas com hashtags, desenha a imagem do post e publica no seu perfil sozinho de acordo com a sua preferência — sem você precisar perder tempo escrevendo ou desenhando nada.",
-    functions: ["Postagem Automática", "Legendas & Hashtags via IA", "Criação de Imagens Únicas"],
+      "Manter o Instagram atualizado 3x por semana consome tempo todo dia. O sistema cria os temas, escreve as legendas, desenha as imagens e publica sozinho — sem você precisar fazer nada.",
+    functions: ["Publica Sozinho", "Escreve Legenda com IA", "Cria a Imagem do Post"],
     link: "https://palomino-instagram.profissionalpalomino.cloud/",
     screenshots: ["/screenshot-palomino-instagram.png"],
-    tag: "Automação de Redes",
+    tag: "Automação de Instagram",
     telemetry: "STATUS: ACTIVE • AUTOMATIC PUBLISH",
   },
   {
     title: "Barbearias Finder",
     description:
-      "Localizador automatizado de barbearias com extração inteligente de dados e integração direta ao WhatsApp. Uma ferramenta altamente otimizada para prospectar leads locais.",
-    functions: ["Automação & Scraping", "Disparo de Mensagens", "Gestão de Leads"],
+      "Prospectar barbearia por barbearia no Google é lento e manual. A ferramenta encontra, filtra e já manda mensagem personalizada no WhatsApp automaticamente — sem abrir o Google nem escrever uma linha.",
+    functions: ["Busca Automática", "Disparo no WhatsApp", "Lista de Leads"],
     link: "https://barbearias.profissionalpalomino.cloud/?t=Tz4nJ8vL5cF1dY3",
     screenshots: ["/screenshot-barbearias-finder.png"],
-    tag: "SaaS Tool",
+    tag: "Prospecção Automática",
     telemetry: "STATUS: ACTIVE • DEPLOY: ONLINE 200 OK",
   },
 ];
@@ -116,10 +116,10 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
 
 const ProjectsSection = () => {
   return (
-    <section className="section-padding relative bg-secondary/50">
+    <section id="projetos" className="section-padding relative bg-secondary/50">
       {/* Visual background textures */}
       <div className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
-      
+
       <div className="container-narrow">
         <AnimatedSection>
           <div className="text-center">
@@ -127,10 +127,10 @@ const ProjectsSection = () => {
               Portfólio
             </span>
             <h2 className="font-heading text-3xl font-extrabold sm:text-4xl md:text-5xl lg:text-5xl mb-6 text-foreground">
-              Projetos em Produção
+              O que já construímos
             </h2>
             <p className="mx-auto max-w-xl text-sm sm:text-base text-muted-foreground">
-              Sistemas reais projetados e hospedados com alta estabilidade, que otimizam a produtividade operacional diariamente.
+              Cada projeto aqui foi uma ideia real que virou realidade. Problema, solução, no ar.
             </p>
           </div>
         </AnimatedSection>
