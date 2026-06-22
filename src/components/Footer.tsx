@@ -1,4 +1,4 @@
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle, Instagram } from "lucide-react";
 
 const WHATSAPP = "5531984773813";
 
@@ -52,6 +52,15 @@ const Footer = () => {
             >
               <MessageCircle className="h-4 w-4" />
               WhatsApp
+            </a>
+            <a 
+              href="https://instagram.com/palominotech" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300"
+            >
+              <Instagram className="h-4 w-4" />
+              Instagram
             </a>
             <a 
               href="mailto:profissionalpalomino@gmail.com" 
