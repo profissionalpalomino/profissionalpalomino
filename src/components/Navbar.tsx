@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const WHATSAPP = "5531984773813";
@@ -59,7 +59,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             <button 
               onClick={() => scrollTo("servicos")} 
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-[1px]"
@@ -74,8 +74,9 @@ const Navbar = () => {
             </button>
             <Button
               size="sm"
+              variant="outline"
               asChild
-              className="bg-primary text-primary-foreground hover:brightness-110 border border-primary/20 transition-all duration-300 rounded-full px-5 py-4 font-semibold text-xs shadow-[0_0_20px_rgba(230,59,46,0.2)] hover:shadow-[0_0_30px_rgba(230,59,46,0.45)] hover:scale-[1.03]"
+              className="text-muted-foreground hover:text-foreground border-border hover:bg-secondary transition-all duration-300 rounded-full px-5 py-4 font-semibold text-xs ml-2"
             >
               <a
                 href={`https://wa.me/${WHATSAPP}?text=Olá! Quero transformar meu negócio com a Palomino Tech.`}
@@ -83,7 +84,21 @@ const Navbar = () => {
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="mr-1.5 h-3.5 w-3.5" />
-                Falar Conosco
+                WhatsApp
+              </a>
+            </Button>
+            <Button
+              size="sm"
+              asChild
+              className="bg-primary text-primary-foreground hover:brightness-110 border border-primary/20 transition-all duration-300 rounded-full px-5 py-4 font-semibold text-xs shadow-[0_0_20px_rgba(230,59,46,0.2)] hover:shadow-[0_0_30px_rgba(230,59,46,0.45)] hover:scale-[1.03]"
+            >
+              <a
+                href="https://calendar.app.google/RpTN49BD3jJabEB79"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Calendar className="mr-1.5 h-3.5 w-3.5" />
+                Agendar Reunião
               </a>
             </Button>
           </nav>
