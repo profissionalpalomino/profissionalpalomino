@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Hexagon, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const WHATSAPP = "5531984773813";
@@ -47,9 +47,12 @@ const Navbar = () => {
             className="flex items-center gap-3 cursor-pointer group" 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 shadow-[0_0_15px_rgba(244,63,94,0.1)] transition-all duration-300 group-hover:scale-105 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(244,63,94,0.3)]">
-              <Hexagon className="h-5 w-5 text-primary fill-primary/5 transition-transform duration-500 group-hover:rotate-180" />
-            </div>
+            <svg width="34" height="34" viewBox="0 0 100 100" fill="none"
+                 className="transition-transform duration-500 group-hover:scale-105 group-hover:rotate-180"
+                 style={{ filter: "drop-shadow(0 0 7px rgba(230,59,46,.5))" }}>
+              <polygon points="50,5 89.8,27.5 89.8,72.5 50,95 10.2,72.5 10.2,27.5"
+                       stroke="#E63B2E" strokeWidth="7" strokeLinejoin="round" />
+            </svg>
             <span className="font-heading text-lg font-extrabold tracking-tight text-foreground">
               Palomino <span className="text-primary transition-all duration-300 group-hover:text-primary-foreground group-hover:bg-primary group-hover:px-1.5 group-hover:py-0.5 group-hover:rounded-md">Tech</span>
             </span>
@@ -72,7 +75,7 @@ const Navbar = () => {
             <Button
               size="sm"
               asChild
-              className="bg-primary text-primary-foreground hover:brightness-110 border border-primary/20 transition-all duration-300 rounded-full px-5 py-4 font-semibold text-xs shadow-[0_0_20px_rgba(244,63,94,0.2)] hover:shadow-[0_0_30px_rgba(244,63,94,0.45)] hover:scale-[1.03]"
+              className="bg-primary text-primary-foreground hover:brightness-110 border border-primary/20 transition-all duration-300 rounded-full px-5 py-4 font-semibold text-xs shadow-[0_0_20px_rgba(230,59,46,0.2)] hover:shadow-[0_0_30px_rgba(230,59,46,0.45)] hover:scale-[1.03]"
             >
               <a
                 href={`https://wa.me/${WHATSAPP}?text=Olá! Quero transformar meu negócio com a Palomino Tech.`}

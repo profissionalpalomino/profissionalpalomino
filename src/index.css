@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 13% 10%;
 
-    --primary: 3 82% 54%;
+    --primary: 4 79% 54%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 14% 96%;
@@ -22,7 +22,7 @@
     --muted: 220 14% 96%;
     --muted-foreground: 220 9% 46%;
 
-    --accent: 3 82% 54%;
+    --accent: 4 79% 54%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 55%;
@@ -30,20 +30,20 @@
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 3 82% 54%;
+    --ring: 4 79% 54%;
 
     --radius: 0.75rem;
 
     --gradient-hero: linear-gradient(135deg, hsl(0, 0%, 98%) 0%, hsl(220, 14%, 96%) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(0, 0%, 98%) 0%, hsl(220, 14%, 96%) 100%);
-    --gradient-primary: linear-gradient(135deg, hsl(3, 82%, 54%) 0%, hsl(3, 70%, 44%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(4, 79%, 54%) 0%, hsl(3, 70%, 44%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%) 0%, hsl(220, 14%, 96%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(220, 14%, 96%) 0%, hsl(0, 0%, 98%) 100%);
 
     --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 8px 24px -6px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 16px 48px -8px rgba(0, 0, 0, 0.12);
-    --shadow-glow: 0 0 40px hsl(3 82% 54% / 0.2);
+    --shadow-glow: 0 0 40px hsl(4 79% 54% / 0.2);
   }
 }
 
@@ -65,7 +65,7 @@
 
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: #F3F4F6; }
-  ::-webkit-scrollbar-thumb { background: hsl(3 82% 54%); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb { background: hsl(4 79% 54%); border-radius: 2px; }
 }
 
 @layer components {
@@ -100,13 +100,13 @@
 
   .bg-grid-pattern {
     background-image:
-      linear-gradient(hsl(3 82% 54% / 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(3 82% 54% / 0.05) 1px, transparent 1px);
+      linear-gradient(hsl(4 79% 54% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(4 79% 54% / 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
   .bg-dot-pattern {
-    background-image: radial-gradient(hsl(3 82% 54% / 0.07) 1px, transparent 1px);
+    background-image: radial-gradient(hsl(4 79% 54% / 0.07) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 

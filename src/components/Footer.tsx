@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, Hexagon } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 
 const WHATSAPP = "5531984773813";
 
@@ -9,9 +9,12 @@ const Footer = () => {
         
         {/* Brand Logo and descriptor */}
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 shadow-[0_0_15px_rgba(244,63,94,0.15)]">
-            <Hexagon className="h-6 w-6 text-primary fill-primary/5" />
-          </div>
+            <svg width="38" height="38" viewBox="0 0 100 100" fill="none"
+                 className="transition-transform duration-500 hover:scale-105"
+                 style={{ filter: "drop-shadow(0 0 7px rgba(230,59,46,.5))" }}>
+              <polygon points="50,5 89.8,27.5 89.8,72.5 50,95 10.2,72.5 10.2,27.5"
+                       stroke="#E63B2E" strokeWidth="7" strokeLinejoin="round" />
+            </svg>
           <div>
             <span className="font-heading text-xl font-extrabold tracking-tight text-foreground">
               Palomino <span className="text-primary">Tech</span>

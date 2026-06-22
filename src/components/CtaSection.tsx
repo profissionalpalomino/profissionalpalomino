@@ -32,7 +32,7 @@ const CtaSection = () => {
               <Button
                 size="lg"
                 asChild
-                className="bg-primary text-primary-foreground hover:brightness-110 text-sm font-bold px-8 py-6 rounded-xl shadow-[var(--shadow-glow)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(244,63,94,0.3)] hover:scale-[1.03]"
+                className="bg-primary text-primary-foreground hover:brightness-110 text-sm font-bold px-8 py-6 rounded-xl shadow-[var(--shadow-glow)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(230,59,46,0.3)] hover:scale-[1.03]"
               >
                 <a
                   href={`https://wa.me/${WHATSAPP}?text=Oi! Vi o portfólio da Palomino Tech e quero conversar sobre um projeto.`}

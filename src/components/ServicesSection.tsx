@@ -7,28 +7,28 @@ const services = [
     title: "Sites e Landing Pages",
     desc: "Site profissional pra sua empresa aparecer no Google, passar credibilidade e converter visita em cliente. Entregamos rápido, sem template genérico.",
     tech: "Do zero, feito pra você",
-    color: "from-rose-500/20 to-pink-500/10"
+    color: "from-[#E63B2E]/25 to-[#E63B2E]/5"
   },
   {
     icon: MonitorSmartphone,
     title: "Aplicativos e Sistemas Web",
     desc: "Tem uma ideia de app ou precisa de um sistema pra organizar o seu negócio? A gente constrói do zero — bolão, controle de estoque, agendamento, o que precisar.",
     tech: "Web e Mobile",
-    color: "from-pink-500/20 to-rose-500/10"
+    color: "from-[#E63B2E]/20 to-[#E63B2E]/5"
   },
   {
     icon: Bot,
     title: "Automações com IA",
     desc: "Tarefas que você faz na mão todo dia podem rodar sozinhas: postar no Instagram, disparar mensagem no WhatsApp, gerar relatório, qualificar lead.",
     tech: "Funciona enquanto você dorme",
-    color: "from-rose-500/20 to-red-500/10"
+    color: "from-[#E63B2E]/25 to-[#E63B2E]/8"
   },
   {
     icon: CloudCog,
     title: "Integrações entre Sistemas",
     desc: "Seu CRM não fala com o financeiro? O WhatsApp não entra no funil? A gente conecta tudo — sem precisar trocar de sistema nem contratar programador pra cada ajuste.",
     tech: "Seus sistemas conversando",
-    color: "from-rose-600/20 to-pink-600/10"
+    color: "from-[#E63B2E]/30 to-[#E63B2E]/6"
   },
 ];
 
@@ -56,7 +56,7 @@ const ServicesSection = () => {
         <div className="mt-16 grid gap-6 sm:grid-cols-2">
           {services.map((s, i) => (
             <AnimatedSection key={i} delay={i * 0.06}>
-              <div className="group relative overflow-hidden rounded-[2rem] border border-border bg-white/80 backdrop-blur-sm p-8 transition-all duration-300 hover:border-primary/40 hover:bg-white hover:shadow-[0_8px_30px_rgba(244,63,94,0.1)] hover:-translate-y-1">
+              <div className="group relative overflow-hidden rounded-[2rem] border border-border bg-white/80 backdrop-blur-sm p-8 transition-all duration-300 hover:border-primary/40 hover:bg-white hover:shadow-[0_8px_30px_rgba(230,59,46,0.1)] hover:-translate-y-1">
                 {/* Visual Top Glow Bar */}
                 <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r ${s.color}`} />
                 

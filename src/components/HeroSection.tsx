@@ -41,7 +41,7 @@ const HeroSection = () => {
 
           <h1 className="font-heading text-5xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl xl:text-8xl text-foreground mb-6">
             Da ideia{" "}
-            <span className="text-gradient animate-text-gradient bg-[length:200%_auto] from-primary via-rose-400 to-primary">
+            <span className="text-gradient animate-text-gradient bg-[length:200%_auto] from-primary via-[#F0584C] to-primary">
               ao ar
             </span>{" "}
             em dias.
@@ -78,7 +78,7 @@ const HeroSection = () => {
             <Button
               size="lg"
               asChild
-              className="bg-primary text-primary-foreground hover:brightness-110 text-sm font-bold px-8 py-6 rounded-xl shadow-[var(--shadow-glow)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(244,63,94,0.35)]"
+              className="bg-primary text-primary-foreground hover:brightness-110 text-sm font-bold px-8 py-6 rounded-xl shadow-[var(--shadow-glow)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(230,59,46,0.35)]"
             >
               <a href="#projetos">
                 Ver o que já fizemos
