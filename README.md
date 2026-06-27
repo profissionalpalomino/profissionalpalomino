@@ -53,11 +53,11 @@ Sou um desenvolvedor Full Stack apaixonado por criar soluções tecnológicas pr
 Seja para automatizar a sua empresa, criar um sistema sob medida ou simplesmente bater um papo sobre tecnologia, sinta-se à vontade para entrar em contato!
 
 <p align="left">
-  <a href="https://wa.me/5531994909326" target="_blank">
+  <a href="https://wa.me/553184773813" target="_blank">
     <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp" />
   </a>
   &nbsp;&nbsp;
-  <a href="https://projetos.profissionalpalomino.cloud" target="_blank">
+  <a href="https://palominotech.profissionalpalomino.cloud/" target="_blank">
     <img src="https://img.shields.io/badge/Palomino_Tech-FF4444?style=for-the-badge&logo=github&logoColor=white" alt="Website" />
   </a>
 </p>
