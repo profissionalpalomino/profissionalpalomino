@@ -41,10 +41,17 @@ Sou um desenvolvedor Full Stack apaixonado por criar soluções tecnológicas pr
 ### 📊 Estatísticas do GitHub
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=profissionalpalomino&show_icons=true&theme=nord&include_all_commits=true&count_private=true" alt="Estatísticas do GitHub de Rodrigo" height="150" />
+  <img src="https://img.shields.io/github/followers/profissionalpalomino?label=Followers&style=for-the-badge&color=E63B2E&logo=github&logoColor=white" alt="GitHub followers" />
   &nbsp;&nbsp;
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=profissionalpalomino&layout=compact&theme=nord&hide=html,css" alt="Linguagens mais usadas" height="150" />
+  <img src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/users/profissionalpalomino&label=Repos%20p%C3%BAblicos&query=public_repos&style=for-the-badge&color=1F2937&logo=github&logoColor=white" alt="Repositórios públicos" />
 </p>
+
+<!--
+  Os cards visuais (github-readme-stats.vercel.app) foram removidos porque a instância
+  pública compartilhada está retornando 503 (sobrecarregada por uso global excessivo).
+  Quando houver mais repositórios públicos, considere reativá-los self-hosted:
+  https://github.com/anuraghazra/github-readme-stats#deploy-on-your-own-vercel-instance
+-->
 
 ---
 
