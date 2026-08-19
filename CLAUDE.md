@@ -47,10 +47,25 @@ Se não houver acesso de rede, siga as regras abaixo — elas são o essencial d
 - É a memória do projeto entre sessões.
 
 ## Deploy
-- **Projeto existente / em produção:** ciclo completo e autônomo — corrigir → testar → commit → push → deploy na VPS, sem pausar para perguntar.
-- **Projeto novo (do zero):** desenvolver e testar em localhost; deploy só com minha autorização explícita.
+- **Projeto existente / em produção:** ciclo completo e autônomo — corrigir → testar → commit → push, sem pausar para perguntar.
+- **Projeto novo (do zero):** desenvolver e testar em localhost; publicar só com minha autorização explícita.
 
-> ⚠️ **Sessão na nuvem (app do celular):** não há acesso à VPS nem à chave SSH. O ciclo termina no push — o deploy fica para uma sessão no PC.
+> **Como saber se o push já publica:** se existir `.github/workflows/deploy.yml` neste
+> repositório, o push na branch principal **é o deploy** — o GitHub Actions builda e sobe
+> na VPS sozinho em ~2 minutos, e isso vale igual em sessão na nuvem (celular). Se o
+> arquivo não existir, o ciclo termina no push e o deploy precisa de uma sessão no PC.
+
+## PWA — obrigatório em todo app com interface
+Todo app da Palomino Tech precisa ser instalável na tela inicial do celular:
+- `public/manifest.webmanifest` com `display: standalone` e ícones **192 e 512** (o Chrome
+  exige esses dois tamanhos para oferecer "Instalar app").
+- `public/sw.js` registrado no carregamento — **sem service worker o Android não instala**,
+  só o manifest não basta.
+- Bloco de meta tags no `<head>`: `apple-mobile-web-app-capable`, `apple-touch-icon`,
+  `theme-color` `#E8341C`. Sem elas, o iOS abre como aba do Safari em vez de app.
+- Ícones vêm do boilerplate do `configs-palomino-tech` — nunca renomeie um SVG para `.png`.
+
+O modelo `palomino-starter` já traz tudo isso pronto em `public/`.
 <!-- BLOCO PALOMINO — FIM -->
 
 ---
