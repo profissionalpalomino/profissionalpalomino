@@ -68,3 +68,18 @@ Seja para automatizar a sua empresa, criar um sistema sob medida ou simplesmente
     <img src="https://img.shields.io/badge/Palomino_Tech-FF4444?style=for-the-badge&logo=github&logoColor=white" alt="Website" />
   </a>
 </p>
+
+<!-- rodar-localmente:inicio -->
+## Rodar localmente
+
+**Stack:** SPA React + Vite
+
+```bash
+npm install
+npm run dev
+```
+
+Abre em: http://localhost:5173
+
+Padrão de ambiente local da Palomino Tech: `configs-palomino-tech/AMBIENTE_LOCAL.md`.
+<!-- rodar-localmente:fim -->
