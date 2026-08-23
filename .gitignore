@@ -41,3 +41,6 @@ id_rsa.pub
 *.tar
 *.tar.gz
 deploy.tar.gz
+
+# o exemplo é versionado de propósito (o .env real nunca)
+!.env.example
