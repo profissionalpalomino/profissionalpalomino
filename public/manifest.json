@@ -1,12 +1,13 @@
 {
-  "name": "Rodrigo Palomino",
-  "short_name": "Portfólio",
-  "description": "Portfólio Profissional Palomino Tech",
+  "name": "Palomino Tech Oficial — Palomino Tech",
+  "short_name": "Palomino Tech Oficial",
+  "description": "Aplicativo oficial Palomino Tech Oficial",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#0a0507",
-  "theme_color": "#f43f5e",
   "orientation": "portrait",
+  "background_color": "#0F172A",
+  "theme_color": "#E8341C",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -19,6 +20,11 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
     }
   ]
 }
