@@ -15,10 +15,20 @@
     <rect width="512" height="512" rx="112" fill="url(#palominoRed)"/>
     <g filter="url(#shadow)">
       
-      <path d="M256 100 L370 150 V260 C370 340 256 400 256 400 C256 400 142 340 142 260 V150 Z" fill="#FFFFFF"/>
-      <path d="M256 140 C286 168 300 205 300 240 C300 258 295 274 288 288 H224 C217 274 212 258 212 240 C212 205 226 168 256 140 Z" fill="#E8341C"/>
-      <circle cx="256" cy="226" r="20" fill="#FFFFFF"/>
-      <path d="M242 296 C242 316 248 332 256 350 C264 332 270 316 270 296 Z" fill="url(#goldAccent)"/>
+  <!-- Pentágono / Polígono Concêntrico Oficial Palomino Tech -->
+  <g transform="translate(256, 256) scale(13.5)">
+    <!-- Polígono Externo Branco -->
+    <polygon points="0,-15 13,-6.5 13,8.5 0,16 -13,8.5 -13,-6.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round"/>
     
+    <!-- Polígono Interno Sólido em Dourado -->
+    <polygon points="0,-7.5 7,-3.5 7,4.5 0,8.5 -7,4.5 -7,-3.5" fill="url(#goldAccent)"/>
+    
+    <!-- Ponto Central / Núcleo de Precisão -->
+    <circle cx="0" cy="0.5" r="1.8" fill="#FFFFFF"/>
+  </g>
+  
+  <!-- Tipografia Oficial Institucional -->
+  <text x="256" y="430" font-family="'Inter', system-ui, sans-serif" font-weight="900" font-size="28" fill="#FFFFFF" letter-spacing="6" text-anchor="middle">PALOMINO TECH</text>
+
     </g>
   </svg>
