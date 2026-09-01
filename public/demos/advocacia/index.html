@@ -132,13 +132,13 @@
 
   /* 📱 MOBILE */
   @media (max-width: 768px) {
-    .container { padding: 0 28px !important; }
+    .container { padding: 0 38px !important; }
     .nav-links { display: none; }
-    .header { padding: 12px 0; }
+    .header { padding: 14px 0; }
     .logo { font-size: 1.1rem; }
     .btn-header { padding: 8px 12px; font-size: .75rem; }
     
-    .hero { padding: 36px 0 30px; }
+    .hero { padding: 64px 0 36px !important; margin-top: 10px; }
     .hero-grid { grid-template-columns: 1fr; gap: 28px; }
     .hero h1 { font-size: 2rem; line-height: 1.2; }
     .hero p { font-size: .95rem; margin-bottom: 22px; }
@@ -152,14 +152,36 @@
 
     .hero-box-img img { height: 260px; }
     
-    .secao { padding: 48px 0; }
+    .secao { padding: 52px 0; }
     .secao-header h2 { font-size: 1.75rem; }
     .grid-areas { grid-template-columns: 1fr; }
     .grid-sobre { grid-template-columns: 1fr; }
+    .grid-localizacao { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .mapa-frame-wrap { min-height: 280px !important; }
     
-    .cta-section { padding: 36px 18px; border-radius: 14px; }
+    .cta-section { padding: 40px 20px; border-radius: 14px; }
     .cta-section h2 { font-size: 1.7rem; }
     .cta-section .btn { width: 100%; }
+  }
+
+  /* ─── Localização ─── */
+  .grid-localizacao { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: stretch; margin-top: 10px; }
+  .card-loc-info {
+    background: #FFF; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 36px 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+  .loc-item { display: flex; align-items: flex-start; gap: 16px; }
+  .loc-icon {
+    width: 44px; height: 44px; border-radius: 8px; background: rgba(30, 58, 138, 0.08);
+    color: var(--accent); display: flex; align-items: center; justify-content: center; shrink-0;
+  }
+  .loc-icon svg { width: 20px; height: 20px; }
+  .loc-item h4 { font-size: 1.05rem; color: var(--primary); margin-bottom: 4px; font-weight: 600; }
+  .loc-item p { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
+  .mapa-frame-wrap {
+    border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04); min-height: 360px;
   }
 </style>
 </head>
@@ -171,7 +193,7 @@
     <nav class="nav-links">
       <a href="#areas">Áreas de Atuação</a>
       <a href="#institucional">Sobre a Firma</a>
-      <a href="#contato">Atendimento Confidencial</a>
+      <a href="#localizacao">Localização</a>
     </nav>
     <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20uma%20consulta%20jur%C3%ADdica%20com%20a%20Valence" target="_blank" class="btn btn-primary btn-header">
       Consulta Confidencial
@@ -209,7 +231,7 @@
         </div>
       </div>
       <div class="hero-box-img">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=900&auto=format&fit=crop" alt="Escritório Valence">
+        <img src="images/socios.jpg" alt="Sócios da Valence & Associados">
       </div>
     </div>
   </section>
@@ -274,6 +296,67 @@
         </div>
         <h3>Sigilo & Confidencialidade</h3>
         <p>Protocolos rigorosos de segurança da informação e governança corporativa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Localização & Maps -->
+  <section class="secao container" id="localizacao">
+    <div class="secao-header">
+      <span class="tag-label mono">Sede Corporativa</span>
+      <h2>Onde Estamos</h2>
+      <p>Sede executiva em ponto nobre de Belo Horizonte com salas de conferência e segurança.</p>
+    </div>
+
+    <div class="grid-localizacao">
+      <div class="card-loc-info">
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Endereço Corporativo</h4>
+            <p>Av. Getúlio Vargas, 1420 — Bairro Savassi<br>Belo Horizonte - MG · CEP 30112-021</p>
+          </div>
+        </div>
+
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h4>Horários de Atendimento</h4>
+            <p><strong>Segunda a Sexta:</strong> 08:30 às 18:30<br><span style="color:#94A3B8">Sábado e Domingo: Plantão com agendamento</span></p>
+          </div>
+        </div>
+
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div>
+            <h4>Salas de Videoconferência & Valet</h4>
+            <p>Estacionamento privativo no edifício e tecnologia de ponta para reuniões híbridas seguras.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+          <a href="https://maps.google.com/?q=Av.+Getulio+Vargas,+1420+-+Savassi,+Belo+Horizonte+-+MG" target="_blank" class="btn btn-primary" style="font-size:0.88rem;padding:12px 22px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            Abrir Rota no Google Maps / Waze
+          </a>
+        </div>
+      </div>
+
+      <div class="mapa-frame-wrap">
+        <iframe 
+          src="https://maps.google.com/maps?q=Av.+Getulio+Vargas,+1420+-+Savassi,+Belo+Horizonte+-+MG&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+          width="100%" 
+          height="100%" 
+          style="border:0; min-height: 360px; width: 100%; border-radius: var(--radius);" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
       </div>
     </div>
   </section>

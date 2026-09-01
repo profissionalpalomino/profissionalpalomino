@@ -157,13 +157,13 @@
 
   /* 📱 MOBILE */
   @media (max-width: 768px) {
-    .container { padding: 0 28px !important; }
+    .container { padding: 0 38px !important; }
     .nav-links { display: none; }
     .header { padding: 14px 0; }
     .logo { font-size: 1.3rem; }
     .btn-header { padding: 8px 14px; font-size: .78rem; }
     
-    .hero { padding: 36px 0 30px; }
+    .hero { padding: 64px 0 36px !important; margin-top: 10px; }
     .hero-grid { grid-template-columns: 1fr; gap: 32px; }
     .hero h1 { font-size: 2.2rem; line-height: 1.18; margin-bottom: 16px; }
     .hero p { font-size: .95rem; margin-bottom: 22px; }
@@ -178,15 +178,38 @@
     .hero-img { height: 280px; }
     .hero-float-card { bottom: 10px; left: 10px; right: 10px; padding: 10px 12px; }
     
-    .secao { padding: 48px 0; }
-    .secao-header h2 { font-size: 1.9rem; }
+    .secao { padding: 52px 0; }
+    .secao-header { margin-bottom: 32px; }
+    .secao-header h2 { font-size: 1.85rem; }
     
     .grid-menu { grid-template-columns: 1fr; }
     .grid-diferenciais { grid-template-columns: 1fr; }
+    .grid-localizacao { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .mapa-frame-wrap { min-height: 280px !important; }
     
-    .cta-box { padding: 36px 18px; border-radius: 16px; }
+    .cta-box { padding: 40px 20px; border-radius: 20px; }
     .cta-box h2 { font-size: 1.8rem; }
     .cta-box .btn { width: 100%; }
+  }
+
+  /* ─── Localização ─── */
+  .grid-localizacao { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: stretch; margin-top: 10px; }
+  .card-loc-info {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 36px 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .loc-item { display: flex; align-items: flex-start; gap: 16px; }
+  .loc-icon {
+    width: 44px; height: 44px; border-radius: 10px; background: rgba(224, 122, 95, 0.12);
+    color: var(--accent); display: flex; align-items: center; justify-content: center;
+  }
+  .loc-icon svg { width: 20px; height: 20px; }
+  .loc-item h4 { font-size: 1.05rem; color: #FFF; margin-bottom: 4px; font-weight: 600; }
+  .loc-item p { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
+  .mapa-frame-wrap {
+    border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4); min-height: 360px;
   }
 </style>
 </head>
@@ -194,11 +217,14 @@
 
 <header class="header">
   <div class="container header-in">
-    <a href="#" class="logo">LE JARDIN <span>BISTRÔ</span></a>
+    <a href="#" class="logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+      Le Jardin <span>Bistrô</span>
+    </a>
     <nav class="nav-links">
-      <a href="#cardapio">Menu Gourmet</a>
-      <a href="#experiencia">A Casa</a>
-      <a href="#reservas">Reservas VIP</a>
+      <a href="#cardapio">Menu Especial</a>
+      <a href="#experiencia">A Experiência</a>
+      <a href="#localizacao">Localização</a>
     </nav>
     <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20uma%20mesa%20no%20Le%20Jardin" target="_blank" class="btn btn-accent btn-header">
       Reservar Mesa
@@ -211,18 +237,18 @@
   <section class="hero container">
     <div class="hero-grid">
       <div>
-        <span class="badge-tag">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          Gastronomia & Carta de Vinhos
-        </span>
-        <h1>Uma experiência gastronômica <em>memorável e autoral</em>.</h1>
-        <p>Pratos contemporâneos elaborados com ingredientes frescos e artesanais, harmonizados com os melhores rótulos internacionais em um ambiente intimista e acolhedor.</p>
+        <div class="badge-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Alta Gastronomia Contemporânea
+        </div>
+        <h1>Sabores memoráveis criados com <em>paixão e arte</em>.</h1>
+        <p>Cozinha autoral requintada, carta de vinhos selecionada com sommeliers e um ambiente acolhedor à luz de velas para noites inesquecíveis.</p>
         
         <div class="hero-actions">
-          <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20uma%20mesa%20no%20Le%20Jardin" target="_blank" class="btn btn-accent">
+          <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20reservar%20uma%20mesa%20no%20Le%20Jardin%20Bistr%C3%B4" target="_blank" class="btn btn-accent">
             Reservar Mesa no WhatsApp →
           </a>
-          <a href="#cardapio" class="btn btn-outline">Explorar Cardápio</a>
+          <a href="#cardapio" class="btn btn-outline">Ver Cardápio Completo</a>
         </div>
 
         <div class="hero-stats">
@@ -242,11 +268,11 @@
       </div>
       
       <div class="hero-img-wrap">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=900&auto=format&fit=crop" alt="Ambiente do Bistrô Le Jardin" class="hero-img">
+        <img src="images/ambiente.jpg" alt="Ambiente do Bistrô Le Jardin" class="hero-img">
         <div class="hero-float-card">
           <div>
             <div style="font-weight:700;font-size:.88rem;color:#FFF">Jantar & Almoço Executivo</div>
-            <div style="font-size:.75rem;color:var(--muted)">Quarta a Domingo • 19h às 23h30</div>
+            <div style="font-size:.75rem;color:var(--muted)">Bairro Lourdes · Belo Horizonte / MG</div>
           </div>
           <span style="color:var(--accent);font-weight:700;font-size:.85rem">RESERVAS ABERTAS</span>
         </div>
@@ -266,7 +292,7 @@
       <div class="card-prato">
         <div class="card-prato-img">
           <span class="card-prato-badge">Prato Principal</span>
-          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop" alt="Filé Mignon ao Poivre">
+          <img src="images/prato_principal.jpg" alt="Filé Mignon ao Poivre">
         </div>
         <div class="card-prato-body">
           <h3>Filé Mignon au Poivre</h3>
@@ -280,45 +306,30 @@
 
       <div class="card-prato">
         <div class="card-prato-img">
-          <span class="card-prato-badge">Massas Frescas</span>
-          <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=600&auto=format&fit=crop" alt="Ravioli de Brie e Damasco">
-        </div>
-        <div class="card-prato-body">
-          <h3>Ravioli di Brie & Damasco</h3>
-          <p>Massa artesanal recheada com queijo brie francês, damascos caramelizados e manteiga de sálvia crocante.</p>
-          <div class="card-prato-foot">
-            <span class="card-prato-preco">R$ 76</span>
-            <a href="https://wa.me/5531984773813?text=Quero%20reservar%20uma%20mesa%20para%20o%20Ravioli" target="_blank" class="btn btn-outline" style="padding:6px 14px;font-size:.78rem">Pedir Reserva</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-prato">
-        <div class="card-prato-img">
-          <span class="card-prato-badge">Frutos do Mar</span>
-          <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=600&auto=format&fit=crop" alt="Salmão Grelhado com Aspargos">
-        </div>
-        <div class="card-prato-body">
-          <h3>Salmão Selvagem Crocante</h3>
-          <p>Lombo de salmão com crosta de ervas finas, purê de mandioquinha defumada e aspargos frescos salteados.</p>
-          <div class="card-prato-foot">
-            <span class="card-prato-preco">R$ 84</span>
-            <a href="https://wa.me/5531984773813?text=Quero%20reservar%20uma%20mesa%20para%20o%20Salm%C3%A3o" target="_blank" class="btn btn-outline" style="padding:6px 14px;font-size:.78rem">Pedir Reserva</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-prato">
-        <div class="card-prato-img">
           <span class="card-prato-badge">Sobremesa</span>
-          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=600&auto=format&fit=crop" alt="Fondant de Chocolate Belga">
+          <img src="images/sobremesa.jpg" alt="Fondant de Chocolate Belga">
         </div>
         <div class="card-prato-body">
-          <h3>Fondant de Chocolate 70%</h3>
-          <p>Bolo vulcão quente com chocolate belga, calda de frutas vermelhas silvestres e gelato de fava de baunilha.</p>
+          <h3>Grand Fondant 70% Cacau</h3>
+          <p>Bolo vulcão quente com chocolate belga, calda de frutas vermelhas silvestres e gelato artesanal de baunilha.</p>
           <div class="card-prato-foot">
             <span class="card-prato-preco">R$ 38</span>
             <a href="https://wa.me/5531984773813?text=Quero%20reservar%20uma%20mesa%20para%20o%20Fondant" target="_blank" class="btn btn-outline" style="padding:6px 14px;font-size:.78rem">Pedir Reserva</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-prato">
+        <div class="card-prato-img">
+          <span class="card-prato-badge">Adega & Vinhos</span>
+          <img src="images/vinhos.jpg" alt="Carta de Vinhos Selecionados">
+        </div>
+        <div class="card-prato-body">
+          <h3>Harmonização com Vinhos</h3>
+          <p>Seleção especial de vinhos tintos, brancos e espumantes de vinícolas boutique do Velho e Novo Mundo.</p>
+          <div class="card-prato-foot">
+            <span class="card-prato-preco">A partir de R$ 95</span>
+            <a href="https://wa.me/5531984773813?text=Quero%20consultar%20a%20carta%20de%20vinhos" target="_blank" class="btn btn-outline" style="padding:6px 14px;font-size:.78rem">Ver Adega</a>
           </div>
         </div>
       </div>
@@ -356,6 +367,67 @@
         </div>
         <h3>Salão para Eventos Privados</h3>
         <p>Espaço reservado para aniversários, mini-weddings e jantares corporativos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Localização & Maps -->
+  <section class="secao container" id="localizacao">
+    <div class="secao-header">
+      <span class="badge-tag">Nosso Bistrô</span>
+      <h2>Onde Estamos</h2>
+      <p>Localização charmosa em Lourdes com serviço de valet e adega climatizada.</p>
+    </div>
+
+    <div class="grid-localizacao">
+      <div class="card-loc-info">
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Endereço Lourdes</h4>
+            <p>Rua Marília de Dirceu, 180 — Bairro Lourdes<br>Belo Horizonte - MG · CEP 30170-090</p>
+          </div>
+        </div>
+
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h4>Horários de Funcionamento</h4>
+            <p><strong>Terça a Quinta:</strong> 19:00 às 23:30<br><strong>Sexta e Sábado:</strong> 12:00 às 16:00 e 19:00 às 00:30<br><strong>Domingo:</strong> 12:00 às 17:00</p>
+          </div>
+        </div>
+
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div>
+            <h4>Serviço de Valet & Estacionamento</h4>
+            <p>Manobrista cortesia na porta do restaurante durante todo o horário de atendimento.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+          <a href="https://maps.google.com/?q=Rua+Marilia+de+Dirceu,+180+-+Lourdes,+Belo+Horizonte+-+MG" target="_blank" class="btn btn-accent" style="font-size:0.88rem;padding:12px 22px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            Abrir Rota no Google Maps / Waze
+          </a>
+        </div>
+      </div>
+
+      <div class="mapa-frame-wrap">
+        <iframe 
+          src="https://maps.google.com/maps?q=Rua+Marilia+de+Dirceu,+180+-+Lourdes,+Belo+Horizonte+-+MG&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+          width="100%" 
+          height="100%" 
+          style="border:0; min-height: 360px; width: 100%; border-radius: var(--radius-lg);" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
       </div>
     </div>
   </section>
