@@ -100,10 +100,10 @@ const gruposSistemas: Grupo[] = [
 
 const sitesLandingPages: Projeto[] = [
   {
-    title: "Aura Studio Salão & Estética",
+    title: "Éclat & Aura Studio de Beleza",
     description:
-      "Landing page de luxo para salões de beleza, cabeleireiros e estúdios de estética capilar. Tabela de procedimentos, fotos de transformações e botão de agendamento rápido de horários no WhatsApp.",
-    functions: ["Menu de Procedimentos & Preços", "Agendamento Rápido no WhatsApp", "Galeria de Transformações"],
+      "Landing page de luxo para salões de beleza, cabeleireiros e alta cabelaria. Tabela de procedimentos, galeria de transformações e agendamento direto de horários no WhatsApp.",
+    functions: ["Menu de Procedimentos & Preços", "Galeria de Transformações", "Agendamento VIP no WhatsApp"],
     screenshots: ["https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=900&auto=format&fit=crop"],
     tag: "Beleza & Salão de Beleza",
     url: "/demos/salao/index.html",
@@ -125,6 +125,24 @@ const sitesLandingPages: Projeto[] = [
     screenshots: ["https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=900&auto=format&fit=crop"],
     tag: "Beleza & Cuidados Masculinos",
     url: "/demos/barbearia/index.html",
+  },
+  {
+    title: "Morada Nobre Imóveis",
+    description:
+      "Vitrine imobiliária de alto padrão para construtoras, corretores e imobiliárias. Catálogo com metragem, especificações, tour virtual e agendamento de visita VIP.",
+    functions: ["Catálogo de Imóveis & Preços", "Especificações e Metragem", "Agendamento de Visita VIP"],
+    screenshots: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900&auto=format&fit=crop"],
+    tag: "Imobiliária & Alto Padrão",
+    url: "/demos/imobiliaria/index.html",
+  },
+  {
+    title: "Le Jardin Bistrô & Gastronomia",
+    description:
+      "Landing page sensorial para restaurantes, bistrôs e cafeterias gourmet. Cardápio visual com fotos de pratos, carta de vinhos e reserva direta de mesas no WhatsApp.",
+    functions: ["Cardápio Visual com Fotos", "Reserva de Mesas WhatsApp", "Experiência Gastronômica"],
+    screenshots: ["https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=900&auto=format&fit=crop"],
+    tag: "Gastronomia & Restaurante",
+    url: "/demos/restaurante/index.html",
   },
   {
     title: "Valence & Associados",

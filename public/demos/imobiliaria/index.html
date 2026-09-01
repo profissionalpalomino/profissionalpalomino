@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morada Nobre — Imóveis de Alto Padrão & Condomínios Fechados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --bg: #F8F9FA;
+    --card: #FFFFFF;
+    --primary: #0F172A;
+    --accent: #B45309;       /* Ouro bronze nobre */
+    --accent-hover: #92400E;
+    --text: #1E293B;
+    --muted: #64748B;
+    --border: #E2E8F0;
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .serif { font-family: 'Prata', serif; font-weight: 400; letter-spacing: -0.01em; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* Header */
+  .header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(248, 249, 250, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+  }
+  .header-in { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 1.35rem; font-weight: 700; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; font-family: 'Prata', serif; }
+  .logo span { color: var(--accent); }
+  
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .92rem; font-weight: 500; transition: color .15s; }
+  .nav-links a:hover { color: var(--primary); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 24px; border-radius: 8px; font-size: .9rem; font-weight: 600;
+    text-decoration: none; transition: all .2s ease; cursor: pointer; border: 0;
+    text-align: center;
+  }
+  .btn-header { padding: 9px 18px; font-size: .82rem; }
+  .btn-primary { background: var(--primary); color: #FFF; }
+  .btn-primary:hover { background: #1E293B; transform: translateY(-1px); }
+  .btn-accent { background: var(--accent); color: #FFF; }
+  .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--primary); border: 1px solid var(--border); }
+  .btn-outline:hover { background: #FFF; border-color: var(--primary); }
+
+  /* Hero */
+  .hero { padding: 70px 0 60px; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+
+  .badge-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 12px; background: rgba(180, 83, 9, 0.1);
+    color: var(--accent); border-radius: 6px; font-size: .75rem; font-weight: 700;
+    margin-bottom: 16px; text-transform: uppercase; letter-spacing: .06em;
+  }
+  .hero h1 { font-size: 3.2rem; line-height: 1.12; color: var(--primary); margin-bottom: 20px; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p { font-size: 1.05rem; color: var(--muted); margin-bottom: 30px; line-height: 1.65; max-width: 520px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    max-width: 480px;
+  }
+  .stat-val { font-size: 1.6rem; font-weight: 700; color: var(--primary); line-height: 1.1; font-family: 'Prata', serif; }
+  .stat-lbl { font-size: .75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: .04em; margin-top: 4px; }
+
+  .hero-img-wrap {
+    border-radius: var(--radius-lg); overflow: hidden; position: relative;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08); border: 1px solid var(--border);
+  }
+  .hero-img { width: 100%; height: 480px; object-fit: cover; display: block; }
+  .hero-float-card {
+    position: absolute; bottom: 16px; left: 16px; right: 16px;
+    background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(10px);
+    padding: 14px 18px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.7);
+    display: flex; align-items: center; justify-content: space-between; z-index: 2;
+  }
+
+  /* Vitrine de Imóveis */
+  .secao { padding: 84px 0; border-top: 1px solid var(--border); }
+  .secao-header { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .secao-header h2 { font-size: 2.4rem; color: var(--primary); margin-bottom: 10px; }
+  .secao-header p { color: var(--muted); font-size: .98rem; }
+
+  .grid-imoveis { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+  .card-imovel {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    overflow: hidden; transition: all .25s ease; display: flex; flex-direction: column;
+  }
+  .card-imovel:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.06); border-color: rgba(180, 83, 9, 0.3); }
+  
+  .card-imovel-img-wrap { position: relative; height: 230px; overflow: hidden; }
+  .card-imovel-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .card-imovel:hover .card-imovel-img-wrap img { transform: scale(1.05); }
+  .card-badge-status {
+    position: absolute; top: 14px; left: 14px;
+    background: rgba(15, 23, 42, 0.88); color: #FFF; font-size: .72rem; font-weight: 700;
+    padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: .05em;
+  }
+  .card-badge-preco {
+    position: absolute; bottom: 14px; right: 14px;
+    background: #FFF; color: var(--primary); font-size: .92rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .card-imovel-body { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .card-imovel-local { font-size: .8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; margin-bottom: 6px; }
+  .card-imovel-body h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 10px; }
+  
+  .imovel-specs { display: flex; gap: 16px; border-top: 1px solid var(--border); padding-top: 14px; margin-top: 14px; }
+  .spec-item { display: flex; align-items: center; gap: 6px; font-size: .84rem; color: var(--muted); font-weight: 500; }
+  .spec-item svg { width: 16px; height: 16px; color: var(--primary); }
+
+  /* Diferenciais */
+  .grid-diferenciais { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card-dif {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 32px 24px; text-align: left;
+  }
+  .card-dif-icon {
+    width: 46px; height: 46px; border-radius: 10px; background: rgba(180, 83, 9, 0.1);
+    color: var(--accent); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .card-dif-icon svg { width: 22px; height: 22px; }
+  .card-dif h3 { font-size: 1.25rem; color: var(--primary); margin-bottom: 8px; }
+  .card-dif p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+
+  /* CTA */
+  .cta-box {
+    background: var(--primary); color: #FFF;
+    border-radius: var(--radius-lg); padding: 56px 32px; text-align: center; margin: 30px 0;
+  }
+  .cta-box h2 { font-size: 2.5rem; color: #FFF; margin-bottom: 12px; }
+  .cta-box p { color: #94A3B8; max-width: 520px; margin: 0 auto 28px; font-size: 1rem; }
+
+  .footer { border-top: 1px solid var(--border); padding: 36px 0; text-align: center; color: var(--muted); font-size: .82rem; }
+
+  /* 📱 MOBILE */
+  @media (max-width: 768px) {
+    .container { padding: 0 28px !important; }
+    .nav-links { display: none; }
+    .header { padding: 14px 0; }
+    .logo { font-size: 1.2rem; }
+    .btn-header { padding: 8px 14px; font-size: .78rem; }
+    
+    .hero { padding: 36px 0 30px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero h1 { font-size: 2.1rem; line-height: 1.2; margin-bottom: 16px; }
+    .hero p { font-size: .95rem; margin-bottom: 22px; }
+    
+    .hero-actions { flex-direction: column; width: 100%; gap: 10px; margin-bottom: 28px; }
+    .hero-actions .btn { width: 100%; padding: 13px 20px; }
+
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; max-width: 100%; }
+    .stat-val { font-size: 1.25rem; }
+    .stat-lbl { font-size: .65rem; }
+
+    .hero-img { height: 280px; }
+    .hero-float-card { bottom: 10px; left: 10px; right: 10px; padding: 10px 12px; }
+    
+    .secao { padding: 48px 0; }
+    .secao-header h2 { font-size: 1.8rem; }
+    
+    .grid-imoveis { grid-template-columns: 1fr; }
+    .grid-diferenciais { grid-template-columns: 1fr; }
+    
+    .cta-box { padding: 36px 18px; border-radius: 16px; }
+    .cta-box h2 { font-size: 1.8rem; }
+    .cta-box .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-in">
+    <a href="#" class="logo">MORADA <span>NOBRE</span></a>
+    <nav class="nav-links">
+      <a href="#imoveis">Imóveis Exclusivos</a>
+      <a href="#consultoria">Assessoria VIP</a>
+      <a href="#contato">Fale com um Corretor</a>
+    </nav>
+    <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20consultar%20os%20im%C3%B3veis%20da%20Morada%20Nobre" target="_blank" class="btn btn-primary btn-header">
+      Consultoria VIP
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <span class="badge-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          Imóveis Selecionados & Condomínios
+        </span>
+        <h1>Encontre a residência dos seus sonhos com <em>segurança e sofisticação</em>.</h1>
+        <p>Curadoria exclusiva de casas em condomínio fechado, coberturas lineares e mansões de alto padrão na região com assessoria documental completa.</p>
+        
+        <div class="hero-actions">
+          <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20visita%20a%20um%20im%C3%B3vel" target="_blank" class="btn btn-accent">
+            Agendar Visita no WhatsApp →
+          </a>
+          <a href="#imoveis" class="btn btn-outline">Ver Catálogo de Imóveis</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <div class="stat-val">+R$ 90M</div>
+            <div class="stat-lbl">Negociados</div>
+          </div>
+          <div>
+            <div class="stat-val">100%</div>
+            <div class="stat-lbl">Exclusividade</div>
+          </div>
+          <div>
+            <div class="stat-val">24h</div>
+            <div class="stat-lbl">Atendimento</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900&auto=format&fit=crop" alt="Mansão de Alto Padrão" class="hero-img">
+        <div class="hero-float-card">
+          <div>
+            <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Condomínio Reserva Imperial</div>
+            <div style="font-size:.75rem;color:var(--muted)">Casas prontas para morar & lotes</div>
+          </div>
+          <span style="color:var(--accent);font-weight:700;font-size:.85rem">VISITAS ABERTAS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo de Imóveis -->
+  <section class="secao container" id="imoveis">
+    <div class="secao-header">
+      <span class="badge-tag">Oportunidades Especiais</span>
+      <h2>Propriedades em Destaque</h2>
+      <p>Imóveis selecionados minuciosamente por arquitetura, privacidade e potencial de valorização.</p>
+    </div>
+
+    <div class="grid-imoveis">
+      <div class="card-imovel">
+        <div class="card-imovel-img-wrap">
+          <span class="card-badge-status">Pronto para Morar</span>
+          <span class="card-badge-preco">R$ 2.450.000</span>
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600&auto=format&fit=crop" alt="Casa em Condomínio">
+        </div>
+        <div class="card-imovel-body">
+          <div>
+            <div class="card-imovel-local">Condomínio Vale dos Cristais</div>
+            <h3>Mansão Contemporânea</h3>
+            <p style="font-size:.86rem;color:var(--muted);margin-bottom:12px">Piscina com borda infinita, espaço gourmet integrado, energia solar e vista panorâmica para as montanhas.</p>
+          </div>
+          <div class="imovel-specs">
+            <div class="spec-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              480m²
+            </div>
+            <div class="spec-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+              4 Suítes
+            </div>
+            <div class="spec-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              4 Vagas
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-imovel">
+        <div class="card-imovel-img-wrap">
+          <span class="card-badge-status">Exclusividade</span>
+          <span class="card-badge-preco">R$ 1.890.000</span>
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop" alt="Cobertura Linear">
+        </div>
+        <div class="card-imovel-body">
+          <div>
+            <div class="card-imovel-local">Jardim Imperial</div>
+            <h3>Cobertura Linear com Spa</h3>
+            <p style="font-size:.86rem;color:var(--muted);margin-bottom:12px">Terraço privativo com jacuzzi aquecida, acabamento em mármore importado e elevador privativo codificado.</p>
+          </div>
+          <div class="imovel-specs">
+            <div class="spec-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              320m²
+            </div>
+            <div class="spec-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+              3 Suítes
+            </div>
+            <div class="spec-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              3 Vagas
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-imovel">
+        <div class="card-imovel-img-wrap">
+          <span class="card-badge-status">Lançamento</span>
+          <span class="card-badge-preco">R$ 1.350.000</span>
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600&auto=format&fit=crop" alt="Apartamento Alto Padrão">
+        </div>
+        <div class="card-imovel-body">
+          <div>
+            <div class="card-imovel-local">Centro Nobre</div>
+            <h3>Apartamento Garden Design</h3>
+            <p style="font-size:.86rem;color:var(--muted);margin-bottom:12px">Varanda gourmet com churrasqueira a carvão, fechadura biométrica e condomínio com lazer de resort.</p>
+          </div>
+          <div class="imovel-specs">
+            <div class="spec-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              195m²
+            </div>
+            <div class="spec-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+              3 Quartos
+            </div>
+            <div class="spec-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              2 Vagas
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diferenciais / Assessoria -->
+  <section class="secao container" id="consultoria">
+    <div class="secao-header">
+      <span class="badge-tag">Por Que a Morada Nobre</span>
+      <h2>Assessoria Imobiliária Completa</h2>
+      <p>Da análise jurídica da matrícula até a entrega das chaves, cuidamos de cada detalhe da sua transação.</p>
+    </div>
+
+    <div class="grid-diferenciais">
+      <div class="card-dif">
+        <div class="card-dif-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Auditoria Documental</h3>
+        <p>Verificação preventiva de certidões, ônus e histórico do imóvel para uma compra 100% segura.</p>
+      </div>
+
+      <div class="card-dif">
+        <div class="card-dif-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <h3>Tour Virtual & Vídeo 4K</h3>
+        <p>Conheça os imóveis em detalhes antes de agendar a visita presencial.</p>
+      </div>
+
+      <div class="card-dif">
+        <div class="card-dif-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg>
+        </div>
+        <h3>Correspondente Bancário</h3>
+        <p>Aprovação ágil de financiamento imobiliário nas principais instituições financeiras.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Box -->
+  <section class="container" id="contato">
+    <div class="cta-box">
+      <h2>Deseja comprar, vender ou avaliar um imóvel?</h2>
+      <p>Nossos corretores especialistas estão à disposição para um atendimento sigiloso e personalizado.</p>
+      <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20corretor%20da%20Morada%20Nobre" target="_blank" class="btn btn-accent" style="padding:15px 36px;font-size:1rem">
+        Falar no WhatsApp com o Plantão de Vendas
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer container">
+  <p>© 2026 Morada Nobre Imóveis. CRECI PJ 00.000. Modelo Demonstrativo Palomino Tech.</p>
+</footer>
+
+</body>
+</html>

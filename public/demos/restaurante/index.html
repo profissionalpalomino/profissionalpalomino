@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Jardin — Bistrô & Gastronomia Contemporânea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --bg: #12100E;         /* Carvão acolhedor sensorial */
+    --card: #1C1916;
+    --card-hover: #24201C;
+    --primary: #F8F5F0;
+    --accent: #E07A5F;     /* Terracota acolhedor */
+    --accent-hover: #C66248;
+    --gold: #D4AF37;       /* Dourado suave */
+    --text: #EAE5DD;
+    --muted: #A89F95;
+    --border: #2C2723;
+    --radius-lg: 20px;
+    --radius-md: 12px;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 600; letter-spacing: -0.01em; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* Header */
+  .header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(18, 16, 14, 0.95);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+  }
+  .header-in { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 1.5rem; font-weight: 700; color: #FFF; text-decoration: none; display: flex; align-items: center; gap: 8px; font-family: 'Cormorant Garamond', serif; }
+  .logo span { color: var(--accent); font-style: italic; }
+  
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .92rem; font-weight: 500; transition: color .15s; }
+  .nav-links a:hover { color: #FFF; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 24px; border-radius: 30px; font-size: .9rem; font-weight: 600;
+    text-decoration: none; transition: all .2s ease; cursor: pointer; border: 0;
+    text-align: center;
+  }
+  .btn-header { padding: 9px 18px; font-size: .82rem; }
+  .btn-accent { background: var(--accent); color: #FFF; }
+  .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: #FFF; border: 1px solid var(--border); }
+  .btn-outline:hover { background: var(--card); border-color: var(--accent); color: var(--accent); }
+
+  /* Hero */
+  .hero { padding: 70px 0 60px; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+
+  .badge-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 12px; background: rgba(224, 122, 95, 0.12);
+    color: var(--accent); border-radius: 20px; font-size: .75rem; font-weight: 700;
+    margin-bottom: 16px; text-transform: uppercase; letter-spacing: .08em;
+  }
+  .hero h1 { font-size: 3.4rem; line-height: 1.1; color: #FFF; margin-bottom: 20px; }
+  .hero h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .hero p { font-size: 1.05rem; color: var(--muted); margin-bottom: 32px; line-height: 1.68; max-width: 520px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    max-width: 480px;
+  }
+  .stat-val { font-size: 1.7rem; font-weight: 700; color: #FFF; line-height: 1.1; font-family: 'Cormorant Garamond', serif; }
+  .stat-lbl { font-size: .75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: .04em; margin-top: 4px; }
+
+  .hero-img-wrap {
+    border-radius: var(--radius-lg); overflow: hidden; position: relative;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5); border: 1px solid var(--border);
+  }
+  .hero-img { width: 100%; height: 480px; object-fit: cover; display: block; filter: brightness(0.95); }
+  .hero-float-card {
+    position: absolute; bottom: 16px; left: 16px; right: 16px;
+    background: rgba(28, 25, 22, 0.94); backdrop-filter: blur(12px);
+    padding: 14px 18px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: space-between; z-index: 2;
+  }
+
+  /* Menu / Cardápio */
+  .secao { padding: 84px 0; border-top: 1px solid var(--border); }
+  .secao-header { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .secao-header h2 { font-size: 2.5rem; color: #FFF; margin-bottom: 10px; }
+  .secao-header p { color: var(--muted); font-size: .98rem; }
+
+  .grid-menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px; }
+  .card-prato {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    overflow: hidden; transition: all .25s ease; display: flex; flex-direction: column;
+  }
+  .card-prato:hover { transform: translateY(-4px); border-color: rgba(224, 122, 95, 0.35); box-shadow: 0 12px 28px rgba(0,0,0,0.4); }
+  
+  .card-prato-img { position: relative; height: 210px; overflow: hidden; }
+  .card-prato-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .card-prato:hover .card-prato-img img { transform: scale(1.05); }
+  .card-prato-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(18, 16, 14, 0.85); color: #FFF; font-size: .72rem; font-weight: 700;
+    padding: 4px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: .05em;
+  }
+
+  .card-prato-body { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .card-prato-body h3 { font-size: 1.35rem; color: #FFF; margin-bottom: 6px; }
+  .card-prato-body p { font-size: .86rem; color: var(--muted); line-height: 1.55; margin-bottom: 16px; }
+  .card-prato-foot { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 14px; }
+  .card-prato-preco { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 700; color: var(--accent); }
+
+  /* Diferenciais */
+  .grid-diferenciais { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card-dif {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 32px 24px; text-align: left;
+  }
+  .card-dif-icon {
+    width: 46px; height: 46px; border-radius: 10px; background: rgba(224, 122, 95, 0.12);
+    color: var(--accent); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .card-dif-icon svg { width: 22px; height: 22px; }
+  .card-dif h3 { font-size: 1.3rem; color: #FFF; margin-bottom: 8px; }
+  .card-dif p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+
+  /* CTA */
+  .cta-box {
+    background: linear-gradient(145deg, #1C1916, #141210);
+    border: 1px solid rgba(224, 122, 95, 0.25);
+    border-radius: var(--radius-lg); padding: 56px 32px; text-align: center; margin: 30px 0;
+  }
+  .cta-box h2 { font-size: 2.6rem; color: #FFF; margin-bottom: 12px; }
+  .cta-box p { color: var(--muted); max-width: 520px; margin: 0 auto 28px; font-size: 1rem; }
+
+  .footer { border-top: 1px solid var(--border); padding: 36px 0; text-align: center; color: var(--muted); font-size: .82rem; }
+
+  /* 📱 MOBILE */
+  @media (max-width: 768px) {
+    .container { padding: 0 28px !important; }
+    .nav-links { display: none; }
+    .header { padding: 14px 0; }
+    .logo { font-size: 1.3rem; }
+    .btn-header { padding: 8px 14px; font-size: .78rem; }
+    
+    .hero { padding: 36px 0 30px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero h1 { font-size: 2.2rem; line-height: 1.18; margin-bottom: 16px; }
+    .hero p { font-size: .95rem; margin-bottom: 22px; }
+    
+    .hero-actions { flex-direction: column; width: 100%; gap: 10px; margin-bottom: 28px; }
+    .hero-actions .btn { width: 100%; padding: 13px 20px; }
+
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; max-width: 100%; }
+    .stat-val { font-size: 1.3rem; }
+    .stat-lbl { font-size: .65rem; }
+
+    .hero-img { height: 280px; }
+    .hero-float-card { bottom: 10px; left: 10px; right: 10px; padding: 10px 12px; }
+    
+    .secao { padding: 48px 0; }
+    .secao-header h2 { font-size: 1.9rem; }
+    
+    .grid-menu { grid-template-columns: 1fr; }
+    .grid-diferenciais { grid-template-columns: 1fr; }
+    
+    .cta-box { padding: 36px 18px; border-radius: 16px; }
+    .cta-box h2 { font-size: 1.8rem; }
+    .cta-box .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-in">
+    <a href="#" class="logo">LE JARDIN <span>BISTRÔ</span></a>
+    <nav class="nav-links">
+      <a href="#cardapio">Menu Gourmet</a>
+      <a href="#experiencia">A Casa</a>
+      <a href="#reservas">Reservas VIP</a>
+    </nav>
+    <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20uma%20mesa%20no%20Le%20Jardin" target="_blank" class="btn btn-accent btn-header">
+      Reservar Mesa
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <span class="badge-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Gastronomia & Carta de Vinhos
+        </span>
+        <h1>Uma experiência gastronômica <em>memorável e autoral</em>.</h1>
+        <p>Pratos contemporâneos elaborados com ingredientes frescos e artesanais, harmonizados com os melhores rótulos internacionais em um ambiente intimista e acolhedor.</p>
+        
+        <div class="hero-actions">
+          <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20uma%20mesa%20no%20Le%20Jardin" target="_blank" class="btn btn-accent">
+            Reservar Mesa no WhatsApp →
+          </a>
+          <a href="#cardapio" class="btn btn-outline">Explorar Cardápio</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <div class="stat-val">+12.000</div>
+            <div class="stat-lbl">Pratos Servidos</div>
+          </div>
+          <div>
+            <div class="stat-val">4.9 ★</div>
+            <div class="stat-lbl">TripAdvisor</div>
+          </div>
+          <div>
+            <div class="stat-val">+180</div>
+            <div class="stat-lbl">Rótulos na Adega</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=900&auto=format&fit=crop" alt="Ambiente do Bistrô Le Jardin" class="hero-img">
+        <div class="hero-float-card">
+          <div>
+            <div style="font-weight:700;font-size:.88rem;color:#FFF">Jantar & Almoço Executivo</div>
+            <div style="font-size:.75rem;color:var(--muted)">Quarta a Domingo • 19h às 23h30</div>
+          </div>
+          <span style="color:var(--accent);font-weight:700;font-size:.85rem">RESERVAS ABERTAS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cardápio / Menu -->
+  <section class="secao container" id="cardapio">
+    <div class="secao-header">
+      <span class="badge-tag">Criações do Chef</span>
+      <h2>Menu Selecionado</h2>
+      <p>Uma fusão da cozinha clássica francesa e italiana com toques autorais contemporâneos.</p>
+    </div>
+
+    <div class="grid-menu">
+      <div class="card-prato">
+        <div class="card-prato-img">
+          <span class="card-prato-badge">Prato Principal</span>
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop" alt="Filé Mignon ao Poivre">
+        </div>
+        <div class="card-prato-body">
+          <h3>Filé Mignon au Poivre</h3>
+          <p>Tornedor alto grelhado com redução de pimentas verdes, acompanhado de risoto de parmesão trufado.</p>
+          <div class="card-prato-foot">
+            <span class="card-prato-preco">R$ 89</span>
+            <a href="https://wa.me/5531984773813?text=Quero%20reservar%20uma%20mesa%20para%20o%20Fil%C3%A9%20au%20Poivre" target="_blank" class="btn btn-outline" style="padding:6px 14px;font-size:.78rem">Pedir Reserva</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-prato">
+        <div class="card-prato-img">
+          <span class="card-prato-badge">Massas Frescas</span>
+          <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=600&auto=format&fit=crop" alt="Ravioli de Brie e Damasco">
+        </div>
+        <div class="card-prato-body">
+          <h3>Ravioli di Brie & Damasco</h3>
+          <p>Massa artesanal recheada com queijo brie francês, damascos caramelizados e manteiga de sálvia crocante.</p>
+          <div class="card-prato-foot">
+            <span class="card-prato-preco">R$ 76</span>
+            <a href="https://wa.me/5531984773813?text=Quero%20reservar%20uma%20mesa%20para%20o%20Ravioli" target="_blank" class="btn btn-outline" style="padding:6px 14px;font-size:.78rem">Pedir Reserva</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-prato">
+        <div class="card-prato-img">
+          <span class="card-prato-badge">Frutos do Mar</span>
+          <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=600&auto=format&fit=crop" alt="Salmão Grelhado com Aspargos">
+        </div>
+        <div class="card-prato-body">
+          <h3>Salmão Selvagem Crocante</h3>
+          <p>Lombo de salmão com crosta de ervas finas, purê de mandioquinha defumada e aspargos frescos salteados.</p>
+          <div class="card-prato-foot">
+            <span class="card-prato-preco">R$ 84</span>
+            <a href="https://wa.me/5531984773813?text=Quero%20reservar%20uma%20mesa%20para%20o%20Salm%C3%A3o" target="_blank" class="btn btn-outline" style="padding:6px 14px;font-size:.78rem">Pedir Reserva</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-prato">
+        <div class="card-prato-img">
+          <span class="card-prato-badge">Sobremesa</span>
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=600&auto=format&fit=crop" alt="Fondant de Chocolate Belga">
+        </div>
+        <div class="card-prato-body">
+          <h3>Fondant de Chocolate 70%</h3>
+          <p>Bolo vulcão quente com chocolate belga, calda de frutas vermelhas silvestres e gelato de fava de baunilha.</p>
+          <div class="card-prato-foot">
+            <span class="card-prato-preco">R$ 38</span>
+            <a href="https://wa.me/5531984773813?text=Quero%20reservar%20uma%20mesa%20para%20o%20Fondant" target="_blank" class="btn btn-outline" style="padding:6px 14px;font-size:.78rem">Pedir Reserva</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diferenciais / Experiência -->
+  <section class="secao container" id="experiencia">
+    <div class="secao-header">
+      <span class="badge-tag">Atmosfera & Conforto</span>
+      <h2>A Experiência Le Jardin</h2>
+      <p>Planejamos cada detalhe para que seu almoço ou jantar seja um momento especial.</p>
+    </div>
+
+    <div class="grid-diferenciais">
+      <div class="card-dif">
+        <div class="card-dif-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 22h8M12 11v11M5 3l7 8 7-8z"/></svg>
+        </div>
+        <h3>Sommelier Residente</h3>
+        <p>Sugestões personalizadas de harmonização com rótulos do Velho e Novo Mundo.</p>
+      </div>
+
+      <div class="card-dif">
+        <div class="card-dif-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <h3>Música Ambiente & Jazz</h3>
+        <p>Acústica suave pensada para conversas agradáveis sem ruído excessivo.</p>
+      </div>
+
+      <div class="card-dif">
+        <div class="card-dif-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Salão para Eventos Privados</h3>
+        <p>Espaço reservado para aniversários, mini-weddings e jantares corporativos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Box -->
+  <section class="container" id="reservas">
+    <div class="cta-box">
+      <h2>Reserve sua mesa para uma noite inesquecível</h2>
+      <p>Devido à nossa capacidade intimista, recomendamos a reserva antecipada para garantir seu lugar.</p>
+      <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20reservar%20uma%20mesa%20no%20Le%20Jardin%20Bistr%C3%B4" target="_blank" class="btn btn-accent" style="padding:15px 36px;font-size:1rem">
+        Reservar Agora pelo WhatsApp
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer container">
+  <p>© 2026 Le Jardin Bistrô Contemporâneo. Modelo Demonstrativo Palomino Tech.</p>
+</footer>
+
+</body>
+</html>
