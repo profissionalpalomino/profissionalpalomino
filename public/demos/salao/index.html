@@ -88,9 +88,16 @@
   
   .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
   
-  .hero-stats { display: flex; gap: 36px; border-top: 1px solid var(--border); padding-top: 26px; }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    max-width: 480px;
+  }
   .stat-val { font-size: 1.7rem; font-weight: 700; color: var(--primary); line-height: 1.1; font-family: 'Cormorant Garamond', serif; }
-  .stat-lbl { font-size: 0.76rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.04em; }
+  .stat-lbl { font-size: 0.76rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.04em; margin-top: 4px; }
 
   .hero-media-card {
     position: relative; border-radius: var(--radius-lg); overflow: hidden;
