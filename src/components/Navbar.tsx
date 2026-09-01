@@ -61,6 +61,12 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             <button 
+              onClick={() => scrollTo("projetos")} 
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-[1px]"
+            >
+              Projetos
+            </button>
+            <button 
               onClick={() => scrollTo("servicos")} 
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-[1px]"
             >

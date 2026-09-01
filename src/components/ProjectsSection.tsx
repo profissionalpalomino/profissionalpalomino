@@ -25,14 +25,6 @@ const gruposSistemas: Grupo[] = [
     dor: "Prospectar na mão e manter a rede social viva consome o dia inteiro. Estes sistemas fazem isso sozinhos.",
     projetos: [
       {
-        title: "Site Finder",
-        description:
-          "Achar quem ainda não tem site é garimpo no Google, um por um. A ferramenta varre a região por CEP, cidade ou nicho, separa quem não tem site, ordena por prioridade e já manda a mensagem no WhatsApp — com registro de quem já foi contactado, para ninguém receber duas vezes.",
-        functions: ["Busca por CEP, cidade ou nicho", "Disparo no WhatsApp com controle", "Carteira de leads com histórico"],
-        screenshots: ["/screenshot-site-finder.png"],
-        tag: "Prospecção Automática",
-      },
-      {
         title: "Barbearias Finder",
         description:
           "Prospectar barbearia por barbearia no Google é lento e manual. A ferramenta encontra, filtra e já manda mensagem personalizada no WhatsApp automaticamente — sem abrir o Google nem escrever uma linha.",
