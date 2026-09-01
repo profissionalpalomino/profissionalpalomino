@@ -157,16 +157,9 @@
     overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.03); transition: all 0.3s ease;
   }
   .card-transformacao:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); border-color: var(--accent); }
-  .ba-split-wrap { display: grid; grid-template-columns: 1fr 1fr; position: relative; height: 260px; }
-  .ba-side { position: relative; height: 100%; overflow: hidden; }
-  .ba-side img { width: 100%; height: 100%; object-fit: cover; }
-  .ba-tag {
-    position: absolute; top: 12px; padding: 4px 10px; border-radius: 6px;
-    font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; z-index: 3;
-  }
-  .ba-tag-antes { left: 12px; background: rgba(26,22,21,0.75); color: #D6CEC8; backdrop-filter: blur(4px); }
-  .ba-tag-depois { right: 12px; background: var(--accent); color: #FFF; box-shadow: 0 2px 8px rgba(194, 125, 96, 0.4); }
-  .ba-divider-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #FFF; transform: translateX(-50%); z-index: 2; }
+  .ba-img-wrap { position: relative; height: 280px; overflow: hidden; background: #F0EAE1; }
+  .ba-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
+  .card-transformacao:hover .ba-img-wrap img { transform: scale(1.03); }
   .card-transformacao-body { padding: 22px 24px; }
   .card-transformacao-body h3 { font-size: 1.35rem; color: var(--primary); margin-bottom: 6px; font-family: 'Cormorant Garamond', serif; font-weight: 700; }
   .card-transformacao-body p { font-size: 0.86rem; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
@@ -235,7 +228,7 @@
     .logo { font-size: 1.28rem; }
     .btn-header { padding: 8px 15px; font-size: 0.78rem; }
     
-    .hero { padding: 42px 0 46px; }
+    .hero { padding: 64px 0 46px !important; margin-top: 10px; }
     .hero-grid { grid-template-columns: 1fr; gap: 36px; }
     .hero h1 { font-size: 2.15rem; line-height: 1.2; margin-bottom: 18px; }
     .hero p { font-size: 0.95rem; line-height: 1.65; margin-bottom: 26px; }
@@ -258,7 +251,7 @@
     
     .grid-servicos { grid-template-columns: 1fr; gap: 20px; }
     .grid-transformacoes { grid-template-columns: 1fr; gap: 20px; }
-    .ba-split-wrap { height: 210px; }
+    .ba-img-wrap { height: 230px; }
     .grid-localizacao { grid-template-columns: 1fr; gap: 24px; }
     .mapa-frame-wrap { min-height: 300px; }
     .grid-diferenciais { grid-template-columns: 1fr; gap: 18px; }
@@ -356,7 +349,7 @@
         <div class="card-servico">
           <div class="card-servico-img-wrap">
             <span class="card-servico-tag">Destaque</span>
-            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=600&auto=format&fit=crop" alt="Mechas & Morena Iluminada">
+            <img src="images/mechas.jpg" alt="Mechas & Morena Iluminada">
           </div>
           <div class="card-servico-body">
             <h3>Mechas & Iluminação</h3>
@@ -431,7 +424,7 @@
         <div class="card-servico">
           <div class="card-servico-img-wrap">
             <span class="card-servico-tag">Olhar Marcante</span>
-            <img src="https://images.unsplash.com/photo-1588510977054-bf5116f685d8?q=80&w=600&auto=format&fit=crop" alt="Lash & Sobrancelhas Design">
+            <img src="images/sobrancelha.jpg" alt="Lash & Sobrancelhas Design">
           </div>
           <div class="card-servico-body">
             <h3>Lash & Sobrancelhas</h3>
@@ -458,16 +451,8 @@
       <div class="grid-transformacoes">
         <!-- Card 1 -->
         <div class="card-transformacao">
-          <div class="ba-split-wrap">
-            <div class="ba-side">
-              <span class="ba-tag ba-tag-antes">Antes</span>
-              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop" alt="Cabelo Antes Balayage">
-            </div>
-            <div class="ba-divider-line"></div>
-            <div class="ba-side">
-              <span class="ba-tag ba-tag-depois">Depois</span>
-              <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=600&auto=format&fit=crop" alt="Cabelo Depois Balayage Perolada">
-            </div>
+          <div class="ba-img-wrap">
+            <img src="images/transf-loiro.jpg" alt="Antes e Depois Balayage Loiro Perolado">
           </div>
           <div class="card-transformacao-body">
             <h3>Balayage & Loiro Perolado</h3>
@@ -481,16 +466,8 @@
 
         <!-- Card 2 -->
         <div class="card-transformacao">
-          <div class="ba-split-wrap">
-            <div class="ba-side">
-              <span class="ba-tag ba-tag-antes">Antes</span>
-              <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=600&auto=format&fit=crop" alt="Cabelo Antes Morena Iluminada">
-            </div>
-            <div class="ba-divider-line"></div>
-            <div class="ba-side">
-              <span class="ba-tag ba-tag-depois">Depois</span>
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop" alt="Cabelo Depois Morena Iluminada">
-            </div>
+          <div class="ba-img-wrap">
+            <img src="images/transf-morena.jpg" alt="Antes e Depois Morena Iluminada Canela & Mel">
           </div>
           <div class="card-transformacao-body">
             <h3>Morena Iluminada Canela & Mel</h3>
@@ -504,16 +481,8 @@
 
         <!-- Card 3 -->
         <div class="card-transformacao">
-          <div class="ba-split-wrap">
-            <div class="ba-side">
-              <span class="ba-tag ba-tag-antes">Antes</span>
-              <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=600&auto=format&fit=crop" alt="Cabelo Antes Reconstrução">
-            </div>
-            <div class="ba-divider-line"></div>
-            <div class="ba-side">
-              <span class="ba-tag ba-tag-depois">Depois</span>
-              <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=600&auto=format&fit=crop" alt="Cabelo Depois Alinhamento Espelhado">
-            </div>
+          <div class="ba-img-wrap">
+            <img src="images/transf-liso.jpg" alt="Antes e Depois Terapia & Realinhamento Espelhado">
           </div>
           <div class="card-transformacao-body">
             <h3>Terapia & Realinhamento Espelhado</h3>
@@ -527,16 +496,8 @@
 
         <!-- Card 4 -->
         <div class="card-transformacao">
-          <div class="ba-split-wrap">
-            <div class="ba-side">
-              <span class="ba-tag ba-tag-antes">Antes</span>
-              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600&auto=format&fit=crop" alt="Cabelo Antes Corte">
-            </div>
-            <div class="ba-divider-line"></div>
-            <div class="ba-side">
-              <span class="ba-tag ba-tag-depois">Depois</span>
-              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop" alt="Cabelo Depois Corte e Make">
-            </div>
+          <div class="ba-img-wrap">
+            <img src="images/transf-corte.jpg" alt="Antes e Depois Visagismo & Corte em Camadas">
           </div>
           <div class="card-transformacao-body">
             <h3>Visagismo & Corte em Camadas</h3>
