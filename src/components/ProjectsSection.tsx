@@ -1,19 +1,14 @@
 import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
-import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Globe, Cpu } from "lucide-react";
 
-/**
- * Os projetos ficam agrupados pelo PROBLEMA que resolvem, nao pela tecnologia.
- * Quem chega aqui e dono de um negocio pequeno: ele se reconhece em "preciso de
- * mais clientes", nunca em "React + Postgres". O grupo certo faz a pessoa se
- * identificar antes de ler o primeiro card.
- */
 type Projeto = {
   title: string;
   description: string;
   functions: string[];
   screenshots: string[];
   tag: string;
+  url?: string;
 };
 
 type Grupo = {
@@ -23,7 +18,7 @@ type Grupo = {
   projetos: Projeto[];
 };
 
-const grupos: Grupo[] = [
+const gruposSistemas: Grupo[] = [
   {
     id: "clientes",
     titulo: "Trazer mais clientes",
@@ -103,7 +98,35 @@ const grupos: Grupo[] = [
   },
 ];
 
-const totalProjetos = grupos.reduce((n, g) => n + g.projetos.length, 0);
+const sitesLandingPages: Projeto[] = [
+  {
+    title: "Lumena Clínica & Estética",
+    description:
+      "Landing page de alta conversão para clínicas de saúde, odontologia estética e dermatologia. Foco em agendamento direto de avaliações pelo WhatsApp, autoridade clínica e experiência fluida no celular.",
+    functions: ["Agendamento no WhatsApp", "Catálogo de Tratamentos", "Design Clean & Responsivo"],
+    screenshots: ["https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=900&auto=format&fit=crop"],
+    tag: "Saúde & Estética",
+    url: "/demos/clinica/index.html",
+  },
+  {
+    title: "Vanguard Barber & Studio",
+    description:
+      "Site comercial para barbearias, salões e estúdios de beleza. Tabela visual de serviços, apresentação do ambiente e botão de reserva rápida de horários sem fila de espera.",
+    functions: ["Menu de Serviços & Preços", "Reserva de Horário WhatsApp", "Galeria de Estilo & Fotos"],
+    screenshots: ["https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=900&auto=format&fit=crop"],
+    tag: "Beleza & Serviços Locais",
+    url: "/demos/barbearia/index.html",
+  },
+  {
+    title: "Valence & Associados",
+    description:
+      "Site institucional corporativo para escritórios de advocacia, consultorias e empresas de serviços B2B. Tipografia imponente, áreas de especialidade e canal para consulta confidencial.",
+    functions: ["Áreas de Atuação Jurídica", "Canal de Consulta Confidencial", "Credenciais & Autoridade"],
+    screenshots: ["https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=900&auto=format&fit=crop"],
+    tag: "Corporativo & Jurídico",
+    url: "/demos/advocacia/index.html",
+  },
+];
 
 function Carousel({ images, title }: { images: string[]; title: string }) {
   const [idx, setIdx] = useState(0);
@@ -180,7 +203,7 @@ function CardProjeto({ project }: { project: Projeto }) {
           <p className="text-[10px] font-bold text-foreground/80 uppercase tracking-wider mb-2.5">
             Destaques da Solução
           </p>
-          <ul className="space-y-2">
+          <ul className="space-y-2 mb-6">
             {project.functions.map((func, j) => (
               <li key={j} className="flex items-center gap-2">
                 <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
@@ -188,6 +211,18 @@ function CardProjeto({ project }: { project: Projeto }) {
               </li>
             ))}
           </ul>
+
+          {project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-white text-xs font-bold hover:bg-primary-hover transition-colors shadow-sm"
+            >
+              <ExternalLink className="h-3.5 w-3.5" />
+              Ver Demonstração ao Vivo
+            </a>
+          )}
         </div>
       </div>
     </div>
@@ -195,6 +230,8 @@ function CardProjeto({ project }: { project: Projeto }) {
 }
 
 const ProjectsSection = () => {
+  const [categoria, setCategoria] = useState<"sites" | "sistemas">("sites");
+
   return (
     <section id="projetos" className="section-padding relative bg-secondary/50">
       <div className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
@@ -203,48 +240,93 @@ const ProjectsSection = () => {
         <AnimatedSection>
           <div className="text-center">
             <span className="inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary mb-4 uppercase tracking-wider">
-              Portfólio
+              Portfólio & Demonstrações
             </span>
             <h2 className="font-heading text-3xl font-extrabold sm:text-4xl md:text-5xl lg:text-5xl mb-6 text-foreground">
-              {totalProjetos} sistemas no ar, resolvendo problema de verdade
+              Projetos no ar, gerando resultado real
             </h2>
-            <p className="mx-auto max-w-2xl text-sm sm:text-base text-muted-foreground">
-              Não são maquetes nem telas bonitas paradas. Cada um destes está rodando hoje, com
-              banco de dados, integração de WhatsApp e gente usando. Estão separados pelo problema
-              que resolvem — comece pelo que parece com o seu.
+            <p className="mx-auto max-w-2xl text-sm sm:text-base text-muted-foreground mb-8">
+              De sites modernos e landing pages de alta conversão até sistemas complexos com automação de WhatsApp.
             </p>
+
+            {/* Seletor de Categoria (Abas) */}
+            <div className="inline-flex p-1.5 bg-background border border-border rounded-2xl shadow-sm gap-2">
+              <button
+                onClick={() => setCategoria("sites")}
+                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all ${
+                  categoria === "sites"
+                    ? "bg-primary text-white shadow-md shadow-primary/20"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                }`}
+              >
+                <Globe className="h-4 w-4" />
+                Sites & Landing Pages ({sitesLandingPages.length})
+              </button>
+
+              <button
+                onClick={() => setCategoria("sistemas")}
+                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all ${
+                  categoria === "sistemas"
+                    ? "bg-primary text-white shadow-md shadow-primary/20"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                }`}
+              >
+                <Cpu className="h-4 w-4" />
+                Sistemas & Automações ({gruposSistemas.reduce((n, g) => n + g.projetos.length, 0)})
+              </button>
+            </div>
           </div>
         </AnimatedSection>
 
-        <div className="mt-16 space-y-20">
-          {grupos.map((grupo, gi) => (
-            <div key={grupo.id}>
-              <AnimatedSection delay={gi * 0.05}>
-                <div className="flex items-baseline gap-3 mb-2 border-b border-border pb-4">
-                  <span className="font-mono text-xs font-bold text-primary">
-                    {String(gi + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground">
-                    {grupo.titulo}
-                  </h3>
-                  <span className="ml-auto text-[11px] font-mono text-muted-foreground shrink-0">
-                    {grupo.projetos.length}{" "}
-                    {grupo.projetos.length === 1 ? "projeto" : "projetos"}
-                  </span>
-                </div>
-                <p className="text-sm text-muted-foreground mb-8 max-w-2xl">{grupo.dor}</p>
-              </AnimatedSection>
-
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {grupo.projetos.map((project, i) => (
-                  <AnimatedSection key={project.title} delay={i * 0.12}>
-                    <CardProjeto project={project} />
-                  </AnimatedSection>
-                ))}
+        {categoria === "sites" ? (
+          <div className="mt-12">
+            <AnimatedSection>
+              <div className="text-center mb-8">
+                <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+                  Modelos de demonstração com design cinematográfico, responsivos no celular e com botão de WhatsApp pronto para converter visitantes em clientes.
+                </p>
               </div>
+            </AnimatedSection>
+
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {sitesLandingPages.map((site, i) => (
+                <AnimatedSection key={site.title} delay={i * 0.12}>
+                  <CardProjeto project={site} />
+                </AnimatedSection>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <div className="mt-16 space-y-20">
+            {gruposSistemas.map((grupo, gi) => (
+              <div key={grupo.id}>
+                <AnimatedSection delay={gi * 0.05}>
+                  <div className="flex items-baseline gap-3 mb-2 border-b border-border pb-4">
+                    <span className="font-mono text-xs font-bold text-primary">
+                      {String(gi + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground">
+                      {grupo.titulo}
+                    </h3>
+                    <span className="ml-auto text-[11px] font-mono text-muted-foreground shrink-0">
+                      {grupo.projetos.length}{" "}
+                      {grupo.projetos.length === 1 ? "projeto" : "projetos"}
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-8 max-w-2xl">{grupo.dor}</p>
+                </AnimatedSection>
+
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                  {grupo.projetos.map((project, i) => (
+                    <AnimatedSection key={project.title} delay={i * 0.12}>
+                      <CardProjeto project={project} />
+                    </AnimatedSection>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

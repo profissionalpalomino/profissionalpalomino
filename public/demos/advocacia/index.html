@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valence & Associados — Advocacia Empresarial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F7F7F8;
+    --card: #FFFFFF;
+    --primary: #0F172A; /* Azul petróleo quase preto */
+    --accent: #1E3A8A;  /* Azul corporativo */
+    --accent-gold: #B45309;
+    --text: #0F172A;
+    --muted: #475569;
+    --border: #E2E8F0;
+    --radius: 12px;
+  }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
+  .mono { font-family: 'DM Mono', monospace; }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  .header {
+    background: rgba(247, 247, 248, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 50; padding: 18px 0;
+  }
+  .header-in { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 1.35rem; font-weight: 700; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .logo span { font-weight: 400; color: var(--muted); font-size: 1.1rem; }
+  
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .92rem; font-weight: 500; transition: color .15s; }
+  .nav-links a:hover { color: var(--primary); }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 24px; border-radius: 6px; font-size: .9rem; font-weight: 600;
+    text-decoration: none; transition: all .2s ease; cursor: pointer; border: 0;
+  }
+  .btn-primary { background: var(--primary); color: #FFF; }
+  .btn-primary:hover { background: #1E293B; transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--primary); border: 1px solid var(--border); }
+  .btn-outline:hover { background: #FFF; border-color: var(--primary); }
+
+  /* Hero */
+  .hero { padding: 90px 0 70px; border-bottom: 1px solid var(--border); }
+  .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 56px; align-items: center; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+  .tag-label {
+    font-size: .78rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--accent); font-weight: 700; margin-bottom: 16px; display: inline-block;
+  }
+  .hero h1 { font-size: 3.2rem; line-height: 1.15; color: var(--primary); margin-bottom: 22px; letter-spacing: -.5px; }
+  .hero h1 em { font-style: italic; color: #1E293B; font-weight: 400; }
+  .hero p { font-size: 1.1rem; color: var(--muted); line-height: 1.65; margin-bottom: 34px; max-width: 520px; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+
+  .hero-stats { display: flex; gap: 36px; border-top: 1px solid var(--border); padding-top: 24px; }
+  .stat-num { font-size: 1.6rem; font-weight: 700; color: var(--primary); line-height: 1.1; }
+  .stat-desc { font-size: .78rem; color: var(--muted); text-transform: uppercase; font-weight: 600; }
+
+  .hero-box-img {
+    border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+  }
+  .hero-box-img img { width: 100%; height: 480px; object-fit: cover; display: block; filter: grayscale(15%); }
+
+  /* Áreas de Atuação */
+  .secao { padding: 90px 0; }
+  .secao-header { max-width: 640px; margin-bottom: 50px; }
+  .secao-header h2 { font-size: 2.3rem; color: var(--primary); margin-bottom: 12px; }
+  .secao-header p { color: var(--muted); font-size: 1rem; }
+
+  .grid-areas { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+  .card-area {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 32px; transition: all .2s ease;
+  }
+  .card-area:hover { border-color: var(--accent); box-shadow: 0 10px 24px rgba(0,0,0,0.04); transform: translateY(-2px); }
+  .area-num { font-size: .85rem; font-weight: 700; color: var(--accent); margin-bottom: 14px; }
+  .card-area h3 { font-size: 1.35rem; color: var(--primary); margin-bottom: 10px; }
+  .card-area p { font-size: .92rem; color: var(--muted); line-height: 1.6; }
+
+  /* CTA Confidencial */
+  .cta-section {
+    background: var(--primary); color: #FFF; border-radius: var(--radius);
+    padding: 60px 48px; text-align: center; margin: 40px 0;
+  }
+  .cta-section h2 { font-size: 2.3rem; margin-bottom: 14px; color: #FFF; }
+  .cta-section p { color: #94A3B8; max-width: 540px; margin: 0 auto 30px; }
+
+  .footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-in">
+    <a href="#" class="logo">VALENCE <span>& ASSOCIADOS</span></a>
+    <nav class="nav-links">
+      <a href="#areas">Áreas de Atuação</a>
+      <a href="#institucional">Sobre a Firma</a>
+      <a href="#contato">Atendimento Confidencial</a>
+    </nav>
+    <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20uma%20consulta%20jur%C3%ADdica%20com%20a%20Valence" target="_blank" class="btn btn-primary">
+      Consulta Confidencial
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <span class="tag-label mono">Direito Empresarial & Estratégico</span>
+        <h1>Segurança jurídica de <em>alta precisão</em> para decisões corporativas.</h1>
+        <p>Assessoria jurídica especializada para empresas, executivos e grupos familiares em fusões, planejamento tributário e governança contratual.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20desejo%20falar%20com%20um%20advogado%20da%20Valence" target="_blank" class="btn btn-primary">
+            Falar com um Advogado no WhatsApp →
+          </a>
+          <a href="#areas" class="btn btn-outline">Conhecer Áreas de Prática</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num mono">R$ 180M+</div>
+            <div class="stat-desc">Protegidos em Ativos</div>
+          </div>
+          <div>
+            <div class="stat-num mono">+350</div>
+            <div class="stat-desc">Empresas Assessoradas</div>
+          </div>
+          <div>
+            <div class="stat-num mono">99.2%</div>
+            <div class="stat-desc">Índice de Êxito</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-box-img">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=900&auto=format&fit=crop" alt="Escritório Valence">
+      </div>
+    </div>
+  </section>
+
+  <!-- Áreas -->
+  <section class="secao container" id="areas">
+    <div class="secao-header">
+      <span class="tag-label mono">Especialidades</span>
+      <h2>Áreas de Atuação</h2>
+      <p>Estruturas jurídicas blindadas para mitigar riscos fiscais, societários e trabalhistas.</p>
+    </div>
+
+    <div class="grid-areas">
+      <div class="card-area">
+        <div class="area-num mono">01 / SOCIETÁRIO & M&A</div>
+        <h3>Direito Societário & Fusões</h3>
+        <p>Acordos de sócios, compra e venda de empresas, governança familiar e estruturação de holdings patrimoniais.</p>
+      </div>
+
+      <div class="card-area">
+        <div class="area-num mono">02 / TRIBUTÁRIO</div>
+        <h3>Planejamento & Recuperação Fiscal</h3>
+        <p>Defesas tributárias administrativas e judiciais, recuperação de créditos fiscais e otimização legal de carga tributária.</p>
+      </div>
+
+      <div class="card-area">
+        <div class="area-num mono">03 / CONTRATUAL</div>
+        <h3>Contratos Comerciais & Compliance</h3>
+        <p>Elaboração e auditoria de contratos complexos nacionais e internacionais, com foco em segurança e mitigação de litígios.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container" id="contato">
+    <div class="cta-section">
+      <h2>Agende uma consulta preliminar</h2>
+      <p>Converse diretamente com um dos nossos sócios e entenda a melhor estratégia jurídica para a sua empresa.</p>
+      <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20uma%20consulta%20jur%C3%ADdica%20na%20Valence" target="_blank" class="btn btn-primary" style="background:#FFF;color:var(--primary);padding:14px 32px">
+        Iniciar Atendimento no WhatsApp
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer container">
+  <p>© 2026 Valence & Associados Advocacia. Modelo Demonstrativo Palomino Tech.</p>
+</footer>
+
+</body>
+</html>
