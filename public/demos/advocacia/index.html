@@ -86,9 +86,9 @@
 
   .hero-box-img {
     border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
-    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1); position: relative;
   }
-  .hero-box-img img { width: 100%; height: 460px; object-fit: cover; display: block; filter: grayscale(15%); }
+  .hero-box-img img { width: 100%; height: 460px; object-fit: cover; display: block; }
 
   /* Áreas de Atuação */
   .secao { padding: 76px 0; border-top: 1px solid var(--border); }
@@ -231,7 +231,14 @@
         </div>
       </div>
       <div class="hero-box-img">
-        <img src="images/socios.jpg" alt="Sócios da Valence & Associados">
+        <img src="images/socios.jpg" alt="Conselho Estratégico Valence & Associados">
+        <div style="position:absolute;bottom:16px;left:16px;right:16px;background:rgba(15,23,42,0.92);backdrop-filter:blur(10px);padding:14px 18px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:space-between;z-index:2;">
+          <div>
+            <div style="font-weight:700;font-size:0.88rem;color:#FFF">Conselho Estratégico & M&A</div>
+            <div style="font-size:0.75rem;color:#94A3B8">Savassi · Belo Horizonte / MG</div>
+          </div>
+          <span style="color:#60A5FA;font-weight:700;font-size:0.8rem;letter-spacing:0.05em">SENIOR PARTNERS</span>
+        </div>
       </div>
     </div>
   </section>
