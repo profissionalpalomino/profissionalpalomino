@@ -100,6 +100,15 @@ const gruposSistemas: Grupo[] = [
 
 const sitesLandingPages: Projeto[] = [
   {
+    title: "Aura Studio Salão & Estética",
+    description:
+      "Landing page de luxo para salões de beleza, cabeleireiros e estúdios de estética capilar. Tabela de procedimentos, fotos de transformações e botão de agendamento rápido de horários no WhatsApp.",
+    functions: ["Menu de Procedimentos & Preços", "Agendamento Rápido no WhatsApp", "Galeria de Transformações"],
+    screenshots: ["https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=900&auto=format&fit=crop"],
+    tag: "Beleza & Salão de Beleza",
+    url: "/demos/salao/index.html",
+  },
+  {
     title: "Lumena Clínica & Estética",
     description:
       "Landing page de alta conversão para clínicas de saúde, odontologia estética e dermatologia. Foco em agendamento direto de avaliações pelo WhatsApp, autoridade clínica e experiência fluida no celular.",
@@ -111,10 +120,10 @@ const sitesLandingPages: Projeto[] = [
   {
     title: "Vanguard Barber & Studio",
     description:
-      "Site comercial para barbearias, salões e estúdios de beleza. Tabela visual de serviços, apresentação do ambiente e botão de reserva rápida de horários sem fila de espera.",
+      "Site comercial para barbearias, salões masculinos e estúdios de cuidados. Tabela visual de serviços, apresentação do ambiente e botão de reserva rápida de horários sem fila de espera.",
     functions: ["Menu de Serviços & Preços", "Reserva de Horário WhatsApp", "Galeria de Estilo & Fotos"],
     screenshots: ["https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=900&auto=format&fit=crop"],
-    tag: "Beleza & Serviços Locais",
+    tag: "Beleza & Cuidados Masculinos",
     url: "/demos/barbearia/index.html",
   },
   {
