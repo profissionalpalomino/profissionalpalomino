@@ -160,23 +160,32 @@
 
   /* 📱 MOBILE */
   @media (max-width: 768px) {
-    .container { padding-left: 36px !important; padding-right: 36px !important; }
+    .container { padding-left: 24px !important; padding-right: 24px !important; }
     .nav-links { display: none; }
     .header { padding: 14px 0; }
     .logo { font-size: 1.3rem; }
     .btn-header { padding: 8px 14px; font-size: .78rem; }
     
-    .hero { padding-top: 64px !important; padding-bottom: 36px !important; margin-top: 10px; }
+    .hero { padding-top: 52px !important; padding-bottom: 36px !important; margin-top: 6px; }
     .hero-grid { grid-template-columns: 1fr; gap: 32px; }
     .hero h1 { font-size: 2.2rem; line-height: 1.18; margin-bottom: 16px; }
     .hero p { font-size: .95rem; margin-bottom: 22px; }
     
     .hero-actions { flex-direction: column; width: 100%; gap: 10px; margin-bottom: 28px; }
-    .hero-actions .btn { width: 100%; padding: 13px 20px; }
+    .hero-actions .btn { width: 100%; padding: 14px 20px; }
 
-    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; max-width: 100%; }
-    .stat-val { font-size: 1.3rem; }
-    .stat-lbl { font-size: .65rem; }
+    .hero-stats {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: flex-start !important;
+      gap: 8px !important;
+      text-align: center;
+      width: 100%;
+      padding-top: 20px;
+    }
+    .hero-stats > div { flex: 1; min-width: 0; }
+    .stat-val { font-size: 1.3rem; white-space: nowrap; }
+    .stat-lbl { font-size: 0.65rem; line-height: 1.2; letter-spacing: 0.02em; }
 
     .hero-img { height: 280px; }
     .hero-float-card { bottom: 10px; left: 10px; right: 10px; padding: 10px 12px; }
