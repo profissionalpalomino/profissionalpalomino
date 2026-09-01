@@ -28,8 +28,7 @@
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
-  
-  .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
   
   /* Topo */
   .header {
@@ -61,45 +60,45 @@
   .btn-outline:hover { background: #FFF; border-color: var(--primary); }
 
   /* Hero */
-  .hero { padding: 60px 0 50px; }
-  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; }
+  .hero { padding: 70px 0 60px; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
   
   .badge-tag {
     display: inline-block; padding: 5px 12px; background: rgba(194, 125, 86, 0.12);
     color: var(--accent); border-radius: 20px; font-size: .78rem; font-weight: 600;
     margin-bottom: 16px; text-transform: uppercase; letter-spacing: .05em;
   }
-  .hero h1 { font-size: 3rem; line-height: 1.18; color: var(--primary); margin-bottom: 18px; letter-spacing: -.5px; }
+  .hero h1 { font-size: 3.1rem; line-height: 1.18; color: var(--primary); margin-bottom: 18px; letter-spacing: -.5px; }
   .hero h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
-  .hero p { font-size: 1.05rem; color: var(--muted); margin-bottom: 28px; line-height: 1.6; max-width: 520px; }
+  .hero p { font-size: 1.08rem; color: var(--muted); margin-bottom: 28px; line-height: 1.6; max-width: 520px; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
   
-  .hero-stats { display: flex; gap: 28px; border-top: 1px solid var(--border); padding-top: 20px; }
-  .stat-val { font-size: 1.5rem; font-weight: 700; color: var(--primary); line-height: 1.1; }
-  .stat-lbl { font-size: .75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; }
+  .hero-stats { display: flex; gap: 32px; border-top: 1px solid var(--border); padding-top: 24px; }
+  .stat-val { font-size: 1.6rem; font-weight: 700; color: var(--primary); line-height: 1.1; }
+  .stat-lbl { font-size: .78rem; color: var(--muted); text-transform: uppercase; font-weight: 600; }
   
   .hero-img-wrap {
     position: relative; border-radius: 24px; overflow: hidden;
     box-shadow: 0 16px 36px rgba(45, 62, 53, 0.08); border: 1px solid var(--border);
   }
-  .hero-img { width: 100%; height: 460px; object-fit: cover; display: block; }
+  .hero-img { width: 100%; height: 480px; object-fit: cover; display: block; }
   .hero-float-card {
     position: absolute; bottom: 16px; left: 16px; right: 16px;
     background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
     padding: 14px 18px; border-radius: 14px; border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between; z-index: 2;
   }
 
   /* Tratamentos */
-  .secao { padding: 70px 0; }
-  .secao-header { text-align: center; max-width: 640px; margin: 0 auto 44px; }
-  .secao-header h2 { font-size: 2.2rem; color: var(--primary); margin-bottom: 10px; }
-  .secao-header p { color: var(--muted); font-size: .95rem; }
+  .secao { padding: 80px 0; }
+  .secao-header { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .secao-header h2 { font-size: 2.3rem; color: var(--primary); margin-bottom: 10px; }
+  .secao-header p { color: var(--muted); font-size: .98rem; }
   
-  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
   .card-item {
     background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 24px; transition: transform .2s ease, box-shadow .2s ease;
+    padding: 26px; transition: transform .2s ease, box-shadow .2s ease;
     display: flex; flex-direction: column; justify-content: space-between;
   }
   .card-item:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
@@ -114,14 +113,14 @@
 
   /* Banner CTA */
   .cta-banner {
-    background: var(--primary); color: #FFF; border-radius: 24px; padding: 50px 24px;
+    background: var(--primary); color: #FFF; border-radius: 24px; padding: 50px 32px;
     text-align: center; margin: 30px 0; position: relative; overflow: hidden;
   }
-  .cta-banner h2 { font-size: 2.2rem; margin-bottom: 12px; color: #FFF; }
+  .cta-banner h2 { font-size: 2.3rem; margin-bottom: 12px; color: #FFF; }
   .cta-banner p { color: #D1D9D4; max-width: 500px; margin: 0 auto 24px; font-size: 1rem; }
   
   /* Footer */
-  .footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; color: var(--muted); font-size: .82rem; }
+  .footer { border-top: 1px solid var(--border); padding: 36px 0; text-align: center; color: var(--muted); font-size: .82rem; }
 
   /* 📱 MOBILE RESPONSIVO */
   @media (max-width: 768px) {
@@ -142,8 +141,10 @@
     .stat-val { font-size: 1.25rem; }
     .stat-lbl { font-size: .65rem; }
 
-    .hero-img { height: 280px; }
-    .hero-float-card { position: static; margin-top: 10px; padding: 12px; font-size: .82rem; }
+    .hero-img { height: 300px; }
+    .hero-float-card { bottom: 10px; left: 10px; right: 10px; padding: 10px 14px; }
+    .hero-float-card div div { font-size: .8rem !important; }
+    .hero-float-card div span { font-size: .7rem !important; }
 
     .secao { padding: 48px 0; }
     .secao-header { margin-bottom: 32px; }
@@ -205,10 +206,9 @@
           </div>
         </div>
       </div>
-      <div>
-        <div class="hero-img-wrap">
-          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=900&auto=format&fit=crop" alt="Clínica Lumena" class="hero-img">
-        </div>
+      
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=900&auto=format&fit=crop" alt="Clínica Lumena" class="hero-img">
         <div class="hero-float-card">
           <div>
             <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Ambiente Exclusivo & Acolhedor</div>
