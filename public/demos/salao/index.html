@@ -150,20 +150,51 @@
   .card-btn-action { color: var(--primary); font-weight: 600; font-size: 0.84rem; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s; }
   .card-btn-action:hover { color: var(--accent); }
 
-  /* ─── Galeria de Transformações ─── */
-  .grid-galeria { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .galeria-item {
-    border-radius: var(--radius-md); overflow: hidden; position: relative; height: 320px;
-    border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  /* ─── Galeria de Transformações (Antes & Depois) ─── */
+  .grid-transformacoes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .card-transformacao {
+    background: #FFF; border: 1px solid var(--border); border-radius: var(--radius-lg);
+    overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.03); transition: all 0.3s ease;
   }
-  .galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-  .galeria-item:hover img { transform: scale(1.08); }
-  .galeria-overlay {
-    position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,22,21,0.85) 0%, transparent 60%);
-    display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; color: #FFF;
+  .card-transformacao:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); border-color: var(--accent); }
+  .ba-split-wrap { display: grid; grid-template-columns: 1fr 1fr; position: relative; height: 260px; }
+  .ba-side { position: relative; height: 100%; overflow: hidden; }
+  .ba-side img { width: 100%; height: 100%; object-fit: cover; }
+  .ba-tag {
+    position: absolute; top: 12px; padding: 4px 10px; border-radius: 6px;
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; z-index: 3;
   }
-  .galeria-title { font-size: 1.25rem; font-family: 'Cormorant Garamond', serif; font-weight: 700; }
-  .galeria-sub { font-size: 0.78rem; color: #D6CEC8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .ba-tag-antes { left: 12px; background: rgba(26,22,21,0.75); color: #D6CEC8; backdrop-filter: blur(4px); }
+  .ba-tag-depois { right: 12px; background: var(--accent); color: #FFF; box-shadow: 0 2px 8px rgba(194, 125, 96, 0.4); }
+  .ba-divider-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #FFF; transform: translateX(-50%); z-index: 2; }
+  .card-transformacao-body { padding: 22px 24px; }
+  .card-transformacao-body h3 { font-size: 1.35rem; color: var(--primary); margin-bottom: 6px; font-family: 'Cormorant Garamond', serif; font-weight: 700; }
+  .card-transformacao-body p { font-size: 0.86rem; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
+  .transformacao-meta {
+    padding-top: 12px; border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 0.78rem; font-weight: 600; color: var(--accent);
+  }
+
+  /* ─── Localização ─── */
+  .grid-localizacao { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: stretch; }
+  .card-loc-info {
+    background: #FFF; border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 36px 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+  .loc-item { display: flex; align-items: flex-start; gap: 16px; }
+  .loc-icon {
+    width: 44px; height: 44px; border-radius: 12px; background: rgba(194, 125, 96, 0.12);
+    color: var(--accent); display: flex; align-items: center; justify-content: center; shrink-0;
+  }
+  .loc-icon svg { width: 20px; height: 20px; }
+  .loc-item h4 { font-size: 1.05rem; color: var(--primary); margin-bottom: 4px; font-weight: 600; }
+  .loc-item p { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
+  .mapa-frame-wrap {
+    border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04); min-height: 380px;
+  }
 
   /* ─── Diferenciais com SVG ─── */
   .grid-diferenciais { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
@@ -225,8 +256,10 @@
     .secao-header h2 { font-size: 2.1rem; }
     
     .grid-servicos { grid-template-columns: 1fr; gap: 20px; }
-    .grid-galeria { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .galeria-item { height: 240px; }
+    .grid-transformacoes { grid-template-columns: 1fr; gap: 20px; }
+    .ba-split-wrap { height: 210px; }
+    .grid-localizacao { grid-template-columns: 1fr; gap: 24px; }
+    .mapa-frame-wrap { min-height: 300px; }
     .grid-diferenciais { grid-template-columns: 1fr; gap: 18px; }
     
     .cta-box { padding: 44px 22px; border-radius: 24px; }
@@ -245,9 +278,9 @@
     </a>
     <nav class="nav-links">
       <a href="#servicos">Tratamentos</a>
-      <a href="#galeria">Transformações</a>
+      <a href="#transformacoes">Antes & Depois</a>
       <a href="#experiencia">O Studio</a>
-      <a href="#contato">Localização</a>
+      <a href="#localizacao">Localização</a>
     </nav>
     <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20no%20Studio" target="_blank" class="btn btn-accent btn-header">
       Agendar no WhatsApp
@@ -322,7 +355,7 @@
         <div class="card-servico">
           <div class="card-servico-img-wrap">
             <span class="card-servico-tag">Destaque</span>
-            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop" alt="Mechas & Morena Iluminada">
+            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=600&auto=format&fit=crop" alt="Mechas & Morena Iluminada">
           </div>
           <div class="card-servico-body">
             <h3>Mechas & Iluminação</h3>
@@ -337,7 +370,7 @@
         <div class="card-servico">
           <div class="card-servico-img-wrap">
             <span class="card-servico-tag">Spa dos Fios</span>
-            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop" alt="Terapia Capilar & Reconstrução">
+            <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=600&auto=format&fit=crop" alt="Terapia Capilar & Reconstrução">
           </div>
           <div class="card-servico-body">
             <h3>Terapia Capilar & Spa</h3>
@@ -352,7 +385,7 @@
         <div class="card-servico">
           <div class="card-servico-img-wrap">
             <span class="card-servico-tag">Eventos</span>
-            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=600&auto=format&fit=crop" alt="Make & Penteados">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop" alt="Make & Penteados">
           </div>
           <div class="card-servico-body">
             <h3>Make & Penteados</h3>
@@ -367,7 +400,7 @@
         <div class="card-servico">
           <div class="card-servico-img-wrap">
             <span class="card-servico-tag">Nail Studio</span>
-            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=600&auto=format&fit=crop" alt="Alongamento & Esmaltação em Gel">
+            <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=600&auto=format&fit=crop" alt="Alongamento & Esmaltação em Gel">
           </div>
           <div class="card-servico-body">
             <h3>Unhas & Spa das Mãos</h3>
@@ -382,7 +415,7 @@
         <div class="card-servico">
           <div class="card-servico-img-wrap">
             <span class="card-servico-tag">Visagismo</span>
-            <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=600&auto=format&fit=crop" alt="Corte & Visagismo Feminino">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop" alt="Corte & Visagismo Feminino">
           </div>
           <div class="card-servico-body">
             <h3>Corte & Visagismo</h3>
@@ -397,7 +430,7 @@
         <div class="card-servico">
           <div class="card-servico-img-wrap">
             <span class="card-servico-tag">Olhar Marcante</span>
-            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=600&auto=format&fit=crop" alt="Lash & Sobrancelhas Design">
+            <img src="https://images.unsplash.com/photo-1588510977054-bf5116f685d8?q=80&w=600&auto=format&fit=crop" alt="Lash & Sobrancelhas Design">
           </div>
           <div class="card-servico-body">
             <h3>Lash & Sobrancelhas</h3>
@@ -412,45 +445,105 @@
     </div>
   </section>
 
-  <!-- Galeria de Transformações -->
-  <section class="secao" id="galeria">
+  <!-- Galeria de Transformações (Antes & Depois) -->
+  <section class="secao" id="transformacoes">
     <div class="container">
       <div class="secao-header">
-        <div class="badge-tag">Galeria Real</div>
-        <h2>Transformações Recentes</h2>
-        <p>Cada trabalho é desenhado sob medida para valorizar os traços e o estilo único de cada mulher.</p>
+        <div class="badge-tag">Resultados Reais</div>
+        <h2>Transformações: Antes & Depois</h2>
+        <p>Resultados autênticos alcançados por nossas especialistas com preservação absoluta da saúde dos fios.</p>
       </div>
 
-      <div class="grid-galeria">
-        <div class="galeria-item">
-          <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=600&auto=format&fit=crop" alt="Loiro Champagne">
-          <div class="galeria-overlay">
-            <span class="galeria-sub">Coloração & Mechas</span>
-            <span class="galeria-title">Loiro Champagne</span>
+      <div class="grid-transformacoes">
+        <!-- Card 1 -->
+        <div class="card-transformacao">
+          <div class="ba-split-wrap">
+            <div class="ba-side">
+              <span class="ba-tag ba-tag-antes">Antes</span>
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop" alt="Cabelo Antes Balayage">
+            </div>
+            <div class="ba-divider-line"></div>
+            <div class="ba-side">
+              <span class="ba-tag ba-tag-depois">Depois</span>
+              <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=600&auto=format&fit=crop" alt="Cabelo Depois Balayage Perolada">
+            </div>
+          </div>
+          <div class="card-transformacao-body">
+            <h3>Balayage & Loiro Perolado</h3>
+            <p>Correção de cor com clareamento suave em degradê, tonalização pérola e selagem com Kérastase Fusio-Dose.</p>
+            <div class="transformacao-meta">
+              <span>Procedimento: Balayage Contour</span>
+              <span>Tempo: 3h30</span>
+            </div>
           </div>
         </div>
 
-        <div class="galeria-item">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop" alt="Morena Iluminada Mel">
-          <div class="galeria-overlay">
-            <span class="galeria-sub">Harmonia Natural</span>
-            <span class="galeria-title">Morena Iluminada Mel</span>
+        <!-- Card 2 -->
+        <div class="card-transformacao">
+          <div class="ba-split-wrap">
+            <div class="ba-side">
+              <span class="ba-tag ba-tag-antes">Antes</span>
+              <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=600&auto=format&fit=crop" alt="Cabelo Antes Morena Iluminada">
+            </div>
+            <div class="ba-divider-line"></div>
+            <div class="ba-side">
+              <span class="ba-tag ba-tag-depois">Depois</span>
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop" alt="Cabelo Depois Morena Iluminada">
+            </div>
+          </div>
+          <div class="card-transformacao-body">
+            <h3>Morena Iluminada Canela & Mel</h3>
+            <p>Técnica sem marcação para valorizar o fundo castanho com pontos de luz quentes e brilho tridimensional.</p>
+            <div class="transformacao-meta">
+              <span>Procedimento: Morena Iluminada</span>
+              <span>Tempo: 2h45</span>
+            </div>
           </div>
         </div>
 
-        <div class="galeria-item">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop" alt="Make Social & Glow">
-          <div class="galeria-overlay">
-            <span class="galeria-sub">Maquiagem Profissional</span>
-            <span class="galeria-title">Make Social & Glow</span>
+        <!-- Card 3 -->
+        <div class="card-transformacao">
+          <div class="ba-split-wrap">
+            <div class="ba-side">
+              <span class="ba-tag ba-tag-antes">Antes</span>
+              <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=600&auto=format&fit=crop" alt="Cabelo Antes Reconstrução">
+            </div>
+            <div class="ba-divider-line"></div>
+            <div class="ba-side">
+              <span class="ba-tag ba-tag-depois">Depois</span>
+              <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=600&auto=format&fit=crop" alt="Cabelo Depois Alinhamento Espelhado">
+            </div>
+          </div>
+          <div class="card-transformacao-body">
+            <h3>Terapia & Realinhamento Espelhado</h3>
+            <p>Detox do couro cabeludo, reposição de massa lipídica e selagem térmica com brilho espelhado e zero frizz.</p>
+            <div class="transformacao-meta">
+              <span>Procedimento: Spa Capilar & Selagem</span>
+              <span>Tempo: 2h00</span>
+            </div>
           </div>
         </div>
 
-        <div class="galeria-item">
-          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600&auto=format&fit=crop" alt="Corte & Alinhamento">
-          <div class="galeria-overlay">
-            <span class="galeria-sub">Visagismo</span>
-            <span class="galeria-title">Corte & Textura</span>
+        <!-- Card 4 -->
+        <div class="card-transformacao">
+          <div class="ba-split-wrap">
+            <div class="ba-side">
+              <span class="ba-tag ba-tag-antes">Antes</span>
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600&auto=format&fit=crop" alt="Cabelo Antes Corte">
+            </div>
+            <div class="ba-divider-line"></div>
+            <div class="ba-side">
+              <span class="ba-tag ba-tag-depois">Depois</span>
+              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop" alt="Cabelo Depois Corte e Make">
+            </div>
+          </div>
+          <div class="card-transformacao-body">
+            <h3>Visagismo & Corte em Camadas</h3>
+            <p>Corte personalizado para emoldurar os traços do rosto, com finalização em ondas modeladas e leveza.</p>
+            <div class="transformacao-meta">
+              <span>Procedimento: Visagismo & Estilo</span>
+              <span>Tempo: 1h15</span>
+            </div>
           </div>
         </div>
       </div>
@@ -489,6 +582,69 @@
           </div>
           <h3>Diagnóstico Digital</h3>
           <p>Avaliamos a fibra e a elasticidade do fio antes de iniciar qualquer química capilar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Localização & Maps -->
+  <section class="secao" id="localizacao">
+    <div class="container">
+      <div class="secao-header">
+        <div class="badge-tag">Nosso Espaço</div>
+        <h2>Onde Estamos</h2>
+        <p>Um espaço planejado no coração nobre de Belo Horizonte para lhe oferecer conforto absoluto e privacidade.</p>
+      </div>
+
+      <div class="grid-localizacao">
+        <div class="card-loc-info">
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Endereço Privativo</h4>
+              <p>Av. Fleming, 820 — Bairro Ouro Preto / Pampulha<br>Belo Horizonte - MG · CEP 31310-490</p>
+            </div>
+          </div>
+
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4>Horários de Atendimento</h4>
+              <p><strong>Terça a Sexta:</strong> 09:00 às 20:00<br><strong>Sábado:</strong> 08:30 às 19:00<br><span style="color:#A09893">Domingo e Segunda: Fechado</span></p>
+            </div>
+          </div>
+
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div>
+              <h4>Comodidades Exclusivas</h4>
+              <p>Estacionamento próprio com serviço de manobrista gratuito, café bar e Wi-Fi de alta velocidade.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+            <a href="https://maps.google.com/?q=Av.+Fleming,+820+-+Ouro+Preto,+Belo+Horizonte+-+MG" target="_blank" class="btn btn-primary" style="font-size:0.88rem;padding:12px 22px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              Abrir no Google Maps / Waze
+            </a>
+          </div>
+        </div>
+
+        <div class="mapa-frame-wrap">
+          <iframe 
+            src="https://maps.google.com/maps?q=Av.+Fleming,+820+-+Ouro+Preto,+Belo+Horizonte+-+MG&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border:0; min-height: 380px; width: 100%; border-radius: var(--radius-lg);" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
         </div>
       </div>
     </div>
