@@ -16,14 +16,12 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 const tags = [
-  "Sites e Landing Pages",
-  "Aplicativos Web",
-  "Bolão da Copa",
-  "App de Festa",
-  "Gerenciador de Figurinhas",
-  "Automação de Instagram",
-  "Alertas de Financeiro no WhatsApp",
-  "Prospecção de Clientes Automática",
+  "Landing Pages de Alta Conversão",
+  "Sistemas Web & SaaS",
+  "Automações no WhatsApp",
+  "Prospecção Automática de Clientes",
+  "Automação de Redes Sociais",
+  "Design & Identidade Visual",
 ];
 
 const HeroSection = () => {
@@ -51,17 +49,15 @@ const HeroSection = () => {
           </motion.div>
 
           <h1 className="font-heading text-5xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl xl:text-8xl text-foreground mb-6">
-            Da ideia{" "}
+            Sites e sistemas que{" "}
             <span className="text-gradient animate-text-gradient bg-[length:200%_auto] from-primary via-[#F0584C] to-primary">
-              ao ar
+              geram resultado
             </span>{" "}
-            em dias.
+            de verdade.
           </h1>
 
           <p className="text-lg sm:text-xl leading-relaxed text-muted-foreground max-w-2xl mb-8">
-            Fazemos sites, aplicativos e automações para pequenos negócios.
-            Sem enrolação, sem jargão técnico, com preço justo.
-            Olha o que já construímos.
+            Desenvolvemos páginas de alta conversão, aplicativos web e automações inteligentes sob medida para colocar mais clientes e receita no seu negócio.
           </p>
 
           <motion.div
@@ -73,7 +69,7 @@ const HeroSection = () => {
             {tags.map((tag, i) => (
               <span
                 key={i}
-                className="rounded-full border border-border bg-secondary/60 px-3 py-1.5 text-xs font-medium text-foreground/70"
+                className="rounded-full border border-border bg-secondary/60 px-3.5 py-1.5 text-xs font-semibold text-foreground/80"
               >
                 {tag}
               </span>
