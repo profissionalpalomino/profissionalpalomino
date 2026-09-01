@@ -30,7 +30,15 @@
     overflow-x: hidden;
   }
   h1, h2, h3, .brand-font { font-family: 'Cinzel', serif; letter-spacing: .03em; }
-  .container { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+  .container {
+    width: 100%;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    box-sizing: border-box;
+  }
 
   /* Header */
   .header {
@@ -60,7 +68,7 @@
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
   /* Hero */
-  .hero { padding: 64px 0 56px; }
+  .hero { padding-top: 64px; padding-bottom: 56px; }
   .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
   
   .badge-tag {
@@ -68,10 +76,10 @@
     color: var(--accent); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 4px;
     font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px;
   }
-  .hero h1 { font-size: 3.1rem; line-height: 1.15; color: #FFF; margin-bottom: 18px; }
+  .hero h1 { font-size: 3.2rem; line-height: 1.15; color: #FFF; margin-bottom: 20px; }
   .hero h1 span { color: var(--accent); }
-  .hero p { font-size: 1.05rem; color: var(--muted); margin-bottom: 28px; max-width: 500px; }
-  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+  .hero p { font-size: 1.05rem; color: var(--muted); line-height: 1.65; margin-bottom: 30px; max-width: 520px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
 
   .hero-stats {
     display: grid;
@@ -81,31 +89,31 @@
     padding-top: 24px;
     max-width: 480px;
   }
-  .stat-num { font-size: 1.5rem; font-weight: 700; color: #FFF; line-height: 1.1; font-family: 'Cinzel', serif; }
+  .stat-num { font-size: 1.6rem; font-weight: 700; color: #FFF; line-height: 1.1; font-family: 'Cinzel', serif; }
   .stat-desc { font-size: .75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: .04em; margin-top: 4px; }
 
   .hero-img-box {
     border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
-    position: relative; box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.5);
   }
-  .hero-img-box img { width: 100%; height: 460px; object-fit: cover; display: block; filter: brightness(0.9); }
+  .hero-img-box img { width: 100%; height: 460px; object-fit: cover; display: block; }
   
-  /* Serviços & Preços */
-  .secao { padding: 76px 0; border-top: 1px solid var(--border); }
-  .secao-header { text-align: center; max-width: 600px; margin: 0 auto 44px; }
-  .secao-header h2 { font-size: 2.2rem; color: #FFF; margin-bottom: 10px; }
-  .secao-header p { color: var(--muted); font-size: .95rem; }
+  /* Seções */
+  .secao { padding-top: 76px; padding-bottom: 76px; border-top: 1px solid var(--border); }
+  .secao-header { max-width: 600px; margin-bottom: 44px; }
+  .secao-header h2 { font-size: 2.3rem; color: #FFF; margin-bottom: 10px; }
+  .secao-header p { color: var(--muted); font-size: 1rem; }
 
-  .menu-servicos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .menu-servicos { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
   .servico-card {
     background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 22px; display: flex; justify-content: space-between; align-items: center;
+    padding: 24px; display: flex; justify-content: space-between; align-items: center;
     transition: all .2s ease;
   }
-  .servico-card:hover { background: var(--card-hover); border-color: var(--accent); transform: translateY(-2px); }
-  .servico-nome { font-size: 1.1rem; font-weight: 700; color: #FFF; margin-bottom: 4px; }
-  .servico-desc { font-size: .82rem; color: var(--muted); }
-  .servico-preco { font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 700; color: var(--accent); margin-left: 16px; }
+  .servico-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .servico-nome { font-size: 1.15rem; font-weight: 700; color: #FFF; margin-bottom: 4px; }
+  .servico-desc { font-size: .85rem; color: var(--muted); }
+  .servico-preco { font-size: 1.35rem; font-weight: 700; color: var(--accent); font-family: 'Cinzel', serif; margin-left: 16px; white-space: nowrap; }
 
   /* Experiência */
   .grid-experiencia { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -118,13 +126,12 @@
     color: var(--accent); display: flex; align-items: center; justify-content: center;
     margin-bottom: 16px;
   }
-  .exp-card h3 { font-size: 1.2rem; color: #FFF; margin-bottom: 6px; }
-  .exp-card p { font-size: .85rem; color: var(--muted); line-height: 1.55; }
+  .exp-card h3 { font-size: 1.2rem; color: #FFF; margin-bottom: 8px; }
+  .exp-card p { font-size: .88rem; color: var(--muted); line-height: 1.55; }
 
   /* CTA */
   .cta-box {
-    background: linear-gradient(145deg, #181B1E, #111315);
-    border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px;
+    background: #18191B; border: 1px solid var(--border); border-radius: var(--radius);
     padding: 56px 28px; text-align: center; margin: 30px 0;
   }
   .cta-box h2 { font-size: 2.3rem; color: #FFF; margin-bottom: 12px; }
@@ -134,13 +141,13 @@
 
   /* 📱 MOBILE */
   @media (max-width: 768px) {
-    .container { padding: 0 38px !important; }
+    .container { padding-left: 36px !important; padding-right: 36px !important; }
     .nav-links { display: none; }
     .header { padding: 14px 0; }
     .logo { font-size: 1.15rem; }
     .btn-header { padding: 8px 14px; font-size: .78rem; }
     
-    .hero { padding: 64px 0 36px !important; margin-top: 10px; }
+    .hero { padding-top: 64px !important; padding-bottom: 36px !important; margin-top: 10px; }
     .hero-grid { grid-template-columns: 1fr; gap: 28px; }
     .hero h1 { font-size: 2.1rem; line-height: 1.2; }
     .hero p { font-size: .95rem; margin-bottom: 22px; }
@@ -154,7 +161,7 @@
 
     .hero-img-box img { height: 280px; }
     
-    .secao { padding: 52px 0; }
+    .secao { padding-top: 52px !important; padding-bottom: 52px !important; }
     .secao-header { margin-bottom: 32px; }
     .secao-header h2 { font-size: 1.75rem; }
     
@@ -214,206 +221,218 @@
 
 <main>
   <!-- Hero -->
-  <section class="hero container">
-    <div class="hero-grid">
-      <div>
-        <span class="badge-tag">Corte Clássico & Barboterapia</span>
-        <h1>Onde a tradição encontra o <span>estilo impecável</span>.</h1>
-        <p>Cortes masculinos de precisão, toalha quente, cerveja artesanal e atendimento com hora marcada sem fila de espera.</p>
-        <div class="hero-actions">
-          <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20reservar%20um%20hor%C3%A1rio%20no%20Vanguard" target="_blank" class="btn btn-gold">
-            Reservar Horário →
-          </a>
-          <a href="#servicos" class="btn btn-outline">Ver Tabela de Serviços</a>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="badge-tag">Corte Clássico & Barboterapia</span>
+          <h1>Onde a tradição encontra o <span>estilo impecável</span>.</h1>
+          <p>Cortes masculinos de precisão, toalha quente, cerveja artesanal e atendimento com hora marcada sem fila de espera.</p>
+          <div class="hero-actions">
+            <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20reservar%20um%20hor%C3%A1rio%20no%20Vanguard" target="_blank" class="btn btn-gold">
+              Reservar Horário →
+            </a>
+            <a href="#servicos" class="btn btn-outline">Ver Tabela de Serviços</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-num">+5.000</div>
+              <div class="stat-desc">Cortes</div>
+            </div>
+            <div>
+              <div class="stat-num">4.9 ★</div>
+              <div class="stat-desc">No Google</div>
+            </div>
+            <div>
+              <div class="stat-num">100%</div>
+              <div class="stat-desc">Premium</div>
+            </div>
+          </div>
         </div>
-        <div class="hero-stats">
-          <div>
-            <div class="stat-num">+5.000</div>
-            <div class="stat-desc">Cortes</div>
-          </div>
-          <div>
-            <div class="stat-num">4.9 ★</div>
-            <div class="stat-desc">No Google</div>
-          </div>
-          <div>
-            <div class="stat-num">100%</div>
-            <div class="stat-desc">Premium</div>
-          </div>
+        <div class="hero-img-box">
+          <img src="images/fade.jpg" alt="Barbearia Vanguard - Corte Fade">
         </div>
-      </div>
-      <div class="hero-img-box">
-        <img src="images/fade.jpg" alt="Barbearia Vanguard - Corte Fade">
       </div>
     </div>
   </section>
 
   <!-- Serviços -->
-  <section class="secao container" id="servicos">
-    <div class="secao-header">
-      <span class="badge-tag">Tabela de Serviços</span>
-      <h2>Menu & Experiências</h2>
-      <p>Produtos importados de alta performance e técnicas de barbearia tradicional.</p>
-    </div>
+  <section class="secao" id="servicos">
+    <div class="container">
+      <div class="secao-header">
+        <span class="badge-tag">Tabela de Serviços</span>
+        <h2>Menu & Experiências</h2>
+        <p>Produtos importados de alta performance e técnicas de barbearia tradicional.</p>
+      </div>
 
-    <div class="menu-servicos">
-      <div class="servico-card">
-        <div>
-          <div class="servico-nome">Corte Clássico & Fade</div>
-          <div class="servico-desc">Lavagem especial, finalização com pomada e alinhamento de perfil.</div>
+      <div class="menu-servicos">
+        <div class="servico-card">
+          <div>
+            <div class="servico-nome">Corte Clássico & Fade</div>
+            <div class="servico-desc">Lavagem especial, finalização com pomada e alinhamento de perfil.</div>
+          </div>
+          <div class="servico-preco">R$ 65</div>
         </div>
-        <div class="servico-preco">R$ 65</div>
-      </div>
 
-      <div class="servico-card">
-        <div>
-          <div class="servico-nome">Barboterapia Tradicional</div>
-          <div class="servico-desc">Toalha quente com óleos essenciais, massagem facial e navalha.</div>
+        <div class="servico-card">
+          <div>
+            <div class="servico-nome">Barboterapia Tradicional</div>
+            <div class="servico-desc">Toalha quente com óleos essenciais, massagem facial e navalha.</div>
+          </div>
+          <div class="servico-preco">R$ 55</div>
         </div>
-        <div class="servico-preco">R$ 55</div>
-      </div>
 
-      <div class="servico-card">
-        <div>
-          <div class="servico-nome">Combo Vanguard (Cabelo + Barba)</div>
-          <div class="servico-desc">A experiência completa com direito a 1 drink cortesia no lounge.</div>
+        <div class="servico-card">
+          <div>
+            <div class="servico-nome">Combo Vanguard (Cabelo + Barba)</div>
+            <div class="servico-desc">A experiência completa com direito a 1 drink cortesia no lounge.</div>
+          </div>
+          <div class="servico-preco">R$ 105</div>
         </div>
-        <div class="servico-preco">R$ 105</div>
-      </div>
 
-      <div class="servico-card">
-        <div>
-          <div class="servico-nome">Alinhamento de Fios / Botox</div>
-          <div class="servico-desc">Redução de volume e hidratação profunda para cabelos e barba.</div>
+        <div class="servico-card">
+          <div>
+            <div class="servico-nome">Alinhamento de Fios / Botox</div>
+            <div class="servico-desc">Redução de volume e hidratação profunda para cabelos e barba.</div>
+          </div>
+          <div class="servico-preco">R$ 80</div>
         </div>
-        <div class="servico-preco">R$ 80</div>
       </div>
-    </div>
 
-    <!-- Galeria Visual do Studio -->
-    <div class="grid-galeria-barber">
-      <div class="card-galeria-barber">
-        <img src="images/fade.jpg" alt="Fade Cut Precision">
-        <div>Corte & Visagismo Masculino</div>
-      </div>
-      <div class="card-galeria-barber">
-        <img src="images/barba.jpg" alt="Barboterapia com Toalha Quente">
-        <div>Barboterapia & Toalha Quente</div>
-      </div>
-      <div class="card-galeria-barber">
-        <img src="images/lounge.jpg" alt="Lounge Bar Vanguard">
-        <div>Lounge Bar & Chopp Artesanal</div>
+      <!-- Galeria Visual do Studio -->
+      <div class="grid-galeria-barber">
+        <div class="card-galeria-barber">
+          <img src="images/fade.jpg" alt="Fade Cut Precision">
+          <div>Corte & Visagismo Masculino</div>
+        </div>
+        <div class="card-galeria-barber">
+          <img src="images/barba.jpg" alt="Barboterapia com Toalha Quente">
+          <div>Barboterapia & Toalha Quente</div>
+        </div>
+        <div class="card-galeria-barber">
+          <img src="images/lounge.jpg" alt="Lounge Bar Vanguard">
+          <div>Lounge Bar & Chopp Artesanal</div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Diferenciais -->
-  <section class="secao container" id="experiencia">
-    <div class="secao-header">
-      <span class="badge-tag">Padrão Vanguard</span>
-      <h2>Por Que Escolher a Vanguard</h2>
-      <p>Um espaço pensado exclusivamente para o conforto, estilo e bem-estar do homem moderno.</p>
-    </div>
+  <section class="secao" id="experiencia">
+    <div class="container">
+      <div class="secao-header">
+        <span class="badge-tag">Padrão Vanguard</span>
+        <h2>Por Que Escolher a Vanguard</h2>
+        <p>Um espaço pensado exclusivamente para o conforto, estilo e bem-estar do homem moderno.</p>
+      </div>
 
-    <div class="grid-experiencia">
-      <div class="exp-card">
-        <div class="exp-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <div class="grid-experiencia">
+        <div class="exp-card">
+          <div class="exp-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Zero Fila de Espera</h3>
+          <p>Atendimento pontual com agendamento direto pelo WhatsApp.</p>
         </div>
-        <h3>Zero Fila de Espera</h3>
-        <p>Atendimento pontual com agendamento direto pelo WhatsApp.</p>
-      </div>
-      <div class="exp-card">
-        <div class="exp-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <div class="exp-card">
+          <div class="exp-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Lounge & Bar Exclusivo</h3>
+          <p>Café gourmet, chopp artesanal e ambiente para relaxar.</p>
         </div>
-        <h3>Lounge & Bar Exclusivo</h3>
-        <p>Café gourmet, chopp artesanal e ambiente para relaxar.</p>
-      </div>
-      <div class="exp-card">
-        <div class="exp-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <div class="exp-card">
+          <div class="exp-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Mestres Barbeiros</h3>
+          <p>Profissionais premiados e especialistas em visagismo facial.</p>
         </div>
-        <h3>Mestres Barbeiros</h3>
-        <p>Profissionais premiados e especialistas em visagismo facial.</p>
       </div>
     </div>
   </section>
 
   <!-- Seção Localização & Maps -->
-  <section class="secao container" id="localizacao">
-    <div class="secao-header">
-      <span class="badge-tag">Nosso Studio</span>
-      <h2>Onde Estamos</h2>
-      <p>Localização privilegiada na Savassi com facilidade de acesso e estacionamento conveniado.</p>
-    </div>
-
-    <div class="grid-localizacao">
-      <div class="card-loc-info">
-        <div class="loc-item">
-          <div class="loc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div>
-            <h4>Endereço Savassi</h4>
-            <p>Rua Antônio de Albuquerque, 606 — Bairro Savassi<br>Belo Horizonte - MG · CEP 30112-011</p>
-          </div>
-        </div>
-
-        <div class="loc-item">
-          <div class="loc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <h4>Horários de Atendimento</h4>
-            <p><strong>Terça a Sábado:</strong> 09:00 às 21:00<br><strong>Segunda:</strong> 13:00 às 20:00<br><span style="color:#6B7280">Domingo: Fechado</span></p>
-          </div>
-        </div>
-
-        <div class="loc-item">
-          <div class="loc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
-          </div>
-          <div>
-            <h4>Cerveja Artesanal Cortesia</h4>
-            <p>Aproveite uma Heineken gelada ou café expresso cortesia enquanto aguarda seu atendimento.</p>
-          </div>
-        </div>
-
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
-          <a href="https://maps.google.com/?q=Rua+Antonio+de+Albuquerque,+606+-+Savassi,+Belo+Horizonte+-+MG" target="_blank" class="btn btn-gold" style="font-size:0.88rem;padding:12px 22px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-            Abrir Rota no Google Maps / Waze
-          </a>
-        </div>
+  <section class="secao" id="localizacao">
+    <div class="container">
+      <div class="secao-header">
+        <span class="badge-tag">Nosso Studio</span>
+        <h2>Onde Estamos</h2>
+        <p>Localização privilegiada na Savassi com facilidade de acesso e estacionamento conveniado.</p>
       </div>
 
-      <div class="mapa-frame-wrap">
-        <iframe 
-          src="https://maps.google.com/maps?q=Rua+Antonio+de+Albuquerque,+606+-+Savassi,+Belo+Horizonte+-+MG&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-          width="100%" 
-          height="100%" 
-          style="border:0; min-height: 360px; width: 100%; border-radius: var(--radius);" 
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
+      <div class="grid-localizacao">
+        <div class="card-loc-info">
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Endereço Savassi</h4>
+              <p>Rua Antônio de Albuquerque, 606 — Bairro Savassi<br>Belo Horizonte - MG · CEP 30112-011</p>
+            </div>
+          </div>
+
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4>Horários de Atendimento</h4>
+              <p><strong>Terça a Sábado:</strong> 09:00 às 21:00<br><strong>Segunda:</strong> 13:00 às 20:00<br><span style="color:#6B7280">Domingo: Fechado</span></p>
+            </div>
+          </div>
+
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+            </div>
+            <div>
+              <h4>Cerveja Artesanal Cortesia</h4>
+              <p>Aproveite uma Heineken gelada ou café expresso cortesia enquanto aguarda seu atendimento.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+            <a href="https://maps.google.com/?q=Rua+Antonio+de+Albuquerque,+606+-+Savassi,+Belo+Horizonte+-+MG" target="_blank" class="btn btn-gold" style="font-size:0.88rem;padding:12px 22px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              Abrir Rota no Google Maps / Waze
+            </a>
+          </div>
+        </div>
+
+        <div class="mapa-frame-wrap">
+          <iframe 
+            src="https://maps.google.com/maps?q=Rua+Antonio+de+Albuquerque,+606+-+Savassi,+Belo+Horizonte+-+MG&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border:0; min-height: 360px; width: 100%; border-radius: var(--radius);" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CTA Box -->
-  <section class="container" id="agendar">
-    <div class="cta-box">
-      <h2>Pronto para elevar seu padrão?</h2>
-      <p>Clique abaixo e escolha o melhor dia e horário para seu atendimento.</p>
-      <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20agendar%20um%20corte%20no%20Vanguard" target="_blank" class="btn btn-gold" style="padding:14px 32px;font-size:.95rem">
-        Agendar Agora no WhatsApp
-      </a>
+  <section id="agendar">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Pronto para elevar seu padrão?</h2>
+        <p>Clique abaixo e escolha o melhor dia e horário para seu atendimento.</p>
+        <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20agendar%20um%20corte%20no%20Vanguard" target="_blank" class="btn btn-gold" style="padding:14px 32px;font-size:.95rem">
+          Agendar Agora no WhatsApp
+        </a>
+      </div>
     </div>
   </section>
 </main>
 
-<footer class="footer container">
-  <p>© 2026 Vanguard Barber & Studio. Modelo Demonstrativo Palomino Tech.</p>
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Vanguard Barber & Studio. Modelo Demonstrativo Palomino Tech.</p>
+  </div>
 </footer>
 
 </body>

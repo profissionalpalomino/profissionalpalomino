@@ -36,7 +36,15 @@
   }
   h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 600; letter-spacing: -0.02em; }
   
-  .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  .container {
+    width: 100%;
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    box-sizing: border-box;
+  }
 
   /* ─── Header ─── */
   .header {
@@ -71,7 +79,7 @@
   .btn-outline:hover { background: #FFF; border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
   /* ─── Hero ─── */
-  .hero { padding: 72px 0 80px; }
+  .hero { padding-top: 72px; padding-bottom: 80px; }
   .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
 
   .badge-tag {
@@ -221,14 +229,14 @@
 
   /* 📱 MOBILE RESPONSIVO FLUIDO (38px de respiro lateral nobre, zero sensação de aperto) */
   @media (max-width: 900px) {
-    .container { padding: 0 38px !important; }
-    .header-in { padding: 0 28px !important; }
+    .container { padding-left: 36px !important; padding-right: 36px !important; }
+    .header-in { padding-left: 20px !important; padding-right: 20px !important; }
     .nav-links { display: none; }
     .header { padding: 14px 0; }
     .logo { font-size: 1.28rem; }
     .btn-header { padding: 8px 15px; font-size: 0.78rem; }
     
-    .hero { padding: 64px 0 46px !important; margin-top: 10px; }
+    .hero { padding-top: 64px !important; padding-bottom: 46px !important; margin-top: 10px; }
     .hero-grid { grid-template-columns: 1fr; gap: 36px; }
     .hero h1 { font-size: 2.15rem; line-height: 1.2; margin-bottom: 18px; }
     .hero p { font-size: 0.95rem; line-height: 1.65; margin-bottom: 26px; }
@@ -245,7 +253,7 @@
     .hero-glass-title { font-size: 0.84rem; }
     .hero-glass-sub { font-size: 0.72rem; }
 
-    .secao { padding: 56px 0; }
+    .secao { padding-top: 56px !important; padding-bottom: 56px !important; }
     .secao-header { margin-bottom: 36px; }
     .secao-header h2 { font-size: 2.05rem; }
     
@@ -284,8 +292,9 @@
 
 <main>
   <!-- Hero Section -->
-  <section class="hero container">
-    <div class="hero-grid">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
       <div>
         <div class="badge-tag">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -331,7 +340,8 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Seção de Serviços / Menu -->
   <section class="secao secao-bg" id="servicos">

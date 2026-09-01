@@ -31,7 +31,15 @@
   }
   h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
   .mono { font-family: 'DM Mono', monospace; }
-  .container { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+  .container {
+    width: 100%;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    box-sizing: border-box;
+  }
 
   /* Header */
   .header {
@@ -61,7 +69,7 @@
   .btn-outline:hover { background: #FFF; border-color: var(--primary); }
 
   /* Hero */
-  .hero { padding: 64px 0 56px; }
+  .hero { padding-top: 64px; padding-bottom: 56px; }
   .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
 
   .tag-label {
@@ -91,7 +99,7 @@
   .hero-box-img img { width: 100%; height: 460px; object-fit: cover; display: block; }
 
   /* Áreas de Atuação */
-  .secao { padding: 76px 0; border-top: 1px solid var(--border); }
+  .secao { padding-top: 76px; padding-bottom: 76px; border-top: 1px solid var(--border); }
   .secao-header { max-width: 640px; margin-bottom: 44px; }
   .secao-header h2 { font-size: 2.3rem; color: var(--primary); margin-bottom: 10px; }
   .secao-header p { color: var(--muted); font-size: .98rem; }
@@ -132,13 +140,13 @@
 
   /* 📱 MOBILE */
   @media (max-width: 768px) {
-    .container { padding: 0 38px !important; }
+    .container { padding-left: 36px !important; padding-right: 36px !important; }
     .nav-links { display: none; }
     .header { padding: 14px 0; }
     .logo { font-size: 1.1rem; }
     .btn-header { padding: 8px 12px; font-size: .75rem; }
     
-    .hero { padding: 64px 0 36px !important; margin-top: 10px; }
+    .hero { padding-top: 64px !important; padding-bottom: 36px !important; margin-top: 10px; }
     .hero-grid { grid-template-columns: 1fr; gap: 28px; }
     .hero h1 { font-size: 2rem; line-height: 1.2; }
     .hero p { font-size: .95rem; margin-bottom: 22px; }
@@ -152,7 +160,7 @@
 
     .hero-box-img img { height: 260px; }
     
-    .secao { padding: 52px 0; }
+    .secao { padding-top: 52px !important; padding-bottom: 52px !important; }
     .secao-header h2 { font-size: 1.75rem; }
     .grid-areas { grid-template-columns: 1fr; }
     .grid-sobre { grid-template-columns: 1fr; }
@@ -203,185 +211,197 @@
 
 <main>
   <!-- Hero -->
-  <section class="hero container">
-    <div class="hero-grid">
-      <div>
-        <span class="tag-label mono">Direito Empresarial & Estratégico</span>
-        <h1>Segurança jurídica de <em>alta precisão</em> para decisões corporativas.</h1>
-        <p>Assessoria jurídica especializada para empresas, executivos e grupos familiares em fusões, planejamento tributário e governança contratual.</p>
-        <div class="hero-actions">
-          <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20desejo%20falar%20com%20um%20advogado%20da%20Valence" target="_blank" class="btn btn-primary">
-            Falar com um Advogado no WhatsApp →
-          </a>
-          <a href="#areas" class="btn btn-outline">Conhecer Áreas de Prática</a>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="tag-label mono">Direito Empresarial & Estratégico</span>
+          <h1>Segurança jurídica de <em>alta precisão</em> para decisões corporativas.</h1>
+          <p>Assessoria jurídica especializada para empresas, executivos e grupos familiares em fusões, planejamento tributário e governança contratual.</p>
+          <div class="hero-actions">
+            <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20desejo%20falar%20com%20um%20advogado%20da%20Valence" target="_blank" class="btn btn-primary">
+              Falar com um Advogado no WhatsApp →
+            </a>
+            <a href="#areas" class="btn btn-outline">Conhecer Áreas de Prática</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-num mono">R$ 180M+</div>
+              <div class="stat-desc">Protegidos</div>
+            </div>
+            <div>
+              <div class="stat-num mono">+350</div>
+              <div class="stat-desc">Empresas</div>
+            </div>
+            <div>
+              <div class="stat-num mono">99.2%</div>
+              <div class="stat-desc">Êxito</div>
+            </div>
+          </div>
         </div>
-        <div class="hero-stats">
-          <div>
-            <div class="stat-num mono">R$ 180M+</div>
-            <div class="stat-desc">Protegidos</div>
+        <div class="hero-box-img">
+          <img src="images/socios.jpg" alt="Conselho Estratégico Valence & Associados">
+          <div style="position:absolute;bottom:16px;left:16px;right:16px;background:rgba(15,23,42,0.92);backdrop-filter:blur(10px);padding:14px 18px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:space-between;z-index:2;">
+            <div>
+              <div style="font-weight:700;font-size:0.88rem;color:#FFF">Conselho Estratégico & M&A</div>
+              <div style="font-size:0.75rem;color:#94A3B8">Savassi · Belo Horizonte / MG</div>
+            </div>
+            <span style="color:#60A5FA;font-weight:700;font-size:0.8rem;letter-spacing:0.05em">SENIOR PARTNERS</span>
           </div>
-          <div>
-            <div class="stat-num mono">+350</div>
-            <div class="stat-desc">Empresas</div>
-          </div>
-          <div>
-            <div class="stat-num mono">99.2%</div>
-            <div class="stat-desc">Êxito</div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-box-img">
-        <img src="images/socios.jpg" alt="Conselho Estratégico Valence & Associados">
-        <div style="position:absolute;bottom:16px;left:16px;right:16px;background:rgba(15,23,42,0.92);backdrop-filter:blur(10px);padding:14px 18px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:space-between;z-index:2;">
-          <div>
-            <div style="font-weight:700;font-size:0.88rem;color:#FFF">Conselho Estratégico & M&A</div>
-            <div style="font-size:0.75rem;color:#94A3B8">Savassi · Belo Horizonte / MG</div>
-          </div>
-          <span style="color:#60A5FA;font-weight:700;font-size:0.8rem;letter-spacing:0.05em">SENIOR PARTNERS</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Áreas -->
-  <section class="secao container" id="areas">
-    <div class="secao-header">
-      <span class="tag-label mono">Especialidades</span>
-      <h2>Áreas de Atuação</h2>
-      <p>Estruturas jurídicas blindadas para mitigar riscos fiscais, societários e trabalhistas.</p>
-    </div>
-
-    <div class="grid-areas">
-      <div class="card-area">
-        <div class="area-num mono">01 / SOCIETÁRIO & M&A</div>
-        <h3>Direito Societário & Fusões</h3>
-        <p>Acordos de sócios, compra e venda de empresas, governança familiar e estruturação de holdings patrimoniais.</p>
+  <section class="secao" id="areas">
+    <div class="container">
+      <div class="secao-header">
+        <span class="tag-label mono">Especialidades</span>
+        <h2>Áreas de Atuação</h2>
+        <p>Estruturas jurídicas blindadas para mitigar riscos fiscais, societários e trabalhistas.</p>
       </div>
 
-      <div class="card-area">
-        <div class="area-num mono">02 / TRIBUTÁRIO</div>
-        <h3>Planejamento & Recuperação Fiscal</h3>
-        <p>Defesas tributárias administrativas e judiciais, recuperação de créditos fiscais e otimização legal de carga tributária.</p>
-      </div>
+      <div class="grid-areas">
+        <div class="card-area">
+          <div class="area-num mono">01 / SOCIETÁRIO & M&A</div>
+          <h3>Direito Societário & Fusões</h3>
+          <p>Acordos de sócios, compra e venda de empresas, governança familiar e estruturação de holdings patrimoniais.</p>
+        </div>
 
-      <div class="card-area">
-        <div class="area-num mono">03 / CONTRATUAL</div>
-        <h3>Contratos Comerciais & Compliance</h3>
-        <p>Elaboração e auditoria de contratos complexos nacionais e internacionais, com foco em segurança e mitigação de litígios.</p>
+        <div class="card-area">
+          <div class="area-num mono">02 / TRIBUTÁRIO</div>
+          <h3>Planejamento & Recuperação Fiscal</h3>
+          <p>Defesas tributárias administrativas e judiciais, recuperação de créditos fiscais e otimização legal de carga tributária.</p>
+        </div>
+
+        <div class="card-area">
+          <div class="area-num mono">03 / CONTRATUAL</div>
+          <h3>Contratos Comerciais & Compliance</h3>
+          <p>Elaboração e auditoria de contratos complexos nacionais e internacionais, com foco em segurança e mitigação de litígios.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Sobre a Firma -->
-  <section class="secao container" id="institucional">
-    <div class="secao-header">
-      <span class="tag-label mono">Governança & Rigor</span>
-      <h2>Sobre a Valence & Associados</h2>
-      <p>Uma banca jurídica focada em soluções ágeis para o ambiente corporativo moderno.</p>
-    </div>
-
-    <div class="grid-sobre">
-      <div class="card-sobre">
-        <div class="card-sobre-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Blindagem Patrimonial</h3>
-        <p>Proteção preventiva de bens e estruturação societária sólida para sucessão pacífica.</p>
+  <section class="secao" id="institucional">
+    <div class="container">
+      <div class="secao-header">
+        <span class="tag-label mono">Governança & Rigor</span>
+        <h2>Sobre a Valence & Associados</h2>
+        <p>Uma banca jurídica focada em soluções ágeis para o ambiente corporativo moderno.</p>
       </div>
 
-      <div class="card-sobre">
-        <div class="card-sobre-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <div class="grid-sobre">
+        <div class="card-sobre">
+          <div class="card-sobre-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Blindagem Patrimonial</h3>
+          <p>Proteção preventiva de bens e estruturação societária sólida para sucessão pacífica.</p>
         </div>
-        <h3>Agilidade em Negociações</h3>
-        <p>Respostas rápidas para decisões contratuais críticas e fechamento de novos negócios.</p>
-      </div>
 
-      <div class="card-sobre">
-        <div class="card-sobre-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div class="card-sobre">
+          <div class="card-sobre-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Agilidade em Negociações</h3>
+          <p>Respostas rápidas para decisões contratuais críticas e fechamento de novos negócios.</p>
         </div>
-        <h3>Sigilo & Confidencialidade</h3>
-        <p>Protocolos rigorosos de segurança da informação e governança corporativa.</p>
+
+        <div class="card-sobre">
+          <div class="card-sobre-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Sigilo & Confidencialidade</h3>
+          <p>Protocolos rigorosos de segurança da informação e governança corporativa.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Seção Localização & Maps -->
-  <section class="secao container" id="localizacao">
-    <div class="secao-header">
-      <span class="tag-label mono">Sede Corporativa</span>
-      <h2>Onde Estamos</h2>
-      <p>Sede executiva em ponto nobre de Belo Horizonte com salas de conferência e segurança.</p>
-    </div>
-
-    <div class="grid-localizacao">
-      <div class="card-loc-info">
-        <div class="loc-item">
-          <div class="loc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div>
-            <h4>Endereço Corporativo</h4>
-            <p>Av. Getúlio Vargas, 1420 — Bairro Savassi<br>Belo Horizonte - MG · CEP 30112-021</p>
-          </div>
-        </div>
-
-        <div class="loc-item">
-          <div class="loc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <h4>Horários de Atendimento</h4>
-            <p><strong>Segunda a Sexta:</strong> 08:30 às 18:30<br><span style="color:#94A3B8">Sábado e Domingo: Plantão com agendamento</span></p>
-          </div>
-        </div>
-
-        <div class="loc-item">
-          <div class="loc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          </div>
-          <div>
-            <h4>Salas de Videoconferência & Valet</h4>
-            <p>Estacionamento privativo no edifício e tecnologia de ponta para reuniões híbridas seguras.</p>
-          </div>
-        </div>
-
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
-          <a href="https://maps.google.com/?q=Av.+Getulio+Vargas,+1420+-+Savassi,+Belo+Horizonte+-+MG" target="_blank" class="btn btn-primary" style="font-size:0.88rem;padding:12px 22px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-            Abrir Rota no Google Maps / Waze
-          </a>
-        </div>
+  <section class="secao" id="localizacao">
+    <div class="container">
+      <div class="secao-header">
+        <span class="tag-label mono">Sede Corporativa</span>
+        <h2>Onde Estamos</h2>
+        <p>Sede executiva em ponto nobre de Belo Horizonte com salas de conferência e segurança.</p>
       </div>
 
-      <div class="mapa-frame-wrap">
-        <iframe 
-          src="https://maps.google.com/maps?q=Av.+Getulio+Vargas,+1420+-+Savassi,+Belo+Horizonte+-+MG&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-          width="100%" 
-          height="100%" 
-          style="border:0; min-height: 360px; width: 100%; border-radius: var(--radius);" 
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
+      <div class="grid-localizacao">
+        <div class="card-loc-info">
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Endereço Corporativo</h4>
+              <p>Av. Getúlio Vargas, 1420 — Bairro Savassi<br>Belo Horizonte - MG · CEP 30112-021</p>
+            </div>
+          </div>
+
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4>Horários de Atendimento</h4>
+              <p><strong>Segunda a Sexta:</strong> 08:30 às 18:30<br><span style="color:#94A3B8">Sábado e Domingo: Plantão com agendamento</span></p>
+            </div>
+          </div>
+
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div>
+              <h4>Salas de Videoconferência & Valet</h4>
+              <p>Estacionamento privativo no edifício e tecnologia de ponta para reuniões híbridas seguras.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+            <a href="https://maps.google.com/?q=Av.+Getulio+Vargas,+1420+-+Savassi,+Belo+Horizonte+-+MG" target="_blank" class="btn btn-primary" style="font-size:0.88rem;padding:12px 22px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              Abrir Rota no Google Maps / Waze
+            </a>
+          </div>
+        </div>
+
+        <div class="mapa-frame-wrap">
+          <iframe 
+            src="https://maps.google.com/maps?q=Av.+Getulio+Vargas,+1420+-+Savassi,+Belo+Horizonte+-+MG&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border:0; min-height: 360px; width: 100%; border-radius: var(--radius);" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="container" id="contato">
-    <div class="cta-section">
-      <h2>Agende uma consulta preliminar</h2>
-      <p>Converse diretamente com um dos nossos sócios e entenda a melhor estratégia jurídica para a sua empresa.</p>
-      <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20uma%20consulta%20jur%C3%ADdica%20na%20Valence" target="_blank" class="btn btn-primary" style="background:#FFF;color:var(--primary);padding:14px 32px;font-size:.95rem">
-        Iniciar Atendimento no WhatsApp
-      </a>
+  <section id="contato">
+    <div class="container">
+      <div class="cta-section">
+        <h2>Agende uma consulta preliminar</h2>
+        <p>Converse diretamente com um dos nossos sócios e entenda a melhor estratégia jurídica para a sua empresa.</p>
+        <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20uma%20consulta%20jur%C3%ADdica%20na%20Valence" target="_blank" class="btn btn-primary" style="background:#FFF;color:var(--primary);padding:14px 32px;font-size:.95rem">
+          Iniciar Atendimento no WhatsApp
+        </a>
+      </div>
     </div>
   </section>
 </main>
 
-<footer class="footer container">
-  <p>© 2026 Valence & Associados Advocacia. Modelo Demonstrativo Palomino Tech.</p>
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Valence & Associados Advocacia. Modelo Demonstrativo Palomino Tech.</p>
+  </div>
 </footer>
 
 </body>

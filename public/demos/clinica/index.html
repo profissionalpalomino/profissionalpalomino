@@ -30,7 +30,15 @@
     overflow-x: hidden;
   }
   h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
-  .container { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+  .container {
+    width: 100%;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    box-sizing: border-box;
+  }
   
   /* Topo */
   .header {
@@ -62,7 +70,7 @@
   .btn-outline:hover { background: #FFF; border-color: var(--primary); }
 
   /* Hero */
-  .hero { padding: 70px 0 60px; }
+  .hero { padding-top: 70px; padding-bottom: 60px; }
   .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
   
   .badge-tag {
@@ -73,54 +81,51 @@
   .hero h1 { font-size: 3.1rem; line-height: 1.18; color: var(--primary); margin-bottom: 18px; letter-spacing: -.5px; }
   .hero h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
   .hero p { font-size: 1.08rem; color: var(--muted); margin-bottom: 28px; line-height: 1.6; max-width: 520px; }
-  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
   
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 20px;
     border-top: 1px solid var(--border);
     padding-top: 24px;
     max-width: 480px;
   }
-  .stat-val { font-size: 1.6rem; font-weight: 700; color: var(--primary); line-height: 1.1; }
+  .stat-val { font-size: 1.5rem; font-weight: 700; color: var(--primary); line-height: 1.1; font-family: 'Playfair Display', serif; }
   .stat-lbl { font-size: .75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: .04em; margin-top: 4px; }
   
-  .hero-img-wrap {
-    position: relative; border-radius: 24px; overflow: hidden;
-    box-shadow: 0 16px 36px rgba(45, 62, 53, 0.08); border: 1px solid var(--border);
-  }
-  .hero-img { width: 100%; height: 480px; object-fit: cover; display: block; }
-  .hero-float-card {
-    position: absolute; bottom: 16px; left: 16px; right: 16px;
-    background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-    padding: 14px 18px; border-radius: 14px; border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between; z-index: 2;
-  }
-
-  /* Tratamentos */
-  .secao { padding: 80px 0; }
-  .secao-header { text-align: center; max-width: 640px; margin: 0 auto 48px; }
-  .secao-header h2 { font-size: 2.3rem; color: var(--primary); margin-bottom: 10px; }
-  .secao-header p { color: var(--muted); font-size: .98rem; }
+  .hero-img-wrap { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: 0 16px 36px rgba(45, 62, 53, 0.08); }
+  .hero-img { width: 100%; height: 460px; object-fit: cover; display: block; }
   
-  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-  .card-item {
+  .hero-float-card {
+    position: absolute; bottom: 20px; left: 20px; right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  
+  /* Procedimentos */
+  .secao { padding-top: 76px; padding-bottom: 76px; border-top: 1px solid var(--border); }
+  .secao-header { max-width: 600px; margin-bottom: 44px; }
+  .secao-header h2 { font-size: 2.3rem; color: var(--primary); margin-bottom: 10px; }
+  .secao-header p { color: var(--muted); font-size: 1rem; }
+  
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .card-proc {
     background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 26px; transition: transform .2s ease, box-shadow .2s ease;
-    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 24px; display: flex; flex-direction: column; justify-content: space-between;
+    transition: all .25s ease;
   }
-  .card-item:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-  .card-icon {
-    width: 44px; height: 44px; border-radius: 12px; background: rgba(45, 62, 53, 0.08);
-    color: var(--primary); display: flex; align-items: center; justify-content: center;
-    margin-bottom: 16px;
-  }
-  .card-item h3 { font-size: 1.25rem; color: var(--primary); margin-bottom: 8px; }
-  .card-item p { font-size: .88rem; color: var(--muted); line-height: 1.55; margin-bottom: 16px; }
-  .card-link { color: var(--accent); font-weight: 600; font-size: .85rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-
-  /* Seção Diferenciais / A Clínica */
+  .card-proc:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 12px 28px rgba(0,0,0,0.04); }
+  .card-proc img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 18px; }
+  .card-proc h3 { font-size: 1.35rem; color: var(--primary); margin-bottom: 8px; }
+  .card-proc p { font-size: .9rem; color: var(--muted); line-height: 1.55; margin-bottom: 16px; }
+  .card-link { color: var(--accent); font-weight: 600; font-size: .88rem; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+  
+  /* Diferenciais */
   .grid-diferenciais { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .card-dif {
     background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
@@ -147,13 +152,13 @@
 
   /* 📱 MOBILE RESPONSIVO */
   @media (max-width: 768px) {
-    .container { padding: 0 28px !important; }
+    .container { padding-left: 36px !important; padding-right: 36px !important; }
     .nav-links { display: none; }
     .header { padding: 12px 0; }
     .logo { font-size: 1.15rem; }
     .btn-header { padding: 8px 14px; font-size: .78rem; }
     
-    .hero { padding: 36px 0 30px; }
+    .hero { padding-top: 64px !important; padding-bottom: 36px !important; margin-top: 10px; }
     .hero-grid { grid-template-columns: 1fr; gap: 28px; }
     .hero h1 { font-size: 1.95rem; line-height: 1.22; }
     .hero p { font-size: .95rem; margin-bottom: 22px; }
@@ -170,7 +175,7 @@
     .hero-float-card div div { font-size: .8rem !important; }
     .hero-float-card div span { font-size: .7rem !important; }
 
-    .secao { padding: 48px 0; }
+    .secao { padding-top: 52px !important; padding-bottom: 52px !important; }
     .secao-header { margin-bottom: 32px; }
     .secao-header h2 { font-size: 1.75rem; }
     
@@ -226,195 +231,206 @@
 
 <main>
   <!-- Hero -->
-  <section class="hero container">
-    <div class="hero-grid">
-      <div>
-        <span class="badge-tag">Saúde & Estética Integrada</span>
-        <h1>A harmonia perfeita entre <em>ciência</em> e <em>beleza natural</em>.</h1>
-        <p>Protocolos personalizados de harmonização facial, dermatologia clínica e odontologia estética desenvolvidos para realçar sua melhor versão com naturalidade e segurança.</p>
-        <div class="hero-actions">
-          <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Lumena" target="_blank" class="btn btn-accent">
-            Agendar Consulta no WhatsApp →
-          </a>
-          <a href="#tratamentos" class="btn btn-outline">Conhecer Tratamentos</a>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="badge-tag">Saúde & Estética Integrada</span>
+          <h1>A harmonia perfeita entre <em>ciência</em> e <em>beleza natural</em>.</h1>
+          <p>Protocolos personalizados de harmonização facial, dermatologia clínica e odontologia estética desenvolvidos para realçar sua melhor versão com naturalidade e segurança.</p>
+          <div class="hero-actions">
+            <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Lumena" target="_blank" class="btn btn-accent">
+              Agendar Consulta no WhatsApp →
+            </a>
+            <a href="#tratamentos" class="btn btn-outline">Conhecer Tratamentos</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-val">+4.200</div>
+              <div class="stat-lbl">Pacientes</div>
+            </div>
+            <div>
+              <div class="stat-val">12</div>
+              <div class="stat-lbl">Especialistas</div>
+            </div>
+            <div>
+              <div class="stat-val">99.4%</div>
+              <div class="stat-lbl">Satisfação</div>
+            </div>
+          </div>
         </div>
-        <div class="hero-stats">
-          <div>
-            <div class="stat-val">+4.200</div>
-            <div class="stat-lbl">Pacientes</div>
+        <div class="hero-img-wrap">
+          <img src="images/harmonizacao.jpg" alt="Procedimento de Harmonização Facial Lumena Clínica" class="hero-img">
+          <div class="hero-float-card">
+            <div>
+              <div style="font-weight:700;font-size:.9rem;color:var(--primary)">Protocolo Lumena Glow™</div>
+              <div style="font-size:.78rem;color:var(--muted)">Lourdes · Belo Horizonte / MG</div>
+            </div>
+            <span style="color:var(--accent);font-weight:700;font-size:.85rem">★ 4.9 (420+ avaliações)</span>
           </div>
-          <div>
-            <div class="stat-val">98.7%</div>
-            <div class="stat-lbl">5 Estrelas</div>
-          </div>
-          <div>
-            <div class="stat-val">12 Anos</div>
-            <div class="stat-lbl">Tradição</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="hero-img-wrap">
-        <img src="images/ambiente.jpg" alt="Ambiente da Clínica Lumena" class="hero-img">
-        <div class="hero-float-card">
-          <div>
-            <div style="font-weight:700;font-size:.88rem;color:var(--primary)">Ambiente Exclusivo & Acolhedor</div>
-            <div style="font-size:.75rem;color:var(--muted)">Bairro Lourdes · Belo Horizonte / MG</div>
-          </div>
-          <span style="color:#EAB308;font-size:.95rem">★★★★★</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Tratamentos -->
-  <section class="secao container" id="tratamentos">
-    <div class="secao-header">
-      <span class="badge-tag">Nossos Cuidados</span>
-      <h2>Tratamentos em Destaque</h2>
-      <p>Procedimentos minimamente invasivos planejados com tecnologia 3D e acompanhamento médico contínuo.</p>
-    </div>
-
-    <div class="grid-cards">
-      <div class="card-item">
-        <div>
-          <img src="images/harmonizacao.jpg" alt="Harmonização Facial" style="width:100%;height:190px;object-fit:cover;border-radius:14px;margin-bottom:16px;">
-          <h3>Harmonização Facial</h3>
-          <p>Preenchimento labial, bioestimuladores de colágeno e estruturação mandibular respeitando seus traços originais.</p>
-        </div>
-        <a href="https://wa.me/5531984773813?text=Quero%20saber%20mais%20sobre%20Harmoniza%C3%A7%C3%A3o%20Facial" target="_blank" class="card-link">Saber mais detalhes →</a>
+  <!-- Procedimentos -->
+  <section class="secao" id="tratamentos">
+    <div class="container">
+      <div class="secao-header">
+        <span class="badge-tag">Especialidades</span>
+        <h2>Tratamentos em Destaque</h2>
+        <p>Tecnologia avançada e atendimento personalizado para resultados previsíveis e elegantes.</p>
       </div>
 
-      <div class="card-item">
-        <div>
-          <img src="images/odonto.jpg" alt="Odontologia Estética" style="width:100%;height:190px;object-fit:cover;border-radius:14px;margin-bottom:16px;">
-          <h3>Odontologia Estética</h3>
-          <p>Lentes de contato dental em porcelana, clareamento a laser e implantes guiados por computador para um sorriso radiante.</p>
+      <div class="grid-cards">
+        <div class="card-proc">
+          <div>
+            <img src="images/harmonizacao.jpg" alt="Harmonização Facial de Alto Padrão">
+            <h3>Harmonização Facial</h3>
+            <p>Preenchimento com ácido hialurônico, bioestimuladores de colágeno e toxina botulínica para rejuvenescimento sutil.</p>
+          </div>
+          <a href="https://wa.me/5531984773813?text=Quero%20saber%20mais%20sobre%20Harmonizacao%20Facial" target="_blank" class="card-link">Saber mais detalhes →</a>
         </div>
-        <a href="https://wa.me/5531984773813?text=Quero%20saber%20mais%20sobre%20Odontologia%20Est%C3%A9tica" target="_blank" class="card-link">Saber mais detalhes →</a>
-      </div>
 
-      <div class="card-item">
-        <div>
-          <img src="images/dermatologia.jpg" alt="Dermatologia & Laser" style="width:100%;height:190px;object-fit:cover;border-radius:14px;margin-bottom:16px;">
-          <h3>Dermatologia & Laser</h3>
-          <p>Rejuvenescimento cutâneo, tratamento de manchas e estímulo celular com plataformas de laser de última geração.</p>
+        <div class="card-proc">
+          <div>
+            <img src="images/odonto.jpg" alt="Odontologia Estética e Lentes de Contato">
+            <h3>Odontologia Estética</h3>
+            <p>Lentes de contato dental em porcelana ultrafina, clareamento a laser guiado e reabilitação oral computadorizada.</p>
+          </div>
+          <a href="https://wa.me/5531984773813?text=Quero%20saber%20mais%20sobre%20Odontologia%20Estetica" target="_blank" class="card-link">Saber mais detalhes →</a>
         </div>
-        <a href="https://wa.me/5531984773813?text=Quero%20saber%20mais%20sobre%20Dermatologia" target="_blank" class="card-link">Saber mais detalhes →</a>
+
+        <div class="card-proc">
+          <div>
+            <img src="images/dermatologia.jpg" alt="Dermatologia Clínica e Laser">
+            <h3>Dermatologia & Laser</h3>
+            <p>Rejuvenescimento cutâneo, tratamento de manchas e estímulo celular com plataformas de laser de última geração.</p>
+          </div>
+          <a href="https://wa.me/5531984773813?text=Quero%20saber%20mais%20sobre%20Dermatologia" target="_blank" class="card-link">Saber mais detalhes →</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Diferenciais da Clínica -->
-  <section class="secao container" id="diferenciais">
-    <div class="secao-header">
-      <span class="badge-tag">Padrão Lumena</span>
-      <h2>Por que escolher a nossa clínica</h2>
-      <p>Estrutura hospitalar e acolhimento humano para que cada visita seja uma experiência memorável.</p>
-    </div>
-
-    <div class="grid-diferenciais">
-      <div class="card-dif">
-        <div class="card-dif-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Biossegurança Hospitalar</h3>
-        <p>Protocolos rigorosos de esterilização e equipamentos certificados pela ANVISA.</p>
+  <section class="secao" id="diferenciais">
+    <div class="container">
+      <div class="secao-header">
+        <span class="badge-tag">Padrão Lumena</span>
+        <h2>Por que escolher a nossa clínica</h2>
+        <p>Estrutura hospitalar e acolhimento humano para que cada visita seja uma experiência memorável.</p>
       </div>
 
-      <div class="card-dif">
-        <div class="card-dif-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <div class="grid-diferenciais">
+        <div class="card-dif">
+          <div class="card-dif-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Biossegurança Hospitalar</h3>
+          <p>Protocolos rigorosos de esterilização e equipamentos certificados pela ANVISA.</p>
         </div>
-        <h3>Tecnologia 3D Guiada</h3>
-        <p>Planejamento digital do sorriso e da face antes de iniciar qualquer procedimento.</p>
-      </div>
 
-      <div class="card-dif">
-        <div class="card-dif-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="card-dif">
+          <div class="card-dif-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Tecnologia 3D Guiada</h3>
+          <p>Planejamento digital do sorriso e da face antes de iniciar qualquer procedimento.</p>
         </div>
-        <h3>Corpo Clínico Integrado</h3>
-        <p>Especialistas multidisciplinares alinhados no mesmo plano de tratamento para você.</p>
+
+        <div class="card-dif">
+          <div class="card-dif-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Corpo Clínico Integrado</h3>
+          <p>Especialistas multidisciplinares alinhados no mesmo plano de tratamento para você.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Seção de Localização & Maps -->
-  <section class="secao container" id="localizacao">
-    <div class="secao-header">
-      <span class="badge-tag">Nosso Consultório</span>
-      <h2>Onde Estamos</h2>
-      <p>Localização nobre no coração de Belo Horizonte com estacionamento privativo e acesso facilitado.</p>
-    </div>
-
-    <div class="grid-localizacao">
-      <div class="card-loc-info">
-        <div class="loc-item">
-          <div class="loc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div>
-            <h4>Endereço Nobre</h4>
-            <p>Rua Gonçalves Dias, 1420 — Bairro Lourdes<br>Belo Horizonte - MG · CEP 30140-092</p>
-          </div>
-        </div>
-
-        <div class="loc-item">
-          <div class="loc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <h4>Horários de Consulta</h4>
-            <p><strong>Segunda a Sexta:</strong> 08:00 às 19:00<br><strong>Sábado:</strong> 08:30 às 13:00<br><span style="color:#A09893">Domingo: Fechado</span></p>
-          </div>
-        </div>
-
-        <div class="loc-item">
-          <div class="loc-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          </div>
-          <div>
-            <h4>Comodidades Exclusivas</h4>
-            <p>Estacionamento próprio com manobrista privativo no subsolo e sala de espera VIP com café gourmet.</p>
-          </div>
-        </div>
-
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
-          <a href="https://maps.google.com/?q=Rua+Goncalves+Dias,+1420+-+Lourdes,+Belo+Horizonte+-+MG" target="_blank" class="btn btn-primary" style="font-size:0.88rem;padding:12px 22px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-            Abrir no Google Maps / Waze
-          </a>
-        </div>
+  <section class="secao" id="localizacao">
+    <div class="container">
+      <div class="secao-header">
+        <span class="badge-tag">Nosso Consultório</span>
+        <h2>Onde Estamos</h2>
+        <p>Localização nobre no coração de Belo Horizonte com estacionamento privativo e acesso facilitado.</p>
       </div>
 
-      <div class="mapa-frame-wrap">
-        <iframe 
-          src="https://maps.google.com/maps?q=Rua+Goncalves+Dias,+1420+-+Lourdes,+Belo+Horizonte+-+MG&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-          width="100%" 
-          height="100%" 
-          style="border:0; min-height: 360px; width: 100%; border-radius: var(--radius);" 
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
+      <div class="grid-localizacao">
+        <div class="card-loc-info">
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Endereço Nobre</h4>
+              <p>Rua Gonçalves Dias, 1420 — Bairro Lourdes<br>Belo Horizonte - MG · CEP 30140-092</p>
+            </div>
+          </div>
+
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4>Horários de Consulta</h4>
+              <p><strong>Segunda a Sexta:</strong> 08:00 às 19:00<br><strong>Sábado:</strong> 08:30 às 13:00<br><span style="color:#A09893">Domingo: Fechado</span></p>
+            </div>
+          </div>
+
+          <div class="loc-item">
+            <div class="loc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div>
+              <h4>Comodidades Exclusivas</h4>
+              <p>Estacionamento próprio com manobrista privativo no subsolo e sala de espera VIP com café gourmet.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+            <a href="https://maps.google.com/?q=Rua+Goncalves+Dias,+1420+-+Lourdes,+Belo+Horizonte+-+MG" target="_blank" class="btn btn-primary" style="font-size:0.88rem;padding:12px 22px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              Abrir no Google Maps / Waze
+            </a>
+          </div>
+        </div>
+
+        <div class="mapa-frame-wrap">
+          <iframe 
+            src="https://maps.google.com/maps?q=Rua+Goncalves+Dias,+1420+-+Lourdes,+Belo+Horizonte+-+MG&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border:0; min-height: 360px; width: 100%; border-radius: var(--radius);" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CTA Banner -->
-  <section class="container" id="contato">
-    <div class="cta-banner">
-      <h2>Pronta para vivenciar essa transformação?</h2>
-      <p>Agende uma conversa preliminar com nosso corpo clínico para desenharmos o plano de cuidado ideal.</p>
-      <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20agendar%20minha%20avalia%C3%A7%C3%A3o%20na%20Lumena" target="_blank" class="btn btn-accent" style="font-size:.95rem;padding:14px 32px">
-        Falar no WhatsApp com a Recepção
-      </a>
+  <section id="contato">
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Pronta para vivenciar essa transformação?</h2>
+        <p>Agende uma conversa preliminar com nosso corpo clínico para desenharmos o plano de cuidado ideal.</p>
+        <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20agendar%20minha%20avalia%C3%A7%C3%A3o%20na%20Lumena" target="_blank" class="btn btn-accent" style="font-size:.95rem;padding:14px 32px">
+          Falar no WhatsApp com a Recepção
+        </a>
+      </div>
     </div>
   </section>
 </main>
 
-<footer class="footer container">
-  <p>© 2026 Lumena Clínica & Estética Integrada. Modelo Demonstrativo Palomino Tech.</p>
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Lumena Clínica & Estética Integrada. Modelo Demonstrativo Palomino Tech.</p>
+  </div>
 </footer>
 
 </body>
