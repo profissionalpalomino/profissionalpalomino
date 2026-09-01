@@ -226,34 +226,35 @@
   /* ─── Footer ─── */
   .footer { border-top: 1px solid var(--border); padding: 44px 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
 
-  /* 📱 MOBILE RESPONSIVO FLUIDO (32px de respiro lateral, zero cortes) */
+  /* 📱 MOBILE RESPONSIVO FLUIDO (38px de respiro lateral nobre, zero sensação de aperto) */
   @media (max-width: 900px) {
-    .container { padding: 0 28px; }
+    .container { padding: 0 38px !important; }
+    .header-in { padding: 0 28px !important; }
     .nav-links { display: none; }
     .header { padding: 14px 0; }
-    .logo { font-size: 1.3rem; }
+    .logo { font-size: 1.28rem; }
     .btn-header { padding: 8px 15px; font-size: 0.78rem; }
     
-    .hero { padding: 40px 0 44px; }
+    .hero { padding: 42px 0 46px; }
     .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-    .hero h1 { font-size: 2.3rem; line-height: 1.18; margin-bottom: 16px; }
-    .hero p { font-size: 0.98rem; margin-bottom: 24px; }
+    .hero h1 { font-size: 2.15rem; line-height: 1.2; margin-bottom: 18px; }
+    .hero p { font-size: 0.95rem; line-height: 1.65; margin-bottom: 26px; }
     
     .hero-actions { flex-direction: column; width: 100%; gap: 12px; margin-bottom: 28px; }
-    .hero-actions .btn { width: 100%; padding: 14px 20px; font-size: 0.92rem; }
+    .hero-actions .btn { width: 100%; padding: 15px 20px; font-size: 0.92rem; }
     
-    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; text-align: center; }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; width: 100%; }
     .stat-val { font-size: 1.45rem; }
     .stat-lbl { font-size: 0.68rem; }
 
-    .hero-media-card img { height: 320px; }
+    .hero-media-card img { height: 300px; }
     .hero-glass-badge { bottom: 12px; left: 12px; right: 12px; padding: 12px 14px; border-radius: 12px; }
     .hero-glass-title { font-size: 0.84rem; }
     .hero-glass-sub { font-size: 0.72rem; }
 
     .secao { padding: 56px 0; }
     .secao-header { margin-bottom: 36px; }
-    .secao-header h2 { font-size: 2.1rem; }
+    .secao-header h2 { font-size: 2.05rem; }
     
     .grid-servicos { grid-template-columns: 1fr; gap: 20px; }
     .grid-transformacoes { grid-template-columns: 1fr; gap: 20px; }
@@ -262,9 +263,9 @@
     .mapa-frame-wrap { min-height: 300px; }
     .grid-diferenciais { grid-template-columns: 1fr; gap: 18px; }
     
-    .cta-box { padding: 44px 22px; border-radius: 24px; }
-    .cta-box h2 { font-size: 2.1rem; }
-    .cta-box .btn { width: 100%; padding: 14px 20px; }
+    .cta-box { padding: 44px 24px; border-radius: 24px; }
+    .cta-box h2 { font-size: 2.05rem; }
+    .cta-box .btn { width: 100%; padding: 15px 20px; }
   }
 </style>
 </head>
