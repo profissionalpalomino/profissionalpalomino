@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   :root {
     --bg: #F7F7F8;
     --card: #FFFFFF;
@@ -26,10 +27,11 @@
     color: var(--text);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
   h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
   .mono { font-family: 'DM Mono', monospace; }
-  .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
 
   /* Header */
   .header {
@@ -59,63 +61,78 @@
   .btn-outline:hover { background: #FFF; border-color: var(--primary); }
 
   /* Hero */
-  .hero { padding: 60px 0 50px; border-bottom: 1px solid var(--border); }
-  .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 44px; align-items: center; }
+  .hero { padding: 64px 0 56px; }
+  .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
 
   .tag-label {
     font-size: .78rem; text-transform: uppercase; letter-spacing: .08em;
     color: var(--accent); font-weight: 700; margin-bottom: 16px; display: inline-block;
   }
-  .hero h1 { font-size: 3rem; line-height: 1.18; color: var(--primary); margin-bottom: 20px; letter-spacing: -.5px; }
+  .hero h1 { font-size: 3.1rem; line-height: 1.15; color: var(--primary); margin-bottom: 20px; letter-spacing: -.5px; }
   .hero h1 em { font-style: italic; color: #1E293B; font-weight: 400; }
-  .hero p { font-size: 1.05rem; color: var(--muted); line-height: 1.6; margin-bottom: 28px; max-width: 520px; }
-  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+  .hero p { font-size: 1.05rem; color: var(--muted); line-height: 1.65; margin-bottom: 30px; max-width: 520px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
 
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 20px;
     border-top: 1px solid var(--border);
     padding-top: 24px;
-    max-width: 480px;
+    max-width: 500px;
   }
-  .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--primary); line-height: 1.1; }
+  .stat-num { font-size: 1.6rem; font-weight: 700; color: var(--primary); line-height: 1.1; }
   .stat-desc { font-size: .75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: .04em; margin-top: 4px; }
 
   .hero-box-img {
     border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
     box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
   }
-  .hero-box-img img { width: 100%; height: 440px; object-fit: cover; display: block; filter: grayscale(15%); }
+  .hero-box-img img { width: 100%; height: 460px; object-fit: cover; display: block; filter: grayscale(15%); }
 
   /* Áreas de Atuação */
-  .secao { padding: 70px 0; }
+  .secao { padding: 76px 0; border-top: 1px solid var(--border); }
   .secao-header { max-width: 640px; margin-bottom: 44px; }
-  .secao-header h2 { font-size: 2.2rem; color: var(--primary); margin-bottom: 10px; }
-  .secao-header p { color: var(--muted); font-size: .95rem; }
+  .secao-header h2 { font-size: 2.3rem; color: var(--primary); margin-bottom: 10px; }
+  .secao-header p { color: var(--muted); font-size: .98rem; }
 
-  .grid-areas { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .grid-areas { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
   .card-area {
     background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 26px; transition: all .2s ease;
+    padding: 28px; transition: all .2s ease;
   }
   .card-area:hover { border-color: var(--accent); box-shadow: 0 10px 24px rgba(0,0,0,0.04); transform: translateY(-2px); }
   .area-num { font-size: .8rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
-  .card-area h3 { font-size: 1.25rem; color: var(--primary); margin-bottom: 8px; }
-  .card-area p { font-size: .88rem; color: var(--muted); line-height: 1.55; }
+  .card-area h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 8px; }
+  .card-area p { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+
+  /* Sobre a Firma */
+  .grid-sobre { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card-sobre {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px; text-align: left;
+  }
+  .card-sobre-icon {
+    width: 44px; height: 44px; border-radius: 8px; background: rgba(30, 58, 138, 0.08);
+    color: var(--accent); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .card-sobre h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 8px; }
+  .card-sobre p { font-size: .88rem; color: var(--muted); line-height: 1.55; }
 
   /* CTA Confidencial */
   .cta-section {
     background: var(--primary); color: #FFF; border-radius: var(--radius);
-    padding: 50px 24px; text-align: center; margin: 30px 0;
+    padding: 56px 28px; text-align: center; margin: 30px 0;
   }
-  .cta-section h2 { font-size: 2.2rem; margin-bottom: 12px; color: #FFF; }
-  .cta-section p { color: #94A3B8; max-width: 500px; margin: 0 auto 24px; font-size: .95rem; }
+  .cta-section h2 { font-size: 2.3rem; margin-bottom: 12px; color: #FFF; }
+  .cta-section p { color: #94A3B8; max-width: 520px; margin: 0 auto 28px; font-size: 1rem; }
 
-  .footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; color: var(--muted); font-size: .82rem; }
+  .footer { border-top: 1px solid var(--border); padding: 36px 0; text-align: center; color: var(--muted); font-size: .85rem; }
 
   /* 📱 MOBILE */
   @media (max-width: 768px) {
+    .container { padding: 0 28px !important; }
     .nav-links { display: none; }
     .header { padding: 12px 0; }
     .logo { font-size: 1.1rem; }
@@ -123,13 +140,13 @@
     
     .hero { padding: 36px 0 30px; }
     .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-    .hero h1 { font-size: 2.1rem; line-height: 1.2; }
+    .hero h1 { font-size: 2rem; line-height: 1.2; }
     .hero p { font-size: .95rem; margin-bottom: 22px; }
     
     .hero-actions { flex-direction: column; width: 100%; gap: 10px; }
     .hero-actions .btn { width: 100%; }
 
-    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; text-align: center; }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; max-width: 100%; }
     .stat-num { font-size: 1.25rem; }
     .stat-desc { font-size: .65rem; }
 
@@ -138,6 +155,7 @@
     .secao { padding: 48px 0; }
     .secao-header h2 { font-size: 1.75rem; }
     .grid-areas { grid-template-columns: 1fr; }
+    .grid-sobre { grid-template-columns: 1fr; }
     
     .cta-section { padding: 36px 18px; border-radius: 14px; }
     .cta-section h2 { font-size: 1.7rem; }
@@ -221,6 +239,41 @@
         <div class="area-num mono">03 / CONTRATUAL</div>
         <h3>Contratos Comerciais & Compliance</h3>
         <p>Elaboração e auditoria de contratos complexos nacionais e internacionais, com foco em segurança e mitigação de litígios.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre a Firma -->
+  <section class="secao container" id="institucional">
+    <div class="secao-header">
+      <span class="tag-label mono">Governança & Rigor</span>
+      <h2>Sobre a Valence & Associados</h2>
+      <p>Uma banca jurídica focada em soluções ágeis para o ambiente corporativo moderno.</p>
+    </div>
+
+    <div class="grid-sobre">
+      <div class="card-sobre">
+        <div class="card-sobre-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Blindagem Patrimonial</h3>
+        <p>Proteção preventiva de bens e estruturação societária sólida para sucessão pacífica.</p>
+      </div>
+
+      <div class="card-sobre">
+        <div class="card-sobre-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Agilidade em Negociações</h3>
+        <p>Respostas rápidas para decisões contratuais críticas e fechamento de novos negócios.</p>
+      </div>
+
+      <div class="card-sobre">
+        <div class="card-sobre-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Sigilo & Confidencialidade</h3>
+        <p>Protocolos rigorosos de segurança da informação e governança corporativa.</p>
       </div>
     </div>
   </section>
