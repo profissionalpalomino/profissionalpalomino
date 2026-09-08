@@ -13,7 +13,7 @@ const Footer = () => {
                  className="transition-transform duration-500 hover:scale-105"
                  style={{ filter: "drop-shadow(0 0 7px rgba(230,59,46,.5))" }}>
               <polygon points="50,5 89.8,27.5 89.8,72.5 50,95 10.2,72.5 10.2,27.5"
-                       stroke="#E63B2E" strokeWidth="7" strokeLinejoin="round" />
+                       stroke="#E8341C" strokeWidth="7" strokeLinejoin="round" />
             </svg>
           <div>
             <span className="font-heading text-xl font-extrabold tracking-tight text-foreground">

@@ -7,28 +7,28 @@ const services = [
     title: "Sites e Landing Pages",
     desc: "Site profissional pra sua empresa aparecer no Google, passar credibilidade e converter visita em cliente. Entregamos rápido, sem template genérico.",
     tech: "Do zero, feito pra você",
-    color: "from-[#E63B2E]/25 to-[#E63B2E]/5"
+    color: "from-[#E8341C]/25 to-[#E8341C]/5"
   },
   {
     icon: MonitorSmartphone,
     title: "Aplicativos e Sistemas Web",
     desc: "Tem uma ideia de app ou precisa de um sistema pra organizar o seu negócio? A gente constrói do zero — bolão, controle de estoque, agendamento, o que precisar.",
     tech: "Web e Mobile",
-    color: "from-[#E63B2E]/20 to-[#E63B2E]/5"
+    color: "from-[#E8341C]/20 to-[#E8341C]/5"
   },
   {
     icon: Bot,
     title: "Automações com IA",
     desc: "Tarefas que você faz na mão todo dia podem rodar sozinhas: postar no Instagram, disparar mensagem no WhatsApp, gerar relatório, qualificar lead.",
     tech: "Funciona enquanto você dorme",
-    color: "from-[#E63B2E]/25 to-[#E63B2E]/8"
+    color: "from-[#E8341C]/25 to-[#E8341C]/8"
   },
   {
     icon: CloudCog,
     title: "Integrações entre Sistemas",
     desc: "Seu CRM não fala com o financeiro? O WhatsApp não entra no funil? A gente conecta tudo — sem precisar trocar de sistema nem contratar programador pra cada ajuste.",
     tech: "Seus sistemas conversando",
-    color: "from-[#E63B2E]/30 to-[#E63B2E]/6"
+    color: "from-[#E8341C]/30 to-[#E8341C]/6"
   },
 ];
 

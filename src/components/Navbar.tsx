@@ -51,7 +51,7 @@ const Navbar = () => {
                  className="transition-transform duration-500 group-hover:scale-105 group-hover:rotate-180"
                  style={{ filter: "drop-shadow(0 0 7px rgba(230,59,46,.5))" }}>
               <polygon points="50,5 89.8,27.5 89.8,72.5 50,95 10.2,72.5 10.2,27.5"
-                       stroke="#E63B2E" strokeWidth="7" strokeLinejoin="round" />
+                       stroke="#E8341C" strokeWidth="7" strokeLinejoin="round" />
             </svg>
             <span className="font-heading text-lg font-extrabold tracking-tight text-foreground">
               Palomino <span className="text-primary transition-all duration-300 group-hover:text-primary-foreground group-hover:bg-primary group-hover:px-1.5 group-hover:py-0.5 group-hover:rounded-md">Tech</span>
