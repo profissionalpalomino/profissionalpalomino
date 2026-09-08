@@ -13,7 +13,9 @@ mkdir -p /tmp
 tar -cf "/tmp/$APP.tar" --exclude=.git --exclude=node_modules .
 
 echo "→ Enviando para a VPS..."
-ssh "$VPS" "mkdir -p /root/$APP"
+# Limpa a pasta antes de descompactar: sem isso, arquivo removido do repositório
+# continua na VPS e entra na imagem (foi o que aconteceu com os PNG trocados por WebP).
+ssh "$VPS" "rm -rf /root/$APP && mkdir -p /root/$APP"
 scp -q "/tmp/$APP.tar" "$VPS:/root/$APP/"
 
 echo "→ Construindo imagem Docker e atualizando serviço Swarm..."
