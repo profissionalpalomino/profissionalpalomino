@@ -29,7 +29,7 @@ const gruposSistemas: Grupo[] = [
         description:
           "Prospectar barbearia por barbearia no Google é lento e manual. A ferramenta encontra, filtra e já manda mensagem personalizada no WhatsApp automaticamente — sem abrir o Google nem escrever uma linha.",
         functions: ["Busca Automática", "Disparo no WhatsApp", "Lista de Leads"],
-        screenshots: ["/screenshot-barbearias-finder.png"],
+        screenshots: ["/screenshot-barbearias-finder.webp"],
         tag: "Prospecção de Nicho",
       },
       {
@@ -37,7 +37,7 @@ const gruposSistemas: Grupo[] = [
         description:
           "Manter o Instagram atualizado 3x por semana consome tempo todo dia. O sistema cria os temas, escreve as legendas, desenha as imagens e publica sozinho — sem você precisar fazer nada.",
         functions: ["Publica Sozinho", "Escreve Legenda com IA", "Cria a Imagem do Post"],
-        screenshots: ["/screenshot-palomino-instagram.png"],
+        screenshots: ["/screenshot-palomino-instagram.webp"],
         tag: "Automação de Instagram",
       },
     ],
@@ -52,7 +52,7 @@ const gruposSistemas: Grupo[] = [
         description:
           "Perder o controle dos boletos e esquecer de pagar custa caro. Fizemos uma plataforma que centraliza todos os pagamentos num painel visual e manda lembretes automáticos no WhatsApp no dia certo.",
         functions: ["Painel de Contas", "Alerta no WhatsApp", "Histórico Completo"],
-        screenshots: ["/screenshot-financas-pro.png"],
+        screenshots: ["/screenshot-financas-pro.webp"],
         tag: "Plataforma Web",
       },
       {
@@ -60,7 +60,7 @@ const gruposSistemas: Grupo[] = [
         description:
           "A Alca precisava organizar pedidos de música, comida e drinks numa festa sem papel e sem bagunça. Fizemos um app pra todo mundo usar no celular — e um painel na TV mostrando o ranking de consumo em tempo real.",
         functions: ["Jukebox com Spotify", "Cardápio no Celular", "Ranking ao Vivo na TV"],
-        screenshots: ["/screenshot-alca-party.png"],
+        screenshots: ["/screenshot-alca-party.webp"],
         tag: "App de Evento",
       },
     ],
@@ -75,7 +75,7 @@ const gruposSistemas: Grupo[] = [
         description:
           "Bolão da Copa com a família não precisa ser planilha. Fizemos um sistema com palpites, ranking ao vivo — e IA que lê o papel escrito à mão e importa os palpites automaticamente, sem digitar nada.",
         functions: ["Palpites Online", "Ranking em Tempo Real", "IA que Lê Papel Manuscrito"],
-        screenshots: ["/screenshot-bolao.png"],
+        screenshots: ["/screenshot-bolao.webp"],
         tag: "Web App",
       },
       {
@@ -83,7 +83,7 @@ const gruposSistemas: Grupo[] = [
         description:
           "Controlar figurinhas faltantes e repetidas pelo WhatsApp vira uma bagunça rápido. O app organiza tudo e usa IA pra sugerir as melhores trocas baseadas no que você tem e no que precisa.",
         functions: ["Catálogo de Faltantes", "Lista do WhatsApp colada direto", "IA de Trocas"],
-        screenshots: ["/screenshot-stickers.png"],
+        screenshots: ["/screenshot-stickers.webp"],
         tag: "App de Figurinhas",
       },
     ],
