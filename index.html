@@ -34,16 +34,26 @@
   
   
   
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
-  <link rel="alternate icon" type="image/png" href="/icon-192.png?v=3" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="/icon-192.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta name="theme-color" content="#E8341C" />
-  <link rel="manifest" href="/manifest.json?v=3" />
+  <meta name="apple-mobile-web-app-title" content="Palomino Tech" />
+  <link rel="manifest" href="/manifest.webmanifest" />
 </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Service Worker para PWA instalável no Android / Chrome / iOS -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
 
     <!-- Global Matte Noise Overlay SVG Filter -->
     <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">

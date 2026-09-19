@@ -1,6 +1,8 @@
 import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
-import { CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Globe, Cpu } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Globe, Cpu, MessageCircle } from "lucide-react";
+
+const WHATSAPP = "5531984773813";
 
 type Projeto = {
   title: string;
@@ -231,15 +233,25 @@ function CardProjeto({ project }: { project: Projeto }) {
             ))}
           </ul>
 
-          {project.url && (
+          {project.url ? (
             <a
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-white text-xs font-bold hover:bg-primary-hover transition-colors shadow-sm"
+              className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-white text-xs font-bold hover:brightness-110 transition-all shadow-sm"
             >
               <ExternalLink className="h-3.5 w-3.5" />
               Ver Demonstração ao Vivo
+            </a>
+          ) : (
+            <a
+              href={`https://wa.me/${WHATSAPP}?text=Olá! Gostaria de ver uma demonstração do sistema ${encodeURIComponent(project.title)}.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl border border-primary/20 bg-primary/5 text-primary text-xs font-bold hover:bg-primary hover:text-white transition-all shadow-sm"
+            >
+              <MessageCircle className="h-3.5 w-3.5" />
+              Solicitar Demonstração no WhatsApp
             </a>
           )}
         </div>

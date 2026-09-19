@@ -1,10 +1,26 @@
 # SESSION.md
 
-## Sessão 07/09/2026 — auditoria de segurança, performance e estética
+## Sessão 19/09/2026 — Pente Fino Completo: Segurança, PWA, Mobile-First e Conversão
 
-Auditoria: o nginx não comprimia nem cacheava, e o site carregava 8,7 MB de PNG. Agora tem gzip e cache, 38 imagens em WebP (2,7 MB), o alvo legacy do Vite foi removido e react/react-query saíram em chunk próprio. Carga de JS+CSS caiu de 535 KB para 160 KB na rede. O deploy passou a limpar a pasta na VPS antes de descompactar.
+- **Segurança HTTP & Infraestrutura:**
+  - `nginx.conf`: adicionados headers `server_tokens off`, `X-Frame-Options: SAMEORIGIN`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin` e `Permissions-Policy`.
+  - `Dockerfile` & `deploy.sh`: otimização drástica para usar container Nginx puro servindo o `dist/` pré-compilado, eliminando build duplicado de Node/NPM na VPS e reduzindo o tempo de deploy para segundos sem risco de OOM.
+  - Limpeza de dependências: remoção de `sharp` (C++ nativo de backend desnecessário no front) e `lovable-tagger` de `package.json` e `vite.config.ts`.
+- **PWA & Mobile-First:**
+  - `public/sw.js`: criado Service Worker oficial com cache-shell e network-first, registrado no `index.html` (requisito obrigatório para o Google Chrome oferecer instalação no Android).
+  - `public/manifest.json` & `public/manifest.webmanifest`: configurados com `purpose: "maskable any"`.
+  - `Navbar.tsx`: adicionado menu mobile responsivo completo com animação fluida, links para todas as seções e botões de agendamento e WhatsApp com touch targets ergonômicos (>= 48px).
+  - `WhatsAppButton.tsx`: integrado e ativado em `Index.tsx` com posicionamento seguro para barras de navegação do iOS/Android (`max(20px, env(safe-area-inset...))`).
+- **Conversão & SEO:**
+  - `ProjectsSection.tsx`: adicionado CTA direto via WhatsApp nos cards de "Sistemas & Automações" sem demo pública aberta, permitindo solicitar demonstração com mensagem contextual personalizada.
+  - `FaqSection.tsx`: redesenhado no padrão Clean Light, com 6 perguntas estratégicas que quebram as principais objeções de clientes, integrado ao `Index.tsx`.
+  - `public/sitemap.xml`: criado para indexação de SEO.
 
-**Onde paramos:** tudo implantado e conferido em produção.
+**Onde paramos:** Código compilado com sucesso e pronto para commit, push e deploy em produção.
+
+**Próximas tarefas:**
+1. Rodar deploy em produção na VPS (`bash deploy.sh`).
+2. Sincronizar nota correspondente no Obsidian (`configs-palomino-tech/anotacoes/`).
 
 ---
 

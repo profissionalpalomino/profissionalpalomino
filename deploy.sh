@@ -10,7 +10,7 @@ npm run build
 
 echo "→ Empacotando arquivos de produção..."
 mkdir -p /tmp
-tar -cf "/tmp/$APP.tar" --exclude=.git --exclude=node_modules .
+tar -cf "/tmp/$APP.tar" dist Dockerfile nginx.conf
 
 echo "→ Enviando para a VPS..."
 # Limpa a pasta antes de descompactar: sem isso, arquivo removido do repositório
