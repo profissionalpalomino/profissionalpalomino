@@ -112,12 +112,12 @@ const sitesLandingPages: Projeto[] = [
     url: "/demos/clinica/index.html",
   },
   {
-    title: "Clínica Serena · Estética Avançada",
+    title: "Serena · Dermatologia",
     description:
-      "Site para clínicas de estética e harmonização: botox, preenchimento labial, bioestimuladores e skinbooster apresentados com elegância, depoimentos, dúvidas frequentes e agendamento direto no WhatsApp.",
-    functions: ["Agendamento no WhatsApp", "Procedimentos & Dúvidas", "Formulário de Contato"],
+      "Site para dermatologistas e clínicas de estética: tratamentos clínicos e estéticos com fotos, formação da médica, depoimentos, dúvidas frequentes otimizadas para Google e IAs e agendamento direto no WhatsApp.",
+    functions: ["Agendamento no WhatsApp", "Tratamentos & Formação", "FAQ para Google e IAs"],
     screenshots: ["https://images.unsplash.com/photo-1699206791200-414d95e68450?q=80&w=900&auto=format&fit=crop"],
-    tag: "Estética & Harmonização",
+    tag: "Dermatologia & Estética",
     url: "https://clinica.profissionalpalomino.cloud/modelo",
   },
   {
