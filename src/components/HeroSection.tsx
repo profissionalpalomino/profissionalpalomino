@@ -33,32 +33,17 @@ const HeroSection = () => {
       <div className="absolute top-[-10%] left-1/4 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[140px] pointer-events-none" />
       <div className="absolute top-[20%] right-[-10%] w-[450px] h-[450px] rounded-full bg-emerald-500/10 blur-[150px] pointer-events-none" />
 
-      <div className="container-narrow relative z-10 w-full px-5 lg:px-8 mb-12">
+      <div className="container-narrow relative z-10 w-full px-4 sm:px-6 lg:px-8 mb-12">
         {/* Layout Dividido: Texto elegante à esquerda, Ações e Métricas à direita */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
           
           {/* Coluna Esquerda: Conteúdo Direto, Elegante e Proporcional */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-7 flex flex-col items-start text-left"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="lg:col-span-7 flex flex-col items-start text-left w-full"
           >
-            {/* Status Operacional Compacto */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md mb-4 shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              <span className="font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-400">
-                SISTEMAS AUTÔNOMOS • IA 24/7
-              </span>
-            </div>
-
-            <p className="font-heading text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground mb-3">
-              PALOMINO TECH • ENGENHARIA DE SOFTWARE
-            </p>
-
             {/* Título com escala muito mais proporcional e equilibrada */}
             <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white leading-[1.08] mb-4">
               TRANSFORME PROCESSOS LENTOS EM <br className="hidden sm:block" />
@@ -97,15 +82,15 @@ const HeroSection = () => {
 
           {/* Coluna Direita: Caixa Executiva de Ação Rápida + Métricas */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="lg:col-span-5"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="lg:col-span-5 w-full"
           >
-            <div className="glass-card rounded-[2rem] p-6 sm:p-7 bg-[#080b12]/90 border border-white/10 shadow-[0_15px_50px_rgba(0,0,0,0.6)] relative overflow-hidden">
+            <div className="w-full glass-card rounded-[2rem] p-5 sm:p-7 bg-[#080b12]/90 border border-white/10 shadow-[0_15px_50px_rgba(0,0,0,0.6)] relative overflow-hidden box-border">
               <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-emerald-400 to-transparent" />
 
-              <div className="mb-5">
+              <div className="mb-5 text-left">
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-primary font-bold">
                   CANAL DIRETO
                 </span>

@@ -23,26 +23,7 @@ const Footer = () => {
             <span className="font-heading text-lg font-black tracking-[0.2em] uppercase text-white">
               PALOMINO <span className="text-primary">TECH</span>
             </span>
-            <p className="text-[10px] text-muted-foreground font-mono tracking-wider uppercase">
-              Sistemas Autônomos & IA
-            </p>
           </div>
-        </div>
-
-        {/* Telemetry Status indicator */}
-        <div className="flex flex-col items-center md:items-start gap-1">
-          <div className="flex items-center gap-2 bg-[#0b0f19] border border-white/10 px-3.5 py-1.5 rounded-full shadow-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span className="font-mono text-[9px] text-emerald-400 font-bold tracking-widest uppercase">
-              SISTEMA OPERACIONAL • LATÊNCIA: 12ms
-            </span>
-          </div>
-          <span className="font-mono text-[8px] text-muted-foreground/60 tracking-wider uppercase mt-1">
-            STACK: [VITE + TAILWIND + DOCKER SWARM]
-          </span>
         </div>
 
         {/* Links and email */}

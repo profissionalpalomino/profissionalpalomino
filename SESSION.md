@@ -22,9 +22,15 @@
   - Módulo `src/lib/tracker.ts` conectado ao endpoint do Site Finder (`/api/analytics/track`).
   - Rastreamento silencioso de visitantes humanos, tempo ativo de permanência (heartbeat a cada 20s), funil de rolagem (25%, 50%, 75%, 100%) e cliques em WhatsApp, Instagram, Calendar e abas.
   - O portfólio agora aparece e pontua automaticamente no painel de Telemetria do Site Finder sob o slug `palominotech`.
-- **Validação:**
-  - Build de produção (`npm run build`) concluído com zero erros em 9.7s.
-  - Teste automatizado via navegador (`browser_subagent`) validando carregamento, transição estável entre abas sem tranco e funcionamento dos botões flutuantes.
+- **Ajustes Finais Solicitados pelo Rodrigo (Áudio 2):**
+  - **Hero Limpo:** Removidos o badge "Sistemas Autônomos IA 24/7" e a linha "PALOMINO TECH • ENGENHARIA DE SOFTWARE", iniciando direto no título principal com máximo impacto e elegância.
+  - **Simetria no Mobile:** Ajustados os paddings e bordas do card "Vamos conversar sobre seu projeto" e da seção CTA para ficarem 100% simétricos e centralizados em telas de 360px a 430px, sem desvio para a direita.
+  - **Rodapé Minimalista:** Removido "Sistemas Autônomos & IA", o badge de latência ("SISTEMA OPERACIONAL • LATÊNCIA: 12ms") e o indicador de stack, mantendo apenas a marca oficial e os canais de contato.
+- **Deploy em Produção (VPS Hostinger):**
+  - Build de produção gerado localmente (`npm run build`).
+  - Pacote transferido e imagem construída na VPS (`portfolio-palomino:prod`).
+  - Serviço Docker Swarm atualizado com sucesso (`docker service update --force --image portfolio-palomino:prod palomino-tech_portfolio`).
+  - Testado e ativo em `https://palominotech.com.br/` (HTTP 200).
 
 ---
 
