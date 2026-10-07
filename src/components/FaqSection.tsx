@@ -35,38 +35,38 @@ const faqs = [
 
 const FaqSection = () => {
   return (
-    <section id="duvidas" className="section-padding bg-background relative overflow-hidden">
+    <section id="duvidas" className="section-padding bg-[#080b12] border-t border-b border-white/10 relative overflow-hidden">
       {/* Background glow sutil */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[180px] pointer-events-none" />
 
       <div className="container-narrow max-w-4xl relative z-10">
         <AnimatedSection>
           <div className="text-center">
-            <span className="inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary mb-4 uppercase tracking-wider">
-              Tire suas dúvidas
+            <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-heading font-bold text-primary mb-4 uppercase tracking-[0.2em]">
+              Transparência Total
             </span>
-            <h2 className="font-heading text-3xl font-extrabold text-foreground sm:text-4xl md:text-5xl">
+            <h2 className="font-heading text-3xl font-black text-white sm:text-4xl md:text-5xl uppercase tracking-tight">
               Perguntas Frequentes
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
+            <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-xl mx-auto font-sans">
               Tudo o que você precisa saber antes de iniciar seu projeto conosco com total clareza e segurança.
             </p>
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={0.15}>
-          <div className="mt-12 rounded-[2rem] border border-border bg-white/90 backdrop-blur-xl p-6 sm:p-10 shadow-[var(--shadow-md)]">
+          <div className="mt-12 rounded-[2.5rem] border border-white/10 bg-[#0b0f19]/90 backdrop-blur-2xl p-6 sm:p-10 shadow-[0_15px_45px_rgba(0,0,0,0.5)]">
             <Accordion type="single" collapsible className="w-full space-y-2">
               {faqs.map((faq, i) => (
                 <AccordionItem 
                   key={i} 
                   value={`faq-${i}`} 
-                  className="border-b border-border/70 last:border-0 py-1"
+                  className="border-b border-white/10 last:border-0 py-2"
                 >
-                  <AccordionTrigger className="text-left font-heading text-base sm:text-lg font-bold py-4 hover:no-underline hover:text-primary transition-colors text-foreground">
+                  <AccordionTrigger className="text-left font-heading text-base sm:text-lg font-bold py-4 hover:no-underline hover:text-primary transition-colors text-white">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground text-sm sm:text-base leading-relaxed pb-5 pr-4">
+                  <AccordionContent className="text-muted-foreground text-sm sm:text-base leading-relaxed pb-5 pr-4 font-sans">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>

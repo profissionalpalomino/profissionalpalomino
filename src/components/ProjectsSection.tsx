@@ -198,32 +198,32 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
 
 function CardProjeto({ project }: { project: Projeto }) {
   return (
-    <div className="group border border-border bg-white/90 backdrop-blur-sm rounded-[2rem] h-full flex flex-col transition-all duration-300 hover:border-primary/40 hover:bg-white hover:shadow-[0_8px_30px_rgba(230,59,46,0.08)]">
-      <div className="p-4 pb-0">
+    <div className="group glass-card rounded-[2rem] h-full flex flex-col overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_15px_45px_rgba(244,63,94,0.18)] bg-[#0b0f19]/80">
+      <div className="p-3 pb-0">
         <Carousel images={project.screenshots} title={project.title} />
       </div>
 
       <div className="p-6 flex flex-col flex-grow">
         <div className="mb-4">
-          <span className="text-[10px] font-bold text-primary uppercase tracking-wider font-mono">
+          <span className="text-[10px] font-bold text-primary uppercase tracking-[0.16em] font-mono inline-block px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
             {project.tag}
           </span>
-          <h3 className="font-heading text-lg font-bold text-foreground mt-0.5">{project.title}</h3>
+          <h3 className="font-heading text-lg font-black text-white uppercase mt-2">{project.title}</h3>
         </div>
 
-        <p className="text-muted-foreground text-xs leading-relaxed mb-6 flex-grow">
+        <p className="text-muted-foreground text-xs leading-relaxed mb-6 flex-grow font-sans">
           {project.description}
         </p>
 
         <div>
-          <p className="text-[10px] font-bold text-foreground/80 uppercase tracking-wider mb-2.5">
+          <p className="text-[10px] font-bold text-slate-300 uppercase tracking-wider mb-2.5 font-mono">
             Destaques da Solução
           </p>
           <ul className="space-y-2 mb-6">
             {project.functions.map((func, j) => (
               <li key={j} className="flex items-center gap-2">
-                <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
-                <span className="text-xs font-medium text-foreground/90">{func}</span>
+                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+                <span className="text-xs font-medium text-slate-200">{func}</span>
               </li>
             ))}
           </ul>
@@ -233,7 +233,7 @@ function CardProjeto({ project }: { project: Projeto }) {
               href={appendQuery(project.url)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-white text-xs font-bold hover:brightness-110 transition-all shadow-sm"
+              className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-primary text-white text-xs font-heading font-extrabold uppercase tracking-wider hover:brightness-110 transition-all shadow-[0_0_20px_rgba(244,63,94,0.35)] hover:shadow-[0_0_35px_rgba(244,63,94,0.6)]"
             >
               <ExternalLink className="h-3.5 w-3.5" />
               Ver Demonstração ao Vivo
@@ -241,7 +241,7 @@ function CardProjeto({ project }: { project: Projeto }) {
           ) : (
             <a
               href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
-                `Olá! Gostaria de ver uma demonstração do sistema ${project.title}.${
+                `Olá, Rodrigo! Gostaria de ver uma demonstração do sistema ${project.title}.${
                   typeof window !== "undefined" && new URLSearchParams(window.location.search).get("ref")
                     ? ` (Ref: ${new URLSearchParams(window.location.search).get("ref")})`
                     : ""
@@ -249,7 +249,7 @@ function CardProjeto({ project }: { project: Projeto }) {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl border border-primary/20 bg-primary/5 text-primary text-xs font-bold hover:bg-primary hover:text-white transition-all shadow-sm"
+              className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-heading font-extrabold uppercase tracking-wider hover:bg-emerald-500 hover:text-white transition-all shadow-[0_0_20px_rgba(74,222,128,0.2)]"
             >
               <MessageCircle className="h-3.5 w-3.5" />
               Solicitar Demonstração no WhatsApp
@@ -265,30 +265,31 @@ const ProjectsSection = () => {
   const [categoria, setCategoria] = useState<"sites" | "sistemas">("sites");
 
   return (
-    <section id="projetos" className="section-padding relative bg-secondary/50">
-      <div className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
+    <section id="projetos" className="section-padding relative bg-[#080b12] border-t border-b border-white/10 overflow-hidden">
+      <div className="absolute top-[20%] right-[-10%] w-[450px] h-[450px] rounded-full bg-primary/10 blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[10%] left-[-10%] w-[450px] h-[450px] rounded-full bg-emerald-500/10 blur-[150px] pointer-events-none" />
 
-      <div className="container-narrow">
+      <div className="container-narrow relative z-10">
         <AnimatedSection>
           <div className="text-center">
-            <span className="inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary mb-4 uppercase tracking-wider">
-              Portfólio & Demonstrações
+            <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-heading font-bold text-primary mb-4 uppercase tracking-[0.2em]">
+              Portfólio & Demonstrações ao Vivo
             </span>
-            <h2 className="font-heading text-3xl font-extrabold sm:text-4xl md:text-5xl lg:text-5xl mb-6 text-foreground">
-              Projetos no ar, gerando resultado real
+            <h2 className="font-heading text-3xl font-black sm:text-4xl md:text-5xl lg:text-6xl mb-6 text-white uppercase tracking-tight">
+              Projetos no ar, <span className="text-neon">gerando resultado real</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-sm sm:text-base text-muted-foreground mb-8">
-              De sites modernos e landing pages de alta conversão até sistemas complexos com automação de WhatsApp.
+            <p className="mx-auto max-w-2xl text-sm sm:text-base text-muted-foreground mb-10 font-sans">
+              De sites modernos e landing pages de alta conversão até sistemas complexos com automação de WhatsApp e inteligência artificial.
             </p>
 
             {/* Seletor de Categoria (Abas) */}
-            <div className="inline-flex p-1.5 bg-background border border-border rounded-2xl shadow-sm gap-2">
+            <div className="inline-flex p-1.5 bg-[#0b0f19] border border-white/10 rounded-full shadow-lg gap-2">
               <button
                 onClick={() => setCategoria("sites")}
-                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all ${
+                className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-heading font-extrabold text-xs uppercase tracking-wider transition-all ${
                   categoria === "sites"
-                    ? "bg-primary text-white shadow-md shadow-primary/20"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                    ? "bg-primary text-white shadow-[0_0_25px_rgba(244,63,94,0.4)]"
+                    : "text-muted-foreground hover:text-white"
                 }`}
               >
                 <Globe className="h-4 w-4" />
@@ -297,10 +298,10 @@ const ProjectsSection = () => {
 
               <button
                 onClick={() => setCategoria("sistemas")}
-                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all ${
+                className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-heading font-extrabold text-xs uppercase tracking-wider transition-all ${
                   categoria === "sistemas"
-                    ? "bg-primary text-white shadow-md shadow-primary/20"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                    ? "bg-primary text-white shadow-[0_0_25px_rgba(244,63,94,0.4)]"
+                    : "text-muted-foreground hover:text-white"
                 }`}
               >
                 <Cpu className="h-4 w-4" />
@@ -311,10 +312,10 @@ const ProjectsSection = () => {
         </AnimatedSection>
 
         {categoria === "sites" ? (
-          <div className="mt-12">
+          <div className="mt-14">
             <AnimatedSection>
-              <div className="text-center mb-8">
-                <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+              <div className="text-center mb-10">
+                <p className="text-xs sm:text-sm text-muted-foreground max-w-xl mx-auto font-sans">
                   Modelos de demonstração com design cinematográfico, responsivos no celular e com botão de WhatsApp pronto para converter visitantes em clientes.
                 </p>
               </div>
@@ -333,19 +334,19 @@ const ProjectsSection = () => {
             {gruposSistemas.map((grupo, gi) => (
               <div key={grupo.id}>
                 <AnimatedSection delay={gi * 0.05}>
-                  <div className="flex items-baseline gap-3 mb-2 border-b border-border pb-4">
+                  <div className="flex items-baseline gap-3 mb-2 border-b border-white/10 pb-4">
                     <span className="font-mono text-xs font-bold text-primary">
                       {String(gi + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground">
+                    <h3 className="font-heading text-xl sm:text-2xl font-black text-white uppercase">
                       {grupo.titulo}
                     </h3>
-                    <span className="ml-auto text-[11px] font-mono text-muted-foreground shrink-0">
+                    <span className="ml-auto text-[11px] font-mono text-muted-foreground shrink-0 uppercase">
                       {grupo.projetos.length}{" "}
                       {grupo.projetos.length === 1 ? "projeto" : "projetos"}
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-8 max-w-2xl">{grupo.dor}</p>
+                  <p className="text-sm text-muted-foreground mb-8 max-w-2xl font-sans">{grupo.dor}</p>
                 </AnimatedSection>
 
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

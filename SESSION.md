@@ -1,5 +1,33 @@
 # SESSION.md
 
+## Sessão 07/10/2026 — Redesign Cinematográfico Completo (Estilo Dark Neon, Referências BizNext, Systeme.io, Elleven e Apiki)
+
+- **Identidade Visual Oficial Alinhada com o Instagram (`@palominotech`):**
+  - Fundo Dark Mode cinematográfico profundo (`#0b0f19` / `#080b12`), superfícies glassmorphic translúcidas com bordas `border-white/10`.
+  - Tipografia de impacto: Headings em **Montserrat** (pesos 700/800/900 em uppercase) e corpo em **Inter**.
+  - Acentos de alta voltagem: Neon Rose (`#f43f5e`) com text-shadow suave e Verde Emerald (`#4ade80`) para indicadores de telemetria operacional.
+  - Símbolo oficial: Hexágono regular SVG com contorno neon rose em Navbar, CTA e Footer.
+- **Cockpit 3D & Hero Section (BizNext / Systeme.io / Morph AI):**
+  - Hero com headline de conversão direta: *"TRANSFORME PROCESSOS LENTOS EM SISTEMAS AUTÔNOMOS."*
+  - Mockup 3D central simulando o Cockpit Executivo em tempo real (`palomino.cloud / cockpit-executivo`) com cards flutuantes animados via framer-motion (WhatsApp 24/7, Leads qualificados, Uptime 99.98%, Latência 12ms).
+  - Ticker/Marquee infinito horizontal com estrelas e especialidades em movimento contínuo (estilo WE03 / Elleven).
+- **Portfólio com Abas e Cases Reais:**
+  - Alternador de categorias: *"Sites & Landing Pages (3)"* e *"Sistemas & Automações (6)"*.
+  - Screenshots reais, carrossel interativo em cada card e botões de demonstração ao vivo ou solicitação no WhatsApp (com propagação de `?ref=` / `?lead=`).
+- **Prova Social, Depoimentos & FAQ:**
+  - `TestimonialsSection.tsx`: Inclusão de depoimentos reais (Alca Eventos e Venda do Deco) com selo "Case Validado".
+  - `HowItWorksSection.tsx`: Pipeline metodológico em 4 etapas conectado por feixe neon contínuo.
+  - `FaqSection.tsx`: Acordion expansível com 6 respostas que eliminam objeções comerciais.
+- **Canais Oficiais e Contato Direto:**
+  - WhatsApp oficial: `+55 31 98477-3813`
+  - Google Calendar oficial: `https://calendar.app.google/RpTN49BD3jJabEB79`
+  - Instagram oficial: `@palominotech`
+- **Validação:**
+  - Build de produção (`npm run build`) concluído com zero erros.
+  - Teste automatizado via navegador (`browser_subagent`) validando desktop (1280x800) e mobile (390x844) sem vazamento lateral e com 100% de responsividade.
+
+---
+
 ## Sessão 07/10/2026 (tarde) — Enxugamento dos Templates de Sites & Repasse de Referências do Site Finder
 
 - **Enxugamento de Templates:** A seção de templates ("Sites & Landing Pages") foi reduzida de 7 para os 3 modelos campeões e validados com referências visuais oficiais:

@@ -1,6 +1,6 @@
 import AnimatedSection from "./AnimatedSection";
 import { Button } from "@/components/ui/button";
-import { Mail, Calendar } from "lucide-react";
+import { Calendar, Instagram } from "lucide-react";
 
 const WHATSAPP = "5531984773813";
 
@@ -17,69 +17,90 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const CtaSection = () => {
   return (
-    <section className="section-padding relative overflow-hidden bg-background px-4">
+    <section className="section-padding relative overflow-hidden bg-[#0b0f19] px-4">
       {/* Dynamic blurred glow behind */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full bg-primary/10 blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/15 blur-[200px] pointer-events-none" />
       
       <div className="container-narrow relative z-10">
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-white/90 backdrop-blur-xl p-8 sm:p-12 md:p-16 text-center shadow-[var(--shadow-lg)]">
+        <div className="relative overflow-hidden rounded-[3rem] border border-white/10 bg-[#080b12]/95 backdrop-blur-2xl p-8 sm:p-14 md:p-20 text-center shadow-[0_20px_70px_rgba(0,0,0,0.8)]">
           {/* Subtle inside glow */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
           
           <AnimatedSection>
-            <span className="inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary mb-6 uppercase tracking-wider">
-              Vamos conversar?
+            {/* Hexágono Oficial no Topo */}
+            <div className="flex justify-center mb-6">
+              <svg 
+                width="44" 
+                height="44" 
+                viewBox="0 0 32 32" 
+                fill="none"
+                style={{ filter: "drop-shadow(0 0 12px rgba(244,63,94,0.7))" }}
+              >
+                <polygon points="16,2 27.1,8.5 27.1,21.5 16,28 4.9,21.5 4.9,8.5" fill="none" stroke="#f43f5e" strokeWidth="2.5" />
+              </svg>
+            </div>
+
+            <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-heading font-bold text-primary mb-6 uppercase tracking-[0.2em]">
+              Vamos conversar sobre seu projeto?
             </span>
             
-            <h2 className="font-heading text-3xl font-extrabold text-foreground sm:text-4xl md:text-5xl lg:text-5xl leading-tight">
-              Tem uma ideia?<br className="hidden sm:block" /> A gente coloca no ar.
+            <h2 className="font-heading text-3xl font-black text-white sm:text-5xl md:text-6xl uppercase tracking-tight leading-[1.02] mb-6">
+              Tem uma ideia ou gargalo? <br className="hidden sm:block" />
+              <span className="text-neon">A gente coloca no ar.</span>
             </h2>
 
-            <p className="mt-4 text-muted-foreground text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
-              Manda uma mensagem, conta o problema ou a ideia — e a gente já diz se é possível, quanto custa e quanto tempo leva.
+            <p className="text-muted-foreground text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans mb-10">
+              Mande uma mensagem agora, conte o que sua empresa precisa e retornaremos com uma estimativa clara de viabilidade, custo e prazo.
             </p>
             
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 size="lg"
                 asChild
-                className="bg-primary text-primary-foreground hover:brightness-110 text-sm font-bold px-8 py-6 rounded-xl shadow-[var(--shadow-glow)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(230,59,46,0.3)] hover:scale-[1.03]"
+                className="w-full sm:w-auto bg-primary text-white font-heading font-extrabold text-xs uppercase tracking-[0.14em] px-8 py-6 rounded-full shadow-[0_0_35px_rgba(244,63,94,0.45)] hover:shadow-[0_0_55px_rgba(244,63,94,0.75)] hover:scale-[1.03] transition-all duration-300"
+              >
+                <a
+                  href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Vi o site da Palomino Tech e quero iniciar um projeto.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5"
+                >
+                  <WhatsAppIcon className="h-5 w-5 text-white" />
+                  Chamar no WhatsApp Direto
+                </a>
+              </Button>
+              
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="w-full sm:w-auto border-white/15 bg-white/[0.04] text-white hover:bg-white/10 hover:border-white/30 font-heading font-bold text-xs uppercase tracking-[0.14em] px-8 py-6 rounded-full transition-all hover:scale-[1.03]"
               >
                 <a
                   href="https://calendar.app.google/RpTN49BD3jJabEB79"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex items-center gap-2.5"
                 >
-                  <Calendar className="mr-2 h-4 w-4" />
-                  Agendar Reunião
+                  <Calendar className="h-4 w-4 text-primary" />
+                  Agendar no Google Calendar
                 </a>
               </Button>
-              
+
               <Button
                 size="lg"
-                asChild
                 variant="outline"
-                className="border-border text-foreground hover:bg-secondary text-sm font-bold px-8 py-6 rounded-xl transition-all hover:scale-[1.03]"
+                asChild
+                className="w-full sm:w-auto border-white/10 text-muted-foreground hover:text-white hover:bg-white/5 font-heading font-bold text-xs uppercase tracking-[0.14em] px-6 py-6 rounded-full transition-all"
               >
                 <a
-                  href={`https://wa.me/${WHATSAPP}?text=Oi! Vi o portfólio da Palomino Tech e quero conversar sobre um projeto.`}
+                  href="https://instagram.com/palominotech"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex items-center gap-2"
                 >
-                  <WhatsAppIcon className="mr-2 h-4 w-4" />
-                  WhatsApp
-                </a>
-              </Button>
-              
-              <Button
-                size="lg"
-                asChild
-                variant="outline"
-                className="border-border text-foreground hover:bg-secondary text-sm font-bold px-8 py-6 rounded-xl transition-all hover:scale-[1.03]"
-              >
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=profissionalpalomino@gmail.com" target="_blank" rel="noopener noreferrer">
-                  <Mail className="mr-2 h-4 w-4" />
-                  E-mail
+                  <Instagram className="h-4 w-4 text-primary" />
+                  Instagram
                 </a>
               </Button>
             </div>
