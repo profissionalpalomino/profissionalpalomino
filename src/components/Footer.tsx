@@ -4,7 +4,7 @@ const WHATSAPP = "5531984773813";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#080b12] border-t border-white/10 py-16 px-5 relative z-10">
+    <footer className="dark:bg-[#080b12] bg-slate-900 border-t dark:border-white/10 border-slate-800 py-16 px-5 relative z-10 text-white">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         
         {/* Brand Logo and descriptor */}

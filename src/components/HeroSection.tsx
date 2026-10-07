@@ -45,7 +45,7 @@ const HeroSection = () => {
             className="lg:col-span-7 flex flex-col items-start text-left w-full"
           >
             {/* Título com escala muito mais proporcional e equilibrada */}
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white leading-[1.08] mb-4">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight dark:text-white text-slate-900 leading-[1.08] mb-4">
               TRANSFORME PROCESSOS LENTOS EM <br className="hidden sm:block" />
               <span className="text-neon">SISTEMAS AUTÔNOMOS.</span>
             </h1>
@@ -56,7 +56,7 @@ const HeroSection = () => {
             </p>
 
             {/* Três Diferenciais Rápidos */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-xs text-slate-300 font-sans mb-6">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-xs dark:text-slate-300 text-slate-600 font-sans mb-6">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
                 <span>Zero planilhas manuais</span>
@@ -73,7 +73,7 @@ const HeroSection = () => {
 
             <a
               href="#projetos"
-              className="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-wider text-muted-foreground hover:text-white transition-colors py-1"
+              className="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-wider text-muted-foreground hover:dark:text-white hover:text-slate-900 transition-colors py-1"
             >
               <span>Explorar Demonstrações ao Vivo</span>
               <ArrowDown className="h-3.5 w-3.5 text-primary" />
@@ -87,14 +87,14 @@ const HeroSection = () => {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="lg:col-span-5 w-full"
           >
-            <div className="w-full glass-card rounded-[2rem] p-5 sm:p-7 bg-[#080b12]/90 border border-white/10 shadow-[0_15px_50px_rgba(0,0,0,0.6)] relative overflow-hidden box-border">
+            <div className="w-full glass-card rounded-[2rem] p-5 sm:p-7 dark:bg-[#080b12]/90 bg-white dark:border-white/10 border-slate-200/90 shadow-[0_15px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_15px_50px_rgba(0,0,0,0.6)] relative overflow-hidden box-border">
               <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-emerald-400 to-transparent" />
 
               <div className="mb-5 text-left">
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-primary font-bold">
                   CANAL DIRETO
                 </span>
-                <h3 className="font-heading text-lg font-black text-white uppercase mt-0.5">
+                <h3 className="font-heading text-lg font-black dark:text-white text-slate-900 uppercase mt-0.5">
                   Vamos conversar sobre seu projeto?
                 </h3>
                 <p className="text-xs text-muted-foreground mt-1 font-sans">
@@ -125,7 +125,7 @@ const HeroSection = () => {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="w-full border-white/15 bg-white/[0.03] hover:bg-white/10 text-white font-heading font-bold text-xs uppercase tracking-[0.14em] py-5 rounded-xl transition-all"
+                  className="w-full dark:border-white/15 border-slate-300 dark:bg-white/[0.03] bg-slate-100/80 hover:dark:bg-white/10 hover:bg-slate-200/80 dark:text-white text-slate-800 font-heading font-bold text-xs uppercase tracking-[0.14em] py-5 rounded-xl transition-all"
                 >
                   <a
                     href="https://calendar.app.google/RpTN49BD3jJabEB79"
@@ -141,16 +141,16 @@ const HeroSection = () => {
               </div>
 
               {/* Métricas Compactas de Telemetria */}
-              <div className="pt-4 border-t border-white/10 grid grid-cols-3 gap-2 text-center">
-                <div className="p-2 rounded-lg bg-white/[0.02]">
-                  <div className="font-heading font-black text-lg text-white">9+</div>
+              <div className="pt-4 border-t dark:border-white/10 border-slate-200/80 grid grid-cols-3 gap-2 text-center">
+                <div className="p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
+                  <div className="font-heading font-black text-lg dark:text-white text-slate-900">9+</div>
                   <div className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">Cases no Ar</div>
                 </div>
-                <div className="p-2 rounded-lg bg-white/[0.02]">
+                <div className="p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
                   <div className="font-heading font-black text-lg text-emerald-400">100%</div>
                   <div className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">Autonomia</div>
                 </div>
-                <div className="p-2 rounded-lg bg-white/[0.02]">
+                <div className="p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
                   <div className="font-heading font-black text-lg text-primary">12ms</div>
                   <div className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">Latência</div>
                 </div>
@@ -162,12 +162,12 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* ─── MARQUEE INFINITO DE TECNOLOGIAS & ESPECIALIDADES (Elogiado pelo usuário) ─── */}
-      <div className="w-full py-3.5 bg-[#080b12] border-y border-white/10 overflow-hidden relative">
+      {/* ─── MARQUEE INFINITO DE TECNOLOGIAS & ESPECIALIDADES ─── */}
+      <div className="w-full py-3.5 dark:bg-[#080b12] bg-white border-y dark:border-white/10 border-slate-200/80 overflow-hidden relative">
         <div className="animate-marquee flex items-center gap-10 whitespace-nowrap">
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <div key={i} className="flex items-center gap-10">
-              <span className="font-heading font-extrabold text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground/80 hover:text-white transition-colors">
+              <span className="font-heading font-extrabold text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground/80 hover:dark:text-white hover:text-slate-900 transition-colors">
                 {item}
               </span>
               <span className="text-primary font-bold text-sm">✦</span>

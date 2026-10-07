@@ -10,14 +10,14 @@ const steps = [
 
 const HowItWorksSection = () => {
   return (
-    <section id="processo" className="section-padding relative bg-[#080b12] border-t border-b border-white/10 overflow-hidden">
+    <section id="processo" className="section-padding relative dark:bg-[#080b12] bg-slate-50 border-t border-b dark:border-white/10 border-slate-200/80 overflow-hidden">
       <div className="container-narrow relative z-10">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-heading font-bold text-primary mb-4 uppercase tracking-[0.2em]">
               Processo Transparente
             </span>
-            <h2 className="font-heading text-3xl font-black sm:text-4xl md:text-5xl lg:text-6xl text-white uppercase tracking-tight mb-4">
+            <h2 className="font-heading text-3xl font-black sm:text-4xl md:text-5xl lg:text-6xl dark:text-white text-slate-900 uppercase tracking-tight mb-4">
               Do "tenho uma ideia" <br />
               <span className="text-neon">ao ar em poucos dias.</span>
             </h2>
@@ -36,14 +36,14 @@ const HowItWorksSection = () => {
               <div className="relative text-center z-10 flex flex-col h-full">
                 {/* Círculo com Número */}
                 <div className="mx-auto mb-6 relative">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#0b0f19] border border-primary/40 text-primary font-heading font-black text-xl mx-auto shadow-[0_0_25px_rgba(244,63,94,0.3)] group-hover:scale-105 transition-transform">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl dark:bg-[#0b0f19] bg-white border border-primary/40 text-primary font-heading font-black text-xl mx-auto shadow-[0_0_25px_rgba(244,63,94,0.3)] group-hover:scale-105 transition-transform">
                     {step.num}
                   </div>
                 </div>
                 
-                <div className="glass-card p-6 flex-1 flex flex-col justify-start rounded-[1.75rem] bg-[#0b0f19]/80 border border-white/10 hover:border-primary/40 transition-all">
+                <div className="glass-card p-6 flex-1 flex flex-col justify-start rounded-[1.75rem] dark:bg-[#0b0f19]/80 bg-white border dark:border-white/10 border-slate-200/80 shadow-md dark:shadow-none hover:border-primary/40 transition-all">
                   <step.icon className="mx-auto mb-4 h-6 w-6 text-primary" />
-                  <h3 className="text-base font-heading font-black text-white uppercase mb-2">{step.title}</h3>
+                  <h3 className="text-base font-heading font-black dark:text-white text-slate-900 uppercase mb-2">{step.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed font-sans">{step.desc}</p>
                 </div>
               </div>

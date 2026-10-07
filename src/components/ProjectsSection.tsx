@@ -198,7 +198,7 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
 
 function CardProjeto({ project }: { project: Projeto }) {
   return (
-    <div className="group glass-card rounded-[2rem] h-full flex flex-col overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_15px_45px_rgba(244,63,94,0.18)] bg-[#0b0f19]/80">
+    <div className="group glass-card rounded-[2rem] h-full flex flex-col overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_15px_45px_rgba(244,63,94,0.18)] dark:bg-[#0b0f19]/80 bg-white shadow-lg dark:shadow-none">
       <div className="p-3 pb-0">
         <Carousel images={project.screenshots} title={project.title} />
       </div>
@@ -208,7 +208,7 @@ function CardProjeto({ project }: { project: Projeto }) {
           <span className="text-[10px] font-bold text-primary uppercase tracking-[0.16em] font-mono inline-block px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
             {project.tag}
           </span>
-          <h3 className="font-heading text-lg font-black text-white uppercase mt-2">{project.title}</h3>
+          <h3 className="font-heading text-lg font-black dark:text-white text-slate-900 uppercase mt-2">{project.title}</h3>
         </div>
 
         <p className="text-muted-foreground text-xs leading-relaxed mb-6 flex-grow font-sans">
@@ -216,14 +216,14 @@ function CardProjeto({ project }: { project: Projeto }) {
         </p>
 
         <div>
-          <p className="text-[10px] font-bold text-slate-300 uppercase tracking-wider mb-2.5 font-mono">
+          <p className="text-[10px] font-bold dark:text-slate-300 text-slate-600 uppercase tracking-wider mb-2.5 font-mono">
             Destaques da Solução
           </p>
           <ul className="space-y-2 mb-6">
             {project.functions.map((func, j) => (
               <li key={j} className="flex items-center gap-2">
                 <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
-                <span className="text-xs font-medium text-slate-200">{func}</span>
+                <span className="text-xs font-medium dark:text-slate-200 text-slate-700">{func}</span>
               </li>
             ))}
           </ul>
@@ -278,7 +278,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projetos" className="section-padding relative bg-[#080b12] border-t border-b border-white/10 overflow-hidden">
+    <section id="projetos" className="section-padding relative dark:bg-[#080b12] bg-slate-50 border-t border-b dark:border-white/10 border-slate-200/80 overflow-hidden">
       <div className="absolute top-[20%] right-[-10%] w-[450px] h-[450px] rounded-full bg-primary/10 blur-[150px] pointer-events-none" />
       <div className="absolute bottom-[10%] left-[-10%] w-[450px] h-[450px] rounded-full bg-emerald-500/10 blur-[150px] pointer-events-none" />
 
@@ -288,7 +288,7 @@ const ProjectsSection = () => {
             <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-heading font-bold text-primary mb-4 uppercase tracking-[0.2em]">
               Portfólio & Demonstrações ao Vivo
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 text-white uppercase tracking-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 dark:text-white text-slate-900 uppercase tracking-tight">
               Projetos no ar, <span className="text-neon">gerando resultado real</span>
             </h2>
             <p className="mx-auto max-w-2xl text-xs sm:text-sm text-muted-foreground mb-8 font-sans">
@@ -296,7 +296,7 @@ const ProjectsSection = () => {
             </p>
 
             {/* Seletor de Categoria (Segmented Control Grande e Inconfundível) */}
-            <div className="inline-flex flex-col sm:flex-row p-2 bg-[#0b0f19] border border-white/15 rounded-3xl sm:rounded-full shadow-2xl gap-2 max-w-full">
+            <div className="inline-flex flex-col sm:flex-row p-2 dark:bg-[#0b0f19] bg-white border dark:border-white/15 border-slate-200 rounded-3xl sm:rounded-full shadow-xl gap-2 max-w-full">
               {/* Aba 1: Sites & Landing Pages */}
               <button
                 type="button"
@@ -305,7 +305,7 @@ const ProjectsSection = () => {
                 className={`flex items-center justify-between sm:justify-center gap-3 px-6 py-3.5 rounded-2xl sm:rounded-full font-heading font-extrabold text-xs uppercase tracking-wider transition-all duration-300 ${
                   categoria === "sites"
                     ? "bg-primary text-white shadow-[0_0_30px_rgba(244,63,94,0.45)] ring-2 ring-primary/40"
-                    : "bg-white/[0.03] sm:bg-transparent text-muted-foreground hover:text-white hover:bg-white/[0.06]"
+                    : "bg-black/[0.03] dark:bg-white/[0.03] sm:bg-transparent text-muted-foreground hover:text-foreground hover:bg-black/[0.05] dark:hover:bg-white/[0.06]"
                 }`}
               >
                 <div className="flex items-center gap-2.5">
@@ -313,7 +313,7 @@ const ProjectsSection = () => {
                   <span>Sites & Landing Pages</span>
                 </div>
                 <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
-                  categoria === "sites" ? "bg-white/20 text-white" : "bg-white/5 text-muted-foreground"
+                  categoria === "sites" ? "bg-white/20 text-white" : "dark:bg-white/5 bg-slate-100 text-muted-foreground"
                 }`}>
                   {sitesLandingPages.length} MODELOS
                 </span>
@@ -327,7 +327,7 @@ const ProjectsSection = () => {
                 className={`flex items-center justify-between sm:justify-center gap-3 px-6 py-3.5 rounded-2xl sm:rounded-full font-heading font-extrabold text-xs uppercase tracking-wider transition-all duration-300 ${
                   categoria === "sistemas"
                     ? "bg-primary text-white shadow-[0_0_30px_rgba(244,63,94,0.45)] ring-2 ring-primary/40"
-                    : "bg-white/[0.03] sm:bg-transparent text-muted-foreground hover:text-white hover:bg-white/[0.06]"
+                    : "bg-black/[0.03] dark:bg-white/[0.03] sm:bg-transparent text-muted-foreground hover:text-foreground hover:bg-black/[0.05] dark:hover:bg-white/[0.06]"
                 }`}
               >
                 <div className="flex items-center gap-2.5">
@@ -335,7 +335,7 @@ const ProjectsSection = () => {
                   <span>Sistemas & Automações</span>
                 </div>
                 <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
-                  categoria === "sistemas" ? "bg-white/20 text-white" : "bg-white/5 text-muted-foreground"
+                  categoria === "sistemas" ? "bg-white/20 text-white" : "dark:bg-white/5 bg-slate-100 text-muted-foreground"
                 }`}>
                   {gruposSistemas.reduce((n, g) => n + g.projetos.length, 0)} SISTEMAS
                 </span>
@@ -345,9 +345,9 @@ const ProjectsSection = () => {
             {/* Feedback Visual Imediato da Categoria Ativa */}
             <div className="mt-4 text-xs font-mono text-muted-foreground">
               {categoria === "sites" ? (
-                <span>Exibindo <strong className="text-white">3 modelos de alta conversão</strong> com demonstração interativa ao vivo</span>
+                <span>Exibindo <strong className="dark:text-white text-slate-900">3 modelos de alta conversão</strong> com demonstração interativa ao vivo</span>
               ) : (
-                <span>Exibindo <strong className="text-white">6 sistemas e automações com IA</strong> desenvolvidos sob medida</span>
+                <span>Exibindo <strong className="dark:text-white text-slate-900">6 sistemas e automações com IA</strong> desenvolvidos sob medida</span>
               )}
             </div>
           </div>
@@ -370,11 +370,11 @@ const ProjectsSection = () => {
               {gruposSistemas.map((grupo, gi) => (
                 <div key={grupo.id}>
                   <AnimatedSection delay={gi * 0.05}>
-                    <div className="flex items-baseline gap-3 mb-2 border-b border-white/10 pb-4">
+                    <div className="flex items-baseline gap-3 mb-2 border-b dark:border-white/10 border-slate-200 pb-4">
                       <span className="font-mono text-xs font-bold text-primary">
                         {String(gi + 1).padStart(2, "0")}
                       </span>
-                      <h3 className="font-heading text-lg sm:text-xl font-black text-white uppercase">
+                      <h3 className="font-heading text-lg sm:text-xl font-black dark:text-white text-slate-900 uppercase">
                         {grupo.titulo}
                       </h3>
                       <span className="ml-auto text-[11px] font-mono text-muted-foreground shrink-0 uppercase">

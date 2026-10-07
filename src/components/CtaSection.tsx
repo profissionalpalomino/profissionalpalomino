@@ -17,12 +17,12 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const CtaSection = () => {
   return (
-    <section className="section-padding relative overflow-hidden bg-[#0b0f19] px-4 sm:px-6">
+    <section className="section-padding relative overflow-hidden dark:bg-[#0b0f19] bg-white px-4 sm:px-6">
       {/* Dynamic blurred glow behind */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/15 blur-[200px] pointer-events-none" />
       
       <div className="container-narrow relative z-10 w-full mx-auto">
-        <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/10 bg-[#080b12]/95 backdrop-blur-2xl p-6 sm:p-14 md:p-20 text-center shadow-[0_20px_70px_rgba(0,0,0,0.8)] w-full mx-auto box-border">
+        <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[3rem] border dark:border-white/10 border-slate-800 bg-[#080b12]/95 backdrop-blur-2xl p-6 sm:p-14 md:p-20 text-center shadow-[0_20px_70px_rgba(0,0,0,0.8)] w-full mx-auto box-border">
           {/* Subtle inside glow */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
           

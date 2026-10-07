@@ -44,7 +44,7 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="servicos" className="section-padding relative overflow-hidden bg-[#0b0f19]">
+    <section id="servicos" className="section-padding relative overflow-hidden dark:bg-[#0b0f19] bg-white">
       {/* Background glow sutil */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/10 blur-[180px] pointer-events-none" />
       
@@ -54,7 +54,7 @@ const ServicesSection = () => {
             <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-heading font-bold text-primary mb-4 uppercase tracking-[0.2em]">
               Nossas Especialidades
             </span>
-            <h2 className="font-heading text-3xl font-black sm:text-4xl md:text-5xl lg:text-6xl text-white uppercase tracking-tight mb-4">
+            <h2 className="font-heading text-3xl font-black sm:text-4xl md:text-5xl lg:text-6xl dark:text-white text-slate-900 uppercase tracking-tight mb-4">
               Tecnologia de ponta <br />
               <span className="text-neon">sem complicação para você.</span>
             </h2>
@@ -67,21 +67,21 @@ const ServicesSection = () => {
         <div className="grid gap-6 md:grid-cols-2">
           {services.map((s, i) => (
             <AnimatedSection key={i} delay={i * 0.08}>
-              <div className="group glass-card relative overflow-hidden rounded-[2rem] p-8 md:p-10 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_15px_45px_rgba(244,63,94,0.18)] bg-[#080b12]/90 flex flex-col justify-between h-full">
+              <div className="group glass-card relative overflow-hidden rounded-[2rem] p-8 md:p-10 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_15px_45px_rgba(244,63,94,0.18)] dark:bg-[#080b12]/90 bg-slate-50/80 border dark:border-white/10 border-slate-200/80 shadow-md dark:shadow-none flex flex-col justify-between h-full">
                 {/* Linha superior luminosa */}
                 <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r ${s.color}`} />
                 
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/[0.04] border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors duration-300">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl dark:bg-white/[0.04] bg-white border dark:border-white/10 border-slate-200 shadow-sm group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors duration-300">
                       <s.icon className={`h-7 w-7 ${s.accent}`} />
                     </div>
-                    <span className="font-heading font-black text-3xl text-white/10 group-hover:text-primary/30 transition-colors">
+                    <span className="font-heading font-black text-3xl dark:text-white/10 text-slate-300 group-hover:text-primary/30 transition-colors">
                       {s.num}
                     </span>
                   </div>
                   
-                  <h3 className="font-heading text-xl font-black text-white uppercase mb-3">
+                  <h3 className="font-heading text-xl font-black dark:text-white text-slate-900 uppercase mb-3">
                     {s.title}
                   </h3>
                   <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-6 font-sans">
@@ -89,7 +89,7 @@ const ServicesSection = () => {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="pt-4 border-t dark:border-white/10 border-slate-200 flex items-center justify-between">
                   <span className="font-mono text-[10px] text-muted-foreground tracking-wider uppercase">
                     {s.tech}
                   </span>
@@ -97,7 +97,7 @@ const ServicesSection = () => {
                     href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Gostaria de saber mais sobre ${encodeURIComponent(s.title)}.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-heading font-bold uppercase tracking-wider text-primary hover:text-white transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-heading font-bold uppercase tracking-wider text-primary dark:hover:text-white hover:text-slate-950 transition-colors"
                   >
                     Conversar <ArrowRight className="h-3 w-3" />
                   </a>

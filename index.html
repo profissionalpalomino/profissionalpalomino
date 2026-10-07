@@ -40,6 +40,24 @@
   <meta name="theme-color" content="#E8341C" />
   <meta name="apple-mobile-web-app-title" content="Palomino Tech" />
   <link rel="manifest" href="/manifest.webmanifest" />
+
+  <!-- Detecção instantânea de tema claro/escuro sem flash visual -->
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) {
+          t = 'dark';
+          localStorage.setItem('theme', 'dark');
+        }
+        if (t === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 
   <body>
