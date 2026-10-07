@@ -112,13 +112,13 @@ const sitesLandingPages: Projeto[] = [
     url: "/demos/clinica/index.html",
   },
   {
-    title: "Dra. Helena Duarte · Consultório Médico",
+    title: "Clínica Serena · Estética Avançada",
     description:
-      "Site para médicas e médicos de consultório particular. Apresentação pessoal que gera confiança, áreas de atuação explicadas em linguagem simples, depoimentos, dúvidas frequentes e agendamento direto no WhatsApp.",
-    functions: ["Agendamento no WhatsApp", "Áreas de Atuação & Dúvidas", "Formulário de Contato"],
-    screenshots: ["/demos/medica/images/hero.webp"],
-    tag: "Saúde & Consultório Médico",
-    url: "/demos/medica/index.html",
+      "Site para clínicas de estética e harmonização: botox, preenchimento labial, bioestimuladores e skinbooster apresentados com elegância, depoimentos, dúvidas frequentes e agendamento direto no WhatsApp.",
+    functions: ["Agendamento no WhatsApp", "Procedimentos & Dúvidas", "Formulário de Contato"],
+    screenshots: ["https://images.unsplash.com/photo-1731355771418-f10ab62c9f86?q=80&w=900&auto=format&fit=crop"],
+    tag: "Estética & Harmonização",
+    url: "https://clinica.profissionalpalomino.cloud/modelo",
   },
   {
     title: "Vanguard Barber & Studio",
