@@ -112,6 +112,15 @@ const sitesLandingPages: Projeto[] = [
     url: "/demos/clinica/index.html",
   },
   {
+    title: "Dra. Helena Duarte · Consultório Médico",
+    description:
+      "Site para médicas e médicos de consultório particular. Apresentação pessoal que gera confiança, áreas de atuação explicadas em linguagem simples, depoimentos, dúvidas frequentes e agendamento direto no WhatsApp.",
+    functions: ["Agendamento no WhatsApp", "Áreas de Atuação & Dúvidas", "Formulário de Contato"],
+    screenshots: ["/demos/medica/images/hero.webp"],
+    tag: "Saúde & Consultório Médico",
+    url: "/demos/medica/index.html",
+  },
+  {
     title: "Vanguard Barber & Studio",
     description:
       "Site comercial para barbearias, salões masculinos e estúdios de cuidados. Tabela visual de serviços, apresentação do ambiente e botão de reserva rápida de horários sem fila de espera.",

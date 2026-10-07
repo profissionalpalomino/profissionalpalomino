@@ -1,5 +1,15 @@
 # SESSION.md
 
+## Sessão 07/10/2026 — Demo nova: site de consultório médico (`/demos/medica/`)
+
+- **Pedido:** template no estilo de dracarolnogueira.com.br (ginecologista de BH) para ofertar a clínicas e consultórios, com nomes e fotos genéricos.
+- **Feito:** `public/demos/medica/index.html` (HTML único, mesmo padrão das outras 6 demos). Estrutura igual à referência: menu fixo, abertura dividida com fundo bege em diagonal, Sobre com 3 cartões, 5 serviços + cartão dourado de chamada, depoimentos em carrossel com nota, FAQ, agendamento (WhatsApp, telefone, endereço e formulário que abre o WhatsApp com a mensagem pronta) e rodapé escuro. Cormorant Garamond + DM Sans, creme e dourado. Texto próprio (não copiado da referência).
+- **Fictício de propósito:** "Dra. Helena Duarte", CRM UF 00000, telefone (00) 90000-0000, "Av. Central, 1200 · Sua Cidade". Depoimentos marcados como ilustrativos; faixa no topo e rodapé avisam que é modelo demonstrativo, com link "Quero um site assim". Todos os botões de WhatsApp vão para o número da Palomino Tech (5531984773813).
+- **Fotos:** Unsplash (licença livre), mesma modelo nas duas: photo-1706565029882-6f25f1d9af65 (hero) e photo-1706565029539-d09af5896340 (sobre), WebP 900x1100, 66 KB e 96 KB.
+- **Card** novo em `ProjectsSection.tsx`, logo depois da Lumena.
+- **Teste (Playwright):** 1440, 390 e 360 px; sem rolagem lateral, imagens, revelação de todas as seções, links de WhatsApp, alvos de toque >= 44 px, menu do celular, FAQ, carrossel e formulário. 30/30.
+- **Próximo:** se quiser outras especialidades (dermato, odonto), duplicar a pasta e trocar textos/fotos.
+
 ## Sessão 19/09/2026 — Pente Fino Completo: Segurança, PWA, Mobile-First e Conversão
 
 - **Segurança HTTP & Infraestrutura:**
