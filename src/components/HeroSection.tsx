@@ -87,14 +87,14 @@ const HeroSection = () => {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="lg:col-span-5 w-full"
           >
-            <div className="w-full glass-card rounded-[2rem] p-5 sm:p-7 dark:bg-[#080b12]/90 bg-white dark:border-white/10 border-slate-200/90 shadow-[0_15px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_15px_50px_rgba(0,0,0,0.6)] relative overflow-hidden box-border">
+            <div className="w-full glass-card rounded-[2rem] p-4 sm:p-7 dark:bg-[#080b12]/90 bg-white dark:border-white/10 border-slate-200/90 shadow-[0_15px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_15px_50px_rgba(0,0,0,0.6)] relative overflow-hidden box-border">
               <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-emerald-400 to-transparent" />
 
-              <div className="mb-5 text-left">
+              <div className="mb-4 sm:mb-5 text-left">
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-primary font-bold">
                   CANAL DIRETO
                 </span>
-                <h3 className="font-heading text-lg font-black dark:text-white text-slate-900 uppercase mt-0.5">
+                <h3 className="font-heading text-base sm:text-lg font-black dark:text-white text-slate-900 uppercase mt-0.5">
                   Vamos conversar sobre seu projeto?
                 </h3>
                 <p className="text-xs text-muted-foreground mt-1 font-sans">
@@ -103,21 +103,21 @@ const HeroSection = () => {
               </div>
 
               {/* Botões de Ação Imediata */}
-              <div className="space-y-3 mb-6">
+              <div className="space-y-2.5 sm:space-y-3 mb-5 sm:mb-6">
                 <Button
                   size="lg"
                   asChild
-                  className="w-full bg-primary text-white font-heading font-extrabold text-xs uppercase tracking-[0.14em] py-5 rounded-xl shadow-[0_0_25px_rgba(244,63,94,0.4)] hover:shadow-[0_0_35px_rgba(244,63,94,0.6)] hover:scale-[1.02] transition-all"
+                  className="w-full bg-primary text-white font-heading font-extrabold text-[11px] sm:text-xs uppercase tracking-wide sm:tracking-[0.14em] py-4 sm:py-5 rounded-xl shadow-[0_0_25px_rgba(244,63,94,0.4)] hover:shadow-[0_0_35px_rgba(244,63,94,0.6)] hover:scale-[1.02] transition-all"
                 >
                   <a
                     href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Vi o site da Palomino Tech e quero falar sobre um projeto.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-track="hero_whatsapp"
-                    className="flex items-center justify-center gap-2.5"
+                    className="flex items-center justify-center gap-2 sm:gap-2.5"
                   >
-                    <WhatsAppIcon className="h-4 w-4 text-white" />
-                    Chamar no WhatsApp Direto
+                    <WhatsAppIcon className="h-4 w-4 text-white shrink-0" />
+                    <span>Chamar no WhatsApp Direto</span>
                   </a>
                 </Button>
 
@@ -125,34 +125,34 @@ const HeroSection = () => {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="w-full dark:border-white/15 border-slate-300 dark:bg-white/[0.03] bg-slate-100/80 hover:dark:bg-white/10 hover:bg-slate-200/80 dark:text-white text-slate-800 font-heading font-bold text-xs uppercase tracking-[0.14em] py-5 rounded-xl transition-all"
+                  className="w-full dark:border-white/15 border-slate-300 dark:bg-white/[0.03] bg-slate-100/80 hover:dark:bg-white/10 hover:bg-slate-200/80 dark:text-white text-slate-800 font-heading font-bold text-[11px] sm:text-xs uppercase tracking-wide sm:tracking-[0.14em] py-4 sm:py-5 rounded-xl transition-all"
                 >
                   <a
                     href="https://calendar.app.google/RpTN49BD3jJabEB79"
                     target="_blank"
                     rel="noopener noreferrer"
                     data-track="hero_calendar"
-                    className="flex items-center justify-center gap-2.5"
+                    className="flex items-center justify-center gap-2 sm:gap-2.5"
                   >
-                    <Calendar className="h-4 w-4 text-primary" />
-                    Agendar Reunião Online
+                    <Calendar className="h-4 w-4 text-primary shrink-0" />
+                    <span>Agendar Reunião Online</span>
                   </a>
                 </Button>
               </div>
 
               {/* Métricas Compactas de Telemetria */}
-              <div className="pt-4 border-t dark:border-white/10 border-slate-200/80 grid grid-cols-3 gap-2 text-center">
-                <div className="p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
-                  <div className="font-heading font-black text-lg dark:text-white text-slate-900">9+</div>
-                  <div className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">Cases no Ar</div>
+              <div className="pt-3 sm:pt-4 border-t dark:border-white/10 border-slate-200/80 grid grid-cols-3 gap-1.5 sm:gap-2 text-center">
+                <div className="px-1 py-2 sm:p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
+                  <div className="font-heading font-black text-base sm:text-lg dark:text-white text-slate-900">9+</div>
+                  <div className="font-mono text-[8px] sm:text-[9px] uppercase tracking-normal sm:tracking-wider text-muted-foreground truncate">Cases no Ar</div>
                 </div>
-                <div className="p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
-                  <div className="font-heading font-black text-lg text-emerald-400">100%</div>
-                  <div className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">Autonomia</div>
+                <div className="px-1 py-2 sm:p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
+                  <div className="font-heading font-black text-base sm:text-lg text-emerald-400">100%</div>
+                  <div className="font-mono text-[8px] sm:text-[9px] uppercase tracking-normal sm:tracking-wider text-muted-foreground truncate">Autonomia</div>
                 </div>
-                <div className="p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
-                  <div className="font-heading font-black text-lg text-primary">12ms</div>
-                  <div className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">Latência</div>
+                <div className="px-1 py-2 sm:p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
+                  <div className="font-heading font-black text-base sm:text-lg text-primary">12ms</div>
+                  <div className="font-mono text-[8px] sm:text-[9px] uppercase tracking-normal sm:tracking-wider text-muted-foreground truncate">Latência</div>
                 </div>
               </div>
 

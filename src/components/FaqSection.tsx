@@ -55,7 +55,7 @@ const FaqSection = () => {
         </AnimatedSection>
 
         <AnimatedSection delay={0.15}>
-          <div className="mt-12 rounded-[2.5rem] border dark:border-white/10 border-slate-200/80 dark:bg-[#0b0f19]/90 bg-white backdrop-blur-2xl p-6 sm:p-10 shadow-xl dark:shadow-[0_15px_45px_rgba(0,0,0,0.5)]">
+          <div className="mt-12 rounded-[2.5rem] border dark:border-white/10 border-slate-200/80 dark:bg-[#0b0f19]/90 bg-white backdrop-blur-2xl p-5 sm:p-10 shadow-xl dark:shadow-[0_15px_45px_rgba(0,0,0,0.5)]">
             <Accordion type="single" collapsible className="w-full space-y-2">
               {faqs.map((faq, i) => (
                 <AccordionItem 

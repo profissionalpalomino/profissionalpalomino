@@ -127,7 +127,7 @@ const sitesLandingPages: Projeto[] = [
       "https://images.unsplash.com/photo-1624819318229-3460c441275f?q=80&w=900&auto=format&fit=crop",
     ],
     tag: "Saúde & Estética Avançada",
-    url: "https://clinica.profissionalpalomino.cloud/modelo",
+    url: "https://clinicas.palominotech.com.br/modelo",
   },
   {
     title: "Venda do Deco · Bar & Petiscaria",
@@ -203,7 +203,7 @@ function CardProjeto({ project }: { project: Projeto }) {
         <Carousel images={project.screenshots} title={project.title} />
       </div>
 
-      <div className="p-6 flex flex-col flex-grow">
+      <div className="p-4 sm:p-6 flex flex-col flex-grow">
         <div className="mb-4">
           <span className="text-[10px] font-bold text-primary uppercase tracking-[0.16em] font-mono inline-block px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
             {project.tag}
@@ -233,10 +233,10 @@ function CardProjeto({ project }: { project: Projeto }) {
               href={appendQuery(project.url)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-primary text-white text-xs font-heading font-extrabold uppercase tracking-wider hover:brightness-110 transition-all shadow-[0_0_20px_rgba(244,63,94,0.35)] hover:shadow-[0_0_35px_rgba(244,63,94,0.6)]"
+              className="inline-flex items-center justify-center gap-2 w-full py-3 px-3 sm:px-4 rounded-xl bg-primary text-white text-[11px] sm:text-xs font-heading font-extrabold uppercase tracking-wide hover:brightness-110 transition-all shadow-[0_0_20px_rgba(244,63,94,0.35)] hover:shadow-[0_0_35px_rgba(244,63,94,0.6)]"
             >
-              <ExternalLink className="h-3.5 w-3.5" />
-              Ver Demonstração ao Vivo
+              <ExternalLink className="h-3.5 w-3.5 shrink-0" />
+              <span>Ver Demonstração ao Vivo</span>
             </a>
           ) : (
             <a
@@ -249,10 +249,10 @@ function CardProjeto({ project }: { project: Projeto }) {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-heading font-extrabold uppercase tracking-wider hover:bg-emerald-500 hover:text-white transition-all shadow-[0_0_20px_rgba(74,222,128,0.2)]"
+              className="inline-flex items-center justify-center gap-2 w-full py-3 px-3 sm:px-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[11px] sm:text-xs font-heading font-extrabold uppercase tracking-wide hover:bg-emerald-500 hover:text-white transition-all shadow-[0_0_20px_rgba(74,222,128,0.2)]"
             >
-              <MessageCircle className="h-3.5 w-3.5" />
-              Solicitar Demonstração no WhatsApp
+              <MessageCircle className="h-3.5 w-3.5 shrink-0" />
+              <span>Solicitar Demonstração</span>
             </a>
           )}
         </div>
@@ -296,23 +296,23 @@ const ProjectsSection = () => {
             </p>
 
             {/* Seletor de Categoria (Segmented Control Grande e Inconfundível) */}
-            <div className="inline-flex flex-col sm:flex-row p-2 dark:bg-[#0b0f19] bg-white border dark:border-white/15 border-slate-200 rounded-3xl sm:rounded-full shadow-xl gap-2 max-w-full">
+            <div className="flex flex-col sm:inline-flex sm:flex-row p-1.5 sm:p-2 dark:bg-[#0b0f19] bg-white border dark:border-white/15 border-slate-200 rounded-2xl sm:rounded-full shadow-xl gap-1.5 sm:gap-2 w-full max-w-lg mx-auto box-border">
               {/* Aba 1: Sites & Landing Pages */}
               <button
                 type="button"
                 onClick={() => handleTrocaCategoria("sites")}
                 data-track="tab_sites"
-                className={`flex items-center justify-between sm:justify-center gap-3 px-6 py-3.5 rounded-2xl sm:rounded-full font-heading font-extrabold text-xs uppercase tracking-wider transition-all duration-300 ${
+                className={`flex items-center justify-between sm:justify-center gap-2 sm:gap-3 w-full sm:w-auto px-4 py-3 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-full font-heading font-extrabold text-[11px] sm:text-xs uppercase tracking-wide transition-all duration-300 ${
                   categoria === "sites"
                     ? "bg-primary text-white shadow-[0_0_30px_rgba(244,63,94,0.45)] ring-2 ring-primary/40"
                     : "bg-black/[0.03] dark:bg-white/[0.03] sm:bg-transparent text-muted-foreground hover:text-foreground hover:bg-black/[0.05] dark:hover:bg-white/[0.06]"
                 }`}
               >
-                <div className="flex items-center gap-2.5">
-                  <Globe className={`h-4 w-4 ${categoria === "sites" ? "text-white" : "text-primary"}`} />
+                <div className="flex items-center gap-2 shrink-0">
+                  <Globe className={`h-4 w-4 shrink-0 ${categoria === "sites" ? "text-white" : "text-primary"}`} />
                   <span>Sites & Landing Pages</span>
                 </div>
-                <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full shrink-0 ${
                   categoria === "sites" ? "bg-white/20 text-white" : "dark:bg-white/5 bg-slate-100 text-muted-foreground"
                 }`}>
                   {sitesLandingPages.length} MODELOS
@@ -324,17 +324,17 @@ const ProjectsSection = () => {
                 type="button"
                 onClick={() => handleTrocaCategoria("sistemas")}
                 data-track="tab_sistemas"
-                className={`flex items-center justify-between sm:justify-center gap-3 px-6 py-3.5 rounded-2xl sm:rounded-full font-heading font-extrabold text-xs uppercase tracking-wider transition-all duration-300 ${
+                className={`flex items-center justify-between sm:justify-center gap-2 sm:gap-3 w-full sm:w-auto px-4 py-3 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-full font-heading font-extrabold text-[11px] sm:text-xs uppercase tracking-wide transition-all duration-300 ${
                   categoria === "sistemas"
                     ? "bg-primary text-white shadow-[0_0_30px_rgba(244,63,94,0.45)] ring-2 ring-primary/40"
                     : "bg-black/[0.03] dark:bg-white/[0.03] sm:bg-transparent text-muted-foreground hover:text-foreground hover:bg-black/[0.05] dark:hover:bg-white/[0.06]"
                 }`}
               >
-                <div className="flex items-center gap-2.5">
-                  <Cpu className={`h-4 w-4 ${categoria === "sistemas" ? "text-white" : "text-emerald-400"}`} />
+                <div className="flex items-center gap-2 shrink-0">
+                  <Cpu className={`h-4 w-4 shrink-0 ${categoria === "sistemas" ? "text-white" : "text-emerald-400"}`} />
                   <span>Sistemas & Automações</span>
                 </div>
-                <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full shrink-0 ${
                   categoria === "sistemas" ? "bg-white/20 text-white" : "dark:bg-white/5 bg-slate-100 text-muted-foreground"
                 }`}>
                   {gruposSistemas.reduce((n, g) => n + g.projetos.length, 0)} SISTEMAS
@@ -343,11 +343,15 @@ const ProjectsSection = () => {
             </div>
 
             {/* Feedback Visual Imediato da Categoria Ativa */}
-            <div className="mt-4 text-xs font-mono text-muted-foreground">
+            <div className="mt-4 text-xs font-mono text-muted-foreground px-2">
               {categoria === "sites" ? (
-                <span>Exibindo <strong className="dark:text-white text-slate-900">3 modelos de alta conversão</strong> com demonstração interativa ao vivo</span>
+                <p className="text-balance leading-relaxed">
+                  Exibindo <strong className="dark:text-white text-slate-900">3 modelos de alta conversão</strong> com demonstração interativa ao vivo
+                </p>
               ) : (
-                <span>Exibindo <strong className="dark:text-white text-slate-900">6 sistemas e automações com IA</strong> desenvolvidos sob medida</span>
+                <p className="text-balance leading-relaxed">
+                  Exibindo <strong className="dark:text-white text-slate-900">6 sistemas e automações com IA</strong> desenvolvidos sob medida
+                </p>
               )}
             </div>
           </div>
@@ -370,14 +374,16 @@ const ProjectsSection = () => {
               {gruposSistemas.map((grupo, gi) => (
                 <div key={grupo.id}>
                   <AnimatedSection delay={gi * 0.05}>
-                    <div className="flex items-baseline gap-3 mb-2 border-b dark:border-white/10 border-slate-200 pb-4">
-                      <span className="font-mono text-xs font-bold text-primary">
-                        {String(gi + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="font-heading text-lg sm:text-xl font-black dark:text-white text-slate-900 uppercase">
-                        {grupo.titulo}
-                      </h3>
-                      <span className="ml-auto text-[11px] font-mono text-muted-foreground shrink-0 uppercase">
+                    <div className="flex items-baseline justify-between gap-2 mb-2 border-b dark:border-white/10 border-slate-200 pb-3">
+                      <div className="flex items-baseline gap-2.5 min-w-0">
+                        <span className="font-mono text-xs font-bold text-primary shrink-0">
+                          {String(gi + 1).padStart(2, "0")}
+                        </span>
+                        <h3 className="font-heading text-base sm:text-xl font-black dark:text-white text-slate-900 uppercase truncate sm:overflow-visible">
+                          {grupo.titulo}
+                        </h3>
+                      </div>
+                      <span className="text-[10px] sm:text-[11px] font-mono text-muted-foreground shrink-0 uppercase pl-2">
                         {grupo.projetos.length}{" "}
                         {grupo.projetos.length === 1 ? "projeto" : "projetos"}
                       </span>

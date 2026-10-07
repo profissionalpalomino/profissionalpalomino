@@ -67,21 +67,21 @@ const ServicesSection = () => {
         <div className="grid gap-6 md:grid-cols-2">
           {services.map((s, i) => (
             <AnimatedSection key={i} delay={i * 0.08}>
-              <div className="group glass-card relative overflow-hidden rounded-[2rem] p-8 md:p-10 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_15px_45px_rgba(244,63,94,0.18)] dark:bg-[#080b12]/90 bg-slate-50/80 border dark:border-white/10 border-slate-200/80 shadow-md dark:shadow-none flex flex-col justify-between h-full">
+              <div className="group glass-card relative overflow-hidden rounded-[2rem] p-5 sm:p-8 md:p-10 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_15px_45px_rgba(244,63,94,0.18)] dark:bg-[#080b12]/90 bg-slate-50/80 border dark:border-white/10 border-slate-200/80 shadow-md dark:shadow-none flex flex-col justify-between h-full">
                 {/* Linha superior luminosa */}
                 <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r ${s.color}`} />
                 
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl dark:bg-white/[0.04] bg-white border dark:border-white/10 border-slate-200 shadow-sm group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors duration-300">
-                      <s.icon className={`h-7 w-7 ${s.accent}`} />
+                  <div className="flex items-center justify-between mb-5 sm:mb-6">
+                    <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl dark:bg-white/[0.04] bg-white border dark:border-white/10 border-slate-200 shadow-sm group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors duration-300">
+                      <s.icon className={`h-6 w-6 sm:h-7 sm:w-7 ${s.accent}`} />
                     </div>
-                    <span className="font-heading font-black text-3xl dark:text-white/10 text-slate-300 group-hover:text-primary/30 transition-colors">
+                    <span className="font-heading font-black text-2xl sm:text-3xl dark:text-white/10 text-slate-300 group-hover:text-primary/30 transition-colors">
                       {s.num}
                     </span>
                   </div>
                   
-                  <h3 className="font-heading text-xl font-black dark:text-white text-slate-900 uppercase mb-3">
+                  <h3 className="font-heading text-lg sm:text-xl font-black dark:text-white text-slate-900 uppercase mb-2 sm:mb-3">
                     {s.title}
                   </h3>
                   <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-6 font-sans">
@@ -89,7 +89,7 @@ const ServicesSection = () => {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t dark:border-white/10 border-slate-200 flex items-center justify-between">
+                <div className="pt-4 border-t dark:border-white/10 border-slate-200 flex flex-wrap items-center justify-between gap-2">
                   <span className="font-mono text-[10px] text-muted-foreground tracking-wider uppercase">
                     {s.tech}
                   </span>

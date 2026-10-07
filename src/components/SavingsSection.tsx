@@ -21,13 +21,13 @@ const SavingsSection = () => {
         <div className="mt-14 grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
           {/* Funcionário */}
           <AnimatedSection delay={0.1}>
-            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 relative overflow-hidden">
+            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 sm:p-8 relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-1 bg-destructive/60" />
               <div className="flex items-center gap-3 mb-6">
-                <div className="h-10 w-10 rounded-lg bg-destructive/20 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-lg bg-destructive/20 flex items-center justify-center shrink-0">
                   <AlertTriangle className="h-5 w-5 text-destructive" />
                 </div>
-                <h3 className="text-xl font-bold text-white">Funcionário tradicional</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-white">Funcionário tradicional</h3>
               </div>
               <ul className="space-y-4">
                 {[
@@ -48,14 +48,16 @@ const SavingsSection = () => {
 
           {/* Automação */}
           <AnimatedSection delay={0.2}>
-            <div className="rounded-2xl border border-primary/30 bg-primary/10 backdrop-blur-sm p-8 relative overflow-hidden shadow-[var(--shadow-glow)]">
+            <div className="rounded-2xl border border-primary/30 bg-primary/10 backdrop-blur-sm p-5 sm:p-8 relative overflow-hidden shadow-[var(--shadow-glow)]">
               <div className="absolute top-0 left-0 right-0 h-1 bg-primary" />
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                  <Crown className="h-5 w-5 text-primary" />
+              <div className="flex items-center justify-between flex-wrap gap-2 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">
+                    <Crown className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">Automação</h3>
                 </div>
-                <h3 className="text-xl font-bold text-white">Automação</h3>
-                <span className="ml-auto text-xs font-bold bg-primary text-primary-foreground px-3 py-1 rounded-full">RECOMENDADO</span>
+                <span className="text-[10px] sm:text-xs font-bold bg-primary text-primary-foreground px-2.5 py-1 rounded-full shrink-0">RECOMENDADO</span>
               </div>
               <ul className="space-y-4">
                 {[

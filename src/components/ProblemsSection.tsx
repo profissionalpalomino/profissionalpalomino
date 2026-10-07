@@ -39,8 +39,8 @@ const ProblemsSection = () => {
 
         <AnimatedSection delay={0.4}>
           <div className="mt-14 text-center">
-            <div className="inline-block rounded-2xl bg-primary/8 border border-primary/20 px-8 py-5">
-              <p className="text-lg font-bold text-primary md:text-xl">
+            <div className="inline-block rounded-2xl bg-primary/8 border border-primary/20 px-4 sm:px-8 py-4 sm:py-5 max-w-full">
+              <p className="text-base sm:text-lg md:text-xl font-bold text-primary text-balance">
                 ✅ Isso tem solução. E custa menos do que um funcionário.
               </p>
             </div>

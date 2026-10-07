@@ -26,7 +26,7 @@ const TestimonialsSection = () => {
           
           {/* Depoimento 1: Alca Eventos */}
           <AnimatedSection delay={0.1}>
-            <div className="glass-card p-8 sm:p-10 rounded-[2.5rem] dark:bg-[#080b12]/90 bg-slate-50/90 border dark:border-white/10 border-slate-200 shadow-lg dark:shadow-none hover:border-primary/40 transition-all duration-300 flex flex-col justify-between h-full relative overflow-hidden">
+            <div className="glass-card p-5 sm:p-8 md:p-10 rounded-[2.5rem] dark:bg-[#080b12]/90 bg-slate-50/90 border dark:border-white/10 border-slate-200 shadow-lg dark:shadow-none hover:border-primary/40 transition-all duration-300 flex flex-col justify-between h-full relative overflow-hidden">
               <div className="absolute top-0 left-0 w-2 h-full bg-primary" />
               
               <div>
@@ -63,7 +63,7 @@ const TestimonialsSection = () => {
 
           {/* Depoimento 2: Venda do Deco */}
           <AnimatedSection delay={0.2}>
-            <div className="glass-card p-8 sm:p-10 rounded-[2.5rem] dark:bg-[#080b12]/90 bg-slate-50/90 border dark:border-white/10 border-slate-200 shadow-lg dark:shadow-none hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between h-full relative overflow-hidden">
+            <div className="glass-card p-5 sm:p-8 md:p-10 rounded-[2.5rem] dark:bg-[#080b12]/90 bg-slate-50/90 border dark:border-white/10 border-slate-200 shadow-lg dark:shadow-none hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between h-full relative overflow-hidden">
               <div className="absolute top-0 left-0 w-2 h-full bg-emerald-400" />
 
               <div>

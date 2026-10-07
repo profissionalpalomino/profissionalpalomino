@@ -25,5 +25,5 @@ ssh "$VPS" "cd /root/$APP && tar -xf $APP.tar \
   && echo '  Serviço atualizado com sucesso!'"
 
 echo "→ Testando disponibilidade..."
-curl -s -o /dev/null -w "  HTTP %{http_code}\n" "https://palominotech.profissionalpalomino.cloud/"
-echo "✓ No ar em: https://palominotech.profissionalpalomino.cloud"
+curl -s -o /dev/null -w "  HTTP %{http_code}\n" "https://palominotech.com.br/"
+echo "✓ No ar em: https://palominotech.com.br"
