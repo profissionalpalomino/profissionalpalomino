@@ -1,448 +1,276 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vanguard — Barber & Hair Studio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vanguard Barber &amp; Studio</title>
+<meta name="description" content="Corte, barba e acabamento na navalha na Vanguard Barber &amp; Studio em Savassi. Agende pelo WhatsApp.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#121212">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  :root {
-    --bg: #0C0D0E;
-    --card: #141618;
-    --card-hover: #1A1D20;
-    --accent: #D4AF37;
-    --accent-hover: #B89628;
-    --text: #F3F4F6;
-    --muted: #9CA3AF;
-    --border: #26292D;
-    --radius: 16px;
-  }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  h1, h2, h3, .brand-font { font-family: 'Cinzel', serif; letter-spacing: .03em; }
-  .container {
-    width: 100%;
-    max-width: 1140px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 32px !important;
-    padding-right: 32px !important;
-    box-sizing: border-box;
-  }
+:root{--fundo:#121212;--sup:#1b1b1b;--sup2:#232323;--ouro:#c39a5f;--ouro2:#dcb67a;--tinta:#f2ede6;--suave:#a39d94;--linha:rgba(195,154,95,.35)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fundo);color:var(--tinta);font:16px/1.65 'Jost',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.titulo{font-family:'Teko',sans-serif;font-weight:600;line-height:.95;text-transform:uppercase;letter-spacing:.01em}
+.wrap{width:min(1180px,100% - 40px);margin:0 auto}
+.ouro{color:var(--ouro)}
+.rotulo{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ouro);color:#15110b;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:14px 26px;border-radius:2px;transition:background .25s,transform .25s}
+.btn svg{width:18px;height:18px}
+.btn:hover{background:var(--ouro2);transform:translateY(-1px)}
+.btn.vazado{background:transparent;color:var(--tinta);border:1px solid rgba(242,237,230,.6)}
+.btn.vazado:hover{border-color:var(--ouro);color:var(--ouro)}
+.ic{display:inline-grid;place-items:center}
+.ic svg{width:100%;height:100%}
 
-  /* Header */
-  .header {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(12, 13, 14, 0.94);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 0;
-  }
-  .header-in { display: flex; justify-content: space-between; align-items: center; }
-  .logo { font-size: 1.35rem; font-weight: 800; color: #FFF; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-  .logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 28px; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 500; transition: color .15s; }
-  .nav-links a:hover { color: var(--accent); }
+/* Topo */
+header{position:absolute;inset:0 0 auto;z-index:5;padding:22px 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.marca{display:flex;align-items:center;gap:10px;font-family:'Teko',sans-serif;font-size:30px;font-weight:600;text-transform:uppercase;line-height:1}
+.marca .ic{width:30px;height:30px;color:var(--ouro);border:1px solid var(--linha);border-radius:50%;padding:5px}
+nav{display:none;gap:30px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+nav a:hover{color:var(--ouro)}
+@media(min-width:900px){nav{display:flex}}
 
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 12px 24px; border-radius: 8px; font-size: .92rem; font-weight: 700;
-    text-decoration: none; transition: all .2s ease; cursor: pointer; border: 0;
-    text-transform: uppercase; letter-spacing: .05em; text-align: center;
-  }
-  .btn-header { padding: 9px 18px; font-size: .8rem; }
-  .btn-gold { background: var(--accent); color: #0C0D0E; }
-  .btn-gold:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(212,175,55,0.25); }
-  .btn-outline { background: transparent; color: #FFF; border: 1px solid var(--border); }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+/* Abertura */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:120px 0 90px;background:#0b0b0b}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,.15),rgba(0,0,0,.75)),linear-gradient(180deg,rgba(18,18,18,.2) 60%,var(--fundo))}
+.hero .wrap{position:relative;z-index:2}
+.selo{width:150px;margin:0 auto 6px;color:var(--tinta)}
+.selo-txt{font-family:'Teko',sans-serif;font-size:22px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta);opacity:.9}
+.hero h1{font-size:clamp(54px,9vw,112px);margin:14px auto 12px;max-width:14ch}
+.hero p{max-width:540px;margin:0 auto;color:#d6d0c7;font-size:17px}
+.hero .acoes{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
 
-  /* Hero */
-  .hero { padding-top: 64px; padding-bottom: 56px; }
-  .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
-  
-  .badge-tag {
-    display: inline-block; padding: 5px 12px; background: rgba(212, 175, 55, 0.12);
-    color: var(--accent); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 4px;
-    font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px;
-  }
-  .hero h1 { font-size: 3.2rem; line-height: 1.15; color: #FFF; margin-bottom: 20px; }
-  .hero h1 span { color: var(--accent); }
-  .hero p { font-size: 1.05rem; color: var(--muted); line-height: 1.65; margin-bottom: 30px; max-width: 520px; }
-  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+/* Círculos de serviço */
+.circulos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 10px;margin:-40px auto 0;position:relative;z-index:3;max-width:820px}
+.circulo{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;color:#d6d0c7}
+.circulo .ic{width:92px;height:92px;border-radius:50%;background:var(--sup2);border:1px solid rgba(255,255,255,.06);padding:28px;color:var(--ouro);transition:background .3s,color .3s,transform .3s}
+.circulo.aceso .ic,.circulo:hover .ic{background:var(--ouro);color:#15110b;transform:translateY(-3px)}
+@media(min-width:760px){.circulos{grid-template-columns:repeat(6,1fr)}}
 
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    border-top: 1px solid var(--border);
-    padding-top: 24px;
-    max-width: 480px;
-  }
-  .stat-num { font-size: 1.6rem; font-weight: 700; color: #FFF; line-height: 1.1; font-family: 'Cinzel', serif; }
-  .stat-desc { font-size: .75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: .04em; margin-top: 4px; }
+section{padding:96px 0}
+.topo-secao{text-align:center;margin-bottom:48px}
+.topo-secao h2{font-size:clamp(42px,5.6vw,64px);margin-top:6px}
 
-  .hero-img-box {
-    border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
-    box-shadow: 0 16px 36px rgba(0,0,0,0.5);
-  }
-  .hero-img-box img { width: 100%; height: 460px; object-fit: cover; display: block; }
-  
-  /* Seções */
-  .secao { padding-top: 76px; padding-bottom: 76px; border-top: 1px solid var(--border); }
-  .secao-header { max-width: 600px; margin-bottom: 44px; }
-  .secao-header h2 { font-size: 2.3rem; color: #FFF; margin-bottom: 10px; }
-  .secao-header p { color: var(--muted); font-size: 1rem; }
+/* Sobre com mosaico */
+.sobre{display:grid;gap:48px;align-items:center}
+.mosaico{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mosaico img{width:100%;aspect-ratio:1;object-fit:cover;filter:grayscale(.15) contrast(1.05)}
+.mosaico img:first-child{border-radius:0 0 0 0}
+.mosaico .centro{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:var(--ouro);color:#15110b;display:grid;place-items:center;box-shadow:0 0 0 10px rgba(195,154,95,.25)}
+.mosaico .centro svg{width:32px;height:32px}
+.sobre h2{font-size:clamp(40px,5vw,60px);margin:10px 0 18px}
+.sobre p{color:#cfc9bf}
+.depo{display:flex;gap:14px;align-items:flex-start;margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08)}
+.avatar{flex:none;width:48px;height:48px;border-radius:50%;background:var(--sup2);border:1px solid var(--linha);display:grid;place-items:center;font-family:'Teko',sans-serif;font-size:24px;color:var(--ouro)}
+.depo p{font-size:15px}
+.depo b{display:block;margin-top:4px;color:var(--ouro);font-weight:500;font-size:14px}
+.sobre .btn{margin-top:28px}
+@media(min-width:900px){.sobre{grid-template-columns:1fr 1fr;gap:70px}}
 
-  .menu-servicos { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-  .servico-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 24px; display: flex; justify-content: space-between; align-items: center;
-    transition: all .2s ease;
-  }
-  .servico-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .servico-nome { font-size: 1.15rem; font-weight: 700; color: #FFF; margin-bottom: 4px; }
-  .servico-desc { font-size: .85rem; color: var(--muted); }
-  .servico-preco { font-size: 1.35rem; font-weight: 700; color: var(--accent); font-family: 'Cinzel', serif; margin-left: 16px; white-space: nowrap; }
+/* Cards de serviço */
+.servicos{background:linear-gradient(rgba(18,18,18,.92),rgba(18,18,18,.96)),url('https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=900&q=75') center/cover}
+.cards{display:grid;gap:18px}
+.card{border:1px solid var(--linha);background:rgba(27,27,27,.75);padding:30px 24px;transition:border-color .3s,transform .3s}
+.card:hover{border-color:var(--ouro);transform:translateY(-4px)}
+.card .ic{width:40px;height:40px;color:var(--ouro);margin-bottom:22px}
+.card h3{font-size:26px;margin-bottom:8px}
+.card p{color:var(--suave);font-size:14.5px}
+.card a{display:inline-flex;align-items:center;gap:4px;margin-top:18px;color:var(--ouro);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.card a svg{width:14px;height:14px}
+@media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.cards{grid-template-columns:repeat(4,1fr)}}
 
-  /* Experiência */
-  .grid-experiencia { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .exp-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 28px; text-align: left;
-  }
-  .exp-icon {
-    width: 44px; height: 44px; border-radius: 8px; background: rgba(212, 175, 55, 0.12);
-    color: var(--accent); display: flex; align-items: center; justify-content: center;
-    margin-bottom: 16px;
-  }
-  .exp-card h3 { font-size: 1.2rem; color: #FFF; margin-bottom: 8px; }
-  .exp-card p { font-size: .88rem; color: var(--muted); line-height: 1.55; }
+/* Números do Google */
+.numeros{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.numero{padding:34px 16px;text-align:center}
+.numero+.numero{border-left:1px solid rgba(255,255,255,.08)}
+.numero .titulo{font-size:clamp(40px,5vw,58px);color:var(--ouro);overflow-wrap:anywhere}
+.numero span{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--suave)}
+@media(max-width:639px){.numero:nth-child(3){border-left:0}.numero:nth-child(n+3){border-top:1px solid rgba(255,255,255,.08)}}
+@media(min-width:640px){.numeros{grid-template-columns:repeat(4,1fr)}}
 
-  /* CTA */
-  .cta-box {
-    background: #18191B; border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 56px 28px; text-align: center; margin: 30px 0;
-  }
-  .cta-box h2 { font-size: 2.3rem; color: #FFF; margin-bottom: 12px; }
-  .cta-box p { color: var(--muted); max-width: 500px; margin: 0 auto 24px; font-size: .95rem; }
+/* Avaliações */
+.avs{display:grid;gap:18px}
+.av{background:var(--sup);border-left:3px solid var(--ouro);padding:26px}
+.av .estrelas{display:flex;gap:3px;color:var(--ouro);margin-bottom:12px}
+.av .estrelas svg{width:15px;height:15px}
+.av p{color:#d6d0c7;font-size:15px}
+.av b{display:block;margin-top:14px;font-weight:500;color:var(--tinta)}
+@media(min-width:900px){.avs{grid-template-columns:repeat(3,1fr)}}
 
-  .footer { border-top: 1px solid var(--border); padding: 36px 0; text-align: center; color: #6B7280; font-size: .82rem; }
+/* Contato */
+.contato{display:grid;gap:18px}
+.bloco{background:var(--sup);padding:30px}
+.bloco h3{display:flex;align-items:center;gap:12px;font-size:28px;margin-bottom:16px}
+.bloco h3 .ic{width:26px;height:26px;color:var(--ouro)}
+.linha{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.08);font-size:14.5px;color:#cfc9bf}
+.linha span:first-child{text-transform:capitalize}
+.bloco p{color:#cfc9bf}
+.bloco .mapa{display:inline-block;margin-top:14px;color:var(--ouro);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+@media(min-width:900px){.contato{grid-template-columns:1fr 1fr}}
 
-  /* 📱 MOBILE */
-  @media (max-width: 768px) {
-    .container { padding-left: 24px !important; padding-right: 24px !important; }
-    .nav-links { display: none; }
-    .header { padding: 14px 0; }
-    .logo { font-size: 1.15rem; }
-    .btn-header { padding: 8px 14px; font-size: .78rem; }
-    
-    .hero { padding-top: 52px !important; padding-bottom: 36px !important; margin-top: 6px; }
-    .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-    .hero h1 { font-size: 2.1rem; line-height: 1.18; }
-    .hero p { font-size: 0.95rem; margin-bottom: 22px; }
-    
-    .hero-actions { flex-direction: column; width: 100%; gap: 10px; }
-    .hero-actions .btn { width: 100%; padding: 14px 20px; }
+/* Fechamento */
+.fim{position:relative;padding:130px 0;text-align:center;background:#0b0b0b}
+.fim>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
+.fim .wrap{position:relative}
+.fim h2{font-size:clamp(46px,7vw,90px);margin:8px 0 26px}
+footer{padding:34px 0;text-align:center;color:var(--suave);font-size:13px;border-top:1px solid rgba(255,255,255,.06)}
+.rodape-previa{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#0a0a0a;color:#e8e2d8;text-align:center;font-size:13px;padding:12px 16px;border-top:1px solid var(--linha)}
+.rodape-previa strong{color:var(--ouro)}
+body.tem-rodape{padding-bottom:46px}
 
-    .hero-stats {
-      display: flex !important;
-      justify-content: space-between !important;
-      align-items: flex-start !important;
-      gap: 8px !important;
-      text-align: center;
-      width: 100%;
-      padding-top: 20px;
-    }
-    .hero-stats > div { flex: 1; min-width: 0; }
-    .stat-num { font-size: 1.3rem; white-space: nowrap; }
-    .stat-desc { font-size: 0.65rem; line-height: 1.2; letter-spacing: 0.02em; }
-
-    .hero-img-box img { height: 280px; }
-    
-    .secao { padding-top: 52px !important; padding-bottom: 52px !important; }
-    .secao-header { margin-bottom: 32px; }
-    .secao-header h2 { font-size: 1.75rem; }
-    
-    .menu-servicos { grid-template-columns: 1fr; }
-    .grid-experiencia { grid-template-columns: 1fr; }
-    .grid-galeria-barber { grid-template-columns: 1fr !important; }
-    .grid-localizacao { grid-template-columns: 1fr !important; gap: 24px !important; }
-    .mapa-frame-wrap { min-height: 280px !important; }
-    
-    .cta-box { padding: 36px 20px; border-radius: 18px; }
-    .cta-box h2 { font-size: 1.7rem; }
-    .cta-box .btn { width: 100%; }
-  }
-
-  /* ─── Galeria & Localização ─── */
-  .grid-galeria-barber { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
-  .card-galeria-barber { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--card); }
-  .card-galeria-barber img { width: 100%; height: 220px; object-fit: cover; display: block; transition: transform 0.3s; }
-  .card-galeria-barber:hover img { transform: scale(1.04); }
-  .card-galeria-barber div { padding: 14px 18px; font-weight: 600; font-size: 0.9rem; color: #FFF; border-top: 1px solid var(--border); }
-
-  .grid-localizacao { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: stretch; margin-top: 10px; }
-  .card-loc-info {
-    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 36px 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  }
-  .loc-item { display: flex; align-items: flex-start; gap: 16px; }
-  .loc-icon {
-    width: 44px; height: 44px; border-radius: 10px; background: rgba(212, 175, 55, 0.12);
-    color: var(--accent); display: flex; align-items: center; justify-content: center; shrink-0;
-  }
-  .loc-icon svg { width: 20px; height: 20px; }
-  .loc-item h4 { font-size: 1.05rem; color: #FFF; margin-bottom: 4px; font-weight: 600; }
-  .loc-item p { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
-  .mapa-frame-wrap {
-    border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4); min-height: 360px;
-  }
+@media(prefers-reduced-motion:no-preference){
+  .hero .wrap>*{animation:sobe .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero .wrap>*:nth-child(2){animation-delay:.08s}.hero .wrap>*:nth-child(3){animation-delay:.16s}
+  .hero .wrap>*:nth-child(4){animation-delay:.24s}.hero .wrap>*:nth-child(5){animation-delay:.32s}
+  @keyframes sobe{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+}
 </style>
 </head>
-<body>
+<body class="tem-rodape">
 
-<header class="header">
-  <div class="container header-in">
-    <a href="#" class="logo">VANGUARD <span>STUDIO</span></a>
-    <nav class="nav-links">
-      <a href="#servicos">Menu de Serviços</a>
-      <a href="#experiencia">Diferenciais</a>
-      <a href="#localizacao">Localização</a>
+<header>
+  <div class="wrap">
+    <a class="marca" href="#"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/></svg></span><span>Vanguard Barber &amp; Studio</span></a>
+    <nav>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">A casa</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#contato">Contato</a>
     </nav>
-    <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20no%20Vanguard" target="_blank" class="btn btn-gold btn-header">
-      Agendar no WhatsApp
-    </a>
   </div>
 </header>
 
-<main>
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-grid">
-        <div>
-          <span class="badge-tag">Corte Clássico & Barboterapia</span>
-          <h1>Onde a tradição encontra o <span>estilo impecável</span>.</h1>
-          <p>Cortes masculinos de precisão, toalha quente, cerveja artesanal e atendimento com hora marcada sem fila de espera.</p>
-          <div class="hero-actions">
-            <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20reservar%20um%20hor%C3%A1rio%20no%20Vanguard" target="_blank" class="btn btn-gold">
-              Reservar Horário →
-            </a>
-            <a href="#servicos" class="btn btn-outline">Ver Tabela de Serviços</a>
-          </div>
-          <div class="hero-stats">
-            <div>
-              <div class="stat-num">+5.000</div>
-              <div class="stat-desc">Cortes</div>
-            </div>
-            <div>
-              <div class="stat-num">4.9 ★</div>
-              <div class="stat-desc">No Google</div>
-            </div>
-            <div>
-              <div class="stat-num">100%</div>
-              <div class="stat-desc">Premium</div>
-            </div>
-          </div>
-        </div>
-        <div class="hero-img-box">
-          <img src="images/fade.webp" alt="Barbearia Vanguard - Corte Fade">
-        </div>
-      </div>
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1800&q=75" alt="">
+  <div class="wrap">
+    <div class="selo"><svg viewBox="0 0 120 60" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+  <circle cx="22" cy="44" r="7"/><circle cx="98" cy="44" r="7"/>
+  <path d="M28 39L92 8M92 39L28 8"/>
+  <path d="M42 50c6 0 12-6 18-6s12 6 18 6c-4 4-10 5-18 1-8 4-14 3-18-1z" fill="currentColor" stroke="none"/>
+</svg></div>
+    <div class="selo-txt">Barbearia · Savassi</div>
+    <h1>Vanguard Barber &amp; Studio</h1>
+    <p>Corte na régua, barba no capricho e hora marcada para você não perder tempo na espera.</p>
+    <div class="acoes">
+      <a class="btn " href="https://wa.me/5531984773813?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.8.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg><span>Agendar horário</span></a>
+      <a class="btn vazado" href="#servicos">Ver serviços</a>
     </div>
-  </section>
-
-  <!-- Serviços -->
-  <section class="secao" id="servicos">
-    <div class="container">
-      <div class="secao-header">
-        <span class="badge-tag">Tabela de Serviços</span>
-        <h2>Menu & Experiências</h2>
-        <p>Produtos importados de alta performance e técnicas de barbearia tradicional.</p>
-      </div>
-
-      <div class="menu-servicos">
-        <div class="servico-card">
-          <div>
-            <div class="servico-nome">Corte Clássico & Fade</div>
-            <div class="servico-desc">Lavagem especial, finalização com pomada e alinhamento de perfil.</div>
-          </div>
-          <div class="servico-preco">R$ 65</div>
-        </div>
-
-        <div class="servico-card">
-          <div>
-            <div class="servico-nome">Barboterapia Tradicional</div>
-            <div class="servico-desc">Toalha quente com óleos essenciais, massagem facial e navalha.</div>
-          </div>
-          <div class="servico-preco">R$ 55</div>
-        </div>
-
-        <div class="servico-card">
-          <div>
-            <div class="servico-nome">Combo Vanguard (Cabelo + Barba)</div>
-            <div class="servico-desc">A experiência completa com direito a 1 drink cortesia no lounge.</div>
-          </div>
-          <div class="servico-preco">R$ 105</div>
-        </div>
-
-        <div class="servico-card">
-          <div>
-            <div class="servico-nome">Alinhamento de Fios / Botox</div>
-            <div class="servico-desc">Redução de volume e hidratação profunda para cabelos e barba.</div>
-          </div>
-          <div class="servico-preco">R$ 80</div>
-        </div>
-      </div>
-
-      <!-- Galeria Visual do Studio -->
-      <div class="grid-galeria-barber">
-        <div class="card-galeria-barber">
-          <img src="images/fade.webp" alt="Fade Cut Precision">
-          <div>Corte & Visagismo Masculino</div>
-        </div>
-        <div class="card-galeria-barber">
-          <img src="images/barba.webp" alt="Barboterapia com Toalha Quente">
-          <div>Barboterapia & Toalha Quente</div>
-        </div>
-        <div class="card-galeria-barber">
-          <img src="images/lounge.webp" alt="Lounge Bar Vanguard">
-          <div>Lounge Bar & Chopp Artesanal</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Diferenciais -->
-  <section class="secao" id="experiencia">
-    <div class="container">
-      <div class="secao-header">
-        <span class="badge-tag">Padrão Vanguard</span>
-        <h2>Por Que Escolher a Vanguard</h2>
-        <p>Um espaço pensado exclusivamente para o conforto, estilo e bem-estar do homem moderno.</p>
-      </div>
-
-      <div class="grid-experiencia">
-        <div class="exp-card">
-          <div class="exp-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <h3>Zero Fila de Espera</h3>
-          <p>Atendimento pontual com agendamento direto pelo WhatsApp.</p>
-        </div>
-        <div class="exp-card">
-          <div class="exp-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          </div>
-          <h3>Lounge & Bar Exclusivo</h3>
-          <p>Café gourmet, chopp artesanal e ambiente para relaxar.</p>
-        </div>
-        <div class="exp-card">
-          <div class="exp-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3>Mestres Barbeiros</h3>
-          <p>Profissionais premiados e especialistas em visagismo facial.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção Localização & Maps -->
-  <section class="secao" id="localizacao">
-    <div class="container">
-      <div class="secao-header">
-        <span class="badge-tag">Nosso Studio</span>
-        <h2>Onde Estamos</h2>
-        <p>Localização privilegiada na Savassi com facilidade de acesso e estacionamento conveniado.</p>
-      </div>
-
-      <div class="grid-localizacao">
-        <div class="card-loc-info">
-          <div class="loc-item">
-            <div class="loc-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <h4>Endereço Savassi</h4>
-              <p>Rua Antônio de Albuquerque, 606 — Bairro Savassi<br>Belo Horizonte - MG · CEP 30112-011</p>
-            </div>
-          </div>
-
-          <div class="loc-item">
-            <div class="loc-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div>
-              <h4>Horários de Atendimento</h4>
-              <p><strong>Terça a Sábado:</strong> 09:00 às 21:00<br><strong>Segunda:</strong> 13:00 às 20:00<br><span style="color:#6B7280">Domingo: Fechado</span></p>
-            </div>
-          </div>
-
-          <div class="loc-item">
-            <div class="loc-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
-            </div>
-            <div>
-              <h4>Cerveja Artesanal Cortesia</h4>
-              <p>Aproveite uma Heineken gelada ou café expresso cortesia enquanto aguarda seu atendimento.</p>
-            </div>
-          </div>
-
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
-            <a href="https://maps.google.com/?q=Rua+Antonio+de+Albuquerque,+606+-+Savassi,+Belo+Horizonte+-+MG" target="_blank" class="btn btn-gold" style="font-size:0.88rem;padding:12px 22px;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-              Abrir Rota no Google Maps / Waze
-            </a>
-          </div>
-        </div>
-
-        <div class="mapa-frame-wrap">
-          <iframe 
-            src="https://maps.google.com/maps?q=Rua+Antonio+de+Albuquerque,+606+-+Savassi,+Belo+Horizonte+-+MG&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-            width="100%" 
-            height="100%" 
-            style="border:0; min-height: 360px; width: 100%; border-radius: var(--radius);" 
-            allowfullscreen="" 
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Box -->
-  <section id="agendar">
-    <div class="container">
-      <div class="cta-box">
-        <h2>Pronto para elevar seu padrão?</h2>
-        <p>Clique abaixo e escolha o melhor dia e horário para seu atendimento.</p>
-        <a href="https://wa.me/5531984773813?text=Ol%C3%A1%2C%20quero%20agendar%20um%20corte%20no%20Vanguard" target="_blank" class="btn btn-gold" style="padding:14px 32px;font-size:.95rem">
-          Agendar Agora no WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <p>© 2026 Vanguard Barber & Studio. Modelo Demonstrativo Palomino Tech.</p>
   </div>
-</footer>
+</section>
 
+<div class="wrap">
+  <div class="circulos">
+    <div class="circulo"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/></svg></span><span>Corte</span></div><div class="circulo aceso"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6v5a7 7 0 0 0 14 0V6"/><path d="M9 14c1 1 2 1.5 3 1.5s2-.5 3-1.5"/><path d="M12 19v2"/></svg></span><span>Barba</span></div><div class="circulo"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l9-9 4 4-9 9H3z"/><path d="M12 8l3-3a2.8 2.8 0 0 1 4 4l-3 3"/></svg></span><span>Navalha</span></div><div class="circulo"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="14" rx="2"/><path d="M7 7l1-4h8l1 4M10 3v4M14 3v4M12 11v6"/></svg></span><span>Degradê</span></div><div class="circulo"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10c3-3 7-4 11-3s5 2 7 3"/><path d="M5 15c2 1.5 4.5 2 7 2s5-.5 7-2"/><circle cx="12" cy="15" r="1.4"/></svg></span><span>Sobrancelha</span></div><div class="circulo"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v4H4z"/><path d="M6 9v10h12V9"/><path d="M9 13h6"/></svg></span><span>Toalha quente</span></div>
+  </div>
+</div>
+
+<section id="sobre">
+  <div class="wrap sobre">
+    <div class="mosaico">
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy"><img src="https://images.unsplash.com/photo-1532710093739-9470acff878f?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy"><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy">
+      <span class="centro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/></svg></span>
+    </div>
+    <div>
+      <span class="rotulo">Vanguard Barber &amp; Studio</span>
+      <h2>Barbearia de verdade, <span class="ouro">com o cuidado de antigamente.</span></h2>
+      <p>Corte na tesoura, degradê na régua e barba completa com toalha quente. Um ambiente exclusivo com música boa e café expresso para você relaxar enquanto cuida do visual.</p>
+      <div class="depo">
+        <span class="avatar">M</span>
+        <div><p>"Melhor barbearia de BH. Atendimento impecável do início ao fim, degradê milimétrico e a toalha quente na barba é diferenciada."</p><b>Matheus G., cliente no Google</b></div>
+      </div>
+      <a class="btn " href="https://wa.me/5531984773813?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.8.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg><span>Marcar meu horário</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="servicos" class="servicos">
+  <div class="wrap">
+    <div class="topo-secao">
+      <span class="rotulo">Nossos serviços</span>
+      <h2>O que fazemos <span class="ouro">na cadeira</span></h2>
+    </div>
+    <div class="cards">
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/></svg></span><h3>Corte na tesoura</h3><p>Do social ao moderno, com a conversa antes para acertar o que você quer.</p><a href="https://wa.me/5531984773813?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">Agendar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div><div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="14" rx="2"/><path d="M7 7l1-4h8l1 4M10 3v4M14 3v4M12 11v6"/></svg></span><h3>Degradê na régua</h3><p>Máquina e acabamento na navalha, sem degrau e sem pressa.</p><a href="https://wa.me/5531984773813?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">Agendar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div><div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6v5a7 7 0 0 0 14 0V6"/><path d="M9 14c1 1 2 1.5 3 1.5s2-.5 3-1.5"/><path d="M12 19v2"/></svg></span><h3>Barba completa</h3><p>Toalha quente, desenho do contorno e navalha para fechar.</p><a href="https://wa.me/5531984773813?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">Agendar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div><div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10v7H7z"/><path d="M5 10h14v4H5zM8 14l-2 7M16 14l2 7M12 14v7"/></svg></span><h3>Corte e barba</h3><p>O combo da casa: sai pronto para a semana inteira.</p><a href="https://wa.me/5531984773813?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">Agendar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="numeros">
+  <div class="numero"><div class="titulo">4,9</div><span>Nota no Google</span></div><div class="numero"><div class="titulo">148</div><span>Avaliações</span></div><div class="numero"><div class="titulo">5</div><span>Dias abertos na semana</span></div><div class="numero"><div class="titulo">Savassi</div><span>Onde estamos</span></div>
+</div></div>
+
+<section id="avaliacoes">
+  <div class="wrap">
+    <div class="topo-secao">
+      <span class="rotulo">Avaliações no Google</span>
+      <h2>Quem senta aqui <span class="ouro">volta</span></h2>
+    </div>
+    <div class="avs">
+      <div class="av"><div class="estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>"Melhor barbearia de BH. Atendimento impecável do início ao fim, degradê milimétrico e a toalha quente na barba é diferenciada."</p><b>Matheus G.</b></div><div class="av"><div class="estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>"Espaço sensacional, pontualidade britânica e profissionais de alto nível. Corto aqui há meses e recomendo de olhos fechados."</p><b>Rodrigo P.</b></div><div class="av"><div class="estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>"Ambiente de primeira, cerveja gelada e corte perfeito. Vale cada centavo."</p><b>Gabriel A.</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="topo-secao">
+      <span class="rotulo">Horários e endereço</span>
+      <h2>Passa <span class="ouro">aqui</span></h2>
+    </div>
+    <div class="contato">
+      <div class="bloco">
+        <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Horários</h3>
+        <div class="linha"><span>terça-feira</span><span>09:00–20:00</span></div><div class="linha"><span>quarta-feira</span><span>09:00–20:00</span></div><div class="linha"><span>quinta-feira</span><span>09:00–20:00</span></div><div class="linha"><span>sexta-feira</span><span>09:00–20:00</span></div><div class="linha"><span>sábado</span><span>08:30–19:00</span></div><div class="linha"><span>domingo</span><span>Fechado</span></div><div class="linha"><span>segunda-feira</span><span>Fechado</span></div>
+      </div>
+      <div class="bloco">
+        <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span> Endereço</h3>
+        <p>Rua Paraíba, 1317 - Savassi, Belo Horizonte - MG, 30130-141</p>
+        <p style="margin-top:10px">(31) 98477-3813</p>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fim">
+  <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1800&q=75" alt="">
+  <div class="wrap">
+    <span class="rotulo">Sua vez na cadeira</span>
+    <h2>Bora dar um trato <span class="ouro">no visual?</span></h2>
+    <a class="btn " href="https://wa.me/5531984773813?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.8.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg><span>Agendar pelo WhatsApp</span></a>
+  </div>
+</section>
+
+<footer>© 2026 Vanguard Barber &amp; Studio · Savassi</footer>
+
+<div class="rodape-previa">Demonstração Oficial · Modelo de Barbearia por Palomino Tech</div>
+<script>
+(function() {
+  try {
+    var p = new URLSearchParams(window.location.search);
+    var ref = p.get('ref') || p.get('lead') || '';
+    if (ref) {
+      document.querySelectorAll('a[href*="wa.me"]').forEach(function(a) {
+        var u = new URL(a.href);
+        var t = u.searchParams.get('text') || '';
+        if (t && t.indexOf('Ref:') === -1) {
+          u.searchParams.set('text', t + ' (Ref: ' + ref + ')');
+          a.href = u.toString();
+        }
+      });
+    }
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

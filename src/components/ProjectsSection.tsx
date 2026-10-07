@@ -92,69 +92,55 @@ const gruposSistemas: Grupo[] = [
   },
 ];
 
+function appendQuery(url?: string): string | undefined {
+  if (!url) return undefined;
+  if (typeof window === "undefined") return url;
+  const search = window.location.search;
+  if (!search) return url;
+  const params = search.startsWith("?") ? search.slice(1) : search;
+  const sep = url.includes("?") ? "&" : "?";
+  return `${url}${sep}${params}`;
+}
+
 const sitesLandingPages: Projeto[] = [
-  {
-    title: "Éclat & Aura Studio de Beleza",
-    description:
-      "Landing page de luxo para salões de beleza, cabeleireiros e alta cabelaria. Tabela de procedimentos, galeria de transformações e agendamento direto de horários no WhatsApp.",
-    functions: ["Menu de Procedimentos & Preços", "Galeria de Transformações", "Agendamento VIP no WhatsApp"],
-    screenshots: ["https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=900&auto=format&fit=crop"],
-    tag: "Beleza & Salão de Beleza",
-    url: "/demos/salao/index.html",
-  },
-  {
-    title: "Lumena Clínica & Estética",
-    description:
-      "Landing page de alta conversão para clínicas de saúde, odontologia estética e dermatologia. Foco em agendamento direto de avaliações pelo WhatsApp, autoridade clínica e experiência fluida no celular.",
-    functions: ["Agendamento no WhatsApp", "Catálogo de Tratamentos", "Design Clean & Responsivo"],
-    screenshots: ["https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=900&auto=format&fit=crop"],
-    tag: "Saúde & Estética",
-    url: "/demos/clinica/index.html",
-  },
-  {
-    title: "Serena · Dermatologia",
-    description:
-      "Site para dermatologistas e clínicas de estética: tratamentos clínicos e estéticos com fotos, formação da médica, depoimentos, dúvidas frequentes otimizadas para Google e IAs e agendamento direto no WhatsApp.",
-    functions: ["Agendamento no WhatsApp", "Tratamentos & Formação", "FAQ para Google e IAs"],
-    screenshots: ["https://images.unsplash.com/photo-1699206791200-414d95e68450?q=80&w=900&auto=format&fit=crop"],
-    tag: "Dermatologia & Estética",
-    url: "https://clinica.profissionalpalomino.cloud/modelo",
-  },
   {
     title: "Vanguard Barber & Studio",
     description:
-      "Site comercial para barbearias, salões masculinos e estúdios de cuidados. Tabela visual de serviços, apresentação do ambiente e botão de reserva rápida de horários sem fila de espera.",
-    functions: ["Menu de Serviços & Preços", "Reserva de Horário WhatsApp", "Galeria de Estilo & Fotos"],
-    screenshots: ["https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=900&auto=format&fit=crop"],
-    tag: "Beleza & Cuidados Masculinos",
+      "Modelo premium de barbearia inspirado na referência GoGrin: estética dark com dourado, selo artesanal em traço, círculos de serviços, galeria em mosaico e reserva direta de horários no WhatsApp sem fila de espera.",
+    functions: ["Menu de Serviços & Preços", "Reserva de Horário WhatsApp", "Galeria de Estilo em Mosaico"],
+    screenshots: [
+      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=900&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=900&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=900&auto=format&fit=crop",
+    ],
+    tag: "Beleza & Barbearia",
     url: "/demos/barbearia/index.html",
   },
   {
-    title: "Morada Nobre Imóveis",
+    title: "Serena · Dermatologia & Estética",
     description:
-      "Vitrine imobiliária de alto padrão para construtoras, corretores e imobiliárias. Catálogo com metragem, especificações, tour virtual e agendamento de visita VIP.",
-    functions: ["Catálogo de Imóveis & Preços", "Especificações e Metragem", "Agendamento de Visita VIP"],
-    screenshots: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900&auto=format&fit=crop"],
-    tag: "Imobiliária & Alto Padrão",
-    url: "/demos/imobiliaria/index.html",
+      "Landing page de alta conversão para clínicas de estética e saúde. Tratamentos clínicos com fotos, responsável técnica com CRM/RQE, FAQ estruturada para Google/IAs e agendamento direto no WhatsApp.",
+    functions: ["Agendamento no WhatsApp", "Tratamentos & Formação Médica", "FAQ para Google e IAs"],
+    screenshots: [
+      "https://images.unsplash.com/photo-1699206791200-414d95e68450?q=80&w=900&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1731355771418-f10ab62c9f86?q=80&w=900&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1624819318229-3460c441275f?q=80&w=900&auto=format&fit=crop",
+    ],
+    tag: "Saúde & Estética Avançada",
+    url: "https://clinica.profissionalpalomino.cloud/modelo",
   },
   {
-    title: "Le Jardin Bistrô & Gastronomia",
+    title: "Venda do Deco · Bar & Petiscaria",
     description:
-      "Landing page sensorial para restaurantes, bistrôs e cafeterias gourmet. Cardápio visual com fotos de pratos, carta de vinhos e reserva direta de mesas no WhatsApp.",
-    functions: ["Cardápio Visual com Fotos", "Reserva de Mesas WhatsApp", "Experiência Gastronômica"],
-    screenshots: ["https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=900&auto=format&fit=crop"],
-    tag: "Gastronomia & Restaurante",
-    url: "/demos/restaurante/index.html",
-  },
-  {
-    title: "Valence & Associados",
-    description:
-      "Site institucional corporativo para escritórios de advocacia, consultorias e empresas de serviços B2B. Tipografia imponente, áreas de especialidade e canal para consulta confidencial.",
-    functions: ["Áreas de Atuação Jurídica", "Canal de Consulta Confidencial", "Credenciais & Autoridade"],
-    screenshots: ["https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=900&auto=format&fit=crop"],
-    tag: "Corporativo & Jurídico",
-    url: "/demos/advocacia/index.html",
+      "Site sensorial para restaurantes, bistrôs, bares e cafeterias. Cardápio visual com preços e fotos reais de porções, história do espaço desde 1996, horários de funcionamento e pedido direto pelo WhatsApp.",
+    functions: ["Cardápio com Preços & Fotos", "Horários & Endereço", "Pedido & Reserva no WhatsApp"],
+    screenshots: [
+      "/demos/venda-do-deco/img/salao-balcao.webp",
+      "/demos/venda-do-deco/img/casarao.webp",
+      "/demos/venda-do-deco/img/deco.webp",
+    ],
+    tag: "Gastronomia, Bar & Bistrô",
+    url: "/demos/venda-do-deco/index.html",
   },
 ];
 
@@ -244,7 +230,7 @@ function CardProjeto({ project }: { project: Projeto }) {
 
           {project.url ? (
             <a
-              href={project.url}
+              href={appendQuery(project.url)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-white text-xs font-bold hover:brightness-110 transition-all shadow-sm"
@@ -254,7 +240,13 @@ function CardProjeto({ project }: { project: Projeto }) {
             </a>
           ) : (
             <a
-              href={`https://wa.me/${WHATSAPP}?text=Olá! Gostaria de ver uma demonstração do sistema ${encodeURIComponent(project.title)}.`}
+              href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+                `Olá! Gostaria de ver uma demonstração do sistema ${project.title}.${
+                  typeof window !== "undefined" && new URLSearchParams(window.location.search).get("ref")
+                    ? ` (Ref: ${new URLSearchParams(window.location.search).get("ref")})`
+                    : ""
+                }`
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl border border-primary/20 bg-primary/5 text-primary text-xs font-bold hover:bg-primary hover:text-white transition-all shadow-sm"

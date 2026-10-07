@@ -1,5 +1,15 @@
 # SESSION.md
 
+## Sessão 07/10/2026 (tarde) — Enxugamento dos Templates de Sites & Repasse de Referências do Site Finder
+
+- **Enxugamento de Templates:** A seção de templates ("Sites & Landing Pages") foi reduzida de 7 para os 3 modelos campeões e validados com referências visuais oficiais:
+  1. **Vanguard Barber & Studio:** Modelo dark premium com dourado, inspirado na referência GoGrin (Pinterest) do Site Finder (`modelos/barbearia.js`), gerado com dados e fotos de alta autoridade (`/demos/barbearia/index.html`).
+  2. **Serena · Dermatologia & Estética:** Modelo de alta conversão do ClínicaFlow com CRM/RQE, tratamentos clínicos e FAQ para Google/IAs (`https://clinica.profissionalpalomino.cloud/modelo`).
+  3. **Venda do Deco · Bar & Petiscaria:** Modelo sensorial do Site Finder com história real desde 1996, cardápio visual com preços e fotos autênticas (`/demos/venda-do-deco/index.html`).
+- **Propagação Dinâmica de Referências (`?ref=` / `?lead=`):**
+  - No `ProjectsSection.tsx`: implementada função `appendQuery` que preserva e concatena qualquer parâmetro de URL (`window.location.search`) nos botões de "Ver Demonstração ao Vivo" e nas mensagens de solicitação via WhatsApp.
+  - Nas demos locais (`barbearia` e `venda-do-deco`): injetado script que captura `?ref=` / `?lead=` da URL e insere o sufixo `(Ref: ...)` nos links de WhatsApp da página, garantindo atribuição completa de leads originados no Site Finder.
+
 ## Sessão 07/10/2026 — Card "Clínica Serena · Estética Avançada"
 
 - A demo de consultório médico (`/demos/medica/`) foi criada e, na mesma sessão, substituída: o Rodrigo pediu um modelo genérico de clínica de estética, com rastreio. A página nova mora no ClínicaFlow (`https://clinica.profissionalpalomino.cloud/modelo`), onde o painel /analytics gera links por contato e mostra quem abriu, quanto leu e se clicou no WhatsApp.
