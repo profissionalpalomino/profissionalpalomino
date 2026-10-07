@@ -1,30 +1,30 @@
 # SESSION.md
 
-## Sessão 07/10/2026 — Redesign Cinematográfico Completo (Estilo Dark Neon, Referências BizNext, Systeme.io, Elleven e Apiki)
+## Sessão 07/10/2026 — Refinamentos por Áudio do Rodrigo (Hero Equilibrado, Abas Estáveis, Dupla Flutuante & Telemetria)
 
-- **Identidade Visual Oficial Alinhada com o Instagram (`@palominotech`):**
-  - Fundo Dark Mode cinematográfico profundo (`#0b0f19` / `#080b12`), superfícies glassmorphic translúcidas com bordas `border-white/10`.
-  - Tipografia de impacto: Headings em **Montserrat** (pesos 700/800/900 em uppercase) e corpo em **Inter**.
-  - Acentos de alta voltagem: Neon Rose (`#f43f5e`) com text-shadow suave e Verde Emerald (`#4ade80`) para indicadores de telemetria operacional.
-  - Símbolo oficial: Hexágono regular SVG com contorno neon rose em Navbar, CTA e Footer.
-- **Cockpit 3D & Hero Section (BizNext / Systeme.io / Morph AI):**
-  - Hero com headline de conversão direta: *"TRANSFORME PROCESSOS LENTOS EM SISTEMAS AUTÔNOMOS."*
-  - Mockup 3D central simulando o Cockpit Executivo em tempo real (`palomino.cloud / cockpit-executivo`) com cards flutuantes animados via framer-motion (WhatsApp 24/7, Leads qualificados, Uptime 99.98%, Latência 12ms).
-  - Ticker/Marquee infinito horizontal com estrelas e especialidades em movimento contínuo (estilo WE03 / Elleven).
-- **Portfólio com Abas e Cases Reais:**
-  - Alternador de categorias: *"Sites & Landing Pages (3)"* e *"Sistemas & Automações (6)"*.
-  - Screenshots reais, carrossel interativo em cada card e botões de demonstração ao vivo ou solicitação no WhatsApp (com propagação de `?ref=` / `?lead=`).
-- **Prova Social, Depoimentos & FAQ:**
-  - `TestimonialsSection.tsx`: Inclusão de depoimentos reais (Alca Eventos e Venda do Deco) com selo "Case Validado".
-  - `HowItWorksSection.tsx`: Pipeline metodológico em 4 etapas conectado por feixe neon contínuo.
-  - `FaqSection.tsx`: Acordion expansível com 6 respostas que eliminam objeções comerciais.
-- **Canais Oficiais e Contato Direto:**
-  - WhatsApp oficial: `+55 31 98477-3813`
-  - Google Calendar oficial: `https://calendar.app.google/RpTN49BD3jJabEB79`
-  - Instagram oficial: `@palominotech`
+- **Hero Section Reequilibrado & Proporcional:**
+  - Redução drástica da escala da tipografia (`text-3xl sm:text-4xl md:text-5xl font-black`) para eliminar o impacto de "susto" ao abrir em resoluções altas (2K/4K).
+  - Estrutura dividida em 2 colunas equilibradas no desktop:
+    - **Esquerda:** Status operacional compacto, títulos em tamanho harmônico, 3 diferenciais em checklist (`Zero planilhas`, `Atendimento 24h IA`, `No ar em dias`).
+    - **Direita:** Card de ação executiva com botões diretos de conversão (WhatsApp e Google Calendar) + 3 métricas de telemetria compactas (`9+ Cases`, `100% Autonomia`, `12ms Latência`).
+  - **Remoção do Mockup 3D Pesado:** Retirado o laptop com os blocos grandões verticais que consumiam espaço excessivo.
+  - **Marquee Preservado:** Faixa contínua com estrelas (`✦`) e especialidades mantida exatamente como elogiado.
+- **Botões Flutuantes Duplos (WhatsApp + Instagram):**
+  - Removido o atalho do `@palominotech` da Navbar superior para manter o topo limpo.
+  - Criada pilha flutuante ergonômica no canto inferior direito com safe-area insets:
+    - **Instagram:** Ícone oficial com gradiente e hover scale.
+    - **WhatsApp:** Ícone oficial com verde e pulso ativo.
+- **Seletor de Abas da Seção de Projetos Reformulado:**
+  - Segmented control de alto contraste com badges claros (`3 MODELOS ATIVOS` vs `6 SISTEMAS NO AR`).
+  - Ancoragem suave com `min-h-[550px]` e transições `fade-in` para eliminar completamente qualquer tranco ou pulo na tela ao trocar de aba.
+  - Rótulo dinâmico orientativo informando exatamente o que está sendo exibido.
+- **Telemetria & Analytics em Tempo Real Integrados:**
+  - Módulo `src/lib/tracker.ts` conectado ao endpoint do Site Finder (`/api/analytics/track`).
+  - Rastreamento silencioso de visitantes humanos, tempo ativo de permanência (heartbeat a cada 20s), funil de rolagem (25%, 50%, 75%, 100%) e cliques em WhatsApp, Instagram, Calendar e abas.
+  - O portfólio agora aparece e pontua automaticamente no painel de Telemetria do Site Finder sob o slug `palominotech`.
 - **Validação:**
-  - Build de produção (`npm run build`) concluído com zero erros.
-  - Teste automatizado via navegador (`browser_subagent`) validando desktop (1280x800) e mobile (390x844) sem vazamento lateral e com 100% de responsividade.
+  - Build de produção (`npm run build`) concluído com zero erros em 9.7s.
+  - Teste automatizado via navegador (`browser_subagent`) validando carregamento, transição estável entre abas sem tranco e funcionamento dos botões flutuantes.
 
 ---
 

@@ -9,9 +9,12 @@ import FaqSection from "@/components/FaqSection";
 import CtaSection from "@/components/CtaSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { initTracker } from "@/lib/tracker";
 
 const Index = () => {
   useEffect(() => {
+    initTracker();
+
     if (window.location.hash) {
       const id = window.location.hash.replace("#", "");
       const el = document.getElementById(id);

@@ -264,6 +264,19 @@ function CardProjeto({ project }: { project: Projeto }) {
 const ProjectsSection = () => {
   const [categoria, setCategoria] = useState<"sites" | "sistemas">("sites");
 
+  const handleTrocaCategoria = (novaCat: "sites" | "sistemas") => {
+    if (categoria === novaCat) return;
+    setCategoria(novaCat);
+    // Preserva ancoragem estável sem tranco visual na página
+    const el = document.getElementById("projetos");
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < -80) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
+
   return (
     <section id="projetos" className="section-padding relative bg-[#080b12] border-t border-b border-white/10 overflow-hidden">
       <div className="absolute top-[20%] right-[-10%] w-[450px] h-[450px] rounded-full bg-primary/10 blur-[150px] pointer-events-none" />
@@ -275,91 +288,115 @@ const ProjectsSection = () => {
             <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-heading font-bold text-primary mb-4 uppercase tracking-[0.2em]">
               Portfólio & Demonstrações ao Vivo
             </span>
-            <h2 className="font-heading text-3xl font-black sm:text-4xl md:text-5xl lg:text-6xl mb-6 text-white uppercase tracking-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 text-white uppercase tracking-tight">
               Projetos no ar, <span className="text-neon">gerando resultado real</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-sm sm:text-base text-muted-foreground mb-10 font-sans">
-              De sites modernos e landing pages de alta conversão até sistemas complexos com automação de WhatsApp e inteligência artificial.
+            <p className="mx-auto max-w-2xl text-xs sm:text-sm text-muted-foreground mb-8 font-sans">
+              Clique nas abas abaixo para alternar entre os modelos de sites para negócios e os sistemas operacionais com inteligência artificial.
             </p>
 
-            {/* Seletor de Categoria (Abas) */}
-            <div className="inline-flex p-1.5 bg-[#0b0f19] border border-white/10 rounded-full shadow-lg gap-2">
+            {/* Seletor de Categoria (Segmented Control Grande e Inconfundível) */}
+            <div className="inline-flex flex-col sm:flex-row p-2 bg-[#0b0f19] border border-white/15 rounded-3xl sm:rounded-full shadow-2xl gap-2 max-w-full">
+              {/* Aba 1: Sites & Landing Pages */}
               <button
-                onClick={() => setCategoria("sites")}
-                className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-heading font-extrabold text-xs uppercase tracking-wider transition-all ${
+                type="button"
+                onClick={() => handleTrocaCategoria("sites")}
+                data-track="tab_sites"
+                className={`flex items-center justify-between sm:justify-center gap-3 px-6 py-3.5 rounded-2xl sm:rounded-full font-heading font-extrabold text-xs uppercase tracking-wider transition-all duration-300 ${
                   categoria === "sites"
-                    ? "bg-primary text-white shadow-[0_0_25px_rgba(244,63,94,0.4)]"
-                    : "text-muted-foreground hover:text-white"
+                    ? "bg-primary text-white shadow-[0_0_30px_rgba(244,63,94,0.45)] ring-2 ring-primary/40"
+                    : "bg-white/[0.03] sm:bg-transparent text-muted-foreground hover:text-white hover:bg-white/[0.06]"
                 }`}
               >
-                <Globe className="h-4 w-4" />
-                Sites & Landing Pages ({sitesLandingPages.length})
+                <div className="flex items-center gap-2.5">
+                  <Globe className={`h-4 w-4 ${categoria === "sites" ? "text-white" : "text-primary"}`} />
+                  <span>Sites & Landing Pages</span>
+                </div>
+                <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                  categoria === "sites" ? "bg-white/20 text-white" : "bg-white/5 text-muted-foreground"
+                }`}>
+                  {sitesLandingPages.length} MODELOS
+                </span>
               </button>
 
+              {/* Aba 2: Sistemas & Automações */}
               <button
-                onClick={() => setCategoria("sistemas")}
-                className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-heading font-extrabold text-xs uppercase tracking-wider transition-all ${
+                type="button"
+                onClick={() => handleTrocaCategoria("sistemas")}
+                data-track="tab_sistemas"
+                className={`flex items-center justify-between sm:justify-center gap-3 px-6 py-3.5 rounded-2xl sm:rounded-full font-heading font-extrabold text-xs uppercase tracking-wider transition-all duration-300 ${
                   categoria === "sistemas"
-                    ? "bg-primary text-white shadow-[0_0_25px_rgba(244,63,94,0.4)]"
-                    : "text-muted-foreground hover:text-white"
+                    ? "bg-primary text-white shadow-[0_0_30px_rgba(244,63,94,0.45)] ring-2 ring-primary/40"
+                    : "bg-white/[0.03] sm:bg-transparent text-muted-foreground hover:text-white hover:bg-white/[0.06]"
                 }`}
               >
-                <Cpu className="h-4 w-4" />
-                Sistemas & Automações ({gruposSistemas.reduce((n, g) => n + g.projetos.length, 0)})
+                <div className="flex items-center gap-2.5">
+                  <Cpu className={`h-4 w-4 ${categoria === "sistemas" ? "text-white" : "text-emerald-400"}`} />
+                  <span>Sistemas & Automações</span>
+                </div>
+                <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                  categoria === "sistemas" ? "bg-white/20 text-white" : "bg-white/5 text-muted-foreground"
+                }`}>
+                  {gruposSistemas.reduce((n, g) => n + g.projetos.length, 0)} SISTEMAS
+                </span>
               </button>
+            </div>
+
+            {/* Feedback Visual Imediato da Categoria Ativa */}
+            <div className="mt-4 text-xs font-mono text-muted-foreground">
+              {categoria === "sites" ? (
+                <span>Exibindo <strong className="text-white">3 modelos de alta conversão</strong> com demonstração interativa ao vivo</span>
+              ) : (
+                <span>Exibindo <strong className="text-white">6 sistemas e automações com IA</strong> desenvolvidos sob medida</span>
+              )}
             </div>
           </div>
         </AnimatedSection>
 
-        {categoria === "sites" ? (
-          <div className="mt-14">
-            <AnimatedSection>
-              <div className="text-center mb-10">
-                <p className="text-xs sm:text-sm text-muted-foreground max-w-xl mx-auto font-sans">
-                  Modelos de demonstração com design cinematográfico, responsivos no celular e com botão de WhatsApp pronto para converter visitantes em clientes.
-                </p>
+        {/* Container Estabilizado para Evitar Pulos na Página */}
+        <div className="min-h-[550px] transition-opacity duration-300">
+          {categoria === "sites" ? (
+            <div className="mt-10 animate-in fade-in duration-300">
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {sitesLandingPages.map((site, i) => (
+                  <AnimatedSection key={site.title} delay={i * 0.1}>
+                    <CardProjeto project={site} />
+                  </AnimatedSection>
+                ))}
               </div>
-            </AnimatedSection>
+            </div>
+          ) : (
+            <div className="mt-12 space-y-16 animate-in fade-in duration-300">
+              {gruposSistemas.map((grupo, gi) => (
+                <div key={grupo.id}>
+                  <AnimatedSection delay={gi * 0.05}>
+                    <div className="flex items-baseline gap-3 mb-2 border-b border-white/10 pb-4">
+                      <span className="font-mono text-xs font-bold text-primary">
+                        {String(gi + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="font-heading text-lg sm:text-xl font-black text-white uppercase">
+                        {grupo.titulo}
+                      </h3>
+                      <span className="ml-auto text-[11px] font-mono text-muted-foreground shrink-0 uppercase">
+                        {grupo.projetos.length}{" "}
+                        {grupo.projetos.length === 1 ? "projeto" : "projetos"}
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-6 max-w-2xl font-sans">{grupo.dor}</p>
+                  </AnimatedSection>
 
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {sitesLandingPages.map((site, i) => (
-                <AnimatedSection key={site.title} delay={i * 0.12}>
-                  <CardProjeto project={site} />
-                </AnimatedSection>
+                  <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {grupo.projetos.map((project, i) => (
+                      <AnimatedSection key={project.title} delay={i * 0.1}>
+                        <CardProjeto project={project} />
+                      </AnimatedSection>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
-          </div>
-        ) : (
-          <div className="mt-16 space-y-20">
-            {gruposSistemas.map((grupo, gi) => (
-              <div key={grupo.id}>
-                <AnimatedSection delay={gi * 0.05}>
-                  <div className="flex items-baseline gap-3 mb-2 border-b border-white/10 pb-4">
-                    <span className="font-mono text-xs font-bold text-primary">
-                      {String(gi + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="font-heading text-xl sm:text-2xl font-black text-white uppercase">
-                      {grupo.titulo}
-                    </h3>
-                    <span className="ml-auto text-[11px] font-mono text-muted-foreground shrink-0 uppercase">
-                      {grupo.projetos.length}{" "}
-                      {grupo.projetos.length === 1 ? "projeto" : "projetos"}
-                    </span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-8 max-w-2xl font-sans">{grupo.dor}</p>
-                </AnimatedSection>
-
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                  {grupo.projetos.map((project, i) => (
-                    <AnimatedSection key={project.title} delay={i * 0.12}>
-                      <CardProjeto project={project} />
-                    </AnimatedSection>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );

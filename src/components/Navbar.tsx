@@ -89,16 +89,6 @@ const Navbar = () => {
 
           {/* Action CTAs */}
           <div className="hidden sm:flex items-center gap-2.5">
-            <a
-              href="https://instagram.com/palominotech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 text-[11px] font-heading font-bold uppercase tracking-wider text-muted-foreground hover:text-white hover:border-white/20 transition-all"
-            >
-              <Instagram className="h-3.5 w-3.5 text-primary" />
-              <span>@palominotech</span>
-            </a>
-
             <Button
               size="sm"
               variant="outline"
