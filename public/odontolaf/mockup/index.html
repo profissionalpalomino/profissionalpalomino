@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OdontoLaf · Protótipo</title>
+<meta name="description" content="Protótipo navegável dos sistemas internos da OdontoLaf: leads e mensageria, e controle de estoque por QR.">
+<meta name="theme-color" content="#8E5F43">
+<meta name="robots" content="noindex, nofollow">
+<!-- O link vai circular por WhatsApp: sem estas tags o preview sai em branco. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="OdontoLaf · Protótipo">
+<meta property="og:description" content="Protótipo navegável dos sistemas internos da OdontoLaf.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238E5F43'/%3E%3Cpath d='M16 9.5c-2-1.8-3.6-2.5-5.4-2.5-3 0-5.4 2.6-5.4 6.4 0 5 2.9 9.6 4.8 12.2.8 1.2 1.8 1.8 2.8 1.8 1.2 0 1.8-1 3.2-1s2 1 3.2 1c1 0 2-.6 2.8-1.8 1.9-2.6 4.8-7.2 4.8-12.2 0-3.8-2.4-6.4-5.4-6.4-1.8 0-3.4.7-5.4 2.5z' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-in">
+    <div class="marca">
+      <div class="marca-ico">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5.5c-1.6-1.4-3-2-4.5-2C5 3.5 3 5.7 3 8.8c0 4.2 2.4 8 4 10.2.7 1 1.5 1.5 2.3 1.5 1 0 1.5-.8 2.7-.8s1.7.8 2.7.8c.8 0 1.6-.5 2.3-1.5 1.6-2.2 4-6 4-10.2 0-3.1-2-5.3-4.5-5.3-1.5 0-2.9.6-4.5 2z"/>
+        </svg>
+      </div>
+      <div>OdontoLaf<small>Sistemas internos</small></div>
+    </div>
+    <nav class="apps">
+      <button class="app-btn on" data-app="leads">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>
+        Leads e mensageria
+      </button>
+      <button class="app-btn" data-app="estoque">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        Estoque
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════ APLICATIVO 1 — LEADS ══════════ -->
+<main id="app-leads">
+  <h1>Leads e mensageria</h1>
+  <p class="sub">Base de contatos, campanhas e conversas — tudo no mesmo painel.</p>
+
+  <div class="abas">
+    <button class="aba on" data-aba="painel">Painel de leads</button>
+    <button class="aba" data-aba="respostas">Responderam <span class="tag accent" style="margin-left:5px">3</span></button>
+    <button class="aba" data-aba="campanhas">Campanhas</button>
+  </div>
+
+  <!-- ── Painel de leads ── -->
+  <section data-secao="painel">
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-l">Na base</div><div class="kpi-v" id="kpiTotal">—</div></div>
+      <div class="kpi"><div class="kpi-l">Sem contato</div><div class="kpi-v" id="kpiSem">—</div></div>
+      <div class="kpi"><div class="kpi-l">Responderam</div><div class="kpi-v destaque">3</div></div>
+      <div class="kpi"><div class="kpi-l">Em campanha</div><div class="kpi-v" id="kpiCamp">—</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-h">
+        <div class="filtros">
+          <div class="fgrupo">
+            <span class="fgrupo-l">Último contato</span>
+            <div class="filtro-grupo">
+              <button class="filtro on" data-f="dias" data-v="0">Todos</button>
+              <button class="filtro" data-f="dias" data-v="7">7 d</button>
+              <button class="filtro" data-f="dias" data-v="15">15 d</button>
+              <button class="filtro" data-f="dias" data-v="30">30 d</button>
+            </div>
+          </div>
+          <div class="fgrupo">
+            <span class="fgrupo-l">Rede social</span>
+            <div class="filtro-grupo">
+              <button class="filtro" data-f="canal" data-v="Instagram">Instagram</button>
+              <button class="filtro" data-f="canal" data-v="Facebook">Facebook</button>
+              <button class="filtro" data-f="canal" data-v="Google">Google</button>
+              <button class="filtro" data-f="canal" data-v="Indicação">Indicação</button>
+            </div>
+          </div>
+          <div class="fgrupo">
+            <span class="fgrupo-l">Base</span>
+            <div class="filtro-grupo">
+              <button class="filtro" data-f="situacao" data-v="cliente">Clientes</button>
+              <button class="filtro" data-f="situacao" data-v="lead">Leads</button>
+            </div>
+          </div>
+          <div class="fgrupo">
+            <span class="fgrupo-l">Campanha</span>
+            <div class="filtro-grupo" id="filtrosCampanha"></div>
+          </div>
+        </div>
+        <button class="b bcsv" id="btnCsv">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Subir CSV
+        </button>
+      </div>
+
+      <div style="padding:12px 19px;border-bottom:1px solid var(--linha);display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <label style="display:flex;align-items:center;gap:8px;margin:0;font-size:.85rem;color:var(--texto)">
+          <input type="checkbox" id="selTodos"> Selecionar todos
+        </label>
+        <span class="tag" id="contaFiltro">—</span>
+        <span class="tag" id="contaSel">nenhum selecionado</span>
+        <div style="margin-left:auto;display:flex;gap:8px">
+          <button class="b b2o" id="btnVincular" disabled>Vincular a campanha</button>
+          <button class="b b1" id="btnDisparar" disabled>Disparar agora</button>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto" class="rolavel">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:38px"></th>
+              <th>Paciente</th>
+              <th class="esconde-mob">Canal</th>
+              <th class="esconde-mob">Situação</th>
+              <th>Último contato</th>
+              <th>Campanhas</th>
+            </tr>
+          </thead>
+          <tbody id="tbLeads"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Responderam ── -->
+  <section data-secao="respostas" hidden>
+    <div class="card">
+      <div class="card-h">
+        <h2>Quem respondeu</h2>
+        <span class="tag">clientes e leads · clique para ver a conversa</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Contato</th><th>Base</th><th class="esconde-mob">Campanha</th><th>Última mensagem</th><th class="num">Quando</th></tr></thead>
+          <tbody id="tbRespostas"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Campanhas ── -->
+  <section data-secao="campanhas" hidden>
+    <div class="grade">
+      <div class="card">
+        <div class="card-h">
+          <h2>Campanhas</h2>
+          <button class="b b2o" id="btnNovaCamp">+ Nova campanha</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Campanha</th><th class="esconde-mob">Tipo</th><th>Quem entra</th><th class="num">Na campanha</th></tr></thead>
+            <tbody id="tbCampanhas"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><h2>Como funciona</h2></div>
+        <div class="card-b">
+          <div class="aviso accent" style="margin-bottom:14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div>Uma varredura por dia avalia a base inteira. Na campanha por regra ninguém é
+            vinculado à mão: quem passa a bater o critério entra sozinho.</div>
+          </div>
+          <p style="font-size:.85rem;color:var(--texto2);line-height:1.65;margin-bottom:14px">
+            <strong>Por regra</strong> é a campanha que se mantém sozinha, como aniversário e retorno.
+            O critério aparece na coluna <em>Quem entra</em>.<br><br>
+            <strong>Por lista</strong> tem data marcada e você escolhe quem entra, filtrando o painel.
+            É o caso da parceria do café ou de uma data comemorativa.
+          </p>
+          <div style="border-top:1px solid var(--linha);padding-top:14px;margin-bottom:14px">
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--texto3);margin-bottom:7px">
+              Quando o paciente sai
+            </div>
+            <p style="font-size:.85rem;color:var(--texto2);line-height:1.65">
+              Ao responder, ele sai da campanha na hora e a conversa vai para a aba
+              <strong>Responderam</strong> — ninguém continua recebendo cobrança depois de
+              já ter respondido. Também sai quando deixa de bater a regra.
+            </p>
+          </div>
+          <div style="border-top:1px solid var(--linha);padding-top:14px;margin-bottom:14px">
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--texto3);margin-bottom:7px">
+              Campo faltando
+            </div>
+            <p style="font-size:.85rem;color:var(--texto2);line-height:1.65">
+              A regra só enxerga quem tem o dado preenchido. Contato sem data de nascimento
+              fica de fora do aniversário, e sem data da última consulta fica de fora do retorno.
+            </p>
+          </div>
+          <div style="border-top:1px solid var(--linha);padding-top:14px">
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--texto3);margin-bottom:7px">
+              Em mais de uma campanha
+            </div>
+            <p style="font-size:.85rem;color:var(--texto2);line-height:1.65">
+              O paciente pode estar em quantas quiser — aparecem todas ao lado do nome dele.
+              Se duas caírem no mesmo dia, sai <strong>só uma</strong>: a pontual tem prioridade
+              sobre a automática, e a outra espera a folga de
+              <strong>3 dias entre mensagens</strong> para o mesmo contato.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ══════════ APLICATIVO 2 — ESTOQUE ══════════ -->
+<main id="app-estoque" hidden>
+  <h1>Controle de estoque</h1>
+  <p class="sub">Cada peça tem QR próprio. Bipe antes ou depois do procedimento.</p>
+
+  <div id="avisoAberto"></div>
+
+  <div class="bipe">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/></svg>
+    <input type="text" id="campoBipe" placeholder="Bipe a etiqueta ou digite o código — ex: ODL-IMP-0001/00042" autocomplete="off">
+    <button class="b b1" id="btnBipe">Ler</button>
+  </div>
+
+  <div class="abas">
+    <button class="aba on" data-aba2="catalogo">Estoque</button>
+    <button class="aba" data-aba2="movimentos">Atendimentos</button>
+    <button class="aba" data-aba2="clientes">Clientes</button>
+  </div>
+
+  <section data-secao2="catalogo">
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-l">Peças em estoque</div><div class="kpi-v" id="kpiPecas">—</div></div>
+      <div class="kpi"><div class="kpi-l">Valor imobilizado</div><div class="kpi-v" id="kpiValor">—</div></div>
+      <div class="kpi"><div class="kpi-l">Abaixo do mínimo</div><div class="kpi-v destaque" id="kpiMin">—</div></div>
+      <div class="kpi"><div class="kpi-l">Vencendo em 90 dias</div><div class="kpi-v destaque" id="kpiVal">—</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>Catálogo</h2><span class="tag" id="contaModelos">—</span></div>
+      <div style="overflow-x:auto" class="rolavel">
+        <table>
+          <thead><tr><th>Modelo</th><th class="esconde-mob">Tipo</th><th class="num">Em estoque</th><th class="num esconde-mob">Custo un.</th><th class="num esconde-mob">Validade próx.</th><th class="num">Situação</th></tr></thead>
+          <tbody id="tbEstoque"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section data-secao2="movimentos" hidden>
+    <div class="card">
+      <div class="card-h">
+        <h2>Atendimentos</h2>
+        <span class="tag">clique para ver o que foi usado</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th><th>Paciente</th><th class="esconde-mob">Responsável</th>
+              <th class="num">Peças</th><th class="num">Custo</th>
+            </tr>
+          </thead>
+          <tbody id="tbAtend"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section data-secao2="clientes" hidden>
+    <div class="card">
+      <div class="card-h">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <input type="text" id="buscaCliente" placeholder="Buscar por nome" style="width:230px">
+          <div class="filtro-grupo">
+            <button class="filtro on" data-fc="todos">Todos</button>
+            <button class="filtro" data-fc="90">Sem vir há 90 d</button>
+            <button class="filtro" data-fc="180">Sem vir há 180 d</button>
+          </div>
+        </div>
+        <span class="tag" id="contaClientes">—</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Cliente</th><th class="esconde-mob">Telefone</th>
+              <th>Última visita</th><th class="num">Atendimentos</th><th class="num">Total em material</th>
+            </tr>
+          </thead>
+          <tbody id="tbClientes"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════ MODAIS ══════════ -->
+<div class="fundo" id="modalCsv">
+  <div class="modal">
+    <div class="modal-h"><h2>Subir CSV</h2><button class="fechar" data-fecha>&times;</button></div>
+    <div class="modal-b">
+      <div class="aviso alerta" style="margin-bottom:16px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div><strong>Versão de demonstração.</strong> Nesta prévia o upload não processa arquivo — a fila abaixo já vem preenchida com dados de exemplo.</div>
+      </div>
+      <p style="font-size:.87rem;color:var(--texto2);line-height:1.65;margin-bottom:16px">
+        No sistema entregue você exporta do Giga e sobe dois arquivos separados:
+      </p>
+      <div class="campos">
+        <div>
+          <label>Leads não ativos</label>
+          <div style="border:1px dashed var(--accent-bd);border-radius:9px;padding:15px;text-align:center;background:var(--accent-bg);font-size:.85rem;color:var(--accent)">
+            leads-nao-ativos.csv
+          </div>
+        </div>
+        <div>
+          <label>Base de pacientes ativos</label>
+          <div style="border:1px dashed var(--linha);border-radius:9px;padding:15px;text-align:center;font-size:.85rem;color:var(--texto3)">
+            arraste o arquivo aqui
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-f"><button class="b b2" data-fecha>Fechar</button><button class="b b1" data-fecha>Entendi</button></div>
+  </div>
+</div>
+
+<div class="fundo" id="modalConversa">
+  <div class="modal largo">
+    <div class="modal-h">
+      <div><h2 id="convNome">—</h2><div class="mono" id="convTel">—</div></div>
+      <button class="fechar" data-fecha>&times;</button>
+    </div>
+    <div class="modal-b">
+      <div class="conversa" id="convCorpo"></div>
+      <div class="somente-leitura">Histórico das últimas mensagens · somente leitura</div>
+    </div>
+    <div class="modal-f"><button class="b b2" data-fecha>Fechar</button></div>
+  </div>
+</div>
+
+<div class="fundo" id="modalDisparo">
+  <div class="modal largo">
+    <div class="modal-h"><h2>Disparar agora</h2><button class="fechar" data-fecha>&times;</button></div>
+    <div class="modal-b">
+      <p style="font-size:.87rem;color:var(--texto2);margin-bottom:14px"><span id="dispQtd">0</span> paciente(s) selecionado(s).</p>
+      <label for="dispMsg">Mensagem</label>
+      <textarea id="dispMsg">Oi {{nome}}, tudo bem? Aqui é da OdontoLaf.
+
+Vi que a nossa conversa acabou parando por aqui. Sua avaliação continua de pé, é rapidinho e sem compromisso.
+
+Quer que eu separe um horário essa semana?</textarea>
+      <p style="font-size:.79rem;color:var(--texto3);margin-top:9px">{{nome}} vira o primeiro nome de cada paciente.</p>
+    </div>
+    <div class="modal-f"><button class="b b2" data-fecha>Cancelar</button><button class="b b1" id="btnConfDisparo">Disparar</button></div>
+  </div>
+</div>
+
+<div class="fundo" id="modalVincular">
+  <div class="modal">
+    <div class="modal-h"><h2>Vincular a campanha</h2><button class="fechar" data-fecha>&times;</button></div>
+    <div class="modal-b">
+      <p style="font-size:.87rem;color:var(--texto2);margin-bottom:14px"><span id="vincQtd">0</span> paciente(s) selecionado(s).</p>
+      <label for="vincCamp">Campanha</label>
+      <select id="vincCamp"></select>
+      <div class="aviso accent" style="margin-top:16px">
+        <div>A campanha <strong>soma</strong> às que o paciente já tiver, não substitui.
+        Só aparecem aqui as campanhas por lista — em <strong id="vincNota">—</strong>
+        quem decide é a regra, e um vínculo feito à mão seria desfeito na varredura seguinte.</div>
+      </div>
+    </div>
+    <div class="modal-f"><button class="b b2" data-fecha>Cancelar</button><button class="b b1" id="btnConfVincular">Vincular</button></div>
+  </div>
+</div>
+
+<div class="fundo" id="modalCamp">
+  <div class="modal">
+    <div class="modal-h"><h2>Nova campanha</h2><button class="fechar" data-fecha>&times;</button></div>
+    <div class="modal-b">
+      <div class="campos">
+        <div><label for="cNome">Nome</label><input type="text" id="cNome" placeholder="Parceria Cheirinho Bom"></div>
+        <div>
+          <label for="cTipo">Tipo</label>
+          <select id="cTipo">
+            <option value="automatica">Automática — roda na data de cada paciente</option>
+            <option value="pontual">Pontual — sai uma vez, na data marcada</option>
+          </select>
+        </div>
+        <div>
+          <label for="cRegra">Quem entra</label>
+          <select id="cRegra">
+            <option value="">Vinculado à mão, no painel de leads</option>
+            <option value="Todo cliente, no dia do aniversário">Todo cliente, no dia do aniversário</option>
+            <option value="Cliente que completou 180 dias desde a última consulta">Cliente que completou 180 dias desde a última consulta</option>
+            <option value="Cliente que completou 1 ano desde a última consulta">Cliente que completou 1 ano desde a última consulta</option>
+            <option value="Lead sem contato há mais de 30 dias que nunca respondeu">Lead sem contato há mais de 30 dias que nunca respondeu</option>
+          </select>
+        </div>
+        <div><label for="cData">Data</label><input type="date" id="cData"></div>
+        <div><label for="cMsg">Mensagem</label><textarea id="cMsg" placeholder="Oi {{nome}}, ..."></textarea></div>
+      </div>
+      <div class="aviso accent" style="margin-top:14px">
+        <div>Com uma regra escolhida, ninguém é vinculado à mão: o sistema varre a base
+        uma vez por dia e quem passa a bater entra sozinho. Sem regra, a campanha nasce
+        vazia e você seleciona no painel.</div>
+      </div>
+    </div>
+    <div class="modal-f"><button class="b b2" data-fecha>Cancelar</button><button class="b b1" id="btnSalvarCamp">Criar campanha</button></div>
+  </div>
+</div>
+
+<div class="fundo" id="modalBipe">
+  <div class="modal">
+    <div class="modal-h"><h2>Registrar movimentação</h2><button class="fechar" data-fecha>&times;</button></div>
+    <div class="modal-b">
+      <div style="padding:13px 15px;background:var(--bg2);border-radius:9px;margin-bottom:16px">
+        <div style="font-weight:600;font-size:.92rem" id="bipeNome">—</div>
+        <div class="mono" id="bipeCod">—</div>
+      </div>
+      <div class="campos d2">
+        <div><label for="bipePaciente">Paciente</label><select id="bipePaciente"></select></div>
+        <div>
+          <label for="bipeQtd">Quantidade <span class="mono" id="bipeSaldo" style="font-weight:400"></span></label>
+          <input type="number" id="bipeQtd" value="1" min="1" step="1">
+        </div>
+      </div>
+      <p style="font-size:.79rem;color:var(--texto3);margin-top:11px" id="bipeDica">
+        O próximo item bipado já vem com este paciente preenchido.
+      </p>
+    </div>
+    <div class="modal-f"><button class="b b2" data-fecha>Cancelar</button><button class="b b1" id="btnConfBipe">Registrar</button></div>
+  </div>
+</div>
+
+<div class="fundo" id="modalCliente">
+  <div class="modal">
+    <div class="modal-h">
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="b b3" id="voltarCliente" hidden style="padding:4px 8px">&larr;</button>
+        <div><h2 id="clNome">—</h2><div class="mono" id="clSub">—</div></div>
+      </div>
+      <button class="fechar" data-fecha>&times;</button>
+    </div>
+    <div class="modal-b" id="clCorpo"></div>
+    <div class="modal-f"><button class="b b2" data-fecha>Fechar</button></div>
+  </div>
+</div>
+
+<div class="fundo" id="modalAtend">
+  <div class="modal">
+    <div class="modal-h">
+      <div><h2 id="atNome">—</h2><div class="mono" id="atData">—</div></div>
+      <button class="fechar" data-fecha>&times;</button>
+    </div>
+    <div class="modal-b">
+      <div id="atItens"></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--linha);margin-top:14px;padding-top:13px">
+        <span style="font-weight:600">Custo do atendimento</span>
+        <strong id="atTotal" style="font-size:1.15rem;color:var(--accent)">—</strong>
+      </div>
+    </div>
+    <div class="modal-f"><button class="b b2" data-fecha>Fechar</button></div>
+  </div>
+</div>
+
+<div class="rodape-demo">
+  <button class="b-reset" id="btnReset" title="Devolve os dados de exemplo ao estado inicial">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M3.5 15a9 9 0 1 0 2.1-9.4L3 8"/></svg>
+    Reiniciar demonstração
+  </button>
+  <span class="selo-txt">Protótipo de demonstração · sem dados reais</span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

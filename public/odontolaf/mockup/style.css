@@ -1,0 +1,280 @@
+/* Mockup OdontoLaf — identidade extraída do site (odontolaf.com).
+   Poppins, accent #8E5F43. Nada aqui é funcional: é a referência visual
+   do que será entregue. */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* display do .b e afins sobrepõe o atributo hidden; isto devolve a prioridade */
+[hidden] { display: none !important; }
+
+:root {
+  --bg:        #FDFCFB;
+  --bg2:       #F5F3F0;
+  --card:      #FFFFFF;
+  --linha:     #E7E1DA;
+  --linha2:    #F1EDE8;
+  --texto:     #434242;
+  --texto2:    #6E6867;
+  --texto3:    #9A9291;
+  --accent:    #8E5F43;
+  --accent2:   #714125;
+  --accent-bg: #F5EDE7;
+  --accent-bd: #DFC9B8;
+  --areia:     #C4A387;
+  --ok:        #4A7A52;
+  --ok-bg:     #EEF5EE;
+  --ok-bd:     #CBE0CB;
+  --alerta:    #B4762C;
+  --alerta-bg: #FBF3E6;
+  --alerta-bd: #EBD8B4;
+  --raio:      12px;
+  --sombra:    0 1px 2px rgba(67,66,66,.04), 0 8px 24px rgba(67,66,66,.06);
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  background: var(--bg2); color: var(--texto);
+  line-height: 1.55; -webkit-font-smoothing: antialiased; font-size: 14px;
+}
+
+/* ─── Barra de aplicativos ─────────────────────────────── */
+.topo { background: var(--card); border-bottom: 1px solid var(--linha); position: sticky; top: 0; z-index: 60; }
+.topo-in { max-width: 1180px; margin: 0 auto; padding: 12px 22px; display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+.marca { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.2px; }
+.marca-ico {
+  width: 34px; height: 34px; border-radius: 9px; background: var(--accent);
+  color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.marca small { display: block; font-size: 10.5px; font-weight: 400; color: var(--texto3); line-height: 1.2; letter-spacing: .2px; }
+.apps { display: flex; gap: 4px; margin-left: auto; }
+.app-btn {
+  font: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+  padding: 8px 15px; border-radius: 9px; border: 1px solid transparent;
+  background: transparent; color: var(--texto2); display: inline-flex; align-items: center; gap: 8px;
+  transition: background .15s, color .15s;
+}
+.app-btn:hover { background: var(--bg2); color: var(--texto); }
+.app-btn.on { background: var(--accent-bg); color: var(--accent); border-color: var(--accent-bd); font-weight: 600; }
+
+/* Quem rola é a página. As listas de estoque e de leads são longas demais para
+   caber espremidas na altura da janela: o usuário espera rolar a tela. */
+main { max-width: 1180px; margin: 0 auto; padding: 20px 22px 48px; }
+/* Com modal aberto a página trava, senão o fundo rola atrás da caixa. */
+body.trava { overflow: hidden; }
+
+/* ─── Abas internas ────────────────────────────────────── */
+.abas { display: flex; gap: 24px; border-bottom: 1px solid var(--linha); margin-bottom: 18px; }
+.aba {
+  font: inherit; font-size: 13px; font-weight: 500; cursor: pointer; background: none; border: 0;
+  padding: 0 0 10px; color: var(--texto3); border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.aba:hover { color: var(--texto); }
+.aba.on { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+
+h1 { font-size: 1.32rem; font-weight: 600; letter-spacing: -.4px; margin-bottom: 2px; }
+h2 { font-size: 1rem; font-weight: 600; letter-spacing: -.2px; }
+.sub { color: var(--texto2); font-size: .86rem; margin-bottom: 16px; }
+
+/* ─── Cards ────────────────────────────────────────────── */
+.card { background: var(--card); border: 1px solid var(--linha); border-radius: var(--raio); box-shadow: var(--sombra); }
+.card-h { padding: 13px 18px; border-bottom: 1px solid var(--linha); display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.card-b { padding: 15px 18px; }
+.grade { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; align-items: start; }
+.kpis { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 16px; }
+.kpi { background: var(--card); border: 1px solid var(--linha); border-radius: var(--raio); padding: 12px 15px; }
+.kpi-l { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--texto3); margin-bottom: 4px; }
+.kpi-v { font-size: 1.4rem; font-weight: 600; letter-spacing: -.8px; line-height: 1.15; }
+.kpi-v.destaque { color: var(--accent); }
+
+/* ─── Tabela ───────────────────────────────────────────── */
+/* A lista inteira aparece e a página rola. O cabeçalho gruda no topo da janela
+   durante a rolagem para não perder a referência das colunas. */
+.rolavel thead th { position: sticky; top: 0; background: var(--card); z-index: 2; box-shadow: 0 1px 0 var(--linha); }
+.rolavel::-webkit-scrollbar-track { background: transparent; }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--texto3); padding: 9px 18px; border-bottom: 1px solid var(--linha); white-space: nowrap; }
+td { padding: 10px 18px; border-bottom: 1px solid var(--linha2); font-size: .88rem; vertical-align: middle; }
+tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: #FCFBF9; }
+tbody tr.sel { background: var(--accent-bg); }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* nowrap: o telefone quebrava no meio em telas estreitas */
+.mono { font-family: ui-monospace, Menlo, monospace; font-size: .76rem; color: var(--texto3); white-space: nowrap; }
+input[type=checkbox] { width: 15px; height: 15px; accent-color: var(--accent); cursor: pointer; }
+
+/* ─── Etiquetas ────────────────────────────────────────── */
+.tag { display: inline-flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 500; padding: 3px 9px; border-radius: 20px; border: 1px solid var(--linha); color: var(--texto2); background: #fff; white-space: nowrap; }
+.tag.accent { color: var(--accent); background: var(--accent-bg); border-color: var(--accent-bd); font-weight: 600; }
+.tag.ok { color: var(--ok); background: var(--ok-bg); border-color: var(--ok-bd); }
+.tag.alerta { color: var(--alerta); background: var(--alerta-bg); border-color: var(--alerta-bd); }
+
+/* ─── Filtros ──────────────────────────────────────────── */
+.filtros { display: flex; gap: 18px; flex-wrap: wrap; align-items: flex-end; flex: 1; min-width: 0; }
+/* o botão de importar fica ancorado à direita mesmo quando os filtros quebram linha */
+.card-h > .bcsv { align-self: flex-start; flex-shrink: 0; }
+/* min-width:0 — sem isso o grupo de campanhas, que não quebra linha, empurrava a
+   página inteira para além da largura da tela no celular */
+.fgrupo { display: flex; flex-direction: column; gap: 5px; min-width: 0; max-width: 100%; }
+.fgrupo-l {
+  font-size: 9.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--texto3); padding-left: 2px;
+}
+/* nowrap: nome de campanha longo quebrava em três linhas dentro do botão e cortava */
+.filtro { font: inherit; font-size: 12px; cursor: pointer; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--linha); background: #fff; color: var(--texto2); white-space: nowrap; }
+.filtro:hover { border-color: var(--areia); }
+.filtro.on { background: var(--accent-bg); border-color: var(--accent-bd); color: var(--accent); font-weight: 600; }
+/* contador de quantos contatos aquele filtro traz */
+/* fundo próprio: com nome terminado em número ("Recall 2027") o contador colava
+   no rótulo e virava "Recall 20272" */
+.filtro .n {
+  display: inline-block; margin-left: 6px; padding: 0 5px; border-radius: 6px;
+  font-size: 10px; font-weight: 600; background: var(--bg2);
+  color: var(--texto3); font-variant-numeric: tabular-nums;
+}
+.filtro.on .n { color: var(--accent); background: #fff; }
+.filtro:disabled { opacity: .4; cursor: default; }
+.filtro-grupo { display: flex; gap: 0; border: 1px solid var(--linha); border-radius: 8px; overflow: hidden; max-width: 100%; }
+/* com muitas campanhas o grupo rola em vez de espremer cada botão */
+#filtrosCampanha { overflow-x: auto; }
+.filtro-grupo .filtro { border: 0; border-radius: 0; border-right: 1px solid var(--linha); }
+.filtro-grupo .filtro:last-child { border-right: 0; }
+
+/* ─── Formulário ───────────────────────────────────────── */
+label { display: block; font-size: 11.5px; font-weight: 500; color: var(--texto2); margin-bottom: 5px; }
+input[type=text], input[type=number], input[type=date], select, textarea {
+  width: 100%; padding: 9px 12px; font: inherit; font-size: .88rem;
+  border: 1px solid var(--linha); border-radius: 8px; background: #fff; color: var(--texto);
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(142,95,67,.10); }
+textarea { min-height: 108px; resize: vertical; line-height: 1.55; }
+.campos { display: grid; gap: 13px; }
+.campos.d2 { grid-template-columns: 1fr 1fr; }
+
+.b { font: inherit; font-weight: 500; font-size: .87rem; cursor: pointer; border: 1px solid transparent; border-radius: 8px; padding: 9px 16px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; transition: background .15s, border-color .15s; }
+.b1 { background: var(--accent); color: #fff; font-weight: 600; }
+.b1:hover { background: var(--accent2); }
+.b2 { background: #fff; color: var(--texto); border-color: var(--linha); }
+.b2:hover { background: var(--bg2); border-color: var(--areia); }
+/* ação primária de um card, sem o peso do botão sólido */
+.b2o { background: #fff; color: var(--accent); border-color: var(--accent-bd); font-weight: 600; }
+.b2o:hover { background: var(--accent-bg); border-color: var(--accent); }
+.b3 { background: transparent; color: var(--accent); padding: 9px 10px; }
+.b3:hover { background: var(--accent-bg); }
+/* Importação é ação neutra: fica em grafite, longe do marrom das ações de envio. */
+.bcsv { background: var(--texto); color: #fff; font-weight: 500; }
+.bcsv:hover { background: #2E2D2D; }
+.b:disabled { opacity: .45; cursor: not-allowed; }
+.bg { width: 100%; }
+
+/* ─── Avisos ───────────────────────────────────────────── */
+.aviso { padding: 11px 15px; border-radius: 9px; font-size: .85rem; display: flex; gap: 10px; align-items: flex-start; }
+.aviso.accent { background: var(--accent-bg); border: 1px solid var(--accent-bd); color: var(--accent2); }
+.aviso.alerta { background: var(--alerta-bg); border: 1px solid var(--alerta-bd); color: var(--alerta); }
+.vazio { padding: 34px 20px; text-align: center; color: var(--texto3); font-size: .88rem; }
+
+/* ─── Modal ────────────────────────────────────────────── */
+.fundo { position: fixed; inset: 0; background: rgba(67,66,66,.42); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; }
+.fundo.on { display: flex; }
+.modal { background: var(--card); border-radius: 14px; width: 100%; max-width: 470px; box-shadow: 0 24px 60px rgba(67,66,66,.22); max-height: 88vh; display: flex; flex-direction: column; }
+.modal.largo { max-width: 620px; }
+.modal-h { padding: 16px 20px; border-bottom: 1px solid var(--linha); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.modal-b { padding: 20px; overflow-y: auto; }
+.modal-f { padding: 14px 20px; border-top: 1px solid var(--linha); display: flex; gap: 9px; justify-content: flex-end; }
+.fechar { font: inherit; font-size: 19px; line-height: 1; cursor: pointer; background: none; border: 0; color: var(--texto3); padding: 2px 6px; }
+.fechar:hover { color: var(--texto); }
+
+/* ─── Conversa ─────────────────────────────────────────── */
+.conversa { background: var(--bg2); padding: 16px; border-radius: 10px; max-height: 340px; overflow-y: auto; }
+.bolha { max-width: 76%; padding: 8px 12px; border-radius: 11px; font-size: .84rem; line-height: 1.5; margin-bottom: 8px; }
+.bolha .hora { display: block; font-size: 9.5px; color: var(--texto3); margin-top: 3px; }
+.bolha.saiu { background: #E7F3E4; margin-left: auto; border-bottom-right-radius: 3px; }
+.bolha.entrou { background: #fff; border: 1px solid var(--linha); border-bottom-left-radius: 3px; }
+.somente-leitura { text-align: center; font-size: 11.5px; color: var(--texto3); padding: 11px 10px 2px; }
+
+/* ─── Estoque ──────────────────────────────────────────── */
+.bipe {
+  display: flex; gap: 10px; align-items: center; padding: 12px 16px;
+  background: var(--accent-bg); border: 1px solid var(--accent-bd); border-radius: var(--raio);
+  margin-bottom: 14px;
+}
+.bipe input { border-color: var(--accent-bd); font-family: ui-monospace, Menlo, monospace; }
+.aberto {
+  display: flex; align-items: center; gap: 12px; padding: 11px 16px;
+  background: var(--alerta-bg); border: 1px solid var(--alerta-bd); border-radius: var(--raio);
+  margin-bottom: 13px; flex-wrap: wrap;
+}
+.aberto-ver {
+  flex: 1; min-width: 200px; text-align: left; cursor: pointer;
+  font: inherit; color: inherit; background: transparent; border: 0;
+  padding: 3px 7px; margin: -3px -7px; border-radius: 9px;
+  transition: background .15s ease;
+}
+.aberto-ver:hover { background: rgba(0,0,0,.045); }
+.aberto-dica { font-size: 11px; color: var(--accent); margin-top: 3px; }
+.aberto-nota {
+  font-size: .79rem; color: var(--texto2); line-height: 1.55;
+  padding: 0 4px 4px; margin: -6px 0 14px;
+}
+.pulso { width: 8px; height: 8px; border-radius: 50%; background: var(--alerta); animation: p 1.8s infinite; flex-shrink: 0; }
+@keyframes p { 0%,100% { opacity: 1 } 50% { opacity: .25 } }
+
+/* ─── Rodapé de demonstração ───────────────────────────── */
+/* Fica no canto para não cobrir linha de tabela. */
+.selo {
+  position: fixed; bottom: 16px; right: 18px;
+  background: var(--texto); color: #fff; font-size: 11.5px; padding: 7px 15px;
+  border-radius: 20px; z-index: 90; opacity: .85; white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(67,66,66,.18);
+}
+.rodape-demo {
+  position: fixed; bottom: 16px; right: 18px; z-index: 90;
+  display: flex; align-items: center; gap: 9px;
+}
+.selo-txt {
+  background: var(--texto); color: #fff; font-size: 11.5px; padding: 7px 15px;
+  border-radius: 20px; opacity: .85; white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(67,66,66,.18);
+}
+/* Sair do estado gasto é a única ação do rodapé, então ela fica visível sem gritar. */
+.b-reset {
+  font: inherit; font-size: 11.5px; font-weight: 500; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  background: #fff; color: var(--accent); border: 1px solid var(--accent-bd);
+  padding: 6px 13px; border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(67,66,66,.14); transition: background .15s, border-color .15s;
+}
+.b-reset:hover { background: var(--accent-bg); border-color: var(--accent); }
+
+/* ─── Avisos rápidos ───────────────────────────────────── */
+#avisos {
+  position: fixed; bottom: 58px; right: 18px; z-index: 120;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 7px;
+  pointer-events: none; max-width: calc(100vw - 36px);
+}
+.aviso-toast {
+  background: var(--accent); color: #fff; font-size: 11.5px; padding: 8px 15px;
+  border-radius: 20px; box-shadow: 0 4px 14px rgba(67,66,66,.2);
+  animation: sobe .22s ease-out;
+}
+@keyframes sobe { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
+
+@media (max-width: 900px) {
+  .grade { grid-template-columns: 1fr; }
+  .kpis { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 560px) {
+  .topo-in { padding: 11px 15px; gap: 12px; }
+  .apps { width: 100%; margin-left: 0; }
+  .app-btn { flex: 1; justify-content: center; padding: 8px 10px; font-size: 12px; }
+  main { padding: 20px 15px 64px; }
+  h1 { font-size: 1.25rem; }
+  .campos.d2 { grid-template-columns: 1fr; }
+  th, td { padding: 10px 14px; }
+  .esconde-mob { display: none; }
+  .abas { gap: 16px; overflow-x: auto; }
+  .selo, .selo-txt { font-size: 10.5px; padding: 6px 12px; }
+  /* no celular o rodapé fica só com a ação: o selo roubaria a largura toda */
+  .rodape-demo { left: 18px; justify-content: flex-end; }
+  .selo-txt { display: none; }
+  /* a tabela rola na horizontal; nome e coluna não precisam se espremer */
+  #tbLeads td:nth-child(2) > div { white-space: nowrap; }
+}

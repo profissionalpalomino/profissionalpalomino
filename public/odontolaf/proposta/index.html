@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposta Odontolaf</title>
+  
+  <!-- Google Fonts: DM Sans + DM Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300..900&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* ─── Reset ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── Palomino Tech Design Tokens — LIGHT (regra: light only) ── */
+      --bg:           #faf8f7;
+      --bg2:          #f2edeb;
+      --card:         #ffffff;
+      --card-b:       #e7dedb;
+      --text:         #171113;
+      --muted:        #7c8794;
+      --muted2:       #4a5561;
+      --accent:       #e11d48;
+      --accent-dim:   rgba(225,29,72,.10);
+      --accent-glow:  rgba(225,29,72,.07);
+      --blue:         #2563eb;
+      --blue-dim:     rgba(37,99,235,.10);
+      --green:        #15803d;
+      --green-dim:    rgba(21,128,61,.12);
+      --red:          #dc2626;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* Matte Noise Overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.015; /* extremely subtle organic analog texture */
+      filter: url(#noiseFilter);
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ─── Deck ──────────────────────────────────────────── */
+    .deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      /* 'safe center' centraliza quando cabe e alinha ao topo quando não cabe,
+         em vez de cortar o conteúdo por cima. O overflow-y garante a rolagem. */
+      justify-content: center;
+      justify-content: safe center;
+      overflow-y: auto;
+      /* sem isto o CSS promove o overflow-x para auto e o brilho
+         ambiente (.slide::after, right:-120px) cria barra horizontal */
+      overflow-x: hidden;
+      overscroll-behavior: contain;
+      padding: 56px 88px 78px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(48px);
+      transition: opacity .45s cubic-bezier(.4,0,.2,1),
+                  transform .45s cubic-bezier(.4,0,.2,1);
+    }
+    .slide.active  { opacity: 1; pointer-events: all; transform: translateX(0); }
+    .slide.leaving { opacity: 0; transform: translateX(-48px); }
+
+    /* ambient glow */
+    .slide::after {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    /* ─── Header ────────────────────────────────────────── */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      z-index: 200;
+    }
+    .logo { display: flex; align-items: center; gap: 11px; }
+    .logo-icon  { display: block; flex-shrink: 0; }
+    .logo-name  { font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.15; letter-spacing: -.3px; }
+    .logo-name span { color: var(--accent); }
+    .logo-sub   { font-size: 11px; color: var(--muted); font-weight: 400; }
+    .meta-info { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-align: right; line-height: 1.7; }
+
+    /* ─── Typography ────────────────────────────────────── */
+    .section-label {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 14px;
+    }
+    .title {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: clamp(2.1rem, 4.2vw, 3.5rem);
+      font-weight: 800; line-height: 1.05;
+      letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+    }
+    .title .hi   { color: var(--accent); }
+    .title .hi-b { color: var(--blue);   }
+    .title .hi-g { color: var(--green);  }
+
+    .rule { width: 36px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 26px; }
+
+    .subtitle { font-size: 1.08rem; color: var(--muted2); font-weight: 400; max-width: 680px; line-height: 1.6; margin-top: 10px; }
+
+    /* ─── Tags ──────────────────────────────────────────── */
+    .tags { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+    .tag  { font-size: 11.5px; font-weight: 500; padding: 5px 13px; border-radius: 6px; background: var(--card); border: 1px solid var(--card-b); color: var(--muted2); }
+
+    /* ─── Layout ────────────────────────────────────────── */
+    .cols   { display: grid; gap: 48px; width: 100%; }
+    .cols-2 { grid-template-columns: 1fr 1fr; }
+    .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+    /* ─── KV List ───────────────────────────────────────── */
+    .col-label { font-family: 'DM Sans', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .kv-list { display: flex; flex-direction: column; }
+    .kv-row  { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--card-b); font-size: 1.05rem; }
+    .kv-row:last-child { border-bottom: none; }
+    .kv-key { font-family: 'DM Mono', monospace; font-size: 0.95rem; color: var(--muted2); }
+    .kv-val { font-family: 'DM Mono', monospace; font-size: 0.95rem; color: var(--text); font-weight: 500; text-align: right; max-width: 55%; }
+
+    /* ─── Problem Cards ─────────────────────────────────── */
+    .prob-list { display: flex; flex-direction: column; gap: 14px; }
+    .prob-card { display: flex; align-items: flex-start; gap: 16px; background: var(--card); border: 1px solid var(--card-b); border-radius: 10px; padding: 16px 20px; }
+    .prob-icon { flex-shrink: 0; margin-top: 2px; color: var(--accent); display: flex; }
+    .prob-icon svg { display: block; }
+    .prob-text { font-size: .97rem; color: var(--muted2); line-height: 1.55; }
+
+    /* ─── Feature Grid ──────────────────────────────────── */
+    .feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; width: 100%; }
+    .feat-card { background: var(--card); border: 1px solid var(--card-b); border-radius: 12px; padding: 32px 30px; transition: border-color .2s; }
+    .feat-card:hover { border-color: rgba(var(--accent-rgb),.3); }
+    .feat-icon { margin-bottom: 16px; display: block; color: var(--accent); }
+    .feat-name { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .feat-desc { font-size: 1rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── Module List (escopo) ──────────────────────────── */
+    .module-list { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+    .module-row  {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--card); border: 1px solid var(--card-b);
+      border-radius: 9px; padding: 14px 18px;
+    }
+    .module-badge { font-family: 'DM Mono', monospace; width: 28px; height: 28px; border-radius: 6px; background: var(--accent-dim); border: 1px solid rgba(225,29,72,.22); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; color: var(--accent); flex-shrink: 0; }
+    .module-info  { flex: 1; }
+    .module-title { font-family: 'DM Sans', system-ui, sans-serif; font-size: .9rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .module-desc  { font-size: .77rem; color: var(--muted2); line-height: 1.4; }
+    .module-price { font-family: 'DM Mono', monospace; font-size: .95rem; font-weight: 500; color: var(--accent); white-space: nowrap; }
+
+    /* ─── Timeline ──────────────────────────────────────── */
+    .timeline { display: flex; width: 100%; position: relative; padding-top: 90px; margin-top: 8px; }
+    .timeline::before { content: ''; position: absolute; top: 30px; left: 28px; right: 28px; height: 1px; background: var(--card-b); }
+    .step     { flex: 1; padding: 0 24px; position: relative; }
+    .step-num { font-family: 'DM Mono', monospace; position: absolute; top: -90px; left: 24px; width: 48px; height: 48px; border-radius: 50%; background: var(--card); border: 1px solid var(--card-b); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; color: var(--muted); }
+    .step-num.on { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+    .step-section { font-family: 'DM Sans', system-ui, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .step-title   { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.55rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .step-dur     { font-family: 'DM Mono', monospace; font-size: 1.1rem; color: var(--muted); margin-bottom: 14px; }
+    .step-desc    { font-size: 1.05rem; color: var(--muted2); line-height: 1.65; }
+
+    /* ─── Plans ─────────────────────────────────────────── */
+    .plans { display: grid; grid-template-columns: repeat(3,1fr); gap: 26px; width: 100%; }
+    .plan-card { background: var(--card); border: 1px solid var(--card-b); border-radius: 14px; padding: 32px 34px; position: relative; }
+    .plan-card.featured { border-color: rgba(244,63,94,.5); background: rgba(244,63,94,.04); }
+    .plan-badge { font-family: 'DM Sans', system-ui, sans-serif; position: absolute; top: -12px; right: 20px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; background: var(--accent); color: #fff; }
+    .plans-note { font-size: .96rem; color: var(--muted2); margin-bottom: 24px; max-width: 740px; line-height: 1.65; }
+    .plan-name   { font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+    .plan-price  { font-family: 'DM Sans', system-ui, sans-serif; font-size: 4.4rem; font-weight: 800; color: var(--text); letter-spacing: -3px; margin-bottom: 6px; line-height: 1; }
+    .plan-price sup { font-size: 1.4rem; font-weight: 500; color: var(--muted2); vertical-align: super;
+                      /* o letter-spacing negativo do preco cola o cifrao no algarismo */
+                      margin-right: 6px; letter-spacing: 0; }
+    .plan-period { font-size: 1rem; color: var(--muted); margin-bottom: 0; }
+    .plan-saving { font-family: 'DM Sans', system-ui, sans-serif; margin-top: 28px; padding: 16px 20px; border-radius: 10px; background: var(--green-dim); border: 1px solid rgba(21,128,61,.22); display: flex; align-items: center; gap: 11px; text-align: left; font-size: 1rem; font-weight: 500; color: var(--green); }
+
+    /* ─── Slides densos (motores, escopo, canal) ─────────── */
+    .slide--denso .title    { font-size: clamp(1.9rem, 3.4vw, 2.7rem); margin-bottom: 4px; }
+    .slide--denso .rule     { margin-bottom: 22px; }
+    .slide--denso .subtitle { font-size: .98rem; max-width: 760px; margin-top: 2px; }
+    .slide--denso .num-steps { gap: 17px; }
+    .slide--denso .num-step  { gap: 18px; }
+    .slide--denso .num-bub   { width: 40px; height: 40px; font-size: 16px; border-radius: 10px; }
+    .slide--denso .num-title { font-size: 1.08rem; margin-bottom: 3px; }
+    .slide--denso .num-desc  { font-size: .91rem; line-height: 1.48; }
+    .slide--denso .kv-row    { font-size: .94rem; padding: 9px 0; }
+    .slide--denso .col-label { margin-bottom: 14px; }
+    .slide--denso .prob-list { gap: 10px; }
+    .slide--denso .prob-card { padding: 12px 15px; }
+    .slide--denso .prob-text { font-size: .89rem; line-height: 1.5; }
+    .slide--denso .card      { padding: 15px 18px; }
+    .slide--denso .plan-card  { padding: 26px 28px; }
+    .slide--denso .plan-price { font-size: 3.6rem; }
+    .slide--denso .plans-note { margin-bottom: 18px; }
+    .slide--denso .plan-saving{ margin-top: 18px; padding: 13px 17px; font-size: .93rem; }
+
+    /* Mockups num slide denso: o slide 5 passava 22px em 1366x660 */
+    .slide--denso .tela-corpo { padding: 9px 12px; }
+    .slide--denso .mk-lin     { padding: 5px 0; }
+    .slide--denso .mk-legenda { margin-top: 6px; font-size: .73rem; line-height: 1.45; }
+    .slide--denso .mk-cab     { padding-bottom: 5px; margin-bottom: 2px; }
+
+/* ─── Mockups de tela ────────────────────────────────────
+       Identidade da OdontoLaf (marrom #8E5F43 + Poppins), não a
+       da Palomino: o protótipo é a referência do produto final. */
+    .tela {
+      background: #FDFCFB; border: 1px solid #E4DDD5; border-radius: 12px;
+      overflow: hidden; box-shadow: 0 6px 22px rgba(67,66,66,.08); width: 100%;
+      font-family: 'Poppins', system-ui, sans-serif; color: #434242;
+    }
+    .tela-barra {
+      display: flex; align-items: center; gap: 6px; padding: 8px 12px;
+      background: #F5F3F0; border-bottom: 1px solid #E4DDD5;
+    }
+    .tela-barra i { width: 7px; height: 7px; border-radius: 50%; background: #C4A387; }
+    .tela-barra span { margin-left: 8px; font-size: 9.5px; color: #8a8483; font-weight: 500; }
+    .tela-corpo { padding: 11px 13px; }
+    .mk-lin {
+      display: flex; align-items: center; gap: 9px; padding: 7px 0;
+      border-bottom: 1px solid #F1EDE8; font-size: 11px;
+    }
+    .mk-lin:last-child { border-bottom: 0; }
+    .mk-nome { font-weight: 600; color: #434242; }
+    .mk-sub  { font-size: 9px; color: #8a8483; }
+    .mk-dir  { margin-left: auto; text-align: right; white-space: nowrap; }
+    .mk-tag {
+      display: inline-block; font-size: 8.5px; font-weight: 600; padding: 2px 7px;
+      border-radius: 10px; border: 1px solid #E4DDD5; color: #8a8483; background: #fff;
+    }
+    .mk-tag.on  { color: #8E5F43; background: #F3EAE3; border-color: #DCC4B2; }
+    .mk-tag.ok  { color: #4a7a52; background: #EEF5EE; border-color: #C9DFC9; }
+    .mk-cab {
+      font-size: 8.5px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase;
+      color: #a09a99; padding-bottom: 6px; border-bottom: 1px solid #E4DDD5; margin-bottom: 3px;
+    }
+    .mk-btn {
+      display: inline-block; font-size: 9.5px; font-weight: 600; padding: 5px 11px;
+      border-radius: 6px; background: #8E5F43; color: #fff;
+    }
+    .mk-btn.sec { background: #fff; color: #8E5F43; border: 1px solid #DCC4B2; }
+    .mk-filtro {
+      display: inline-block; font-size: 9px; padding: 4px 9px; border-radius: 6px;
+      border: 1px solid #E4DDD5; background: #fff; color: #6b6564; margin: 0 5px 5px 0;
+    }
+    .mk-filtro.on { background: #F3EAE3; border-color: #DCC4B2; color: #8E5F43; font-weight: 600; }
+    .mk-bolha {
+      max-width: 78%; padding: 7px 10px; border-radius: 10px; font-size: 10px; line-height: 1.45;
+      margin-bottom: 6px;
+    }
+    .mk-bolha.eu  { background: #E7F3E4; margin-left: auto; border-bottom-right-radius: 3px; }
+    .mk-bolha.ele { background: #F5F3F0; border-bottom-left-radius: 3px; }
+    .mk-pop {
+      border: 1px solid #DCC4B2; background: #FDFCFB; border-radius: 10px; padding: 11px 13px;
+      box-shadow: 0 8px 20px rgba(67,66,66,.10);
+    }
+    .mk-campo2 {
+      border: 1px solid #E4DDD5; border-radius: 6px; padding: 6px 9px; font-size: 10px;
+      color: #6b6564; background: #fff;
+    }
+    .mk-etiqueta {
+      border: 1px dashed #C4A387; border-radius: 8px; padding: 9px; text-align: center;
+      width: 104px; background: #fff; font-family: 'Poppins', system-ui, sans-serif;
+    }
+    .mk-etiqueta .n { font-size: 8px; font-weight: 600; line-height: 1.25; margin-top: 4px; color: #434242; }
+    .mk-etiqueta .c { font-size: 7.5px; color: #8a8483; }
+    .mk-legenda { font-size: .78rem; color: var(--muted); margin-top: 10px; line-height: 1.5; }
+
+    /* ─── Numbered Steps ────────────────────────────────── */
+    .num-steps { display: flex; flex-direction: column; gap: 44px; }
+    .num-step  { display: flex; align-items: flex-start; gap: 26px; }
+    .num-bub   { font-family: 'DM Mono', monospace; width: 52px; height: 52px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 20px; background: var(--accent-dim); border: 1px solid rgba(244,63,94,.3); color: var(--accent); }
+    .num-title { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .num-desc  { font-size: 1.05rem; color: var(--muted2); line-height: 1.6; }
+
+    /* ─── Generic Card ──────────────────────────────────── */
+    .card     { background: var(--card); border: 1px solid var(--card-b); border-radius: 10px; padding: 28px 32px; }
+    .card-lbl { font-family: 'DM Sans', system-ui, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+
+    /* ─── Hero em duas colunas ──────────────────────────
+       O hero ficava com metade da tela vazia. A coluna da direita
+       mostra o proprio produto: uma tela do painel de leads. */
+    .hero-grade {
+      display: grid; grid-template-columns: 1.05fr .95fr;
+      gap: 56px; align-items: center; width: 100%;
+    }
+    .hero-visual { position: relative; }
+    .hero-visual .tela { transform: rotate(-.6deg); box-shadow: 0 22px 54px rgba(67,66,66,.16); }
+    .hero-visual::before {
+      content: ''; position: absolute; inset: -26px -22px -30px -18px;
+      background: radial-gradient(ellipse at 60% 45%, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none; z-index: -1;
+    }
+    .hero-legenda {
+      font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .6px;
+      text-transform: uppercase; color: var(--muted);
+      margin-top: 14px; text-align: right;
+    }
+
+    /* ─── Stat Cards (hero metric) ──────────────────────── */
+    .stats { display: flex; gap: 28px; margin-top: 32px; flex-wrap: wrap; }
+    .stat  { display: flex; flex-direction: column; gap: 3px; }
+    .stat  { display: flex; flex-direction: column; gap: 2px; }
+    .stat-val  { font-family: 'DM Mono', monospace; font-size: 1.8rem; font-weight: 500; color: var(--accent); letter-spacing: -1px; }
+    .stat-label{ font-family: 'DM Sans', system-ui, sans-serif; font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ─── Navigation ────────────────────────────────────── */
+    .nav { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 14px; z-index: 200; }
+    .nav-btn  { width: 34px; height: 34px; border-radius: 50%; background: var(--card); border: 1px solid var(--card-b); color: var(--muted2); font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+    .nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .nav-btn:disabled { opacity: .3; cursor: not-allowed; }
+    .nav-dots { display: flex; gap: 5px; align-items: center; }
+    .nav-dot  { width: 6px; height: 6px; border-radius: 3px; background: var(--card-b); transition: all .3s; cursor: pointer; }
+    .nav-dot.active { width: 22px; background: var(--accent); }
+    .nav-count{ font-family: 'DM Mono', monospace; font-size: 11.5px; color: var(--muted); min-width: 30px; text-align: right; }
+
+    /* Segmented Top Progress Bar */
+    .progress-bar-container {
+      position: fixed;
+      top: 8px; left: 16px; right: 16px;
+      display: flex;
+      gap: 6px;
+      z-index: 999;
+    }
+    .progress-segment {
+      height: 4px;
+      flex: 1;
+      background: var(--card-b);
+      border-radius: 2px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    .progress-segment.active {
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+    .progress-segment.viewed {
+      background: var(--accent);
+    }
+
+    /* Floating Side Navigation Buttons */
+
+    /* ─── Mobile ────────────────────────────────────────────── */
+    @media (max-width: 680px) {
+      html, body { overflow: hidden; }
+
+      .slide {
+        padding: 76px 22px 92px;
+        justify-content: flex-start;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* O hero é curto: centraliza em vez de deixá-lo pendurado no topo com
+         um vazio enorme embaixo. 'safe center' evita cortar o topo em telas baixas. */
+      .slide--hero {
+        justify-content: center;
+        justify-content: safe center;
+        padding-top: 68px;
+        padding-bottom: 84px;
+      }
+      .hero-grade { grid-template-columns: 1fr; gap: 22px; }
+      .hero-visual { order: 2; }
+      .hero-visual .tela { transform: none; }
+      .hero-legenda { text-align: left; margin-top: 10px; }
+      .slide--hero .title    { font-size: clamp(2rem, 9.5vw, 2.6rem); line-height: 1.08; }
+      .slide--hero .subtitle { font-size: 1rem; line-height: 1.6; margin-top: 14px; max-width: 34ch; }
+      .slide--hero .tags     { margin-bottom: 22px; }
+      .slide--hero .section-label { letter-spacing: 1.2px; margin-bottom: 12px; }
+
+      .stats { gap: 12px; margin-top: 26px; display: grid; grid-template-columns: repeat(3, 1fr); }
+      .stat-val   { font-size: 1.35rem; }
+      .stat-label { font-size: .66rem; letter-spacing: .6px; line-height: 1.35; }
+
+      .site-header { padding: 14px 20px; }
+      .logo-name { font-size: 12px; }
+      .logo-sub  { font-size: 10px; }
+      .meta-info { display: none; }
+
+      .title    { font-size: clamp(1.7rem, 7vw, 2.2rem); letter-spacing: -1px; margin-bottom: 8px; }
+      .subtitle { font-size: .95rem; margin-top: 6px; }
+      .section-label { font-size: 9.5px; margin-bottom: 10px; }
+      .rule     { margin-bottom: 22px; }
+
+      .tags { gap: 6px; margin-bottom: 18px; }
+      .tag  { font-size: 11px; padding: 4px 11px; }
+
+      .cols   { gap: 28px; }
+      .cols-2 { grid-template-columns: 1fr; }
+      .cols-3 { grid-template-columns: 1fr; }
+
+      .kv-row  { font-size: .9rem; padding: 9px 0; }
+      .col-label { font-size: 10px; margin-bottom: 10px; }
+
+      .prob-list { gap: 12px; }
+      .prob-card { padding: 14px 16px; gap: 12px; }
+      .prob-icon svg { width: 18px; height: 18px; }
+      .prob-text { font-size: .92rem; }
+
+      .feat-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+      .feat-card { padding: 16px 14px; }
+      .feat-icon { margin-bottom: 8px; }
+      .feat-name { font-size: .88rem; margin-bottom: 4px; }
+      .feat-desc { font-size: .78rem; }
+
+      .timeline { flex-direction: column; padding-top: 0; gap: 24px; }
+      .timeline::before { display: none; }
+      .step { padding: 0 0 0 58px; position: relative; }
+      .step-num { position: absolute; top: 0; left: 0; width: 42px; height: 42px; font-size: 15px; }
+      .step-section { font-size: 10px; margin-bottom: 6px; }
+      .step-title   { font-size: 1.1rem; margin-bottom: 5px; }
+      .step-dur     { font-size: .88rem; margin-bottom: 8px; }
+      .step-desc    { font-size: .88rem; }
+
+      .plans { grid-template-columns: 1fr; gap: 20px; max-width: 100%; }
+      .plan-card  { padding: 28px 24px; }
+      .plan-name  { margin-bottom: 14px; }
+      .plan-price { font-size: 4.5rem; }
+      .plan-period { font-size: .88rem; margin-bottom: 22px; }
+      .plan-feats  { gap: 12px; }
+      .plan-feats li { font-size: .92rem; }
+
+      .num-steps { gap: 26px; }
+      .num-step  { gap: 14px; }
+      .num-bub   { width: 42px; height: 42px; font-size: 17px; border-radius: 9px; }
+      .num-title { font-size: 1.05rem; margin-bottom: 4px; }
+      .num-desc  { font-size: .88rem; }
+
+      .card     { padding: 16px 18px; }
+      .card-lbl { font-size: 10px; margin-bottom: 8px; }
+
+      .nav { bottom: 16px; gap: 10px; }
+      .nav-btn { width: 30px; height: 30px; font-size: 12px; }
+    }
+
+    /* ─── Tablet ────────────────────────────────────────────── */
+    @media (min-width: 681px) and (max-width: 960px) {
+      .slide { padding: 80px 52px; }
+      .feat-grid { gap: 12px; }
+      .feat-card { padding: 22px 20px; }
+      .plans { max-width: 100%; }
+      .plan-card { padding: 36px 32px; }
+      .plan-price { font-size: 4.5rem; }
+    }
+
+    .pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card);
+      border: 1px solid var(--card-b);
+      border-radius: 8px;
+      padding: 5px 11px;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted2);
+      text-decoration: none;
+      transition: all .2s ease;
+    }
+    .pdf-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+    @media (max-width: 680px) {
+      .pdf-btn span { display: none; }
+      .pdf-btn { padding: 6px 8px; }
+    }
+
+    /* ─── Exportação para PDF / Impressão ───────────────────── */
+    @media print {
+      .pdf-btn { display: none !important; }
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html, body {
+        height: auto !important;
+        overflow: visible !important;
+        background: #faf8f7 !important;
+      }
+
+      body::after,
+      .progress-bar-container,
+      .nav,
+      #noiseFilter {
+        display: none !important;
+      }
+
+      .site-header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding: 14px 40px !important;
+        background: transparent !important;
+        z-index: 9999 !important;
+      }
+
+      .deck {
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        display: block !important;
+      }
+
+      .slide {
+        position: relative !important;
+        inset: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: 100vh !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        opacity: 1 !important;
+        transform: none !important;
+        pointer-events: auto !important;
+        padding: 48px 64px 36px !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+        background: #faf8f7 !important;
+      }
+
+      .slide:last-child,
+      .slide:last-of-type {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+
+      .slide::after {
+        display: none !important;
+      }
+
+      .slide--denso .num-steps { gap: 12px !important; }
+      .slide--denso .num-step  { gap: 14px !important; }
+      .slide--denso .num-bub   { width: 34px !important; height: 34px !important; font-size: 14px !important; }
+      .slide--denso .num-title { font-size: .98rem !important; }
+      .slide--denso .num-desc  { font-size: .82rem !important; line-height: 1.4 !important; }
+      .slide--denso .card      { padding: 12px 14px !important; }
+      .slide--denso .plan-card { padding: 20px 22px !important; }
+      .slide--denso .plan-saving { margin-top: 14px !important; padding: 10px 14px !important; font-size: .88rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Segmented Top Progress Bar -->
+<div class="progress-bar-container" id="progressBar"></div>
+
+<!-- ─── HEADER (não editar) ─────────────────────────────── -->
+<header class="site-header">
+  <div class="logo">
+    <svg class="logo-icon" width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="16,2 27.1,8.5 27.1,21.5 16,28 4.9,21.5 4.9,8.5" fill="none" stroke="#f43f5e" stroke-width="1.5"/>
+      <polygon points="16,8.5 21.7,11.7 21.7,18.3 16,21.5 10.3,18.3 10.3,11.7" fill="#f43f5e"/>
+    </svg>
+    <div>
+      <div class="logo-name">Palomino <span>Tech</span></div>
+
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:14px">
+    <a href="proposta-odontolaf.pdf" download="Proposta_OdontoLaf.pdf" class="pdf-btn" id="downloadPdfBtn" title="Baixar proposta em PDF">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span>Baixar PDF</span>
+    </a>
+    <div class="meta-info">
+      Proposta Técnica — Confidencial<br>
+      <span id="metaDate"></span> · v1.0
+    </div>
+  </div>
+</header>
+
+<!-- ─── DECK ────────────────────────────────────────────── -->
+<div class="deck" id="deck">
+
+  <!-- ╔═══════════════════════════════════════════════════╗
+       ║  SLIDE 1 — HERO                                   ║
+       ║  Substitua: TAG_1/2/3, LABEL, TITULO, SUBTITULO  ║
+       ╚═══════════════════════════════════════════════════╝ -->
+  <div class="slide slide--hero active">
+    <div class="hero-grade">
+
+      <div class="hero-txt">
+        <div class="tags">
+          <span class="tag">Automação</span>
+          <span class="tag">WhatsApp</span>
+          <span class="tag">Relacionamento</span>
+        </div>
+        <div class="section-label">Proposta de Parceria · Odontolaf</div>
+        <h1 class="title">
+          Dois aplicativos<br>
+          <span class="hi">para a Odontolaf.</span>
+        </h1>
+        <p class="subtitle">Um aplicativo de controle e mensageria de leads no WhatsApp e um aplicativo web de controle de estoque por QR. Entregues em duas etapas.</p>
+
+        <div class="stats">
+          <div class="stat"><span class="stat-val">01</span><span class="stat-label">App de leads · 3 a 4 sem.</span></div>
+          <div class="stat"><span class="stat-val">02</span><span class="stat-label">App de estoque · 3 a 4 sem.</span></div>
+          <div class="stat"><span class="stat-val">R$ 0</span><span class="stat-label">por mensagem enviada</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="tela">
+          <div class="tela-barra"><i></i><i></i><i></i><span>leads · 1.412 na base</span></div>
+          <div class="tela-corpo">
+            <div style="margin-bottom:9px">
+              <span class="mk-filtro on">Sem contato há 15 dias</span>
+              <span class="mk-filtro">Instagram</span>
+              <span class="mk-filtro">+ filtro</span>
+            </div>
+            <div class="mk-cab">42 contatos nesse filtro</div>
+            <div class="mk-lin">
+              <div><div class="mk-nome">Patrícia Salgado</div><div class="mk-sub">Clareamento · último contato 12/08</div></div>
+              <div class="mk-dir"><span class="mk-tag on">Aguardando</span></div>
+            </div>
+            <div class="mk-lin">
+              <div><div class="mk-nome">Renato Vilela</div><div class="mk-sub">Implante · não compareceu</div></div>
+              <div class="mk-dir"><span class="mk-tag">Sem resposta</span></div>
+            </div>
+            <div class="mk-lin">
+              <div><div class="mk-nome">Juliana Prado</div><div class="mk-sub">Avaliação · respondeu hoje</div></div>
+              <div class="mk-dir"><span class="mk-tag ok">Retomado</span></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:11px">
+              <span class="mk-btn">Disparar campanha</span>
+              <span class="mk-btn sec">Ver conversa</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-legenda">Tela do protótipo navegável</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ╔═══════════════════════════════════════════════════╗
+       ║  SLIDE 2 — CONTEXTO                               ║
+       ║  Substitua: dados do projeto e dores do cliente   ║
+       ╚═══════════════════════════════════════════════════╝ -->
+  <div class="slide slide--denso">
+    <div class="section-label">Contexto</div>
+    <h2 class="title">O que está sendo proposto</h2>
+    <div class="rule"></div>
+    <div class="cols cols-2">
+
+      <div>
+        <div class="col-label">Sobre o projeto</div>
+        <div class="kv-list">
+          <div class="kv-row"><span class="kv-key">Cliente</span><span class="kv-val">Odontolaf — André Diniz</span></div>
+          <div class="kv-row"><span class="kv-key">Produto</span><span class="kv-val">Dois aplicativos em duas entregas</span></div>
+          <div class="kv-row"><span class="kv-key">Tecnologia</span><span class="kv-val">Web + WhatsApp + QR code</span></div>
+          <div class="kv-row"><span class="kv-key">Acesso</span><span class="kv-val">Painel web privado no navegador</span></div>
+          <div class="kv-row"><span class="kv-key">Prazo estimado</span><span class="kv-val">3 a 4 semanas por entrega</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="col-label">Situação atual</div>
+        <div class="prob-list">
+          <div class="prob-card">
+            <span class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg></span>
+            <span class="prob-text">Dos 850 a 900 leads que chegam por mês, 300 viram agendamento. O restante fica parado na lista, sem receber um novo contato.</span>
+          </div>
+          <div class="prob-card">
+            <span class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13.73 21a2 2 0 0 1-3.46 0"/><path d="M18.63 13A17.9 17.9 0 0 1 18 8"/><path d="M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14"/><path d="M18 8a6 6 0 0 0-9.33-5"/><line x1="2" y1="2" x2="22" y2="22"/></svg></span>
+            <span class="prob-text">Os 1.400 pacientes ativos não têm rotina de relacionamento. A indicação fecha 80% contra 36% do tráfego, mas depende de a clínica ser lembrada.</span>
+          </div>
+          <div class="prob-card">
+            <span class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span>
+            <span class="prob-text">Mais de 1.000 implantes e 2.000 componentes serão comprados em três anos sem controle de baixa, e hoje não há como saber o custo de material por paciente.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ OS DOIS MOTORES ══ -->
+  <div class="slide slide--denso">
+    <div class="section-label">Escopo</div>
+    <h2 class="title">Dois aplicativos em <span class="hi">duas entregas</span></h2>
+    <div class="rule"></div>
+    <p class="subtitle" style="margin-bottom:28px">
+      O aplicativo de leads reúne as duas funções no mesmo painel.<br>O de estoque é independente e vem na sequência.
+    </p>
+    <div class="cols cols-2" style="align-items:start">
+
+      <div class="card" style="padding:24px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <div style="color:var(--accent);display:flex"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div>
+            <div class="card-lbl" style="margin-bottom:2px">Aplicativo 01 · primeira entrega</div>
+            <h3 style="font-size:1.2rem;font-weight:700;letter-spacing:-.4px">Controle e mensageria de leads</h3>
+          </div>
+        </div>
+        <p style="font-size:.85rem;color:var(--muted2);line-height:1.6;margin-bottom:16px">
+          Um painel só, com duas frentes de trabalho dentro:
+        </p>
+        <div style="border-top:1px solid var(--card-b);padding-top:13px;margin-bottom:11px">
+          <div style="font-weight:600;font-size:.92rem;margin-bottom:3px">Resgate de leads</div>
+          <p style="font-size:.83rem;color:var(--muted2);line-height:1.55;margin:0">
+            Volta a falar com quem chegou pelo tráfego e esfriou. Cerca de <strong>700 contatos por mês</strong>.
+          </p>
+        </div>
+        <div style="border-top:1px solid var(--card-b);padding-top:13px">
+          <div style="font-weight:600;font-size:.92rem;margin-bottom:3px">Base ativa</div>
+          <p style="font-size:.83rem;color:var(--muted2);line-height:1.55;margin:0">
+            Mantém os <strong>1.400 pacientes</strong> ouvindo a clínica: aniversário, sazonal, voucher e evento.
+          </p>
+        </div>
+        <div style="margin-top:15px;font-size:.8rem;color:var(--muted);font-weight:600">3 a 4 semanas</div>
+      </div>
+
+      <div class="card" style="padding:24px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <div style="color:var(--accent);display:flex"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+          <div>
+            <div class="card-lbl" style="margin-bottom:2px">Aplicativo 02 · segunda entrega</div>
+            <h3 style="font-size:1.2rem;font-weight:700;letter-spacing:-.4px">Controle de estoque</h3>
+          </div>
+        </div>
+        <p style="font-size:.85rem;color:var(--muted2);line-height:1.6;margin-bottom:16px">
+          Vem na sequência, independente do primeiro:
+        </p>
+        <div style="border-top:1px solid var(--card-b);padding-top:13px;margin-bottom:11px">
+          <div style="font-weight:600;font-size:.92rem;margin-bottom:3px">QR em cada peça</div>
+          <p style="font-size:.83rem;color:var(--muted2);line-height:1.55;margin:0">
+            Baixa por paciente, com lote e validade. Saber qual implante foi em quem.
+          </p>
+        </div>
+        <div style="border-top:1px solid var(--card-b);padding-top:13px">
+          <div style="font-weight:600;font-size:.92rem;margin-bottom:3px">Custo por atendimento</div>
+          <p style="font-size:.83rem;color:var(--muted2);line-height:1.55;margin:0">
+            Quanto de material saiu em cada paciente, com aviso de mínimo e de validade.
+          </p>
+        </div>
+        <div style="margin-top:15px;font-size:.8rem;color:var(--muted);font-weight:600">3 a 4 semanas</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ APLICATIVO 1 — O QUE FAZ ══ -->
+  <div class="slide slide--denso">
+    <div class="section-label">Aplicativo 01</div>
+    <h2 class="title">Controle e mensageria <span class="hi">de leads</span></h2>
+    <div class="rule"></div>
+    <p class="subtitle" style="margin-bottom:24px">
+      Um painel só, duas frentes: reativar quem esfriou e manter os pacientes ativos ouvindo a clínica.
+    </p>
+
+    <div class="cols cols-2" style="align-items:start">
+
+      <div>
+        <div class="col-label">Resgate de leads</div>
+        <div class="num-steps">
+          <div class="num-step">
+            <div class="num-bub">1</div>
+            <div><div class="num-title">Sobe o CSV</div>
+            <div class="num-desc">Dois arquivos exportados do Giga: quem está ativo e quem não está.</div></div>
+          </div>
+          <div class="num-step">
+            <div class="num-bub">2</div>
+            <div><div class="num-title">Filtra e dispara</div>
+            <div class="num-desc">Por tempo sem contato, canal ou base. Seleciona e manda na hora.</div></div>
+          </div>
+          <div class="num-step">
+            <div class="num-bub">3</div>
+            <div><div class="num-title">A conversa vira humana</div>
+            <div class="num-desc">Quem responde aparece com o histórico visível. A Débora assume dali.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="col-label">Base ativa</div>
+        <div class="num-steps">
+          <div class="num-step">
+            <div class="num-bub">1</div>
+            <div><div class="num-title">Cria a campanha</div>
+            <div class="num-desc">Por regra, como aniversário, ou por lista, com data marcada.</div></div>
+          </div>
+          <div class="num-step">
+            <div class="num-bub">2</div>
+            <div><div class="num-title">Define quem entra</div>
+            <div class="num-desc">Por regra ele entra sozinho ao bater o critério. Por lista, você escolhe no painel.</div></div>
+          </div>
+          <div class="num-step">
+            <div class="num-bub">3</div>
+            <div><div class="num-title">Roda sozinha</div>
+            <div class="num-desc">Na data de cada paciente. Quem responde sai da campanha na hora.</div></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <div class="card-lbl">Sobre o envio</div>
+          <div style="font-size:.83rem;color:var(--muted2);margin-top:6px;line-height:1.6">
+            Número dedicado da clínica, sem custo por mensagem. Volume distribuído ao longo
+            do dia, variação de texto e saída fácil para quem pedir — é o que protege o número.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ MOCKUP — APLICATIVO DE LEADS ══ -->
+  <div class="slide slide--denso">
+    <div class="section-label">A tela</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <h2 class="title" style="margin-bottom:0">Como você <span class="hi">opera</span></h2>
+      <a href="https://mockup-odontolaf.profissionalpalomino.cloud" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:9px;
+                background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:.85rem">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Abrir o protótipo navegável
+      </a>
+    </div>
+    <div class="rule" style="margin-top:14px"></div>
+    <p class="subtitle" style="margin-bottom:22px">
+      Um painel de leads com filtros. A partir dele você dispara na hora ou monta uma
+      campanha por lista — e vê quem respondeu, sem sair da tela. A campanha por regra
+      não precisa de você: enche sozinha.
+    </p>
+
+    <div class="cols cols-2" style="align-items:start">
+
+      <div>
+        <div class="col-label">Painel de leads</div>
+        <div class="tela">
+          <div class="tela-barra"><i></i><i></i><i></i><span>leads · 1.412 na base</span></div>
+          <div class="tela-corpo">
+            <div style="margin-bottom:8px">
+              <span class="mk-filtro on">Sem contato há 15 dias</span>
+              <span class="mk-filtro">Instagram</span>
+              <span class="mk-filtro">Não compareceu</span>
+              <span class="mk-filtro">+ filtro</span>
+            </div>
+            <div class="mk-cab">4 selecionados</div>
+            <div class="mk-lin">
+              <div><div class="mk-nome">Juliana Moreira</div><div class="mk-sub">Instagram · sem resposta</div></div>
+              <div class="mk-dir"><span class="mk-tag">nunca</span></div>
+            </div>
+            <div class="mk-lin">
+              <div><div class="mk-nome">Marcos Vinícius</div><div class="mk-sub">Google · não compareceu</div></div>
+              <div class="mk-dir"><span class="mk-tag on">aniversário</span></div>
+            </div>
+            <div class="mk-lin">
+              <div><div class="mk-nome">Patrícia Salgado</div><div class="mk-sub">Facebook · sem resposta</div></div>
+              <div class="mk-dir"><span class="mk-sub">31/08 · 09:14</span></div>
+            </div>
+            <div style="display:flex;gap:7px;margin-top:11px">
+              <span class="mk-btn">Disparar agora</span>
+              <span class="mk-btn sec">Vincular a campanha</span>
+              <span class="mk-btn sec" style="margin-left:auto">Subir CSV</span>
+            </div>
+          </div>
+        </div>
+        <p class="mk-legenda">
+          O mesmo filtro serve para os dois caminhos manuais: disparo imediato ou campanha
+          por lista. A régua de aniversário e a de retorno se enchem sozinhas, pela regra.
+        </p>
+      </div>
+
+      <div>
+        <div class="col-label">Quem respondeu</div>
+        <div class="tela">
+          <div class="tela-barra"><i></i><i></i><i></i><span>conversa · Patrícia Salgado</span></div>
+          <div class="tela-corpo">
+            <div class="mk-bolha eu">Oi Patrícia, tudo bem? Aqui é da OdontoLaf. Vi que nossa conversa acabou parando. Sua avaliação continua de pé, quer que eu separe um horário?</div>
+            <div class="mk-bolha ele">Oi! Pode ser sim, tenho disponibilidade quinta à tarde</div>
+            <div class="mk-bolha eu">Perfeito, vou passar para a Débora confirmar 😊</div>
+            <div style="border-top:1px solid #E4DDD5;margin-top:7px;padding-top:8px;font-size:9.5px;color:#8a8483">
+              Histórico das últimas mensagens · somente leitura
+            </div>
+          </div>
+        </div>
+        <p class="mk-legenda">
+          Quem responde entra nesta lista com a conversa visível. O atendimento continua
+          pela Débora, no WhatsApp dela.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- ══ MOCKUP — APLICATIVO DE ESTOQUE ══ -->
+  <div class="slide slide--denso">
+    <div class="section-label">Aplicativo 02 · segunda entrega</div>
+    <h2 class="title">O controle de <span class="hi">estoque</span></h2>
+    <div class="rule"></div>
+    <p class="subtitle" style="margin-bottom:22px">
+      Entregue na sequência, também em 3 a 4 semanas. Cada peça tem QR próprio, e o registro
+      não prende ninguém durante o procedimento.
+    </p>
+
+    <div class="cols cols-2" style="align-items:start">
+
+      <div>
+        <div class="col-label">Bipou, o sistema pergunta</div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div class="mk-etiqueta">
+            <svg width="54" height="54" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h21v21H0z"/><path stroke="#434242" d="M0 0.5h7m2 0h1m1 0h2m1 0h7M0 1.5h1m5 0h1m2 0h3m2 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m5 0h1m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h2m1 0h2M0 8.5h3m1 0h8m1 0h2m3 0h1M2 9.5h3m2 0h2m1 0h2m1 0h1m1 0h1M1 10.5h1m2 0h3m1 0h1m3 0h1m1 0h1m1 0h2m1 0h2M4 11.5h1m3 0h4m1 0h1m1 0h1m1 0h3M0 12.5h4m1 0h2m1 0h1m1 0h1m1 0h2m2 0h2m1 0h2M8 13.5h2m1 0h2m1 0h2m3 0h1M0 14.5h7m1 0h1m1 0h3m3 0h1m1 0h3M0 15.5h1m5 0h1m1 0h1m1 0h1m1 0h2m1 0h1m2 0h1M0 16.5h1m1 0h3m1 0h1m1 0h2m3 0h1m2 0h3M0 17.5h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h1m1 0h2m1 0h1M0 18.5h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h3m1 0h1m1 0h1M0 19.5h1m5 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2M0 20.5h7m1 0h3m1 0h1m1 0h3m3 0h1"/></svg>
+            <div class="n">Implante Cone Morse 3.5 x 10mm</div>
+            <div class="c">ODL-IMP-0001/00042</div>
+          </div>
+          <div style="flex:1">
+            <div class="mk-pop">
+              <div class="mk-cab" style="border:0;margin-bottom:7px;padding:0">Registrar movimentação</div>
+              <div style="font-size:10.5px;font-weight:600;margin-bottom:7px">Implante Cone Morse 3.5 x 10mm</div>
+              <div style="display:flex;gap:7px;margin-bottom:9px">
+                <div class="mk-campo2" style="flex:1.4">Paciente <strong style="color:#434242">Lucas F.</strong></div>
+                <div class="mk-campo2" style="flex:.7">Qtd <strong style="color:#434242">1</strong></div>
+              </div>
+              <span class="mk-btn">Registrar</span>
+              <div style="font-size:8.5px;color:#8a8483;margin-top:8px;line-height:1.4">
+                O próximo bip já vem com o mesmo paciente preenchido.
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="mk-legenda">
+          Dá para registrar antes do procedimento e completar depois. Ninguém precisa parar
+          a cirurgia para bipar.
+        </p>
+      </div>
+
+      <div>
+        <div class="col-label">Estoque e pendências</div>
+        <div class="tela">
+          <div class="tela-barra"><i></i><i></i><i></i><span>estoque</span></div>
+          <div class="tela-corpo">
+            <div style="background:#F3EAE3;border:1px solid #DCC4B2;border-radius:8px;padding:8px 10px;margin-bottom:9px">
+              <div style="font-size:10px;font-weight:600;color:#8E5F43">Atendimento em aberto · Lucas F.</div>
+              <div style="font-size:8.5px;color:#8a8483;margin-top:2px">
+                Iniciado há 40 min. Fecha sozinho em 3 h, ou encerre agora.
+              </div>
+            </div>
+            <div class="mk-lin">
+              <div><div class="mk-nome">Cone Morse 3.5 x 10</div><div class="mk-sub">38 em estoque</div></div>
+              <div class="mk-dir"><span class="mk-tag ok">ok</span></div>
+            </div>
+            <div class="mk-lin">
+              <div><div class="mk-nome">Cicatrizador 4.5</div><div class="mk-sub">20 vencem em 90 dias</div></div>
+              <div class="mk-dir"><span class="mk-tag on">validade</span></div>
+            </div>
+            <div class="mk-lin">
+              <div><div class="mk-nome">Análogo Cone Morse</div><div class="mk-sub">12 · mínimo 30</div></div>
+              <div class="mk-dir"><span class="mk-tag on">repor</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="mk-legenda">
+          O lembrete de atendimento em aberto evita o lançamento esquecido. A compra do
+          leitor e a colagem dos QR ficam por conta da clínica.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ╔═══════════════════════════════════════════════════╗
+       ║  SLIDE 5 — INVESTIMENTO                           ║
+       ║  2 planos: mensal + anual. "featured" = destaque  ║
+       ║  Placeholders: PLANO_NOTA, PLANO_A/B_NOME,        ║
+       ║    PRECO_A/B, PLANO_A/B_PERIODO, PLANO_B_SAVING   ║
+       ╚═══════════════════════════════════════════════════╝ -->
+  <div class="slide slide--denso">
+    <div class="section-label">Investimento</div>
+    <h2 class="title">O investimento</h2>
+    <div class="rule"></div>
+    <p class="plans-note">Os dois aplicativos em um pacote. Servidor, monitoramento e painel são compartilhados, então o conjunto sai por menos do que a soma das partes.</p>
+    <div class="plans">
+
+      <div class="plan-card">
+        <div class="plan-name">Implantação</div>
+        <div style="font-size:.9rem;color:var(--muted);text-decoration:line-through;margin-bottom:2px">R$ 7.000</div><div class="plan-price" style="font-size:clamp(2.4rem, 3.8vw, 3.6rem)"><span style="font-size:.65em;font-weight:600;margin-right:4px">5x</span><sup>R$</sup>700</div>
+        <div class="plan-period">50% condição piloto · <strong>R$ 700 de entrada</strong> para iniciar + 4 parcelas</div>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="plan-name">Acompanhamento</div>
+        <div style="font-size:.9rem;color:var(--muted);text-decoration:line-through;margin-bottom:2px">R$ 600</div><div class="plan-price"><sup>R$</sup>300</div>
+        <div class="plan-period">50% de condição piloto · por mês, desde a entrega</div>
+      </div>
+
+    </div>
+    <div class="plan-saving" style="max-width:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>A cada clínica que fechar por indicação sua: você recebe <strong>R$ 700</strong> e ainda <strong>abate 1 parcela futura</strong>. Com 4 indicações, todas as parcelas restantes são quitadas.</span></div>
+  </div>
+
+  <!-- ╔═══════════════════════════════════════════════════╗
+       ║  SLIDE 6 — PRÓXIMOS PASSOS                        ║
+       ║  4 passos numerados + cards de contato/demo       ║
+       ╚═══════════════════════════════════════════════════╝ -->
+  <div class="slide slide--denso">
+    <div class="section-label">Próximos passos</div>
+    <h2 class="title">O que acontece <span class="hi">agora</span></h2>
+    <div class="rule"></div>
+    <div class="cols cols-2" style="align-items:start">
+
+      <div class="num-steps">
+        <div class="num-step">
+          <div class="num-bub">1</div>
+          <div><div class="num-title">Aceite do escopo</div><div class="num-desc">Você confirma os três sistemas, a ordem das duas entregas e a forma de pagamento.</div></div>
+        </div>
+        <div class="num-step">
+          <div class="num-bub">2</div>
+          <div><div class="num-title">Acesso aos dados</div><div class="num-desc">Os dois CSVs exportados do Giga: leads não ativos e base de pacientes ativos. Mais a lista dos modelos de implante e componente.</div></div>
+        </div>
+        <div class="num-step">
+          <div class="num-bub">3</div>
+          <div><div class="num-title">Chip dedicado</div><div class="num-desc">Um número novo só para os envios, separado do WhatsApp de atendimento da Débora.</div></div>
+        </div>
+        <div class="num-step">
+          <div class="num-bub">4</div>
+          <div><div class="num-title">Primeira campanha no ar</div><div class="num-desc">O aplicativo de leads entra em 3 a 4 semanas. O de estoque vem na sequência, no mesmo prazo.</div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card" style="border-color:rgba(225,29,72,.28)">
+          <div class="card-lbl" style="display:flex;align-items:center;gap:8px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> Depois desse</div>
+          <div style="font-size:.82rem;color:var(--muted2);margin-top:6px;line-height:1.6">
+            O controle de estoque de implantes que conversamos fica para uma segunda etapa.
+            Já existe um protótipo com leitor de código funcionando na demonstração. A compra do leitor e a colagem dos QR nas peças ficam por conta da clínica.
+          </div>
+          <div style="margin-top:10px">
+            <a href="https://mockup-odontolaf.profissionalpalomino.cloud" target="_blank" style="color:var(--accent);font-weight:700;text-decoration:none;font-size:.82rem;display:inline-flex;align-items:center;gap:6px">
+              Ver demonstração navegável →
+            </a>
+          </div>
+        </div>
+        <!-- Card contato -->
+        <div class="card">
+          <div class="card-lbl">Contato</div>
+          <div style="font-size:.85rem;color:var(--muted2);margin-top:5px;line-height:1.7">
+            Rodrigo Palomino<br>
+            <span style="color:var(--text);font-weight:600"></span><span style="display:inline-flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>(31) 98477-3813</span>
+          </div>
+        </div>
+        <!-- Card urgência — remover se não precisar -->
+        <div class="card" style="background:var(--accent-dim);border-color:rgba(225,29,72,.22)">
+          <div style="font-size:.8rem;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>Como funciona o pagamento</div>
+          <div style="font-size:.78rem;color:var(--muted2);margin-top:5px;line-height:1.5"><strong>R$ 700 de entrada</strong> para iniciar o desenvolvimento + 4 parcelas de R$ 700. A cada nova clínica que fechar por indicação sua, você recebe <strong>R$ 700</strong> e ainda <strong>abate 1 parcela futura</strong>. O acompanhamento de R$ 300 mensais só começa após a entrega.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /deck -->
+
+<!-- ─── NAVIGATION ───────────────────────────────────────── -->
+<nav class="nav">
+  <button class="nav-btn" id="prevBtn" disabled>←</button>
+  <div class="nav-dots" id="navDots"></div>
+  <button class="nav-btn" id="nextBtn">→</button>
+  <span class="nav-count" id="navCount"></span>
+</nav>
+
+
+<script>
+  document.getElementById('metaDate').textContent =
+    new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+
+  const slides   = [...document.querySelectorAll('.slide')];
+  const dotsWrap = document.getElementById('navDots');
+  const prevBtn  = document.getElementById('prevBtn');
+  const nextBtn  = document.getElementById('nextBtn');
+  const counter  = document.getElementById('navCount');
+  // preenche já no load: o valor fixo do HTML ficava desatualizado
+  // sempre que o número de slides mudava.
+  counter.textContent = '1 / ' + document.querySelectorAll('.slide').length;
+
+  // New navigation elements
+  const progressBar = document.getElementById('progressBar');
+  let cur = 0;
+
+  // Build bottom dots AND top progress segments
+  slides.forEach((_, i) => {
+    // bottom dots
+    const d = document.createElement('div');
+    d.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(d);
+
+    // top progress segments
+    const segment = document.createElement('div');
+    segment.className = 'progress-segment' + (i === 0 ? ' active' : '');
+    segment.addEventListener('click', () => go(i));
+    progressBar.appendChild(segment);
+  });
+
+  function go(n) {
+    if (n === cur) return;
+    slides[cur].classList.remove('active');
+    slides[cur].classList.add('leaving');
+    const leaving = cur;
+    setTimeout(() => slides[leaving].classList.remove('leaving'), 460);
+    cur = n;
+    slides[cur].classList.add('active');
+
+    // Update bottom dots
+    dotsWrap.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+
+    // Update top progress segments
+    progressBar.querySelectorAll('.progress-segment').forEach((seg, i) => {
+      seg.classList.toggle('active', i === cur);
+      seg.classList.toggle('viewed', i < cur);
+    });
+
+    // Update bottom buttons
+    prevBtn.disabled = cur === 0;
+    nextBtn.disabled = cur === slides.length - 1;
+
+    // Update side buttons
+
+    counter.textContent = (cur + 1) + ' / ' + slides.length;
+  }
+
+  prevBtn.addEventListener('click', () => cur > 0 && go(cur - 1));
+  nextBtn.addEventListener('click', () => cur < slides.length - 1 && go(cur + 1));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' && cur < slides.length - 1) go(cur + 1);
+    if (e.key === 'ArrowLeft'  && cur > 0)                 go(cur - 1);
+  });
+
+  // Touch swipe
+  let tx = 0;
+  document.getElementById('deck').addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  document.getElementById('deck').addEventListener('touchend', e => {
+    const dx = tx - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 40) dx > 0 ? (cur < slides.length - 1 && go(cur + 1)) : (cur > 0 && go(cur - 1));
+  }, { passive: true });
+</script>
+
+<!-- Global Matte Noise Overlay SVG Filter -->
+<svg style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
+  <filter id="noiseFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+  </filter>
+</svg>
+
+</body>
+</html>
