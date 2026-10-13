@@ -35,7 +35,7 @@ const gruposSistemas: Grupo[] = [
         tag: "Prospecção de Nicho",
       },
       {
-        title: "AutoPost Instagram",
+        title: "Instagram Palomino Tech",
         description:
           "Manter o Instagram atualizado 3x por semana consome tempo todo dia. O sistema cria os temas, escreve as legendas, desenha as imagens e publica sozinho — sem você precisar fazer nada.",
         functions: ["Publica Sozinho", "Escreve Legenda com IA", "Cria a Imagem do Post"],

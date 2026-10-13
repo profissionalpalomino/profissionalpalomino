@@ -1,5 +1,15 @@
 # SESSION.md
 
+## Sessão 12/10/2026 — card do Instagram renomeado
+
+- Card "AutoPost Instagram" em `ProjectsSection.tsx` passou a se chamar "Instagram Palomino Tech"
+  (o projeto antigo `autopost-instagram` foi removido da VPS, do GitHub e do gerenciador).
+- **Onde paramos:** só o título mudou. A descrição ainda diz que o sistema "publica sozinho", mas hoje
+  nada publica sem aprovação manual no painel; vale ajustar o texto. A imagem
+  `public/screenshot-palomino-instagram.webp` mostra o painel antigo e deveria ser refeita.
+- **Próximas tarefas:** 1) reescrever a descrição do card; 2) novo print do painel atual.
+
+
 ## Sessão 07/10/2026 — Refinamentos por Áudio do Rodrigo (Hero Equilibrado, Abas Estáveis, Dupla Flutuante & Telemetria)
 
 - **Hero Section Reequilibrado & Proporcional:**
