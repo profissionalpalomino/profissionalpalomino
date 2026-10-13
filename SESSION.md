@@ -1,5 +1,10 @@
 # SESSION.md
 
+## Sessão de 13/10/2026 (ajuste de proxy /clientes e /p/ no nginx)
+
+- **Correção no `nginx.conf`:** Adicionado o modificador `^~` em `location ^~ /p/` e `location ^~ /clientes/`. Antes, qualquer requisição de imagem (.png, .webp, .jpg) para prévias e clientes caía na regra regex de assets estáticos locais do portfólio e devolvia 404, quebrando fotos e logos de sites sob medida como o Pcars Detail. Com `^~`, as rotas são repassadas com prioridade total para o container do Site Finder.
+- Testado e validado em produção: `img/logo.png`, `hero-novo-espaco.webp` e `garagem-carro-preto.webp` respondendo HTTP 200.
+
 ## Sessão de 13/10/2026 (auditoria do Cérebro, marca v1)
 
 - Fontes trocadas para a marca v1: DM Sans (texto), Archivo largo nos títulos (.font-heading com font-stretch 112%), DM Mono (números). Só tailwind.config.ts, o link do index.html e uma linha no src/index.css.
