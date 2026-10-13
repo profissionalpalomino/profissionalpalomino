@@ -1,5 +1,13 @@
 # SESSION.md
 
+## Sessão de 13/10/2026 (auditoria do Cérebro, marca v1)
+
+- Fontes trocadas para a marca v1: DM Sans (texto), Archivo largo nos títulos (.font-heading com font-stretch 112%), DM Mono (números). Só tailwind.config.ts, o link do index.html e uma linha no src/index.css.
+- Imagem de prévia nova (public/og-palomino.png, 1200x630, cartão da marca) com endereço completo no og:image e no twitter:image. Antes era caminho relativo para um print do Finanças Pro.
+- Testado em 390 px e 1440 px (sem rolagem lateral, títulos inteiros) e publicado à mão na VPS (palomino-tech_portfolio).
+
+**Próximo:** pré-renderizar a página (hoje o HTML chega vazio e o conteúdo só aparece com 320 KB de JavaScript).
+
 ## Sessão 12/10/2026 — card do Instagram renomeado
 
 - Card "AutoPost Instagram" em `ProjectsSection.tsx` passou a se chamar "Instagram Palomino Tech"

@@ -198,3 +198,6 @@
 
 /* Mobile overflow fix */
 html, body { overflow-x: hidden; width: 100%; max-width: 100vw; }
+
+/* Archivo largo nos títulos (marca v1, DESIGN_SYSTEM.md no Cérebro) */
+.font-heading { font-stretch: 112%; }
