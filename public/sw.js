@@ -1,5 +1,5 @@
 // Service worker oficial Palomino Tech — permite instalação PWA no Android/Chrome e iOS.
-const CACHE = 'palomino-tech-v2';
+const CACHE = 'palomino-tech-v3';
 
 self.addEventListener('install', () => self.skipWaiting());
 
