@@ -10,11 +10,12 @@
     - Métricas diárias e alertas de automação contextualizados para cada nicho.
   - **Foto de Capa da Serena Atualizada:** As imagens do card "Serena · Dermatologia & Estética" foram migradas para arquivos webp locais de alta autoridade (`/demos/serena/images/hero.webp`, `profissional.webp`, `pele.webp`).
   - **Correção da Navbar no Mobile:** O botão "Falar no WhatsApp" da barra superior agora é responsivo (`hidden sm:inline-flex`), evitando espremer o logo da Palomino Tech em telas menores que 640px. No mobile, a barra fica limpa e simétrica (logo à esquerda, menu à direita), e o botão de WhatsApp segue acessível em destaque dentro do menu mobile e no botão flutuante inferior.
+  - **Reativação do Domínio .cloud no Traefik:** Configurado roteamento no Traefik (`portfolio.yaml`) para atender também `palominotech.profissionalpalomino.cloud` e `portfolio.profissionalpalomino.cloud` com SSL ativo. Garante que qualquer visitante que clique no resultado de busca do Google acesse o novo site normalmente enquanto o Google indexa o novo domínio `palominotech.com.br` (preservando o canonical oficial).
 - **Validação:**
-  - Build de produção verificado com sucesso (`npm run build` -> exit code 0).
-  - Testado e aprovado em viewport mobile (390px) e desktop.
-- **Onde paramos:** Ajuste mobile concluído, commitado e deployado na VPS.
-- **Próximas tarefas:** Monitorar telemetria e feedback do Rodrigo.
+  - `https://palominotech.profissionalpalomino.cloud/` respondendo HTTP 200 com SSL válido.
+  - `https://palominotech.com.br/` respondendo HTTP 200.
+- **Onde paramos:** Portfólio no ar em ambos os domínios (.com.br e .cloud).
+- **Próximas tarefas:** Monitorar telemetria e substituição dos resultados no Google Search Console.
 
 ## Sessão de 13/10/2026 (Refinamento Visual de Alta Fidelidade: Logo Anexado, Links de Agenda & Tipografia Elegante)
 
