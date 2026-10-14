@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { MessageCircle, Calendar, Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const WHATSAPP = "5531984773813";
+const AGENDA_URL = "https://calendar.app.google/RpTN49BD3jJabEB79";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -27,186 +27,147 @@ const Navbar = () => {
 
   return (
     <header 
-      className={`fixed left-0 right-0 z-50 transition-all duration-500 mx-auto px-4 ${
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 mx-auto px-4 ${
         scrolled 
-          ? "top-3 sm:top-4 max-w-5xl" 
-          : "top-2 sm:top-4 max-w-6xl"
+          ? "top-3 max-w-5xl" 
+          : "top-4 max-w-6xl"
       }`}
     >
       <div 
-        className="w-full transition-all duration-500 rounded-full dark:bg-[#0b0f19]/85 bg-white/90 backdrop-blur-2xl dark:border-white/10 border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.6)] px-5 py-2.5 sm:px-6"
+        className="w-full transition-all duration-300 rounded-full bg-white/95 dark:bg-[#1B1816]/95 backdrop-blur-md border border-[#E5E1DC] dark:border-[#302B27] shadow-[0_2px_12px_rgba(26,23,20,0.06)] px-5 py-2.5 sm:px-6"
       >
         <div className="flex items-center justify-between">
-          {/* Logo Oficial Hexágono */}
+          {/* Logo Oficial Anexado */}
           <div 
-            className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group" 
+            className="flex items-center gap-2.5 cursor-pointer group" 
             onClick={() => {
               setMobileMenuOpen(false);
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <svg 
-              width="30" 
-              height="30" 
-              viewBox="0 0 32 32" 
-              fill="none"
-              className="transition-transform duration-500 group-hover:scale-110"
-              style={{ filter: "drop-shadow(0 0 8px rgba(244,63,94,0.6))" }}
-            >
-              <polygon points="16,2 27.1,8.5 27.1,21.5 16,28 4.9,21.5 4.9,8.5" fill="none" stroke="#f43f5e" strokeWidth="2.2" />
-            </svg>
-            <span className="font-heading text-sm sm:text-base font-extrabold tracking-[0.22em] uppercase text-primary">
-              PALOMINO <span className="dark:text-white text-slate-900 font-black">TECH</span>
+            <img
+              src="/logo.png"
+              alt="Palomino Tech"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl shadow-xs object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <span className="font-heading text-sm sm:text-base font-bold tracking-[0.16em] uppercase text-[#1A1714] dark:text-[#F2EEE9]">
+              PALOMINO <span className="text-[#E8341C]">TECH</span>
             </span>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 text-xs font-heading font-bold uppercase tracking-[0.14em] text-muted-foreground">
+          {/* Links Desktop */}
+          <nav className="hidden md:flex items-center gap-7 text-xs font-medium text-[#57524C] dark:text-[#B6AFA7]">
             <button 
-              onClick={() => scrollTo("projetos")} 
-              className="hover:dark:text-white hover:text-slate-900 transition-colors duration-200"
-            >
-              Cases & Demos
-            </button>
-            <button 
-              onClick={() => scrollTo("servicos")} 
-              className="hover:dark:text-white hover:text-slate-900 transition-colors duration-200"
+              onClick={() => scrollTo('servicos')} 
+              className="hover:text-[#1A1714] dark:hover:text-[#F2EEE9] transition-colors"
             >
               Soluções
             </button>
             <button 
-              onClick={() => scrollTo("processo")} 
-              className="hover:dark:text-white hover:text-slate-900 transition-colors duration-200"
+              onClick={() => scrollTo('processo')} 
+              className="hover:text-[#1A1714] dark:hover:text-[#F2EEE9] transition-colors"
             >
               Como Funciona
             </button>
             <button 
-              onClick={() => scrollTo("duvidas")} 
-              className="hover:dark:text-white hover:text-slate-900 transition-colors duration-200"
+              onClick={() => scrollTo('projetos')} 
+              className="hover:text-[#1A1714] dark:hover:text-[#F2EEE9] transition-colors"
+            >
+              Projetos & Demos
+            </button>
+            <button 
+              onClick={() => scrollTo('depoimentos')} 
+              className="hover:text-[#1A1714] dark:hover:text-[#F2EEE9] transition-colors"
+            >
+              Clientes
+            </button>
+            <button 
+              onClick={() => scrollTo('duvidas')} 
+              className="hover:text-[#1A1714] dark:hover:text-[#F2EEE9] transition-colors"
             >
               Dúvidas
             </button>
           </nav>
 
-          {/* Action CTAs + Theme Toggle */}
-          <div className="hidden lg:flex items-center gap-2.5">
-            <ThemeToggle />
+          {/* CTAs Desktop & Mobile */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Link Agendar com Google Calendar (mesmo link de rodrigo.palominotech.com.br) */}
+            <a
+              href={AGENDA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#1A1714] dark:text-[#F2EEE9] hover:text-[#E8341C] px-3.5 py-2.5 rounded-full hover:bg-[#F5F3F0] dark:hover:bg-[#26221F] border border-[#E5E1DC] dark:border-[#302B27] transition-all"
+              title="Agendar conversa pelo Google Calendar"
+            >
+              <Calendar className="h-4 w-4 text-[#E8341C]" />
+              <span>Agendar</span>
+            </a>
 
+            {/* Botão Falar no WhatsApp Aumentado e com Mais Destaque */}
             <Button
-              size="sm"
-              variant="outline"
               asChild
-              className="dark:border-primary/30 border-primary/20 dark:bg-primary/10 bg-primary/5 text-primary hover:bg-primary hover:text-white transition-all duration-300 rounded-full px-4 py-2 font-heading font-bold text-[11px] uppercase tracking-wider"
+              className="inline-flex bg-[#E8341C] hover:bg-[#C9280F] text-white text-xs sm:text-sm md:text-base font-bold px-4 sm:px-7 py-2 sm:py-3.5 h-auto rounded-full transition-all shadow-[0_4px_14px_rgba(232,52,28,0.28)] hover:shadow-[0_6px_20px_rgba(232,52,28,0.38)] hover:scale-[1.02] active:scale-[0.98]"
             >
               <a
-                href="https://calendar.app.google/RpTN49BD3jJabEB79"
+                href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Vi o site da Palomino Tech e quero conversar sobre um projeto.`}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center gap-1.5 sm:gap-2"
               >
-                <Calendar className="mr-1.5 h-3.5 w-3.5" />
-                Agendar Reunião
+                <span>Falar no WhatsApp</span>
+                <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5 stroke-[2.5]" />
               </a>
             </Button>
 
-            <Button
-              size="sm"
-              asChild
-              className="bg-primary text-primary-foreground hover:brightness-110 transition-all duration-300 rounded-full px-4 py-2 font-heading font-extrabold text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(244,63,94,0.4)] hover:shadow-[0_0_40px_rgba(244,63,94,0.65)] hover:scale-[1.03]"
-            >
-              <a
-                href={`https://wa.me/${WHATSAPP}?text=Olá! Quero transformar meu negócio com a Palomino Tech.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                WhatsApp
-              </a>
-            </Button>
-          </div>
-
-          {/* Mobile Right Controls: Theme Toggle + Menu */}
-          <div className="lg:hidden flex items-center gap-2">
-            <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex items-center justify-center p-2 rounded-xl text-foreground hover:bg-secondary/60 border dark:border-white/10 border-slate-200 transition-colors"
-              aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+              className="md:hidden p-2 text-[#57524C] hover:text-[#1A1714]"
+              aria-label="Abrir menu"
             >
-              {mobileMenuOpen ? <X className="h-5 w-5 text-primary" /> : <Menu className="h-5 w-5 dark:text-white text-slate-800" />}
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
-
-        {/* Mobile Navigation Dropdown */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden pt-4 pb-2 border-t dark:border-white/10 border-slate-200 mt-3 flex flex-col gap-2 animate-in fade-in slide-in-from-top-2 duration-200">
-            <button 
-              onClick={() => scrollTo("projetos")} 
-              className="flex items-center justify-between w-full px-3 py-2.5 rounded-xl text-left text-sm font-semibold dark:text-white text-slate-900 hover:dark:bg-white/5 hover:bg-slate-100 transition-colors"
-            >
-              <span>Projetos & Demos</span>
-              <ArrowRight className="h-4 w-4 text-muted-foreground" />
-            </button>
-            <button 
-              onClick={() => scrollTo("servicos")} 
-              className="flex items-center justify-between w-full px-3 py-2.5 rounded-xl text-left text-sm font-semibold dark:text-white text-slate-900 hover:dark:bg-white/5 hover:bg-slate-100 transition-colors"
-            >
-              <span>Especialidades & IA</span>
-              <ArrowRight className="h-4 w-4 text-muted-foreground" />
-            </button>
-            <button 
-              onClick={() => scrollTo("processo")} 
-              className="flex items-center justify-between w-full px-3 py-2.5 rounded-xl text-left text-sm font-semibold dark:text-white text-slate-900 hover:dark:bg-white/5 hover:bg-slate-100 transition-colors"
-            >
-              <span>Como Funciona</span>
-              <ArrowRight className="h-4 w-4 text-muted-foreground" />
-            </button>
-            <button 
-              onClick={() => scrollTo("duvidas")} 
-              className="flex items-center justify-between w-full px-3 py-2.5 rounded-xl text-left text-sm font-semibold dark:text-white text-slate-900 hover:dark:bg-white/5 hover:bg-slate-100 transition-colors"
-            >
-              <span>Perguntas Frequentes</span>
-              <ArrowRight className="h-4 w-4 text-muted-foreground" />
-            </button>
-
-            <div className="pt-3 mt-1 flex flex-col gap-2.5 border-t dark:border-white/10 border-slate-200">
-              <Button
-                size="lg"
-                asChild
-                className="w-full bg-primary text-white font-extrabold text-xs uppercase tracking-wider h-12 rounded-xl shadow-[0_0_25px_rgba(244,63,94,0.35)]"
-              >
-                <a
-                  href={`https://wa.me/${WHATSAPP}?text=Olá! Quero transformar meu negócio com a Palomino Tech.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Chamar no WhatsApp
-                </a>
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="w-full dark:border-white/10 border-slate-300 dark:text-white text-slate-800 hover:dark:bg-white/5 hover:bg-slate-100 font-bold text-xs uppercase tracking-wider h-12 rounded-xl"
-              >
-                <a
-                  href="https://calendar.app.google/RpTN49BD3jJabEB79"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Calendar className="mr-2 h-4 w-4 text-primary" />
-                  Agendar Reunião Online
-                </a>
-              </Button>
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* Menu Mobile */}
+      {mobileMenuOpen && (
+        <div className="md:hidden mt-2 p-5 bg-white dark:bg-[#1B1816] rounded-2xl border border-[#E5E1DC] dark:border-[#302B27] shadow-xl flex flex-col gap-4 text-sm font-medium text-[#1A1714] dark:text-[#F2EEE9]">
+          <button onClick={() => scrollTo('servicos')} className="text-left py-2 border-b border-[#E5E1DC]/50">
+            Soluções
+          </button>
+          <button onClick={() => scrollTo('processo')} className="text-left py-2 border-b border-[#E5E1DC]/50">
+            Como Funciona
+          </button>
+          <button onClick={() => scrollTo('projetos')} className="text-left py-2 border-b border-[#E5E1DC]/50">
+            Projetos & Demos
+          </button>
+          <button onClick={() => scrollTo('depoimentos')} className="text-left py-2 border-b border-[#E5E1DC]/50">
+            Clientes
+          </button>
+          <button onClick={() => scrollTo('duvidas')} className="text-left py-2 border-b border-[#E5E1DC]/50">
+            Dúvidas
+          </button>
+          <a
+            href={AGENDA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-[#E5E1DC] dark:border-[#302B27] bg-[#FAF9F7] dark:bg-[#221E1B] text-[#1A1714] dark:text-[#F2EEE9] font-semibold text-sm hover:border-[#E8341C] transition-colors"
+          >
+            <Calendar className="h-4 w-4 text-[#E8341C]" />
+            <span>Agendar Conversa (Google Calendar)</span>
+          </a>
+          <a
+            href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Vi o site da Palomino Tech e quero conversar sobre um projeto.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full text-center bg-[#E8341C] text-white font-bold py-3.5 rounded-xl text-base shadow-[0_4px_14px_rgba(232,52,28,0.28)] flex items-center justify-center gap-2"
+          >
+            <span>Falar no WhatsApp</span>
+            <ArrowUpRight className="h-4 w-4 stroke-[2.5]" />
+          </a>
+        </div>
+      )}
     </header>
   );
 };

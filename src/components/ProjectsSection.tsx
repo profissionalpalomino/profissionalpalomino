@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
-import { CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Globe, Cpu, MessageCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, MessageCircle, Check, ArrowUpRight } from "lucide-react";
 
 const WHATSAPP = "5531984773813";
 
@@ -20,94 +20,12 @@ type Grupo = {
   projetos: Projeto[];
 };
 
-const gruposSistemas: Grupo[] = [
-  {
-    id: "clientes",
-    titulo: "Trazer mais clientes",
-    dor: "Prospectar na mão e manter a rede social viva consome o dia inteiro. Estes sistemas fazem isso sozinhos.",
-    projetos: [
-      {
-        title: "Barbearias Finder",
-        description:
-          "Prospectar barbearia por barbearia no Google é lento e manual. A ferramenta encontra, filtra e já manda mensagem personalizada no WhatsApp automaticamente — sem abrir o Google nem escrever uma linha.",
-        functions: ["Busca Automática", "Disparo no WhatsApp", "Lista de Leads"],
-        screenshots: ["/screenshot-barbearias-finder.webp"],
-        tag: "Prospecção de Nicho",
-      },
-      {
-        title: "Instagram Palomino Tech",
-        description:
-          "Manter o Instagram atualizado 3x por semana consome tempo todo dia. O sistema cria os temas, escreve as legendas, desenha as imagens e publica sozinho — sem você precisar fazer nada.",
-        functions: ["Publica Sozinho", "Escreve Legenda com IA", "Cria a Imagem do Post"],
-        screenshots: ["/screenshot-palomino-instagram.webp"],
-        tag: "Automação de Instagram",
-      },
-    ],
-  },
-  {
-    id: "operacao",
-    titulo: "Organizar a operação",
-    dor: "Quando o controle vive em papel, planilha e cabeça, alguma coisa sempre escapa. Estes sistemas põem tudo num lugar só.",
-    projetos: [
-      {
-        title: "Finanças Pro",
-        description:
-          "Perder o controle dos boletos e esquecer de pagar custa caro. Fizemos uma plataforma que centraliza todos os pagamentos num painel visual e manda lembretes automáticos no WhatsApp no dia certo.",
-        functions: ["Painel de Contas", "Alerta no WhatsApp", "Histórico Completo"],
-        screenshots: ["/screenshot-financas-pro.webp"],
-        tag: "Plataforma Web",
-      },
-      {
-        title: "Alca Party",
-        description:
-          "A Alca precisava organizar pedidos de música, comida e drinks numa festa sem papel e sem bagunça. Fizemos um app pra todo mundo usar no celular — e um painel na TV mostrando o ranking de consumo em tempo real.",
-        functions: ["Jukebox com Spotify", "Cardápio no Celular", "Ranking ao Vivo na TV"],
-        screenshots: ["/screenshot-alca-party.webp"],
-        tag: "App de Evento",
-      },
-    ],
-  },
-  {
-    id: "sobmedida",
-    titulo: "App sob medida",
-    dor: "Quando nada pronto no mercado resolve, a saída é construir exatamente o que o problema pede.",
-    projetos: [
-      {
-        title: "Bolão Copa 2026",
-        description:
-          "Bolão da Copa com a família não precisa ser planilha. Fizemos um sistema com palpites, ranking ao vivo — e IA que lê o papel escrito à mão e importa os palpites automaticamente, sem digitar nada.",
-        functions: ["Palpites Online", "Ranking em Tempo Real", "IA que Lê Papel Manuscrito"],
-        screenshots: ["/screenshot-bolao.webp"],
-        tag: "Web App",
-      },
-      {
-        title: "Palomino Stickers",
-        description:
-          "Controlar figurinhas faltantes e repetidas pelo WhatsApp vira uma bagunça rápido. O app organiza tudo e usa IA pra sugerir as melhores trocas baseadas no que você tem e no que precisa.",
-        functions: ["Catálogo de Faltantes", "Lista do WhatsApp colada direto", "IA de Trocas"],
-        screenshots: ["/screenshot-stickers.webp"],
-        tag: "App de Figurinhas",
-      },
-    ],
-  },
-];
-
-function appendQuery(url?: string): string | undefined {
-  if (!url) return undefined;
-  if (typeof window === "undefined") return url;
-  const search = window.location.search;
-  if (!search) return url;
-  const params = search.startsWith("?") ? search.slice(1) : search;
-  const sep = url.includes("?") ? "&" : "?";
-  return `${url}${sep}${params}`;
-}
-
 const sitesLandingPages: Projeto[] = [
   {
     title: "Vanguard Barber & Studio",
     description:
-      "Modelo premium de barbearia inspirado na referência GoGrin: estética dark com dourado, selo artesanal em traço, círculos de serviços, galeria em mosaico e reserva direta de horários no WhatsApp sem fila de espera.",
-    functions: ["Menu de Serviços & Preços", "Reserva de Horário WhatsApp", "Galeria de Estilo em Mosaico"],
+      "Modelo completo para barbearias e estúdios: catálogo de serviços com preços, galeria de cortes em mosaico e botão para agendamento direto pelo WhatsApp ou link próprio.",
+    functions: ["Menu de Serviços & Preços", "Agendamento Direto no WhatsApp", "Galeria de Estilos"],
     screenshots: [
       "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=900&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=900&auto=format&fit=crop",
@@ -119,28 +37,77 @@ const sitesLandingPages: Projeto[] = [
   {
     title: "Serena · Dermatologia & Estética",
     description:
-      "Landing page de alta conversão para clínicas de estética e saúde. Tratamentos clínicos com fotos, responsável técnica com CRM/RQE, FAQ estruturada para Google/IAs e agendamento direto no WhatsApp.",
-    functions: ["Agendamento no WhatsApp", "Tratamentos & Formação Médica", "FAQ para Google e IAs"],
+      "Landing page de alta autoridade para clínicas de saúde e procedimentos estéticos. Apresentação médica com CRM/RQE, tratamentos clínicos e botão de agendamento.",
+    functions: ["Agendamento no WhatsApp", "Tratamentos & Formação Médica", "Perguntas Frequentes"],
     screenshots: [
-      "https://images.unsplash.com/photo-1699206791200-414d95e68450?q=80&w=900&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1731355771418-f10ab62c9f86?q=80&w=900&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1624819318229-3460c441275f?q=80&w=900&auto=format&fit=crop",
+      "/demos/serena/images/hero.webp",
+      "/demos/serena/images/profissional.webp",
+      "/demos/serena/images/pele.webp",
     ],
-    tag: "Saúde & Estética Avançada",
+    tag: "Saúde & Estética",
     url: "https://clinicas.palominotech.com.br/modelo",
   },
   {
     title: "Venda do Deco · Bar & Petiscaria",
     description:
-      "Site sensorial para restaurantes, bistrôs, bares e cafeterias. Cardápio visual com preços e fotos reais de porções, história do espaço desde 1996, horários de funcionamento e pedido direto pelo WhatsApp.",
-    functions: ["Cardápio com Preços & Fotos", "Horários & Endereço", "Pedido & Reserva no WhatsApp"],
+      "Página sensorial para restaurantes e bares: cardápio visual com preços e fotos autênticas, história do espaço desde 1996, horários de funcionamento e reserva no WhatsApp.",
+    functions: ["Cardápio com Preços & Fotos", "Horários & Endereço", "Reserva de Mesas no WhatsApp"],
     screenshots: [
       "/demos/venda-do-deco/img/salao-balcao.webp",
       "/demos/venda-do-deco/img/casarao.webp",
       "/demos/venda-do-deco/img/deco.webp",
     ],
-    tag: "Gastronomia, Bar & Bistrô",
+    tag: "Gastronomia & Bar",
     url: "/demos/venda-do-deco/index.html",
+  },
+];
+
+const gruposSistemas: Grupo[] = [
+  {
+    id: "operacao",
+    titulo: "Organização & Financeiro",
+    dor: "Controle de caixa e contas a pagar centralizado, sem planilhas quebradas.",
+    projetos: [
+      {
+        title: "Finanças Pro",
+        description:
+          "Plataforma que centraliza todos os pagamentos e contas fixas num painel visual com alertas matinais automáticos no WhatsApp no dia do vencimento.",
+        functions: ["Painel de Vencimentos", "Alertas no WhatsApp", "Histórico de Pagamentos"],
+        screenshots: ["/screenshot-financas-pro.webp"],
+        tag: "Gestão Financeira",
+      },
+      {
+        title: "Alca Party",
+        description:
+          "Sistema de eventos com cardápio no celular para os convidados fazerem pedidos sem fila e painel na TV atualizando o consumo em tempo real.",
+        functions: ["Cardápio no Celular", "Ranking ao Vivo na TV", "Sem Fila de Balcão"],
+        screenshots: ["/screenshot-alca-party.webp"],
+        tag: "App de Eventos",
+      },
+    ],
+  },
+  {
+    id: "prospeccao",
+    titulo: "Atendimento & Prospecção",
+    dor: "Captação de leads e respostas automatizadas sem perda de tempo.",
+    projetos: [
+      {
+        title: "Barbearias Finder",
+        description:
+          "Mapeia comércios locais no Google Maps, filtra estabelecimentos sem site e estabelece primeiro contato via mensagem personalizada.",
+        functions: ["Mapeamento no Google", "Filtro de Contatos", "Contato Personalizado"],
+        screenshots: ["/screenshot-barbearias-finder.webp"],
+        tag: "Prospecção Comercial",
+      },
+      {
+        title: "Instagram Palomino Tech",
+        description:
+          "Painel de curadoria de publicações para redes sociais com criação de artes, revisão rápida de textos e aprovação em um toque.",
+        functions: ["Geração de Posts", "Painel de Aprovação", "Agendamento de Conteúdo"],
+        screenshots: ["/screenshot-palomino-instagram.webp"],
+        tag: "Gestão de Conteúdo",
+      },
+    ],
   },
 ];
 
@@ -150,42 +117,41 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
   const next = () => setIdx((i) => (i + 1) % images.length);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl aspect-video bg-gray-100 group border border-border">
+    <div className="relative w-full overflow-hidden rounded-xl aspect-[16/10] bg-[#FAF9F7] group border border-[#E5E1DC]">
       <img
         src={images[idx]}
-        alt={`Screenshot do projeto ${title}`}
+        alt={`Screenshot de ${title}`}
         loading="lazy"
-        className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
+        className="w-full h-full object-cover transition-all duration-300"
         onError={(e) => {
-          e.currentTarget.src = `https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop`;
+          e.currentTarget.src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop";
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
       {images.length > 1 && (
         <>
           <button
             onClick={prev}
             aria-label="Imagem anterior"
-            className="absolute left-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary/80"
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/90 text-[#1A1714] shadow-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
           <button
             onClick={next}
             aria-label="Próxima imagem"
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary/80"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/90 text-[#1A1714] shadow-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+          <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex gap-1">
             {images.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setIdx(i)}
                 aria-label={`Ir para imagem ${i + 1}`}
-                className={`w-1.5 h-1.5 rounded-full transition-all ${
-                  i === idx ? "bg-primary w-3" : "bg-white/50"
+                className={`h-1.5 rounded-full transition-all ${
+                  i === idx ? "bg-[#E8341C] w-4" : "bg-white/70 w-1.5"
                 }`}
               />
             ))}
@@ -196,213 +162,178 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
   );
 }
 
-function CardProjeto({ project }: { project: Projeto }) {
-  return (
-    <div className="group glass-card rounded-[2rem] h-full flex flex-col overflow-hidden transition-all duration-500 hover:border-primary/50 hover:shadow-[0_15px_45px_rgba(244,63,94,0.18)] dark:bg-[#0b0f19]/80 bg-white shadow-lg dark:shadow-none">
-      <div className="p-3 pb-0">
-        <Carousel images={project.screenshots} title={project.title} />
-      </div>
-
-      <div className="p-4 sm:p-6 flex flex-col flex-grow">
-        <div className="mb-4">
-          <span className="text-[10px] font-bold text-primary uppercase tracking-[0.16em] font-mono inline-block px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
-            {project.tag}
-          </span>
-          <h3 className="font-heading text-lg font-black dark:text-white text-slate-900 uppercase mt-2">{project.title}</h3>
-        </div>
-
-        <p className="text-muted-foreground text-xs leading-relaxed mb-6 flex-grow font-sans">
-          {project.description}
-        </p>
-
-        <div>
-          <p className="text-[10px] font-bold dark:text-slate-300 text-slate-600 uppercase tracking-wider mb-2.5 font-mono">
-            Destaques da Solução
-          </p>
-          <ul className="space-y-2 mb-6">
-            {project.functions.map((func, j) => (
-              <li key={j} className="flex items-center gap-2">
-                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
-                <span className="text-xs font-medium dark:text-slate-200 text-slate-700">{func}</span>
-              </li>
-            ))}
-          </ul>
-
-          {project.url ? (
-            <a
-              href={appendQuery(project.url)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full py-3 px-3 sm:px-4 rounded-xl bg-primary text-white text-[11px] sm:text-xs font-heading font-extrabold uppercase tracking-wide hover:brightness-110 transition-all shadow-[0_0_20px_rgba(244,63,94,0.35)] hover:shadow-[0_0_35px_rgba(244,63,94,0.6)]"
-            >
-              <ExternalLink className="h-3.5 w-3.5 shrink-0" />
-              <span>Ver Demonstração ao Vivo</span>
-            </a>
-          ) : (
-            <a
-              href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
-                `Olá, Rodrigo! Gostaria de ver uma demonstração do sistema ${project.title}.${
-                  typeof window !== "undefined" && new URLSearchParams(window.location.search).get("ref")
-                    ? ` (Ref: ${new URLSearchParams(window.location.search).get("ref")})`
-                    : ""
-                }`
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full py-3 px-3 sm:px-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[11px] sm:text-xs font-heading font-extrabold uppercase tracking-wide hover:bg-emerald-500 hover:text-white transition-all shadow-[0_0_20px_rgba(74,222,128,0.2)]"
-            >
-              <MessageCircle className="h-3.5 w-3.5 shrink-0" />
-              <span>Solicitar Demonstração</span>
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 const ProjectsSection = () => {
-  const [categoria, setCategoria] = useState<"sites" | "sistemas">("sites");
-
-  const handleTrocaCategoria = (novaCat: "sites" | "sistemas") => {
-    if (categoria === novaCat) return;
-    setCategoria(novaCat);
-    // Preserva ancoragem estável sem tranco visual na página
-    const el = document.getElementById("projetos");
-    if (el) {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < -80) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  };
+  const [tab, setTab] = useState<"demos" | "sistemas">("demos");
 
   return (
-    <section id="projetos" className="section-padding relative dark:bg-[#080b12] bg-slate-50 border-t border-b dark:border-white/10 border-slate-200/80 overflow-hidden">
-      <div className="absolute top-[20%] right-[-10%] w-[450px] h-[450px] rounded-full bg-primary/10 blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-[10%] left-[-10%] w-[450px] h-[450px] rounded-full bg-emerald-500/10 blur-[150px] pointer-events-none" />
-
-      <div className="container-narrow relative z-10">
+    <section id="projetos" className="section-padding bg-[#FAF9F7] text-[#1A1714]">
+      <div className="container-narrow">
+        
+        {/* Cabeçalho */}
         <AnimatedSection>
-          <div className="text-center">
-            <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-heading font-bold text-primary mb-4 uppercase tracking-[0.2em]">
-              Portfólio & Demonstrações ao Vivo
+          <div className="max-w-2xl mb-10">
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#C42B13] bg-[#FCEDE9] px-3 py-1 rounded-full border border-[#F2C4B9] inline-block mb-3">
+              Projetos & Portfólio
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 dark:text-white text-slate-900 uppercase tracking-tight">
-              Projetos no ar, <span className="text-neon">gerando resultado real</span>
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1714] tracking-tight mb-4">
+              Veja nossos sistemas no ar.
             </h2>
-            <p className="mx-auto max-w-2xl text-xs sm:text-sm text-muted-foreground mb-8 font-sans">
-              Clique nas abas abaixo para alternar entre os modelos de sites para negócios e os sistemas operacionais com inteligência artificial.
+            <p className="font-sans text-base text-[#57524C] leading-relaxed">
+              Você pode testar as demonstrações ao vivo agora mesmo para ver como ficaria na sua empresa:
             </p>
-
-            {/* Seletor de Categoria (Segmented Control Grande e Inconfundível) */}
-            <div className="flex flex-col sm:inline-flex sm:flex-row p-1.5 sm:p-2 dark:bg-[#0b0f19] bg-white border dark:border-white/15 border-slate-200 rounded-2xl sm:rounded-full shadow-xl gap-1.5 sm:gap-2 w-full max-w-lg mx-auto box-border">
-              {/* Aba 1: Sites & Landing Pages */}
-              <button
-                type="button"
-                onClick={() => handleTrocaCategoria("sites")}
-                data-track="tab_sites"
-                className={`flex items-center justify-between sm:justify-center gap-2 sm:gap-3 w-full sm:w-auto px-4 py-3 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-full font-heading font-extrabold text-[11px] sm:text-xs uppercase tracking-wide transition-all duration-300 ${
-                  categoria === "sites"
-                    ? "bg-primary text-white shadow-[0_0_30px_rgba(244,63,94,0.45)] ring-2 ring-primary/40"
-                    : "bg-black/[0.03] dark:bg-white/[0.03] sm:bg-transparent text-muted-foreground hover:text-foreground hover:bg-black/[0.05] dark:hover:bg-white/[0.06]"
-                }`}
-              >
-                <div className="flex items-center gap-2 shrink-0">
-                  <Globe className={`h-4 w-4 shrink-0 ${categoria === "sites" ? "text-white" : "text-primary"}`} />
-                  <span>Sites & Landing Pages</span>
-                </div>
-                <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full shrink-0 ${
-                  categoria === "sites" ? "bg-white/20 text-white" : "dark:bg-white/5 bg-slate-100 text-muted-foreground"
-                }`}>
-                  {sitesLandingPages.length} MODELOS
-                </span>
-              </button>
-
-              {/* Aba 2: Sistemas & Automações */}
-              <button
-                type="button"
-                onClick={() => handleTrocaCategoria("sistemas")}
-                data-track="tab_sistemas"
-                className={`flex items-center justify-between sm:justify-center gap-2 sm:gap-3 w-full sm:w-auto px-4 py-3 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-full font-heading font-extrabold text-[11px] sm:text-xs uppercase tracking-wide transition-all duration-300 ${
-                  categoria === "sistemas"
-                    ? "bg-primary text-white shadow-[0_0_30px_rgba(244,63,94,0.45)] ring-2 ring-primary/40"
-                    : "bg-black/[0.03] dark:bg-white/[0.03] sm:bg-transparent text-muted-foreground hover:text-foreground hover:bg-black/[0.05] dark:hover:bg-white/[0.06]"
-                }`}
-              >
-                <div className="flex items-center gap-2 shrink-0">
-                  <Cpu className={`h-4 w-4 shrink-0 ${categoria === "sistemas" ? "text-white" : "text-emerald-400"}`} />
-                  <span>Sistemas & Automações</span>
-                </div>
-                <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full shrink-0 ${
-                  categoria === "sistemas" ? "bg-white/20 text-white" : "dark:bg-white/5 bg-slate-100 text-muted-foreground"
-                }`}>
-                  {gruposSistemas.reduce((n, g) => n + g.projetos.length, 0)} SISTEMAS
-                </span>
-              </button>
-            </div>
-
-            {/* Feedback Visual Imediato da Categoria Ativa */}
-            <div className="mt-4 text-xs font-mono text-muted-foreground px-2">
-              {categoria === "sites" ? (
-                <p className="text-balance leading-relaxed">
-                  Exibindo <strong className="dark:text-white text-slate-900">3 modelos de alta conversão</strong> com demonstração interativa ao vivo
-                </p>
-              ) : (
-                <p className="text-balance leading-relaxed">
-                  Exibindo <strong className="dark:text-white text-slate-900">6 sistemas e automações com IA</strong> desenvolvidos sob medida
-                </p>
-              )}
-            </div>
           </div>
         </AnimatedSection>
 
-        {/* Container Estabilizado para Evitar Pulos na Página */}
-        <div className="min-h-[550px] transition-opacity duration-300">
-          {categoria === "sites" ? (
-            <div className="mt-10 animate-in fade-in duration-300">
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {sitesLandingPages.map((site, i) => (
-                  <AnimatedSection key={site.title} delay={i * 0.1}>
-                    <CardProjeto project={site} />
-                  </AnimatedSection>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <div className="mt-12 space-y-16 animate-in fade-in duration-300">
-              {gruposSistemas.map((grupo, gi) => (
-                <div key={grupo.id}>
-                  <AnimatedSection delay={gi * 0.05}>
-                    <div className="flex items-baseline justify-between gap-2 mb-2 border-b dark:border-white/10 border-slate-200 pb-3">
-                      <div className="flex items-baseline gap-2.5 min-w-0">
-                        <span className="font-mono text-xs font-bold text-primary shrink-0">
-                          {String(gi + 1).padStart(2, "0")}
-                        </span>
-                        <h3 className="font-heading text-base sm:text-xl font-black dark:text-white text-slate-900 uppercase truncate sm:overflow-visible">
-                          {grupo.titulo}
-                        </h3>
-                      </div>
-                      <span className="text-[10px] sm:text-[11px] font-mono text-muted-foreground shrink-0 uppercase pl-2">
-                        {grupo.projetos.length}{" "}
-                        {grupo.projetos.length === 1 ? "projeto" : "projetos"}
+        {/* Seletor de Abas Estilo Segmented Control */}
+        <div className="flex items-center gap-2 p-1 bg-white rounded-xl border border-[#E5E1DC] w-fit mb-12 shadow-xs">
+          <button
+            onClick={() => setTab("demos")}
+            className={`px-4 py-2 rounded-lg font-heading text-xs font-bold uppercase tracking-wider transition-all ${
+              tab === "demos"
+                ? "bg-[#1A1714] text-white shadow-xs"
+                : "text-[#57524C] hover:text-[#1A1714]"
+            }`}
+          >
+            Modelos de Sites & Demos (3)
+          </button>
+          <button
+            onClick={() => setTab("sistemas")}
+            className={`px-4 py-2 rounded-lg font-heading text-xs font-bold uppercase tracking-wider transition-all ${
+              tab === "sistemas"
+                ? "bg-[#1A1714] text-white shadow-xs"
+                : "text-[#57524C] hover:text-[#1A1714]"
+            }`}
+          >
+            Sistemas & Automações (4)
+          </button>
+        </div>
+
+        {/* Conteúdo Aba Demos */}
+        {tab === "demos" && (
+          <div className="grid gap-8 md:grid-cols-3">
+            {sitesLandingPages.map((proj, i) => (
+              <AnimatedSection key={i} delay={i * 0.1}>
+                <div className="bg-white rounded-2xl border border-[#E5E1DC] p-5 sm:p-6 flex flex-col justify-between h-full shadow-[0_2px_8px_rgba(26,23,20,0.04)] hover:border-[#E8341C]/40 transition-all">
+                  <div>
+                    <Carousel images={proj.screenshots} title={proj.title} />
+
+                    <div className="flex items-center justify-between mt-5 mb-2">
+                      <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#78716A] bg-[#FAF9F7] px-2 py-0.5 rounded border border-[#E5E1DC]">
+                        {proj.tag}
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground mb-6 max-w-2xl font-sans">{grupo.dor}</p>
-                  </AnimatedSection>
 
-                  <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    {grupo.projetos.map((project, i) => (
-                      <AnimatedSection key={project.title} delay={i * 0.1}>
-                        <CardProjeto project={project} />
-                      </AnimatedSection>
-                    ))}
+                    <h3 className="font-heading font-bold text-lg text-[#1A1714] mb-2">
+                      {proj.title}
+                    </h3>
+
+                    <p className="font-sans text-xs text-[#57524C] leading-relaxed mb-5">
+                      {proj.description}
+                    </p>
+
+                    <div className="space-y-1.5 mb-6 pb-5 border-b border-[#E5E1DC]">
+                      {proj.functions.map((fn, fIdx) => (
+                        <div key={fIdx} className="flex items-center gap-2 text-xs text-[#1A1714]">
+                          <Check className="w-3.5 h-3.5 text-[#1E7A3B]" />
+                          <span>{fn}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    {proj.url && (
+                      <a
+                        href={proj.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#E8341C] hover:bg-[#C9280F] text-white text-xs font-semibold py-2.5 px-3 rounded-xl transition-colors"
+                      >
+                        <span>Abrir Demo</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    <a
+                      href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Gostei do modelo de ${encodeURIComponent(proj.title)} e quero falar sobre ele.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl border border-[#E5E1DC] hover:bg-[#F5F3F0] text-[#1A1714] transition-colors"
+                      title="Conversar sobre este modelo no WhatsApp"
+                    >
+                      <MessageCircle className="w-4 h-4 text-[#1E7A3B]" />
+                    </a>
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        )}
+
+        {/* Conteúdo Aba Sistemas */}
+        {tab === "sistemas" && (
+          <div className="space-y-12">
+            {gruposSistemas.map((grupo, gIdx) => (
+              <div key={gIdx}>
+                <div className="mb-6">
+                  <h3 className="font-heading font-bold text-xl text-[#1A1714] mb-1">
+                    {grupo.titulo}
+                  </h3>
+                  <p className="font-sans text-xs sm:text-sm text-[#57524C]">
+                    {grupo.dor}
+                  </p>
+                </div>
+
+                <div className="grid gap-6 md:grid-cols-2">
+                  {grupo.projetos.map((proj, pIdx) => (
+                    <AnimatedSection key={pIdx} delay={pIdx * 0.1}>
+                      <div className="bg-white rounded-2xl border border-[#E5E1DC] p-5 sm:p-6 flex flex-col justify-between h-full shadow-[0_2px_8px_rgba(26,23,20,0.04)]">
+                        <div>
+                          <Carousel images={proj.screenshots} title={proj.title} />
+
+                          <div className="mt-5 mb-2">
+                            <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#78716A] bg-[#FAF9F7] px-2 py-0.5 rounded border border-[#E5E1DC]">
+                              {proj.tag}
+                            </span>
+                          </div>
+
+                          <h4 className="font-heading font-bold text-lg text-[#1A1714] mb-2">
+                            {proj.title}
+                          </h4>
+
+                          <p className="font-sans text-xs text-[#57524C] leading-relaxed mb-5">
+                            {proj.description}
+                          </p>
+
+                          <div className="space-y-1.5 mb-6 pb-5 border-b border-[#E5E1DC]">
+                            {proj.functions.map((fn, fIdx) => (
+                              <div key={fIdx} className="flex items-center gap-2 text-xs text-[#1A1714]">
+                                <Check className="w-3.5 h-3.5 text-[#1E7A3B]" />
+                                <span>{fn}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div>
+                          <a
+                            href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Vi o sistema ${encodeURIComponent(proj.title)} e quero ver como funciona.`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full inline-flex items-center justify-center gap-2 bg-[#FAF9F7] hover:bg-[#F5F3F0] text-[#1A1714] border border-[#E5E1DC] text-xs font-semibold py-2.5 px-4 rounded-xl transition-colors"
+                          >
+                            <MessageCircle className="w-4 h-4 text-[#1E7A3B]" />
+                            <span>Solicitar demonstração pelo WhatsApp</span>
+                          </a>
+                        </div>
+                      </div>
+                    </AnimatedSection>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
       </div>
     </section>
   );

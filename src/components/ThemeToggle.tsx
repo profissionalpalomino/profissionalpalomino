@@ -15,9 +15,9 @@ export function ThemeToggle({ className }: { className?: string }) {
         document.documentElement.classList.remove("dark");
       }
     } else {
-      // Padrão dark
-      document.documentElement.classList.add("dark");
-      setTheme("dark");
+      // Padrão light (DESIGN_SYSTEM.md)
+      document.documentElement.classList.remove("dark");
+      setTheme("light");
     }
   }, []);
 

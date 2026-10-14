@@ -1,178 +1,461 @@
-import { motion } from "framer-motion";
-import { Calendar, ArrowDown, CheckCircle2, ShieldCheck, Zap, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  ArrowDown, 
+  Check, 
+  ArrowUpRight, 
+  Clock, 
+  Calendar, 
+  Stethoscope, 
+  Scissors, 
+  UtensilsCrossed 
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const WHATSAPP = "5531984773813";
+const AGENDA_URL = "https://calendar.app.google/RpTN49BD3jJabEB79";
 
-const WhatsAppIcon = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className={className}
-  >
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
-  </svg>
-);
+type SegmentId = "clinica" | "barbearia" | "restaurante";
 
-const marqueeItems = [
-  "SITES DE ALTA CONVERSÃO",
-  "SISTEMAS WEB SOB MEDIDA",
-  "AGENTES DE INTELIGÊNCIA ARTIFICIAL",
-  "AUTOMAÇÃO NO WHATSAPP (EVOLUTION API)",
-  "DASHBOARDS & GESTÃO FINANCEIRA",
-  "INTEGRAÇÕES N8N & PYTHON",
-  "PROSPECÇÃO AUTOMÁTICA DE LEADS",
-  "ZERO PLANILHAS MANUAIS",
-];
+interface SegmentData {
+  id: SegmentId;
+  label: string;
+  icon: typeof Stethoscope;
+  empresa: string;
+  subtitulo: string;
+  bannerImg: string;
+  avatarImg: string;
+  statusBadge: string;
+  statusClass: string;
+  faturamento: string;
+  faturamentoSub: string;
+  metrica2Label: string;
+  metrica2Valor: string;
+  metrica2Sub: string;
+  atendimentos: Array<{
+    hora: string;
+    nome: string;
+    detalhe: string;
+    img: string;
+    badge: string;
+    badgeClass: string;
+  }>;
+  alertaTitulo: string;
+  alertaTexto: string;
+}
+
+const SEGMENTOS: Record<SegmentId, SegmentData> = {
+  clinica: {
+    id: "clinica",
+    label: "Clínicas",
+    icon: Stethoscope,
+    empresa: "Clínica Serena · Estética Avançada",
+    subtitulo: "Dra. Marina Costa · CRM 48.912",
+    bannerImg: "/demos/serena/images/hero.webp",
+    avatarImg: "/demos/serena/images/profissional.webp",
+    statusBadge: "9 atendimentos",
+    statusClass: "text-[#1E7A3B] bg-[#E5F3E9] border border-[#1E7A3B]/20",
+    faturamento: "R$ 3.850,00",
+    faturamentoSub: "▲ +24% em procedimentos",
+    metrica2Label: "Retornos no WhatsApp",
+    metrica2Valor: "100% ativos",
+    metrica2Sub: "Lembrete automático 6 meses",
+    atendimentos: [
+      {
+        hora: "09:30",
+        nome: "Mariana Silva",
+        detalhe: "Toxina Botulínica (Botox Facial)",
+        img: "/demos/serena/images/botox.webp",
+        badge: "Confirmou WhatsApp",
+        badgeClass: "text-[#1E7A3B] bg-[#E5F3E9]",
+      },
+      {
+        hora: "11:00",
+        nome: "Beatriz Vasconcelos",
+        detalhe: "Bioestimulador de Colágeno",
+        img: "/demos/serena/images/bioestimulador.webp",
+        badge: "Ficha Digital OK",
+        badgeClass: "text-[#8A5300] bg-[#FAF0DC]",
+      },
+      {
+        hora: "14:30",
+        nome: "Camila Rocha",
+        detalhe: "Harmonização Facial & Retoque",
+        img: "/demos/serena/images/harmonizacao.webp",
+        badge: "Lembrete Enviado",
+        badgeClass: "text-[#57524C] bg-[#F5F3F0]",
+      },
+    ],
+    alertaTitulo: "Recall Preventivo:",
+    alertaTexto: "4 pacientes de Botox receberam aviso automático de retoque de 6 meses hoje.",
+  },
+  barbearia: {
+    id: "barbearia",
+    label: "Barbearias",
+    icon: Scissors,
+    empresa: "Vanguard Barber Studio",
+    subtitulo: "Estúdio Premium · 4 Cadeiras",
+    bannerImg: "/demos/barbearia/images/lounge.webp",
+    avatarImg: "/demos/barbearia/images/barba.webp",
+    statusBadge: "8 agendamentos",
+    statusClass: "text-[#8A5300] bg-[#FAF0DC] border border-[#8A5300]/20",
+    faturamento: "R$ 560,00",
+    faturamentoSub: "▲ +18% vs semana passada",
+    metrica2Label: "Repasses da Equipe",
+    metrica2Valor: "R$ 224,00",
+    metrica2Sub: "Cálculo automático 40%",
+    atendimentos: [
+      {
+        hora: "10:00",
+        nome: "Carlos Eduardo",
+        detalhe: "Corte Fade + Barboterapia",
+        img: "/demos/barbearia/images/fade.webp",
+        badge: "WhatsApp OK",
+        badgeClass: "text-[#1E7A3B] bg-[#E5F3E9]",
+      },
+      {
+        hora: "11:00",
+        nome: "Lucas Almeida",
+        detalhe: "Barba Alinhada na Toalha Quente",
+        img: "/demos/barbearia/images/barba.webp",
+        badge: "Agendou no Link",
+        badgeClass: "text-[#8A5300] bg-[#FAF0DC]",
+      },
+      {
+        hora: "14:00",
+        nome: "Matheus Rocha",
+        detalhe: "Pomada Modeladora & Finalização",
+        img: "/demos/barbearia/images/produtos.webp",
+        badge: "Lembrete Enviado",
+        badgeClass: "text-[#57524C] bg-[#F5F3F0]",
+      },
+    ],
+    alertaTitulo: "Atendimento 24h:",
+    alertaTexto: "3 clientes agendaram esta madrugada enquanto a barbearia estava fechada.",
+  },
+  restaurante: {
+    id: "restaurante",
+    label: "Restaurantes",
+    icon: UtensilsCrossed,
+    empresa: "Venda do Deco · Bar & Cozinha",
+    subtitulo: "Tradição desde 1996 · Salão & Balcão",
+    bannerImg: "/demos/venda-do-deco/img/salao-balcao.webp",
+    avatarImg: "/demos/venda-do-deco/img/porcao.webp",
+    statusBadge: "Mesas ativas",
+    statusClass: "text-[#C42B13] bg-[#FCEDE9] border border-[#C42B13]/20",
+    faturamento: "R$ 2.480,00",
+    faturamentoSub: "▲ Pix sem comissão de app",
+    metrica2Label: "Contas & Boletos",
+    metrica2Valor: "R$ 0 em atraso",
+    metrica2Sub: "Aviso matinal no WhatsApp",
+    atendimentos: [
+      {
+        hora: "12:15",
+        nome: "Mesa 08 · Almoço Executivo",
+        detalhe: "Porção de Torresmo & Prato Feito",
+        img: "/demos/venda-do-deco/img/porcao.webp",
+        badge: "Comanda Aberta",
+        badgeClass: "text-[#1E7A3B] bg-[#E5F3E9]",
+      },
+      {
+        hora: "13:30",
+        nome: "Balcão · Chopp & Bebidas",
+        detalhe: "Conta encerrada via QR Code Pix",
+        img: "/demos/venda-do-deco/img/cerveja.webp",
+        badge: "Pago no Pix",
+        badgeClass: "text-[#8A5300] bg-[#FAF0DC]",
+      },
+      {
+        hora: "14:45",
+        nome: "Reserva de Mesa · WhatsApp",
+        detalhe: "Aniversário 10 pessoas (Sexta)",
+        img: "/demos/venda-do-deco/img/salao-mesas.webp",
+        badge: "Confirmado",
+        badgeClass: "text-[#57524C] bg-[#F5F3F0]",
+      },
+    ],
+    alertaTitulo: "Zero planilhas:",
+    alertaTexto: "Cardápio digital, controle de comandas e fechamento de caixa no automático.",
+  },
+};
 
 const HeroSection = () => {
-  return (
-    <section className="relative pt-28 sm:pt-32 lg:pt-36 pb-8 overflow-hidden bg-grid-dots">
-      {/* Glows de Fundo Sutis */}
-      <div className="absolute top-[-10%] left-1/4 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[140px] pointer-events-none" />
-      <div className="absolute top-[20%] right-[-10%] w-[450px] h-[450px] rounded-full bg-emerald-500/10 blur-[150px] pointer-events-none" />
+  const [activeTab, setActiveTab] = useState<SegmentId>("clinica");
+  const current = SEGMENTOS[activeTab];
 
-      <div className="container-narrow relative z-10 w-full px-4 sm:px-6 lg:px-8 mb-12">
-        {/* Layout Dividido: Texto elegante à esquerda, Ações e Métricas à direita */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+  return (
+    <section className="relative pt-32 sm:pt-36 lg:pt-40 pb-20 lg:pb-28 overflow-hidden bg-[#FAF9F7] text-[#1A1714]">
+      {/* Luz ambiente suave de profundidade */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[400px] bg-radial from-[#E8341C]/[0.05] via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
+
+      {/* Grade sutil e refinada */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{
+          backgroundImage: `radial-gradient(#1A1714 1px, transparent 1px)`,
+          backgroundSize: '28px 28px',
+        }}
+      />
+
+      <div className="container-narrow relative z-10 px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
-          {/* Coluna Esquerda: Conteúdo Direto, Elegante e Proporcional */}
+          {/* Coluna Esquerda: Texto Direto, Aberto e Elegante */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="lg:col-span-7 flex flex-col items-start text-left w-full"
+            className="lg:col-span-7 flex flex-col items-start text-left"
           >
-            {/* Título com escala muito mais proporcional e equilibrada */}
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight dark:text-white text-slate-900 leading-[1.08] mb-4">
-              TRANSFORME PROCESSOS LENTOS EM <br className="hidden sm:block" />
-              <span className="text-neon">SISTEMAS AUTÔNOMOS.</span>
+            {/* Tag Superior */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FCEDE9] border border-[#F2C4B9] text-[#C42B13] font-mono text-[11px] font-semibold tracking-wide uppercase mb-6 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#E8341C] animate-pulse" />
+              <span>Sistemas & Automações Sob Medida</span>
+            </div>
+
+            {/* Título Principal — Proporções altas, naturais e elegantes */}
+            <h1 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#1A1714] leading-[1.16] tracking-[-0.03em] mb-6">
+              Seu negócio organizado. <br />
+              <span className="text-[#E8341C]">Menos tempo no WhatsApp</span> <br />
+              e no papel.
             </h1>
 
-            {/* Subtítulo Objetivo */}
-            <p className="font-sans text-sm sm:text-base text-muted-foreground leading-relaxed mb-6 max-w-xl">
-              Desenvolvemos <strong>sites de alta conversão</strong>, <strong>aplicativos sob medida</strong> e <strong>automações de WhatsApp com inteligência artificial</strong> para eliminar retrabalho e acelerar o crescimento do seu negócio.
+            {/* Subtítulo Sem Jargões — Claro e multissetorial */}
+            <p className="font-sans text-base sm:text-lg text-[#57524C] leading-relaxed mb-8 max-w-xl">
+              Desenvolvemos sistemas web, páginas rápidas e automações sob medida para clínicas, barbearias, restaurantes e comércios locais atenderem melhor, eliminarem planilhas e fecharem o caixa no automático.
             </p>
 
-            {/* Três Diferenciais Rápidos */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-xs dark:text-slate-300 text-slate-600 font-sans mb-6">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
-                <span>Zero planilhas manuais</span>
+            {/* Três Diferenciais Concretos */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full font-sans text-xs text-[#57524C] mb-8 pb-7 border-b border-[#E5E1DC]">
+              <div className="flex items-center gap-2.5">
+                <div className="w-5 h-5 rounded-full bg-[#E5F3E9] text-[#1E7A3B] flex items-center justify-center shrink-0">
+                  <Check className="w-3.5 h-3.5" />
+                </div>
+                <span className="font-medium text-[#1A1714]">No ar em até 7 dias</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
-                <span>Atendimento 24h com IA</span>
+              <div className="flex items-center gap-2.5">
+                <div className="w-5 h-5 rounded-full bg-[#E5F3E9] text-[#1E7A3B] flex items-center justify-center shrink-0">
+                  <Check className="w-3.5 h-3.5" />
+                </div>
+                <span className="font-medium text-[#1A1714]">Zero planilhas manuais</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
-                <span>No ar em poucos dias</span>
+              <div className="flex items-center gap-2.5">
+                <div className="w-5 h-5 rounded-full bg-[#E5F3E9] text-[#1E7A3B] flex items-center justify-center shrink-0">
+                  <Check className="w-3.5 h-3.5" />
+                </div>
+                <span className="font-medium text-[#1A1714]">Suporte direto no WhatsApp</span>
               </div>
+            </div>
+
+            {/* Botões de Conversão */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-3">
+              <Button
+                size="lg"
+                asChild
+                className="bg-[#E8341C] hover:bg-[#C9280F] text-white font-sans font-bold text-sm px-6 py-6 rounded-xl shadow-[0_4px_14px_rgba(232,52,28,0.28)] hover:shadow-[0_6px_20px_rgba(232,52,28,0.38)] transition-all"
+              >
+                <a
+                  href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Quero conversar sobre um sistema para a minha empresa.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2"
+                >
+                  <span>Conversar sobre meu projeto</span>
+                  <ArrowUpRight className="h-4 w-4 stroke-[2.5]" />
+                </a>
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                className="border-[#E5E1DC] bg-white hover:bg-[#F5F3F0] text-[#1A1714] font-sans font-semibold text-sm px-5 py-6 rounded-xl transition-colors shadow-2xs"
+              >
+                <a
+                  href={AGENDA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2"
+                >
+                  <Calendar className="h-4 w-4 text-[#E8341C]" />
+                  <span>Agendar Demonstração</span>
+                </a>
+              </Button>
             </div>
 
             <a
               href="#projetos"
-              className="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-wider text-muted-foreground hover:dark:text-white hover:text-slate-900 transition-colors py-1"
+              className="inline-flex items-center gap-1.5 text-xs font-sans text-[#78716A] hover:text-[#1A1714] transition-colors mt-2"
             >
-              <span>Explorar Demonstrações ao Vivo</span>
-              <ArrowDown className="h-3.5 w-3.5 text-primary" />
+              <span>ou veja demonstrações ao vivo abaixo</span>
+              <ArrowDown className="h-3.5 w-3.5" />
             </a>
           </motion.div>
 
-          {/* Coluna Direita: Caixa Executiva de Ação Rápida + Métricas */}
+          {/* Coluna Direita: Dashboard Multissetorial com Alma e Vida Real */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="lg:col-span-5 w-full"
+            transition={{ duration: 0.4, delay: 0.15 }}
+            className="lg:col-span-5 w-full relative"
           >
-            <div className="w-full glass-card rounded-[2rem] p-4 sm:p-7 dark:bg-[#080b12]/90 bg-white dark:border-white/10 border-slate-200/90 shadow-[0_15px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_15px_50px_rgba(0,0,0,0.6)] relative overflow-hidden box-border">
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-emerald-400 to-transparent" />
+            {/* Badge Flutuante Ativo em Tempo Real */}
+            <div className="absolute -top-3.5 -right-2 sm:-right-3 z-20 bg-[#1A1714] text-white px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl shadow-xl border border-white/10 flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-[#10B981] animate-ping shrink-0" />
+              <div className="text-left">
+                <p className="font-sans text-[11px] font-semibold leading-tight text-white">Novo Agendamento</p>
+                <p className="font-mono text-[9px] text-[#A8A29E]">há 2 min · via WhatsApp</p>
+              </div>
+            </div>
 
-              <div className="mb-4 sm:mb-5 text-left">
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-primary font-bold">
-                  CANAL DIRETO
+            {/* Janela de App com Barra Mac Minimalista */}
+            <div className="bg-white rounded-2xl border border-[#E5E1DC] shadow-[0_20px_50px_rgba(26,23,20,0.08)] overflow-hidden">
+              
+              {/* Barra de Janela */}
+              <div className="bg-[#FAF9F7] px-4 py-2.5 border-b border-[#E5E1DC] flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#E5E1DC]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#E5E1DC]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#E5E1DC]" />
+                </div>
+                <span className="font-mono text-[11px] font-medium text-[#78716A]">
+                  painel.palominotech.com.br
                 </span>
-                <h3 className="font-heading text-base sm:text-lg font-black dark:text-white text-slate-900 uppercase mt-0.5">
-                  Vamos conversar sobre seu projeto?
-                </h3>
-                <p className="text-xs text-muted-foreground mt-1 font-sans">
-                  Retornamos com estimativa clara de viabilidade, custo e prazo de entrega.
-                </p>
+                <span className="w-8" />
               </div>
 
-              {/* Botões de Ação Imediata */}
-              <div className="space-y-2.5 sm:space-y-3 mb-5 sm:mb-6">
-                <Button
-                  size="lg"
-                  asChild
-                  className="w-full bg-primary text-white font-heading font-extrabold text-[11px] sm:text-xs uppercase tracking-wide sm:tracking-[0.14em] py-4 sm:py-5 rounded-xl shadow-[0_0_25px_rgba(244,63,94,0.4)] hover:shadow-[0_0_35px_rgba(244,63,94,0.6)] hover:scale-[1.02] transition-all"
+              {/* Seletor Rápido de Segmentos — 100% responsivo em 3 colunas, ZERO barra de rolagem */}
+              <div className="bg-[#FAF9F7] p-1.5 border-b border-[#E5E1DC]">
+                <div className="grid grid-cols-3 gap-1">
+                  {(Object.keys(SEGMENTOS) as SegmentId[]).map((segId) => {
+                    const seg = SEGMENTOS[segId];
+                    const Icon = seg.icon;
+                    const isActive = activeTab === segId;
+                    return (
+                      <button
+                        key={segId}
+                        type="button"
+                        onClick={() => setActiveTab(segId)}
+                        className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-sans text-xs font-semibold transition-all select-none ${
+                          isActive
+                            ? "bg-white text-[#1A1714] shadow-xs border border-[#E5E1DC]"
+                            : "text-[#78716A] hover:text-[#1A1714] hover:bg-white/60"
+                        }`}
+                      >
+                        <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? "text-[#E8341C]" : "text-[#78716A]"}`} />
+                        <span className="truncate">{seg.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Conteúdo Dinâmico por Segmento */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.id}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex flex-col"
                 >
-                  <a
-                    href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Vi o site da Palomino Tech e quero falar sobre um projeto.`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-track="hero_whatsapp"
-                    className="flex items-center justify-center gap-2 sm:gap-2.5"
-                  >
-                    <WhatsAppIcon className="h-4 w-4 text-white shrink-0" />
-                    <span>Chamar no WhatsApp Direto</span>
-                  </a>
-                </Button>
+                  {/* Mini-Banner Fotográfico com Alma do Estabelecimento */}
+                  <div className="relative h-20 w-full overflow-hidden bg-[#1A1714]">
+                    <img 
+                      src={current.bannerImg} 
+                      alt={current.empresa} 
+                      className="w-full h-full object-cover opacity-65"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                    <div className="absolute bottom-2.5 left-3 sm:left-4 right-3 sm:right-4 flex items-center justify-between">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <img 
+                          src={current.avatarImg} 
+                          alt={current.empresa}
+                          className="w-9 h-9 rounded-full object-cover border-2 border-white shadow-md shrink-0" 
+                        />
+                        <div className="min-w-0 truncate text-white">
+                          <p className="font-heading font-bold text-xs sm:text-sm leading-tight truncate text-white">{current.empresa}</p>
+                          <p className="font-sans text-[10px] sm:text-[11px] text-white/80 truncate">{current.subtitulo}</p>
+                        </div>
+                      </div>
+                      <span className={`font-mono text-[9px] sm:text-[10px] font-semibold px-2 py-0.5 rounded-full shrink-0 ${current.statusClass}`}>
+                        {current.statusBadge}
+                      </span>
+                    </div>
+                  </div>
 
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="w-full dark:border-white/15 border-slate-300 dark:bg-white/[0.03] bg-slate-100/80 hover:dark:bg-white/10 hover:bg-slate-200/80 dark:text-white text-slate-800 font-heading font-bold text-[11px] sm:text-xs uppercase tracking-wide sm:tracking-[0.14em] py-4 sm:py-5 rounded-xl transition-all"
-                >
-                  <a
-                    href="https://calendar.app.google/RpTN49BD3jJabEB79"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-track="hero_calendar"
-                    className="flex items-center justify-center gap-2 sm:gap-2.5"
-                  >
-                    <Calendar className="h-4 w-4 text-primary shrink-0" />
-                    <span>Agendar Reunião Online</span>
-                  </a>
-                </Button>
-              </div>
+                  <div className="p-4 sm:p-5">
+                    {/* Métricas Diárias Dinâmicas */}
+                    <div className="grid grid-cols-2 gap-2.5 mb-3.5">
+                      <div className="p-3 rounded-xl bg-[#FAF9F7] border border-[#E5E1DC]/80">
+                        <span className="font-sans text-[11px] text-[#57524C] block mb-0.5">Faturamento do Dia</span>
+                        <span className="font-mono text-base sm:text-lg font-bold text-[#1A1714] tracking-tight">
+                          {current.faturamento}
+                        </span>
+                        <span className="font-mono text-[10px] text-[#1E7A3B] block mt-0.5 truncate">
+                          {current.faturamentoSub}
+                        </span>
+                      </div>
+                      <div className="p-3 rounded-xl bg-[#FAF9F7] border border-[#E5E1DC]/80">
+                        <span className="font-sans text-[11px] text-[#57524C] block mb-0.5">{current.metrica2Label}</span>
+                        <span className="font-mono text-base sm:text-lg font-bold text-[#1A1714] tracking-tight">
+                          {current.metrica2Valor}
+                        </span>
+                        <span className="font-mono text-[10px] text-[#78716A] block mt-0.5 truncate">
+                          {current.metrica2Sub}
+                        </span>
+                      </div>
+                    </div>
 
-              {/* Métricas Compactas de Telemetria */}
-              <div className="pt-3 sm:pt-4 border-t dark:border-white/10 border-slate-200/80 grid grid-cols-3 gap-1.5 sm:gap-2 text-center">
-                <div className="px-1 py-2 sm:p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
-                  <div className="font-heading font-black text-base sm:text-lg dark:text-white text-slate-900">9+</div>
-                  <div className="font-mono text-[8px] sm:text-[9px] uppercase tracking-normal sm:tracking-wider text-muted-foreground truncate">Cases no Ar</div>
-                </div>
-                <div className="px-1 py-2 sm:p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
-                  <div className="font-heading font-black text-base sm:text-lg text-emerald-400">100%</div>
-                  <div className="font-mono text-[8px] sm:text-[9px] uppercase tracking-normal sm:tracking-wider text-muted-foreground truncate">Autonomia</div>
-                </div>
-                <div className="px-1 py-2 sm:p-2 rounded-lg dark:bg-white/[0.02] bg-slate-50 border dark:border-transparent border-slate-100">
-                  <div className="font-heading font-black text-base sm:text-lg text-primary">12ms</div>
-                  <div className="font-mono text-[8px] sm:text-[9px] uppercase tracking-normal sm:tracking-wider text-muted-foreground truncate">Latência</div>
-                </div>
-              </div>
+                    {/* Lista de Atendimentos com Fotos dos Serviços */}
+                    <div className="space-y-2 mb-3.5">
+                      {current.atendimentos.map((atendimento, i) => (
+                        <div 
+                          key={i}
+                          className="p-2.5 sm:p-3 rounded-xl bg-white border border-[#E5E1DC] flex items-center justify-between hover:border-[#1A1714]/20 transition-colors shadow-2xs"
+                        >
+                          <div className="flex items-center gap-2.5 min-w-0">
+                            <img 
+                              src={atendimento.img} 
+                              alt={atendimento.detalhe}
+                              className="w-8 h-8 rounded-lg object-cover border border-[#E5E1DC] shrink-0" 
+                            />
+                            <div className="min-w-0 truncate">
+                              <div className="flex items-center gap-1.5">
+                                <span className="font-mono text-[10px] font-bold text-[#E8341C]">{atendimento.hora}</span>
+                                <span className="text-[#E5E1DC]">·</span>
+                                <p className="font-sans text-xs font-semibold text-[#1A1714] truncate">{atendimento.nome}</p>
+                              </div>
+                              <p className="font-sans text-[11px] text-[#78716A] truncate">{atendimento.detalhe}</p>
+                            </div>
+                          </div>
+                          <span className={`font-mono text-[9px] sm:text-[10px] font-medium px-2 py-0.5 rounded shrink-0 ml-2 ${atendimento.badgeClass}`}>
+                            {atendimento.badge}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Micro Alerta de Valor Real */}
+                    <div className="p-2.5 rounded-xl bg-[#FAF9F7] border border-[#E5E1DC] flex items-center gap-2.5">
+                      <div className="w-6 h-6 rounded-md bg-[#FCEDE9] text-[#E8341C] flex items-center justify-center shrink-0">
+                        <Clock className="w-3.5 h-3.5" />
+                      </div>
+                      <p className="font-sans text-[11px] text-[#57524C] leading-snug">
+                        <strong className="text-[#1A1714]">{current.alertaTitulo} </strong>
+                        {current.alertaTexto}
+                      </p>
+                    </div>
+
+                  </div>
+                </motion.div>
+              </AnimatePresence>
 
             </div>
           </motion.div>
 
-        </div>
-      </div>
-
-      {/* ─── MARQUEE INFINITO DE TECNOLOGIAS & ESPECIALIDADES ─── */}
-      <div className="w-full py-3.5 dark:bg-[#080b12] bg-white border-y dark:border-white/10 border-slate-200/80 overflow-hidden relative">
-        <div className="animate-marquee flex items-center gap-10 whitespace-nowrap">
-          {[...marqueeItems, ...marqueeItems].map((item, i) => (
-            <div key={i} className="flex items-center gap-10">
-              <span className="font-heading font-extrabold text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground/80 hover:dark:text-white hover:text-slate-900 transition-colors">
-                {item}
-              </span>
-              <span className="text-primary font-bold text-sm">✦</span>
-            </div>
-          ))}
         </div>
       </div>
     </section>

@@ -1,10 +1,7 @@
 // Sistema Oficial de Telemetria e Analytics em Tempo Real — Palomino Tech
 // Conectado ao Dashboard do Site Finder (analytics.db)
 
-const TRACK_ENDPOINT = 
-  typeof window !== "undefined" && window.location.hostname === "localhost"
-    ? "https://site-finder.profissionalpalomino.cloud/api/analytics/track"
-    : "https://site-finder.profissionalpalomino.cloud/api/analytics/track";
+const TRACK_ENDPOINT = "/api/analytics/track";
 
 const SLUG = "palominotech";
 const SITE_NAME = "Palomino Tech (Site Oficial)";

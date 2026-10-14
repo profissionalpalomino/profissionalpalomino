@@ -1,5 +1,38 @@
 # SESSION.md
 
+## Sessão de 14/10/2026 (Hero Multissetorial Interativo & Fotos Oficiais da Serena)
+
+- **Ajustes Realizados a Pedido do Rodrigo:**
+  - **Eliminação da Barra de Rolagem Horizontal no Hero:** Substituído o overflow com scrollbar por um layout fixo em `grid grid-cols-3` com rótulos enxutos ("Clínicas", "Barbearias", "Restaurantes"), eliminando completamente a barra de rolagem cinza em qualquer largura de tela.
+  - **Identidade Visual e Vida Real nos Segmentos:**
+    - Cada segmento agora traz um **mini-banner fotográfico** do estabelecimento com gradiente suave e avatar oficial com foto real.
+    - Cada linha de atendimento traz **foto real do procedimento/serviço** (Botox/Bioestimulador na Clínica Serena, Corte Fade/Barba na Vanguard Barber, e Porções/Chopp no Venda do Deco).
+    - Métricas diárias e alertas de automação contextualizados para cada nicho.
+  - **Foto de Capa da Serena Atualizada:** As imagens do card "Serena · Dermatologia & Estética" foram migradas para arquivos webp locais de alta autoridade (`/demos/serena/images/hero.webp`, `profissional.webp`, `pele.webp`).
+- **Validação:**
+  - Build de produção verificado com sucesso (`npm run build` -> exit code 0).
+  - Dev server rodando localmente em `http://localhost:8080/`.
+  - Navegação e transições validadas visualmente no navegador (Hero interativo e card da Serena).
+- **Onde paramos:** Todos os pontos solicitados finalizados e testados em localhost.
+- **Próximas tarefas:** Aguardar aprovação do Rodrigo para realizar commit, push e deploy na VPS.
+
+## Sessão de 13/10/2026 (Refinamento Visual de Alta Fidelidade: Logo Anexado, Links de Agenda & Tipografia Elegante)
+
+- **Ajustes Realizados a Pedido do Rodrigo:**
+  - **Botão "Agendar demonstração" corrigido para a agenda:** O botão no banner da seção "Como Funciona" e o novo botão no Hero agora abrem diretamente o Google Calendar oficial (`https://calendar.app.google/RpTN49BD3jJabEB79`), em nova aba e com ícone de calendário.
+  - **Logo Anexado Integrado:** A imagem oficial do aplicativo fornecida pelo Rodrigo (`logo.png`, squircle escuro com hexágono vermelho brilhante e traços de circuito) foi copiada para `public/logo.png` e integrada com acabamento premium na Navbar superior, no Footer e no topo do card de CTA final.
+  - **Eliminação Total de Fontes Achatadas:** Removido o peso excessivo `font-black` (900) de todas as seções (`ServicesSection`, `ProjectsSection`, `TestimonialsSection`, `HowItWorksSection`, `FaqSection`), padronizando em `font-bold` (700) com proporções naturais e tracking equilibrado.
+  - **Hero Elevado a Padrão de Alta Fidelidade:** 
+    - Quebra de linha harmônica no título em 3 linhas sem palavras soltas.
+    - Luz ambiente suave ao fundo (`bg-radial`).
+    - Badge flutuante interativo no mockup do Mac com notificação em tempo real de agendamento via WhatsApp.
+    - Botões duplos de conversão rápida (WhatsApp + Agendar Demonstração).
+- **Validação:**
+  - Build de produção verificado com sucesso (`npm run build` -> exit code 0 em 5.33s).
+  - Screenshots capturados e validados em `http://localhost:8080/`.
+- **Onde paramos:** Protótipo rodando em localhost com todos os ajustes concluídos.
+- **Próximas tarefas:** Aguardar ok do Rodrigo no chat para commit, push e deploy na VPS.
+
 ## Sessão de 13/10/2026 (ajuste de proxy /clientes e /p/ no nginx)
 
 - **Correção no `nginx.conf`:** Adicionado o modificador `^~` em `location ^~ /p/` e `location ^~ /clientes/`. Antes, qualquer requisição de imagem (.png, .webp, .jpg) para prévias e clientes caía na regra regex de assets estáticos locais do portfólio e devolvia 404, quebrando fotos e logos de sites sob medida como o Pcars Detail. Com `^~`, as rotas são repassadas com prioridade total para o container do Site Finder.

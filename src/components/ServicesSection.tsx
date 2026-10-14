@@ -1,111 +1,122 @@
 import AnimatedSection from "./AnimatedSection";
-import { MonitorSmartphone, Code2, Bot, CloudCog, ArrowRight } from "lucide-react";
+import { Calendar, Globe, MessageSquare, ArrowRight, Check } from "lucide-react";
 
 const WHATSAPP = "5531984773813";
 
 const services = [
   {
-    icon: Code2,
     num: "01",
-    title: "Sites & Landing Pages de Alta Conversão",
-    desc: "Sites com design cinematográfico, carregamento instantâneo no celular e arquitetura persuasiva voltada para transformar visitantes em dinheiro no caixa da sua empresa.",
-    tech: "Tailwind CSS • SEO • Mobile First",
-    color: "from-primary/30 to-transparent",
-    accent: "text-primary"
+    icon: Calendar,
+    title: "Sistemas de Agendamento & Operação",
+    desc: "Seu cliente agenda sozinho em segundos, a confirmação vai no WhatsApp e o sistema calcula os repasses da equipe e o fechamento do caixa no final do dia.",
+    points: [
+      "Agenda online em tempo real",
+      "Cálculo automático de comissões",
+      "Página personalizada com sua identidade",
+      "Zero dependência de balcão para marcar horários",
+    ],
+    nicho: "Para barbearias, clínicas, salões e estúdios",
   },
   {
-    icon: MonitorSmartphone,
     num: "02",
-    title: "Sistemas Web & Aplicativos Sob Medida",
-    desc: "Painéis de agendamento, controle de estoque, CRM, portais de clientes e aplicativos web/PWA que funcionam exatamente com as regras e particularidades do seu negócio.",
-    tech: "React • Node.js • PWA Instalável",
-    color: "from-blue-500/30 to-transparent",
-    accent: "text-blue-400"
+    icon: Globe,
+    title: "Sites & Landing Pages de Alta Conversão",
+    desc: "Páginas profissionais desenhadas para carregar em menos de 1 segundo no celular, passar autoridade imediata no Google e levar o cliente direto ao WhatsApp.",
+    points: [
+      "Carregamento ultra-rápido no 4G",
+      "Otimizado para o Google (SEO Local)",
+      "Catálogo ou cardápio com preços claros",
+      "Botão de contato com mensagem personalizada",
+    ],
+    nicho: "Para comércios locais, médicos, estética e serviços",
   },
   {
-    icon: Bot,
     num: "03",
-    title: "Agentes de IA & Automação de WhatsApp",
-    desc: "Agentes de Inteligência Artificial que atendem clientes, tiram dúvidas, qualificam orçamentos, agendam horários e disparam alertas 24 horas por dia sem descanso.",
-    tech: "Evolution API • LLMs • Autônomo 24/7",
-    color: "from-emerald-500/30 to-transparent",
-    accent: "text-emerald-400"
-  },
-  {
-    icon: CloudCog,
-    num: "04",
-    title: "Integrações de Fluxos & Fim de Planilhas",
-    desc: "Conectamos seus sistemas (CRM, Google Sheets, ERPs e Bancos) para que os dados fluam sem ninguém da sua equipe precisar redigitar ou copiar e colar na mão.",
-    tech: "n8n • Webhooks • Python • Docker",
-    color: "from-purple-500/30 to-transparent",
-    accent: "text-purple-400"
+    icon: MessageSquare,
+    title: "Automações de WhatsApp & Fim de Planilhas",
+    desc: "Lembretes automáticos de horário que reduzem furos na agenda, avisos matinais de contas a pagar e fluxos que conectam suas ferramentas sem cópia manual.",
+    points: [
+      "Lembretes de confirmação 2h antes",
+      "Alertas diários de contas no WhatsApp",
+      "Integração entre formulários e sistemas",
+      "Eliminação de controles duplicados em papel",
+    ],
+    nicho: "Para empresas que perdem tempo com retrabalho",
   },
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="servicos" className="section-padding relative overflow-hidden dark:bg-[#0b0f19] bg-white">
-      {/* Background glow sutil */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/10 blur-[180px] pointer-events-none" />
-      
-      <div className="container-narrow relative z-10">
+    <section id="servicos" className="section-padding bg-[#FAF9F7] text-[#1A1714]">
+      <div className="container-narrow">
+        
+        {/* Cabeçalho da Seção */}
         <AnimatedSection>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-heading font-bold text-primary mb-4 uppercase tracking-[0.2em]">
-              Nossas Especialidades
+          <div className="max-w-2xl mb-14">
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#C42B13] bg-[#FCEDE9] px-3 py-1 rounded-full border border-[#F2C4B9] inline-block mb-3">
+              Soluções Práticas
             </span>
-            <h2 className="font-heading text-3xl font-black sm:text-4xl md:text-5xl lg:text-6xl dark:text-white text-slate-900 uppercase tracking-tight mb-4">
-              Tecnologia de ponta <br />
-              <span className="text-neon">sem complicação para você.</span>
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1714] tracking-tight mb-4">
+              Tecnologia que resolve a rotina do seu negócio.
             </h2>
-            <p className="text-muted-foreground text-sm sm:text-base font-sans">
-              Você não precisa ser técnico. A gente traduz seu gargalo operacional em código de alta performance, sem jargões confusos e com foco total em ROI.
+            <p className="font-sans text-base text-[#57524C] leading-relaxed">
+              Você não precisa entender de programação. Nós entregamos a ferramenta pronta, ensinamos sua equipe a usar e cuidamos de toda a parte técnica.
             </p>
           </div>
         </AnimatedSection>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        {/* Grade de 3 Cards de Produto */}
+        <div className="grid gap-6 md:grid-cols-3">
           {services.map((s, i) => (
             <AnimatedSection key={i} delay={i * 0.08}>
-              <div className="group glass-card relative overflow-hidden rounded-[2rem] p-5 sm:p-8 md:p-10 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_15px_45px_rgba(244,63,94,0.18)] dark:bg-[#080b12]/90 bg-slate-50/80 border dark:border-white/10 border-slate-200/80 shadow-md dark:shadow-none flex flex-col justify-between h-full">
-                {/* Linha superior luminosa */}
-                <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r ${s.color}`} />
-                
+              <div className="bg-white rounded-2xl border border-[#E5E1DC] p-6 sm:p-7 flex flex-col justify-between h-full shadow-[0_2px_8px_rgba(26,23,20,0.04)] hover:border-[#E8341C]/40 transition-all">
                 <div>
-                  <div className="flex items-center justify-between mb-5 sm:mb-6">
-                    <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl dark:bg-white/[0.04] bg-white border dark:border-white/10 border-slate-200 shadow-sm group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors duration-300">
-                      <s.icon className={`h-6 w-6 sm:h-7 sm:w-7 ${s.accent}`} />
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-[#FAF9F7] border border-[#E5E1DC] text-[#E8341C] flex items-center justify-center">
+                      <s.icon className="w-6 h-6" />
                     </div>
-                    <span className="font-heading font-black text-2xl sm:text-3xl dark:text-white/10 text-slate-300 group-hover:text-primary/30 transition-colors">
+                    <span className="font-mono font-bold text-sm text-[#78716A]">
                       {s.num}
                     </span>
                   </div>
-                  
-                  <h3 className="font-heading text-lg sm:text-xl font-black dark:text-white text-slate-900 uppercase mb-2 sm:mb-3">
+
+                  <h3 className="font-heading font-bold text-xl text-[#1A1714] mb-3 leading-snug">
                     {s.title}
                   </h3>
-                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-6 font-sans">
+
+                  <p className="font-sans text-xs sm:text-sm text-[#57524C] leading-relaxed mb-6">
                     {s.desc}
                   </p>
+
+                  <div className="space-y-2 mb-6 pb-6 border-b border-[#E5E1DC]">
+                    {s.points.map((pt, pIdx) => (
+                      <div key={pIdx} className="flex items-start gap-2 text-xs text-[#1A1714]">
+                        <Check className="w-4 h-4 text-[#1E7A3B] shrink-0 mt-0.5" />
+                        <span>{pt}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="pt-4 border-t dark:border-white/10 border-slate-200 flex flex-wrap items-center justify-between gap-2">
-                  <span className="font-mono text-[10px] text-muted-foreground tracking-wider uppercase">
-                    {s.tech}
-                  </span>
+                <div>
+                  <p className="font-mono text-[11px] text-[#78716A] mb-4">
+                    {s.nicho}
+                  </p>
                   <a
                     href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Gostaria de saber mais sobre ${encodeURIComponent(s.title)}.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-heading font-bold uppercase tracking-wider text-primary dark:hover:text-white hover:text-slate-950 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-heading font-bold uppercase tracking-wider text-[#C42B13] hover:text-[#E8341C] transition-colors"
                   >
-                    Conversar <ArrowRight className="h-3 w-3" />
+                    <span>Quero para minha empresa</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
             </AnimatedSection>
           ))}
         </div>
+
       </div>
     </section>
   );

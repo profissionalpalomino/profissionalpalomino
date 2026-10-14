@@ -1,76 +1,86 @@
-import { Mail, MessageCircle, Instagram, Calendar } from "lucide-react";
+import { Mail, MessageCircle, Instagram, Calendar, Linkedin } from "lucide-react";
 
 const WHATSAPP = "5531984773813";
+const AGENDA_URL = "https://calendar.app.google/RpTN49BD3jJabEB79";
+const EMAIL = "profissionalpalomino@gmail.com";
+const LINKEDIN_URL = "https://www.linkedin.com/company/palominotech";
 
 const Footer = () => {
   return (
-    <footer className="dark:bg-[#080b12] bg-slate-900 border-t dark:border-white/10 border-slate-800 py-16 px-5 relative z-10 text-white">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <footer className="bg-white border-t border-[#E5E1DC] py-12 px-5 text-[#57524C]">
+      <div className="container-narrow flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Brand Logo and descriptor */}
         <div className="flex items-center gap-3">
-          <svg 
-            width="34" 
-            height="34" 
-            viewBox="0 0 32 32" 
-            fill="none"
-            className="transition-transform duration-500 hover:scale-110"
-            style={{ filter: "drop-shadow(0 0 10px rgba(244,63,94,0.6))" }}
-          >
-            <polygon points="16,2 27.1,8.5 27.1,21.5 16,28 4.9,21.5 4.9,8.5" fill="none" stroke="#f43f5e" strokeWidth="2.2" />
-          </svg>
+          <img 
+            src="/logo.png" 
+            alt="Palomino Tech" 
+            className="w-9 h-9 rounded-xl shadow-xs object-cover" 
+          />
           <div>
-            <span className="font-heading text-lg font-black tracking-[0.2em] uppercase text-white">
-              PALOMINO <span className="text-primary">TECH</span>
+            <span className="font-heading text-sm font-bold tracking-[0.16em] uppercase text-[#1A1714]">
+              PALOMINO <span className="text-[#E8341C]">TECH</span>
             </span>
+            <p className="font-sans text-[11px] text-[#78716A]">
+              Sistemas e automações sob medida · Lagoa Santa, MG
+            </p>
           </div>
         </div>
 
-        {/* Links and email */}
-        <div className="flex flex-col items-center md:items-end gap-3">
-          <div className="flex flex-wrap justify-center items-center gap-5 text-xs font-heading font-bold uppercase tracking-wider">
-            <a 
-              href={`https://wa.me/${WHATSAPP}?text=Olá! Vi o rodapé da Palomino Tech e quero tirar dúvidas.`} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-1.5 text-muted-foreground hover:text-white transition-colors duration-200"
-            >
-              <MessageCircle className="h-4 w-4 text-emerald-400" />
-              WhatsApp
-            </a>
-            <a 
-              href="https://calendar.app.google/RpTN49BD3jJabEB79" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-1.5 text-muted-foreground hover:text-white transition-colors duration-200"
-            >
-              <Calendar className="h-4 w-4 text-primary" />
-              Agenda
-            </a>
-            <a 
-              href="https://instagram.com/palominotech" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center gap-1.5 text-muted-foreground hover:text-white transition-colors duration-200"
-            >
-              <Instagram className="h-4 w-4 text-primary" />
-              Instagram
-            </a>
-            <a 
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=profissionalpalomino@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-muted-foreground hover:text-white transition-colors duration-200"
-            >
-              <Mail className="h-4 w-4 text-slate-400" />
-              E-mail
-            </a>
-          </div>
-          <p className="text-[10px] text-muted-foreground/60 font-medium font-sans">
-            © {new Date().getFullYear()} Palomino Tech • Todos os direitos reservados
-          </p>
+        {/* Links */}
+        <div className="flex flex-wrap justify-center items-center gap-5 text-xs font-sans font-medium text-[#57524C]">
+          <a 
+            href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Vi o rodapé da Palomino Tech e quero falar sobre um projeto.`} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-1.5 hover:text-[#1A1714] transition-colors"
+          >
+            <MessageCircle className="h-4 w-4 text-[#1E7A3B]" />
+            <span>WhatsApp</span>
+          </a>
+          <a 
+            href={AGENDA_URL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-1.5 hover:text-[#1A1714] transition-colors"
+            title="Agendar conversa pelo Google Calendar"
+          >
+            <Calendar className="h-4 w-4 text-[#E8341C]" />
+            <span>Agendar Reunião</span>
+          </a>
+          <a 
+            href={LINKEDIN_URL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-1.5 hover:text-[#0A66C2] transition-colors"
+          >
+            <Linkedin className="h-4 w-4 text-[#0A66C2]" />
+            <span>LinkedIn</span>
+          </a>
+          <a 
+            href="https://instagram.com/palominotech" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-1.5 hover:text-[#1A1714] transition-colors"
+          >
+            <Instagram className="h-4 w-4 text-[#78716A]" />
+            <span>Instagram</span>
+          </a>
+          <a 
+            href={`mailto:${EMAIL}`}
+            className="flex items-center gap-1.5 hover:text-[#1A1714] transition-colors"
+            title={EMAIL}
+          >
+            <Mail className="h-4 w-4 text-[#78716A]" />
+            <span>{EMAIL}</span>
+          </a>
         </div>
 
+      </div>
+
+      <div className="container-narrow mt-8 pt-6 border-t border-[#E5E1DC]/60 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#78716A] font-sans gap-2">
+        <p>© 2026 Palomino Tech. Todos os direitos reservados.</p>
+        <p className="font-mono">Desenvolvido com foco em resultados reais.</p>
       </div>
     </footer>
   );

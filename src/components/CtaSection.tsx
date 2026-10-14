@@ -1,89 +1,53 @@
 import AnimatedSection from "./AnimatedSection";
 import { Button } from "@/components/ui/button";
-import { Calendar, Instagram } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Calendar } from "lucide-react";
 
 const WHATSAPP = "5531984773813";
-
-const WhatsAppIcon = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className={className}
-  >
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
-  </svg>
-);
+const AGENDA_URL = "https://calendar.app.google/RpTN49BD3jJabEB79";
 
 const CtaSection = () => {
   return (
-    <section className="section-padding relative overflow-hidden dark:bg-[#0b0f19] bg-white">
-      {/* Dynamic blurred glow behind */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/15 blur-[200px] pointer-events-none" />
-      
-      <div className="container-narrow relative z-10 w-full mx-auto">
-        <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[3rem] border dark:border-white/10 border-slate-800 bg-[#080b12]/95 backdrop-blur-2xl p-5 sm:p-12 md:p-20 text-center shadow-[0_20px_70px_rgba(0,0,0,0.8)] w-full mx-auto box-border">
-          {/* Subtle inside glow */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
+    <section className="section-padding bg-white border-t border-[#E5E1DC] text-[#1A1714]">
+      <div className="container-narrow max-w-4xl mx-auto">
+        <div className="rounded-3xl bg-[#181818] text-white p-8 sm:p-14 lg:p-16 text-center shadow-lg relative overflow-hidden">
           
           <AnimatedSection>
-            {/* Hexágono Oficial no Topo */}
+            {/* Logo Oficial no Topo */}
             <div className="flex justify-center mb-6">
-              <svg 
-                width="44" 
-                height="44" 
-                viewBox="0 0 32 32" 
-                fill="none"
-                style={{ filter: "drop-shadow(0 0 12px rgba(244,63,94,0.7))" }}
-              >
-                <polygon points="16,2 27.1,8.5 27.1,21.5 16,28 4.9,21.5 4.9,8.5" fill="none" stroke="#f43f5e" strokeWidth="2.5" />
-              </svg>
+              <img 
+                src="/logo.png" 
+                alt="Palomino Tech" 
+                className="w-14 h-14 rounded-2xl shadow-xl ring-2 ring-white/10" 
+              />
             </div>
 
-            <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-heading font-bold text-primary mb-6 uppercase tracking-[0.2em]">
-              Vamos conversar sobre seu projeto?
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-white/60 bg-white/10 px-3.5 py-1 rounded-full inline-block mb-4">
+              Canal Direto
             </span>
             
-            <h2 className="font-heading text-3xl font-black text-white sm:text-5xl md:text-6xl uppercase tracking-tight leading-[1.02] mb-6">
-              Tem uma ideia ou gargalo? <br className="hidden sm:block" />
-              <span className="text-neon">A gente coloca no ar.</span>
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+              Vamos ver o que faz sentido para o seu negócio?
             </h2>
 
-            <p className="text-muted-foreground text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans mb-10">
-              Mande uma mensagem agora, conte o que sua empresa precisa e retornaremos com uma estimativa clara de viabilidade, custo e prazo.
+            <p className="font-sans text-sm sm:text-base text-white/70 max-w-xl mx-auto leading-relaxed mb-8">
+              Mande uma mensagem agora, conte qual é o principal gargalo da sua empresa e receba uma estimativa clara de viabilidade, prazo e investimento.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-3.5 justify-center items-center mb-8">
               <Button
                 size="lg"
                 asChild
-                className="w-full sm:w-auto bg-primary text-white font-heading font-extrabold text-xs uppercase tracking-[0.14em] px-8 py-6 rounded-full shadow-[0_0_35px_rgba(244,63,94,0.45)] hover:shadow-[0_0_55px_rgba(244,63,94,0.75)] hover:scale-[1.03] transition-all duration-300"
+                className="w-full sm:w-auto bg-[#E8341C] hover:bg-[#C9280F] text-white font-sans font-semibold text-sm px-8 py-6 rounded-xl transition-all shadow-sm"
               >
                 <a
-                  href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Vi o site da Palomino Tech e quero iniciar um projeto.`}
+                  href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Gostaria de conversar sobre um projeto para minha empresa.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5"
+                  className="flex items-center justify-center gap-2"
                 >
-                  <WhatsAppIcon className="h-5 w-5 text-white" />
-                  Chamar no WhatsApp Direto
-                </a>
-              </Button>
-              
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="w-full sm:w-auto border-white/15 bg-white/[0.04] text-white hover:bg-white/10 hover:border-white/30 font-heading font-bold text-xs uppercase tracking-[0.14em] px-8 py-6 rounded-full transition-all hover:scale-[1.03]"
-              >
-                <a
-                  href="https://calendar.app.google/RpTN49BD3jJabEB79"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2.5"
-                >
-                  <Calendar className="h-4 w-4 text-primary" />
-                  Agendar no Google Calendar
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Conversar no WhatsApp</span>
+                  <ArrowUpRight className="w-4 h-4" />
                 </a>
               </Button>
 
@@ -91,20 +55,28 @@ const CtaSection = () => {
                 size="lg"
                 variant="outline"
                 asChild
-                className="w-full sm:w-auto border-white/10 text-muted-foreground hover:text-white hover:bg-white/5 font-heading font-bold text-xs uppercase tracking-[0.14em] px-6 py-6 rounded-full transition-all"
+                className="w-full sm:w-auto border-white/20 bg-white/5 hover:bg-white/10 text-white font-sans font-medium text-sm px-6 py-6 rounded-xl transition-all"
               >
                 <a
-                  href="https://instagram.com/palominotech"
+                  href={AGENDA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2"
+                  className="flex items-center justify-center gap-2"
                 >
-                  <Instagram className="h-4 w-4 text-primary" />
-                  Instagram
+                  <Calendar className="w-4 h-4 text-[#E8341C]" />
+                  <span>Agendar no Google Calendar</span>
                 </a>
               </Button>
             </div>
+
+            <div className="flex flex-wrap justify-center items-center gap-6 text-xs text-white/50 font-sans">
+              <span>✓ Sem compromisso inicial</span>
+              <span>✓ Resposta no mesmo dia útil</span>
+              <span>✓ Atendimento em todo o Brasil</span>
+            </div>
+
           </AnimatedSection>
+
         </div>
       </div>
     </section>
