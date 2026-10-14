@@ -39,7 +39,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo Oficial Anexado */}
           <div 
-            className="flex items-center gap-2.5 cursor-pointer group" 
+            className="flex items-center gap-2 sm:gap-2.5 cursor-pointer group shrink-0" 
             onClick={() => {
               setMobileMenuOpen(false);
               window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -48,9 +48,9 @@ const Navbar = () => {
             <img
               src="/logo.png"
               alt="Palomino Tech"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl shadow-xs object-cover transition-transform duration-300 group-hover:scale-105"
+              className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl shadow-xs object-cover transition-transform duration-300 group-hover:scale-105 shrink-0"
             />
-            <span className="font-heading text-sm sm:text-base font-bold tracking-[0.16em] uppercase text-[#1A1714] dark:text-[#F2EEE9]">
+            <span className="font-heading text-xs sm:text-base font-bold tracking-[0.14em] uppercase text-[#1A1714] dark:text-[#F2EEE9] whitespace-nowrap">
               PALOMINO <span className="text-[#E8341C]">TECH</span>
             </span>
           </div>
@@ -90,23 +90,23 @@ const Navbar = () => {
           </nav>
 
           {/* CTAs Desktop & Mobile */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Link Agendar com Google Calendar (mesmo link de rodrigo.palominotech.com.br) */}
             <a
               href={AGENDA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#1A1714] dark:text-[#F2EEE9] hover:text-[#E8341C] px-3.5 py-2.5 rounded-full hover:bg-[#F5F3F0] dark:hover:bg-[#26221F] border border-[#E5E1DC] dark:border-[#302B27] transition-all"
+              className="hidden lg:inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#1A1714] dark:text-[#F2EEE9] hover:text-[#E8341C] px-3.5 py-2.5 rounded-full hover:bg-[#F5F3F0] dark:hover:bg-[#26221F] border border-[#E5E1DC] dark:border-[#302B27] transition-all"
               title="Agendar conversa pelo Google Calendar"
             >
               <Calendar className="h-4 w-4 text-[#E8341C]" />
               <span>Agendar</span>
             </a>
 
-            {/* Botão Falar no WhatsApp Aumentado e com Mais Destaque */}
+            {/* Botão Falar no WhatsApp visível em sm+ (desktop e tablet) */}
             <Button
               asChild
-              className="inline-flex bg-[#E8341C] hover:bg-[#C9280F] text-white text-xs sm:text-sm md:text-base font-bold px-4 sm:px-7 py-2 sm:py-3.5 h-auto rounded-full transition-all shadow-[0_4px_14px_rgba(232,52,28,0.28)] hover:shadow-[0_6px_20px_rgba(232,52,28,0.38)] hover:scale-[1.02] active:scale-[0.98]"
+              className="hidden sm:inline-flex bg-[#E8341C] hover:bg-[#C9280F] text-white text-xs sm:text-sm md:text-base font-bold px-4 sm:px-7 py-2 sm:py-3.5 h-auto rounded-full transition-all shadow-[0_4px_14px_rgba(232,52,28,0.28)] hover:shadow-[0_6px_20px_rgba(232,52,28,0.38)] hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
             >
               <a
                 href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Vi o site da Palomino Tech e quero conversar sobre um projeto.`}

@@ -9,12 +9,12 @@
     - Cada linha de atendimento traz **foto real do procedimento/serviço** (Botox/Bioestimulador na Clínica Serena, Corte Fade/Barba na Vanguard Barber, e Porções/Chopp no Venda do Deco).
     - Métricas diárias e alertas de automação contextualizados para cada nicho.
   - **Foto de Capa da Serena Atualizada:** As imagens do card "Serena · Dermatologia & Estética" foram migradas para arquivos webp locais de alta autoridade (`/demos/serena/images/hero.webp`, `profissional.webp`, `pele.webp`).
+  - **Correção da Navbar no Mobile:** O botão "Falar no WhatsApp" da barra superior agora é responsivo (`hidden sm:inline-flex`), evitando espremer o logo da Palomino Tech em telas menores que 640px. No mobile, a barra fica limpa e simétrica (logo à esquerda, menu à direita), e o botão de WhatsApp segue acessível em destaque dentro do menu mobile e no botão flutuante inferior.
 - **Validação:**
   - Build de produção verificado com sucesso (`npm run build` -> exit code 0).
-  - Dev server rodando localmente em `http://localhost:8080/`.
-  - Navegação e transições validadas visualmente no navegador (Hero interativo e card da Serena).
-- **Onde paramos:** Todos os pontos solicitados finalizados e testados em localhost.
-- **Próximas tarefas:** Aguardar aprovação do Rodrigo para realizar commit, push e deploy na VPS.
+  - Testado e aprovado em viewport mobile (390px) e desktop.
+- **Onde paramos:** Ajuste mobile concluído, commitado e deployado na VPS.
+- **Próximas tarefas:** Monitorar telemetria e feedback do Rodrigo.
 
 ## Sessão de 13/10/2026 (Refinamento Visual de Alta Fidelidade: Logo Anexado, Links de Agenda & Tipografia Elegante)
 
