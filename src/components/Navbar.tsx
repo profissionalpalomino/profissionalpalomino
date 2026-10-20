@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ArrowUpRight, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -8,6 +9,9 @@ const AGENDA_URL = "https://calendar.app.google/RpTN49BD3jJabEB79";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const naHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +23,11 @@ const Navbar = () => {
 
   const scrollTo = (id: string) => {
     setMobileMenuOpen(false);
+    // Fora da home as seções não existem: volta para ela, que rola até o #id ao montar.
+    if (!naHome) {
+      navigate(`/#${id}`);
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -29,8 +38,8 @@ const Navbar = () => {
     <header 
       className={`fixed left-0 right-0 z-50 transition-all duration-300 mx-auto px-4 ${
         scrolled 
-          ? "top-3 max-w-5xl" 
-          : "top-4 max-w-6xl"
+          ? "top-3 max-w-6xl" 
+          : "top-4 max-w-7xl"
       }`}
     >
       <div 
@@ -42,6 +51,7 @@ const Navbar = () => {
             className="flex items-center gap-2 sm:gap-2.5 cursor-pointer group shrink-0" 
             onClick={() => {
               setMobileMenuOpen(false);
+              if (!naHome) navigate("/");
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
@@ -56,7 +66,7 @@ const Navbar = () => {
           </div>
 
           {/* Links Desktop */}
-          <nav className="hidden md:flex items-center gap-7 text-xs font-medium text-muted-foreground dark:text-[#B4B4B0]">
+          <nav className="hidden xl:flex items-center gap-6 whitespace-nowrap text-xs font-medium text-muted-foreground dark:text-[#B4B4B0]">
             <button 
               onClick={() => scrollTo('servicos')} 
               className="hover:text-foreground dark:hover:text-[#F2F2F0] transition-colors"
@@ -86,6 +96,12 @@ const Navbar = () => {
               className="hover:text-foreground dark:hover:text-[#F2F2F0] transition-colors"
             >
               Dúvidas
+            </button>
+            <button 
+              onClick={() => { setMobileMenuOpen(false); navigate('/apps'); }} 
+              className={`transition-colors ${pathname === '/apps' ? 'text-foreground dark:text-[#F2F2F0]' : 'hover:text-foreground dark:hover:text-[#F2F2F0]'}`}
+            >
+              Apps
             </button>
           </nav>
 
@@ -121,7 +137,7 @@ const Navbar = () => {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-muted-foreground hover:text-foreground"
+              className="xl:hidden p-2 text-muted-foreground hover:text-foreground"
               aria-label="Abrir menu"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -132,7 +148,7 @@ const Navbar = () => {
 
       {/* Menu Mobile */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-2 p-5 bg-white dark:bg-[#181818] rounded-2xl border border-border dark:border-[#2A2A2A] shadow-xl flex flex-col gap-4 text-sm font-medium text-foreground dark:text-[#F2F2F0]">
+        <div className="xl:hidden mt-2 p-5 bg-white dark:bg-[#181818] rounded-2xl border border-border dark:border-[#2A2A2A] shadow-xl flex flex-col gap-4 text-sm font-medium text-foreground dark:text-[#F2F2F0]">
           <button onClick={() => scrollTo('servicos')} className="text-left py-2 border-b border-border/50">
             Soluções
           </button>
@@ -147,6 +163,9 @@ const Navbar = () => {
           </button>
           <button onClick={() => scrollTo('duvidas')} className="text-left py-2 border-b border-border/50">
             Dúvidas
+          </button>
+          <button onClick={() => { setMobileMenuOpen(false); navigate('/apps'); }} className="text-left py-2 border-b border-border/50">
+            Apps
           </button>
           <a
             href={AGENDA_URL}

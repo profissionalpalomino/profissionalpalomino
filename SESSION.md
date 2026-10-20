@@ -1,5 +1,15 @@
 # SESSION.md
 
+## Sessão de 20/10/2026: página "Apps" (fase 1 da venda de apps)
+
+- Página nova `/apps` (`src/pages/Apps.tsx`) no visual v2: abertura com título em Archivo largo, Site Finder em "acesso antecipado" (4 passos, tela ilustrada em código com nomes de exemplo, botão vermelho "Entrar na lista" que abre o WhatsApp com mensagem pronta), três fatos e card preto "Na fila" para os próximos apps.
+- Sem preço e sem compra: a fase 1 só mede a procura. O Site Finder ainda não tem conta por cliente, então a página não promete acesso imediato.
+- Menu: item "Apps" (desktop e celular). Fora da home, os links de seção voltam para `/#secao`. Links do menu só aparecem a partir de 1280 px (abaixo, menu hambúrguer), e a barra ficou mais larga (6xl rolada, 7xl no topo) porque o botão do WhatsApp vazava a 1440 px.
+- `/apps` no sitemap.xml.
+- Testado em localhost (`npx vite --port 5190`): 390 px sem rolagem lateral, menu medido em 1280, 1366, 1440 e 1920.
+- **Não publicado.** Publicar leva junto o visual v2 (commit 3cb695a), que também aguardava o ok do Rodrigo.
+- **Próximo:** ok do Rodrigo e deploy (`deploy.sh`); fase 2 (pagamento) só se aparecer procura; limpar Inter/Poppins, cores soltas e emoji apontados pelo guardião visual (nota 66).
+
 ## Sessão de 19/10/2026: visual v2 ("Grafite + Vidro"), branch design-v2, só em localhost
 
 - Cores da v1 trocadas pelos papéis da v2 (DESIGN_SYSTEM.md v2 no Cérebro): fundo cinza neutro, tinta #141414, vermelho #D2513F só no botão principal do topo e no botão final (em pílula). Eyebrows, links e botões secundários viraram tinta. Tokens v2 importados no index.html.
