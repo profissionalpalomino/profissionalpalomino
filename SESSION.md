@@ -10,8 +10,8 @@
 - Refeita do zero a pedido do Rodrigo (achou branco demais e mal espaçado): abertura curta (título à esquerda, frase à direita), Site Finder num painel preto com os 4 passos em grade 2x2, botão vermelho e tela ilustrada branca ao lado; fatos numa faixa única; "próximo app" numa linha tracejada. Botão "Apps" do menu agora é laranja cheio com balão preto "novo" por cima.
 - Ajuste pedido pelo Rodrigo: "Apps" no menu virou pílula vermelha clara com selo "novo" (vermelho cheio quando está na página). Página reorganizada: abertura em duas colunas com índice dos apps à direita; Site Finder dentro de um card, com nome e botão na mesma linha, tela e passos lado a lado na mesma altura e os três fatos no rodapé do card. Espaço entre links do menu reduzido (barra rolada encostava no botão do WhatsApp).
 - Testado em localhost (`npx vite --port 5190`): 390 px sem rolagem lateral, menu medido em 1280, 1366, 1440 e 1920.
-- **Não publicado.** Publicar leva junto o visual v2 (commit 3cb695a), que também aguardava o ok do Rodrigo.
-- **Próximo:** ok do Rodrigo e deploy (`deploy.sh`); fase 2 (pagamento) só se aparecer procura; limpar Inter/Poppins, cores soltas e emoji apontados pelo guardião visual (nota 66).
+- **Publicado em 20/10/2026** com o ok do Rodrigo (deploy.sh), junto com o visual v2. Conferido: /, /apps e sitemap.xml com HTTP 200; /apps mostra os dois apps.
+- **Próximo:** no Google Search Console, pedir indexação de /apps (opcional); fase 2 (pagamento) só se aparecer procura; limpar Inter/Poppins, cores soltas e emoji apontados pelo guardião visual (nota 66).
 
 ## Sessão de 19/10/2026: visual v2 ("Grafite + Vidro"), branch design-v2, só em localhost
 
