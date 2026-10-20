@@ -66,7 +66,7 @@ const Navbar = () => {
           </div>
 
           {/* Links Desktop */}
-          <nav className="hidden xl:flex items-center gap-6 whitespace-nowrap text-xs font-medium text-muted-foreground dark:text-[#B4B4B0]">
+          <nav className="hidden xl:flex items-center gap-5 whitespace-nowrap text-xs font-medium text-muted-foreground dark:text-[#B4B4B0]">
             <button 
               onClick={() => scrollTo('servicos')} 
               className="hover:text-foreground dark:hover:text-[#F2F2F0] transition-colors"
@@ -99,8 +99,13 @@ const Navbar = () => {
             </button>
             <button 
               onClick={() => { setMobileMenuOpen(false); navigate('/apps'); }} 
-              className={`transition-colors ${pathname === '/apps' ? 'text-foreground dark:text-[#F2F2F0]' : 'hover:text-foreground dark:hover:text-[#F2F2F0]'}`}
+              className={`inline-flex items-center gap-1.5 h-7 pl-1.5 pr-3 rounded-full font-semibold transition-colors ${
+                pathname === '/apps'
+                  ? 'bg-[var(--pal-primary)] text-[var(--pal-primary-ink)]'
+                  : 'bg-[var(--pal-primary-tint)] text-[var(--pal-primary-text)] hover:bg-[var(--pal-primary)] hover:text-[var(--pal-primary-ink)]'
+              }`}
             >
+              <span className="font-mono text-[10px] leading-none px-1.5 py-1 rounded-full bg-[var(--pal-primary)] text-[var(--pal-primary-ink)]">novo</span>
               Apps
             </button>
           </nav>
@@ -164,8 +169,9 @@ const Navbar = () => {
           <button onClick={() => scrollTo('duvidas')} className="text-left py-2 border-b border-border/50">
             Dúvidas
           </button>
-          <button onClick={() => { setMobileMenuOpen(false); navigate('/apps'); }} className="text-left py-2 border-b border-border/50">
+          <button onClick={() => { setMobileMenuOpen(false); navigate('/apps'); }} className="flex items-center gap-2 text-left py-2 border-b border-border/50 font-semibold text-[var(--pal-primary-text)]">
             Apps
+            <span className="font-mono text-[10px] leading-none px-1.5 py-1 rounded-full bg-[var(--pal-primary)] text-[var(--pal-primary-ink)]">novo</span>
           </button>
           <a
             href={AGENDA_URL}
