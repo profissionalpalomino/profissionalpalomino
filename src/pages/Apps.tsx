@@ -16,6 +16,20 @@ const PASSOS = [
   { titulo: "Mostre", texto: "Uma prévia do site, mandada pelo seu WhatsApp." },
 ];
 
+const PASSOS_VAGAS = [
+  { titulo: "Receba", texto: "Vagas novas todo dia, cada uma com nota de 0 a 10." },
+  { titulo: "Organize", texto: "Um quadro do candidatei até a proposta." },
+  { titulo: "Acompanhe", texto: "Lê o seu e-mail e move o card quando a empresa responde." },
+  { titulo: "Lembre", texto: "Aviso no WhatsApp na véspera da entrevista." },
+];
+
+// Vagas de exemplo para ilustrar a tela; não são empresas reais.
+const COLUNAS = [
+  { nome: "Candidatei", total: 6, cards: [{ empresa: "Nuvem Pay", cargo: "Analista de Dados", nota: "8,7" }, { empresa: "Atlas Log", cargo: "Analista de BI", nota: "7,9" }] },
+  { nome: "Entrevista", total: 2, cards: [{ empresa: "Loja Ponto", cargo: "Cientista de Dados", nota: "9,1" }] },
+  { nome: "Proposta", total: 1, cards: [{ empresa: "Vale Tech", cargo: "Analista Sênior", nota: "8,4" }] },
+];
+
 const FATOS = [
   { icone: Monitor, texto: "Roda no navegador, do celular ou do computador" },
   { icone: Repeat, texto: "A mesma ferramenta que a Palomino Tech usa todo dia" },
@@ -98,6 +112,50 @@ const TelaSiteFinder = () => (
   </div>
 );
 
+const TelaVagas = () => (
+  <div
+    className="relative rounded-[var(--pal-radius)] bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)]"
+    aria-label="Ilustração da tela do Gerenciador de Vagas"
+  >
+    <div className="flex items-center gap-1.5 px-5 py-3 border-b border-[var(--pal-border)]">
+      <span className="w-2.5 h-2.5 rounded-full bg-[var(--pal-border)]" />
+      <span className="w-2.5 h-2.5 rounded-full bg-[var(--pal-border)]" />
+      <span className="w-2.5 h-2.5 rounded-full bg-[var(--pal-border)]" />
+      <span className="ml-3 font-mono text-[11px] text-[var(--pal-text-faint)]">vagas · candidaturas</span>
+    </div>
+
+    <div className="p-4 sm:p-5 grid grid-cols-3 gap-2 sm:gap-3">
+      {COLUNAS.map((c) => (
+        <div key={c.nome} className="min-w-0 rounded-[var(--pal-radius-control)] bg-[var(--pal-bg-subtle)] p-2 sm:p-2.5">
+          <div className="flex items-center justify-between px-0.5 mb-2">
+            <span className="text-[11px] sm:text-xs font-semibold text-[var(--pal-text)] truncate">{c.nome}</span>
+            <span className="hidden sm:inline font-mono text-[10px] px-1.5 py-0.5 rounded-full bg-white text-[var(--pal-text-muted)]">{c.total}</span>
+          </div>
+          <div className="space-y-2">
+            {c.cards.map((v) => (
+              <div key={v.empresa} className="rounded-[10px] bg-white border border-[var(--pal-border)] p-2 sm:p-2.5">
+                <p className="text-[11px] sm:text-xs font-semibold text-[var(--pal-text)] truncate">{v.empresa}</p>
+                <p className="text-[10px] sm:text-[11px] text-[var(--pal-text-faint)] truncate">{v.cargo}</p>
+                <p className="mt-1.5 font-mono text-[10px] sm:text-[11px] text-[var(--pal-text-muted)]">nota {v.nota}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Aviso que chega no WhatsApp */}
+    <div className="mx-4 sm:mx-5 mb-4 sm:mb-5 flex items-start gap-3 rounded-[var(--pal-radius-control)] bg-[var(--pal-strong)] text-[var(--pal-strong-ink)] px-3.5 py-3">
+      <MessageCircle className="h-4 w-4 mt-0.5 shrink-0 opacity-70" strokeWidth={1.5} />
+      <div className="min-w-0">
+        <p className="text-xs font-semibold">Loja Ponto respondeu</p>
+        <p className="text-[11px] opacity-60 truncate">Convite para entrevista. Card movido para Entrevista.</p>
+      </div>
+      <span className="ml-auto font-mono text-[10px] opacity-50 shrink-0">09:12</span>
+    </div>
+  </div>
+);
+
 const Apps = () => {
   useEffect(() => {
     document.title = "Apps · Palomino Tech";
@@ -132,7 +190,7 @@ const Apps = () => {
           <AnimatedSection delay={0.05}>
             <section
               id="site-finder"
-              className="rounded-[var(--pal-radius-lg)] bg-[var(--pal-strong)] text-[var(--pal-strong-ink)] p-5 sm:p-10 lg:p-12 grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center"
+              className="rounded-[var(--pal-radius-lg)] bg-[var(--pal-strong)] text-[var(--pal-strong-ink)] p-5 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center"
             >
               <div>
                 <div className="flex items-center gap-2.5">
@@ -182,6 +240,58 @@ const Apps = () => {
             </section>
           </AnimatedSection>
 
+          {/* Vitrine do Gerenciador de Vagas: espelhada, tela à esquerda */}
+          <AnimatedSection>
+            <section
+              id="gerenciador-de-vagas"
+              className="mt-4 rounded-[var(--pal-radius-lg)] bg-[var(--pal-strong)] text-[var(--pal-strong-ink)] p-5 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center"
+            >
+              <div className="order-2 lg:order-1 min-w-0">
+                <TelaVagas />
+                <p className="mt-3 font-mono text-[11px] text-white/35">Ilustração com nomes de exemplo.</p>
+              </div>
+
+              <div className="order-1 lg:order-2 min-w-0">
+                <div className="flex items-center gap-2.5">
+                  <span className="font-mono text-[11px] text-white/40">02</span>
+                  <span className="font-mono text-[11px] px-2 py-1 rounded-[6px] border border-white/15 text-white/70">Em breve</span>
+                </div>
+
+                <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-[-0.035em]">Gerenciador de Vagas</h2>
+                <p className="mt-3 text-lg leading-snug text-white/75 max-w-md">
+                  As vagas certas chegam até você, e cada candidatura fica acompanhada até a resposta.
+                </p>
+
+                <ol className="mt-8 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-white/10 pt-7">
+                  {PASSOS_VAGAS.map((p, i) => (
+                    <li key={p.titulo}>
+                      <p className="flex items-baseline gap-2">
+                        <span className="font-mono text-[11px] text-white/35">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="text-[15px] font-semibold">{p.titulo}</span>
+                      </p>
+                      <p className="mt-1 text-[13px] leading-relaxed text-white/55">{p.texto}</p>
+                    </li>
+                  ))}
+                </ol>
+
+                <div className="mt-9 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+                  <a
+                    href={zap("Olá, Rodrigo! Vi o Gerenciador de Vagas na página de apps da Palomino Tech e quero ser avisado quando abrir.")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-[var(--pal-strong-ink)] text-[var(--pal-strong)] text-[15px] font-semibold hover:opacity-90 transition-opacity"
+                  >
+                    Quero ser avisado
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+                  </a>
+                  <p className="text-xs leading-relaxed text-white/45 text-center sm:text-left">
+                    Para quem está procurando emprego<br className="hidden sm:block" /> e quer parar de perder vaga e resposta.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </AnimatedSection>
+
           {/* Fatos, numa faixa só */}
           <AnimatedSection>
             <ul
@@ -200,7 +310,7 @@ const Apps = () => {
           {/* Próximo app */}
           <AnimatedSection>
             <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 rounded-[var(--pal-radius)] border border-dashed border-[var(--pal-border)] px-5 py-4">
-              <span className="font-mono text-[11px] text-[var(--pal-text-faint)]">02</span>
+              <span className="font-mono text-[11px] text-[var(--pal-text-faint)]">03</span>
               <p className="flex-1 text-sm text-[var(--pal-text-muted)]">
                 O próximo app entra aqui quando estiver pronto para uso de outras pessoas.
               </p>
