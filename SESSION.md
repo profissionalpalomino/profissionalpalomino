@@ -6,6 +6,7 @@
 - Sem preço e sem compra: a fase 1 só mede a procura. O Site Finder ainda não tem conta por cliente, então a página não promete acesso imediato.
 - Menu: item "Apps" (desktop e celular). Fora da home, os links de seção voltam para `/#secao`. Links do menu só aparecem a partir de 1280 px (abaixo, menu hambúrguer), e a barra ficou mais larga (6xl rolada, 7xl no topo) porque o botão do WhatsApp vazava a 1440 px.
 - `/apps` no sitemap.xml.
+- Refeita do zero a pedido do Rodrigo (achou branco demais e mal espaçado): abertura curta (título à esquerda, frase à direita), Site Finder num painel preto com os 4 passos em grade 2x2, botão vermelho e tela ilustrada branca ao lado; fatos numa faixa única; "próximo app" numa linha tracejada. Botão "Apps" do menu agora é laranja cheio com balão preto "novo" por cima.
 - Ajuste pedido pelo Rodrigo: "Apps" no menu virou pílula vermelha clara com selo "novo" (vermelho cheio quando está na página). Página reorganizada: abertura em duas colunas com índice dos apps à direita; Site Finder dentro de um card, com nome e botão na mesma linha, tela e passos lado a lado na mesma altura e os três fatos no rodapé do card. Espaço entre links do menu reduzido (barra rolada encostava no botão do WhatsApp).
 - Testado em localhost (`npx vite --port 5190`): 390 px sem rolagem lateral, menu medido em 1280, 1366, 1440 e 1920.
 - **Não publicado.** Publicar leva junto o visual v2 (commit 3cb695a), que também aguardava o ok do Rodrigo.

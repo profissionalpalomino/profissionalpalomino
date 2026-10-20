@@ -99,14 +99,13 @@ const Navbar = () => {
             </button>
             <button 
               onClick={() => { setMobileMenuOpen(false); navigate('/apps'); }} 
-              className={`inline-flex items-center gap-1.5 h-7 pl-1.5 pr-3 rounded-full font-semibold transition-colors ${
-                pathname === '/apps'
-                  ? 'bg-[var(--pal-primary)] text-[var(--pal-primary-ink)]'
-                  : 'bg-[var(--pal-primary-tint)] text-[var(--pal-primary-text)] hover:bg-[var(--pal-primary)] hover:text-[var(--pal-primary-ink)]'
-              }`}
+              className="relative inline-flex items-center h-8 px-4 rounded-full font-semibold bg-[var(--pal-primary)] hover:bg-[var(--pal-primary-hover)] text-[var(--pal-primary-ink)] transition-colors"
             >
-              <span className="font-mono text-[10px] leading-none px-1.5 py-1 rounded-full bg-[var(--pal-primary)] text-[var(--pal-primary-ink)]">novo</span>
               Apps
+              {/* Balão "novo" por cima do botão */}
+              <span className="absolute -top-2 -right-2.5 font-mono text-[9px] leading-none px-1.5 py-[3px] rounded-full bg-[var(--pal-strong)] text-[var(--pal-strong-ink)] ring-2 ring-white">
+                novo
+              </span>
             </button>
           </nav>
 
@@ -169,9 +168,11 @@ const Navbar = () => {
           <button onClick={() => scrollTo('duvidas')} className="text-left py-2 border-b border-border/50">
             Dúvidas
           </button>
-          <button onClick={() => { setMobileMenuOpen(false); navigate('/apps'); }} className="flex items-center gap-2 text-left py-2 border-b border-border/50 font-semibold text-[var(--pal-primary-text)]">
+          <button onClick={() => { setMobileMenuOpen(false); navigate('/apps'); }} className="relative self-start inline-flex items-center h-10 px-5 mt-1 rounded-full font-semibold bg-[var(--pal-primary)] text-[var(--pal-primary-ink)]">
             Apps
-            <span className="font-mono text-[10px] leading-none px-1.5 py-1 rounded-full bg-[var(--pal-primary)] text-[var(--pal-primary-ink)]">novo</span>
+            <span className="absolute -top-2 -right-3 font-mono text-[9px] leading-none px-1.5 py-[3px] rounded-full bg-[var(--pal-strong)] text-[var(--pal-strong-ink)] ring-2 ring-white">
+              novo
+            </span>
           </button>
           <a
             href={AGENDA_URL}
