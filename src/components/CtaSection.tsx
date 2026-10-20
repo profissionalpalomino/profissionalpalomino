@@ -7,7 +7,7 @@ const AGENDA_URL = "https://calendar.app.google/RpTN49BD3jJabEB79";
 
 const CtaSection = () => {
   return (
-    <section className="section-padding bg-white border-t border-[#E5E1DC] text-[#1A1714]">
+    <section className="section-padding bg-white border-t border-border text-foreground">
       <div className="container-narrow max-w-4xl mx-auto">
         <div className="rounded-3xl bg-[#181818] text-white p-8 sm:p-14 lg:p-16 text-center shadow-lg relative overflow-hidden">
           
@@ -15,7 +15,7 @@ const CtaSection = () => {
             {/* Logo Oficial no Topo */}
             <div className="flex justify-center mb-6">
               <img 
-                src="/logo.png" 
+                src="/logo.svg" 
                 alt="Palomino Tech" 
                 className="w-14 h-14 rounded-2xl shadow-xl ring-2 ring-white/10" 
               />
@@ -37,7 +37,7 @@ const CtaSection = () => {
               <Button
                 size="lg"
                 asChild
-                className="w-full sm:w-auto bg-[#E8341C] hover:bg-[#C9280F] text-white font-sans font-semibold text-sm px-8 py-6 rounded-xl transition-all shadow-sm"
+                className="w-full sm:w-auto bg-primary hover:bg-[var(--pal-primary-hover)] text-white font-sans font-semibold text-sm px-8 py-6 rounded-full transition-all shadow-sm"
               >
                 <a
                   href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Gostaria de conversar sobre um projeto para minha empresa.`}
@@ -63,7 +63,7 @@ const CtaSection = () => {
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2"
                 >
-                  <Calendar className="w-4 h-4 text-[#E8341C]" />
+                  <Calendar className="w-4 h-4 text-foreground" />
                   <span>Agendar no Google Calendar</span>
                 </a>
               </Button>

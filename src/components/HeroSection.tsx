@@ -54,7 +54,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
     bannerImg: "/demos/serena/images/hero.webp",
     avatarImg: "/demos/serena/images/profissional.webp",
     statusBadge: "9 atendimentos",
-    statusClass: "text-[#1E7A3B] bg-[#E5F3E9] border border-[#1E7A3B]/20",
+    statusClass: "text-[var(--pal-success)] bg-[var(--pal-success-tint)] border border-[#1E7A3B]/20",
     faturamento: "R$ 3.850,00",
     faturamentoSub: "▲ +24% em procedimentos",
     metrica2Label: "Retornos no WhatsApp",
@@ -67,7 +67,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
         detalhe: "Toxina Botulínica (Botox Facial)",
         img: "/demos/serena/images/botox.webp",
         badge: "Confirmou WhatsApp",
-        badgeClass: "text-[#1E7A3B] bg-[#E5F3E9]",
+        badgeClass: "text-[var(--pal-success)] bg-[var(--pal-success-tint)]",
       },
       {
         hora: "11:00",
@@ -75,7 +75,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
         detalhe: "Bioestimulador de Colágeno",
         img: "/demos/serena/images/bioestimulador.webp",
         badge: "Ficha Digital OK",
-        badgeClass: "text-[#8A5300] bg-[#FAF0DC]",
+        badgeClass: "text-[var(--pal-warning)] bg-[var(--pal-warning-tint)]",
       },
       {
         hora: "14:30",
@@ -83,7 +83,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
         detalhe: "Harmonização Facial & Retoque",
         img: "/demos/serena/images/harmonizacao.webp",
         badge: "Lembrete Enviado",
-        badgeClass: "text-[#57524C] bg-[#F5F3F0]",
+        badgeClass: "text-muted-foreground bg-secondary",
       },
     ],
     alertaTitulo: "Recall Preventivo:",
@@ -98,7 +98,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
     bannerImg: "/demos/barbearia/images/lounge.webp",
     avatarImg: "/demos/barbearia/images/barba.webp",
     statusBadge: "8 agendamentos",
-    statusClass: "text-[#8A5300] bg-[#FAF0DC] border border-[#8A5300]/20",
+    statusClass: "text-[var(--pal-warning)] bg-[var(--pal-warning-tint)] border border-[#8A5300]/20",
     faturamento: "R$ 560,00",
     faturamentoSub: "▲ +18% vs semana passada",
     metrica2Label: "Repasses da Equipe",
@@ -111,7 +111,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
         detalhe: "Corte Fade + Barboterapia",
         img: "/demos/barbearia/images/fade.webp",
         badge: "WhatsApp OK",
-        badgeClass: "text-[#1E7A3B] bg-[#E5F3E9]",
+        badgeClass: "text-[var(--pal-success)] bg-[var(--pal-success-tint)]",
       },
       {
         hora: "11:00",
@@ -119,7 +119,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
         detalhe: "Barba Alinhada na Toalha Quente",
         img: "/demos/barbearia/images/barba.webp",
         badge: "Agendou no Link",
-        badgeClass: "text-[#8A5300] bg-[#FAF0DC]",
+        badgeClass: "text-[var(--pal-warning)] bg-[var(--pal-warning-tint)]",
       },
       {
         hora: "14:00",
@@ -127,7 +127,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
         detalhe: "Pomada Modeladora & Finalização",
         img: "/demos/barbearia/images/produtos.webp",
         badge: "Lembrete Enviado",
-        badgeClass: "text-[#57524C] bg-[#F5F3F0]",
+        badgeClass: "text-muted-foreground bg-secondary",
       },
     ],
     alertaTitulo: "Atendimento 24h:",
@@ -142,7 +142,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
     bannerImg: "/demos/venda-do-deco/img/salao-balcao.webp",
     avatarImg: "/demos/venda-do-deco/img/porcao.webp",
     statusBadge: "Mesas ativas",
-    statusClass: "text-[#C42B13] bg-[#FCEDE9] border border-[#C42B13]/20",
+    statusClass: "text-foreground bg-secondary border border-[#C42B13]/20",
     faturamento: "R$ 2.480,00",
     faturamentoSub: "▲ Pix sem comissão de app",
     metrica2Label: "Contas & Boletos",
@@ -155,7 +155,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
         detalhe: "Porção de Torresmo & Prato Feito",
         img: "/demos/venda-do-deco/img/porcao.webp",
         badge: "Comanda Aberta",
-        badgeClass: "text-[#1E7A3B] bg-[#E5F3E9]",
+        badgeClass: "text-[var(--pal-success)] bg-[var(--pal-success-tint)]",
       },
       {
         hora: "13:30",
@@ -163,7 +163,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
         detalhe: "Conta encerrada via QR Code Pix",
         img: "/demos/venda-do-deco/img/cerveja.webp",
         badge: "Pago no Pix",
-        badgeClass: "text-[#8A5300] bg-[#FAF0DC]",
+        badgeClass: "text-[var(--pal-warning)] bg-[var(--pal-warning-tint)]",
       },
       {
         hora: "14:45",
@@ -171,7 +171,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
         detalhe: "Aniversário 10 pessoas (Sexta)",
         img: "/demos/venda-do-deco/img/salao-mesas.webp",
         badge: "Confirmado",
-        badgeClass: "text-[#57524C] bg-[#F5F3F0]",
+        badgeClass: "text-muted-foreground bg-secondary",
       },
     ],
     alertaTitulo: "Zero planilhas:",
@@ -184,9 +184,9 @@ const HeroSection = () => {
   const current = SEGMENTOS[activeTab];
 
   return (
-    <section className="relative pt-32 sm:pt-36 lg:pt-40 pb-20 lg:pb-28 overflow-hidden bg-[#FAF9F7] text-[#1A1714]">
+    <section className="relative pt-32 sm:pt-36 lg:pt-40 pb-20 lg:pb-28 overflow-hidden bg-background text-foreground">
       {/* Luz ambiente suave de profundidade */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[400px] bg-radial from-[#E8341C]/[0.05] via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[400px] bg-radial from-foreground/[0.05] via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
 
       {/* Grade sutil e refinada */}
       <div 
@@ -208,42 +208,42 @@ const HeroSection = () => {
             className="lg:col-span-7 flex flex-col items-start text-left"
           >
             {/* Tag Superior */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FCEDE9] border border-[#F2C4B9] text-[#C42B13] font-mono text-[11px] font-semibold tracking-wide uppercase mb-6 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#E8341C] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary border border-border text-foreground font-mono text-[11px] font-semibold tracking-wide uppercase mb-6 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-foreground animate-pulse" />
               <span>Sistemas & Automações Sob Medida</span>
             </div>
 
             {/* Título Principal — Proporções altas, naturais e elegantes */}
-            <h1 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#1A1714] leading-[1.16] tracking-[-0.03em] mb-6">
+            <h1 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-bold text-foreground leading-[1.16] tracking-[-0.03em] mb-6">
               Seu negócio organizado. <br />
-              <span className="text-[#E8341C]">Menos tempo no WhatsApp</span> <br />
+              <span className="text-foreground">Menos tempo no WhatsApp</span> <br />
               e no papel.
             </h1>
 
             {/* Subtítulo Sem Jargões — Claro e multissetorial */}
-            <p className="font-sans text-base sm:text-lg text-[#57524C] leading-relaxed mb-8 max-w-xl">
+            <p className="font-sans text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
               Desenvolvemos sistemas web, páginas rápidas e automações sob medida para clínicas, barbearias, restaurantes e comércios locais atenderem melhor, eliminarem planilhas e fecharem o caixa no automático.
             </p>
 
             {/* Três Diferenciais Concretos */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full font-sans text-xs text-[#57524C] mb-8 pb-7 border-b border-[#E5E1DC]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full font-sans text-xs text-muted-foreground mb-8 pb-7 border-b border-border">
               <div className="flex items-center gap-2.5">
-                <div className="w-5 h-5 rounded-full bg-[#E5F3E9] text-[#1E7A3B] flex items-center justify-center shrink-0">
+                <div className="w-5 h-5 rounded-full bg-[var(--pal-success-tint)] text-[var(--pal-success)] flex items-center justify-center shrink-0">
                   <Check className="w-3.5 h-3.5" />
                 </div>
-                <span className="font-medium text-[#1A1714]">No ar em até 7 dias</span>
+                <span className="font-medium text-foreground">No ar em até 7 dias</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <div className="w-5 h-5 rounded-full bg-[#E5F3E9] text-[#1E7A3B] flex items-center justify-center shrink-0">
+                <div className="w-5 h-5 rounded-full bg-[var(--pal-success-tint)] text-[var(--pal-success)] flex items-center justify-center shrink-0">
                   <Check className="w-3.5 h-3.5" />
                 </div>
-                <span className="font-medium text-[#1A1714]">Zero planilhas manuais</span>
+                <span className="font-medium text-foreground">Zero planilhas manuais</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <div className="w-5 h-5 rounded-full bg-[#E5F3E9] text-[#1E7A3B] flex items-center justify-center shrink-0">
+                <div className="w-5 h-5 rounded-full bg-[var(--pal-success-tint)] text-[var(--pal-success)] flex items-center justify-center shrink-0">
                   <Check className="w-3.5 h-3.5" />
                 </div>
-                <span className="font-medium text-[#1A1714]">Suporte direto no WhatsApp</span>
+                <span className="font-medium text-foreground">Suporte direto no WhatsApp</span>
               </div>
             </div>
 
@@ -252,7 +252,7 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 asChild
-                className="bg-[#E8341C] hover:bg-[#C9280F] text-white font-sans font-bold text-sm px-6 py-6 rounded-xl shadow-[0_4px_14px_rgba(232,52,28,0.28)] hover:shadow-[0_6px_20px_rgba(232,52,28,0.38)] transition-all"
+                className="bg-primary hover:bg-[var(--pal-primary-hover)] text-white font-sans font-bold text-sm px-6 py-6 rounded-full shadow-[0_4px_12px_-6px_rgba(20,20,20,0.35)] hover:shadow-[0_4px_12px_-6px_rgba(20,20,20,0.35)] transition-all"
               >
                 <a
                   href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Quero conversar sobre um sistema para a minha empresa.`}
@@ -269,7 +269,7 @@ const HeroSection = () => {
                 variant="outline"
                 size="lg"
                 asChild
-                className="border-[#E5E1DC] bg-white hover:bg-[#F5F3F0] text-[#1A1714] font-sans font-semibold text-sm px-5 py-6 rounded-xl transition-colors shadow-2xs"
+                className="border-border bg-white hover:bg-secondary text-foreground font-sans font-semibold text-sm px-5 py-6 rounded-xl transition-colors shadow-2xs"
               >
                 <a
                   href={AGENDA_URL}
@@ -277,7 +277,7 @@ const HeroSection = () => {
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2"
                 >
-                  <Calendar className="h-4 w-4 text-[#E8341C]" />
+                  <Calendar className="h-4 w-4 text-foreground" />
                   <span>Agendar Demonstração</span>
                 </a>
               </Button>
@@ -285,7 +285,7 @@ const HeroSection = () => {
 
             <a
               href="#projetos"
-              className="inline-flex items-center gap-1.5 text-xs font-sans text-[#78716A] hover:text-[#1A1714] transition-colors mt-2"
+              className="inline-flex items-center gap-1.5 text-xs font-sans text-[var(--pal-text-faint)] hover:text-foreground transition-colors mt-2"
             >
               <span>ou veja demonstrações ao vivo abaixo</span>
               <ArrowDown className="h-3.5 w-3.5" />
@@ -300,32 +300,32 @@ const HeroSection = () => {
             className="lg:col-span-5 w-full relative"
           >
             {/* Badge Flutuante Ativo em Tempo Real */}
-            <div className="absolute -top-3.5 -right-2 sm:-right-3 z-20 bg-[#1A1714] text-white px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl shadow-xl border border-white/10 flex items-center gap-2.5">
+            <div className="absolute -top-3.5 -right-2 sm:-right-3 z-20 bg-[#141414] text-white px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl shadow-xl border border-white/10 flex items-center gap-2.5">
               <span className="w-2 h-2 rounded-full bg-[#10B981] animate-ping shrink-0" />
               <div className="text-left">
                 <p className="font-sans text-[11px] font-semibold leading-tight text-white">Novo Agendamento</p>
-                <p className="font-mono text-[9px] text-[#A8A29E]">há 2 min · via WhatsApp</p>
+                <p className="font-mono text-[9px] text-[#A3A3A0]">há 2 min · via WhatsApp</p>
               </div>
             </div>
 
             {/* Janela de App com Barra Mac Minimalista */}
-            <div className="bg-white rounded-2xl border border-[#E5E1DC] shadow-[0_20px_50px_rgba(26,23,20,0.08)] overflow-hidden">
+            <div className="bg-white rounded-2xl border border-border shadow-[0_20px_50px_rgba(20,20,20,0.08)] overflow-hidden">
               
               {/* Barra de Janela */}
-              <div className="bg-[#FAF9F7] px-4 py-2.5 border-b border-[#E5E1DC] flex items-center justify-between">
+              <div className="bg-background px-4 py-2.5 border-b border-border flex items-center justify-between">
                 <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#E5E1DC]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#E5E1DC]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#E5E1DC]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-border" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-border" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-border" />
                 </div>
-                <span className="font-mono text-[11px] font-medium text-[#78716A]">
+                <span className="font-mono text-[11px] font-medium text-[var(--pal-text-faint)]">
                   painel.palominotech.com.br
                 </span>
                 <span className="w-8" />
               </div>
 
               {/* Seletor Rápido de Segmentos — 100% responsivo em 3 colunas, ZERO barra de rolagem */}
-              <div className="bg-[#FAF9F7] p-1.5 border-b border-[#E5E1DC]">
+              <div className="bg-background p-1.5 border-b border-border">
                 <div className="grid grid-cols-3 gap-1">
                   {(Object.keys(SEGMENTOS) as SegmentId[]).map((segId) => {
                     const seg = SEGMENTOS[segId];
@@ -338,11 +338,11 @@ const HeroSection = () => {
                         onClick={() => setActiveTab(segId)}
                         className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-sans text-xs font-semibold transition-all select-none ${
                           isActive
-                            ? "bg-white text-[#1A1714] shadow-xs border border-[#E5E1DC]"
-                            : "text-[#78716A] hover:text-[#1A1714] hover:bg-white/60"
+                            ? "bg-white text-foreground shadow-xs border border-border"
+                            : "text-[var(--pal-text-faint)] hover:text-foreground hover:bg-white/60"
                         }`}
                       >
-                        <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? "text-[#E8341C]" : "text-[#78716A]"}`} />
+                        <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? "text-foreground" : "text-[var(--pal-text-faint)]"}`} />
                         <span className="truncate">{seg.label}</span>
                       </button>
                     );
@@ -361,7 +361,7 @@ const HeroSection = () => {
                   className="flex flex-col"
                 >
                   {/* Mini-Banner Fotográfico com Alma do Estabelecimento */}
-                  <div className="relative h-20 w-full overflow-hidden bg-[#1A1714]">
+                  <div className="relative h-20 w-full overflow-hidden bg-[#141414]">
                     <img 
                       src={current.bannerImg} 
                       alt={current.empresa} 
@@ -389,21 +389,21 @@ const HeroSection = () => {
                   <div className="p-4 sm:p-5">
                     {/* Métricas Diárias Dinâmicas */}
                     <div className="grid grid-cols-2 gap-2.5 mb-3.5">
-                      <div className="p-3 rounded-xl bg-[#FAF9F7] border border-[#E5E1DC]/80">
-                        <span className="font-sans text-[11px] text-[#57524C] block mb-0.5">Faturamento do Dia</span>
-                        <span className="font-mono text-base sm:text-lg font-bold text-[#1A1714] tracking-tight">
+                      <div className="p-3 rounded-xl bg-background border border-border/80">
+                        <span className="font-sans text-[11px] text-muted-foreground block mb-0.5">Faturamento do Dia</span>
+                        <span className="font-mono text-base sm:text-lg font-bold text-foreground tracking-tight">
                           {current.faturamento}
                         </span>
-                        <span className="font-mono text-[10px] text-[#1E7A3B] block mt-0.5 truncate">
+                        <span className="font-mono text-[10px] text-[var(--pal-success)] block mt-0.5 truncate">
                           {current.faturamentoSub}
                         </span>
                       </div>
-                      <div className="p-3 rounded-xl bg-[#FAF9F7] border border-[#E5E1DC]/80">
-                        <span className="font-sans text-[11px] text-[#57524C] block mb-0.5">{current.metrica2Label}</span>
-                        <span className="font-mono text-base sm:text-lg font-bold text-[#1A1714] tracking-tight">
+                      <div className="p-3 rounded-xl bg-background border border-border/80">
+                        <span className="font-sans text-[11px] text-muted-foreground block mb-0.5">{current.metrica2Label}</span>
+                        <span className="font-mono text-base sm:text-lg font-bold text-foreground tracking-tight">
                           {current.metrica2Valor}
                         </span>
-                        <span className="font-mono text-[10px] text-[#78716A] block mt-0.5 truncate">
+                        <span className="font-mono text-[10px] text-[var(--pal-text-faint)] block mt-0.5 truncate">
                           {current.metrica2Sub}
                         </span>
                       </div>
@@ -414,21 +414,21 @@ const HeroSection = () => {
                       {current.atendimentos.map((atendimento, i) => (
                         <div 
                           key={i}
-                          className="p-2.5 sm:p-3 rounded-xl bg-white border border-[#E5E1DC] flex items-center justify-between hover:border-[#1A1714]/20 transition-colors shadow-2xs"
+                          className="p-2.5 sm:p-3 rounded-xl bg-white border border-border flex items-center justify-between hover:border-[#1A1714]/20 transition-colors shadow-2xs"
                         >
                           <div className="flex items-center gap-2.5 min-w-0">
                             <img 
                               src={atendimento.img} 
                               alt={atendimento.detalhe}
-                              className="w-8 h-8 rounded-lg object-cover border border-[#E5E1DC] shrink-0" 
+                              className="w-8 h-8 rounded-lg object-cover border border-border shrink-0" 
                             />
                             <div className="min-w-0 truncate">
                               <div className="flex items-center gap-1.5">
-                                <span className="font-mono text-[10px] font-bold text-[#E8341C]">{atendimento.hora}</span>
-                                <span className="text-[#E5E1DC]">·</span>
-                                <p className="font-sans text-xs font-semibold text-[#1A1714] truncate">{atendimento.nome}</p>
+                                <span className="font-mono text-[10px] font-bold text-foreground">{atendimento.hora}</span>
+                                <span className="text-[#E4E4E1]">·</span>
+                                <p className="font-sans text-xs font-semibold text-foreground truncate">{atendimento.nome}</p>
                               </div>
-                              <p className="font-sans text-[11px] text-[#78716A] truncate">{atendimento.detalhe}</p>
+                              <p className="font-sans text-[11px] text-[var(--pal-text-faint)] truncate">{atendimento.detalhe}</p>
                             </div>
                           </div>
                           <span className={`font-mono text-[9px] sm:text-[10px] font-medium px-2 py-0.5 rounded shrink-0 ml-2 ${atendimento.badgeClass}`}>
@@ -439,12 +439,12 @@ const HeroSection = () => {
                     </div>
 
                     {/* Micro Alerta de Valor Real */}
-                    <div className="p-2.5 rounded-xl bg-[#FAF9F7] border border-[#E5E1DC] flex items-center gap-2.5">
-                      <div className="w-6 h-6 rounded-md bg-[#FCEDE9] text-[#E8341C] flex items-center justify-center shrink-0">
+                    <div className="p-2.5 rounded-xl bg-background border border-border flex items-center gap-2.5">
+                      <div className="w-6 h-6 rounded-md bg-secondary text-foreground flex items-center justify-center shrink-0">
                         <Clock className="w-3.5 h-3.5" />
                       </div>
-                      <p className="font-sans text-[11px] text-[#57524C] leading-snug">
-                        <strong className="text-[#1A1714]">{current.alertaTitulo} </strong>
+                      <p className="font-sans text-[11px] text-muted-foreground leading-snug">
+                        <strong className="text-foreground">{current.alertaTitulo} </strong>
                         {current.alertaTexto}
                       </p>
                     </div>

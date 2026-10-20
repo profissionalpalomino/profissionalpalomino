@@ -28,7 +28,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAF9F7] text-[#1A1714] relative selection:bg-[#FCEDE9] selection:text-[#C42B13]">
+    <div className="min-h-screen bg-background text-foreground relative selection:bg-secondary selection:text-foreground">
       <Navbar />
       <HeroSection />
       <PilaresSection />

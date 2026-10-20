@@ -25,19 +25,19 @@ const pilares = [
 
 const PilaresSection = () => {
   return (
-    <section className="bg-white border-y border-[#E5E1DC] py-8 sm:py-10">
+    <section className="bg-white border-y border-border py-8 sm:py-10">
       <div className="container-narrow px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {pilares.map((p, i) => (
             <div key={i} className="flex items-start gap-3.5">
-              <div className="w-9 h-9 rounded-xl bg-[#F5F3F0] text-[#E8341C] flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-secondary text-foreground flex items-center justify-center shrink-0">
                 <p.icon className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-heading font-bold text-sm text-[#1A1714] mb-0.5">
+                <h3 className="font-heading font-bold text-sm text-foreground mb-0.5">
                   {p.title}
                 </h3>
-                <p className="font-sans text-xs text-[#57524C] leading-relaxed">
+                <p className="font-sans text-xs text-muted-foreground leading-relaxed">
                   {p.desc}
                 </p>
               </div>

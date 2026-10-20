@@ -3,86 +3,69 @@
 @tailwind utilities;
 
 @layer base {
+  /* Marca v2 "Grafite + Vidro" (DESIGN_SYSTEM.md no Cérebro). Os --pal-* vêm de
+     configs.palominotech.com.br/v2/palomino-tokens.css, importado no index.html; aqui
+     só ficam os equivalentes em HSL que os componentes shadcn esperam. */
   :root {
-    --background: 40 20% 98%; /* #FAF9F7 */
-    --foreground: 30 13% 9%;  /* #1A1714 */
+    --background: 60 4% 95%;  /* #F3F3F2 */
+    --foreground: 0 0% 8%;    /* #141414 */
 
-    --card: 0 0% 100%;        /* #FFFFFF */
-    --card-foreground: 30 13% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 30 13% 9%;
+    --popover-foreground: 0 0% 8%;
 
-    --primary: 7 83% 51%;     /* #E8341C Palomino Red */
+    --primary: 7 62% 54%;     /* #D2513F, só no botão principal e no logo */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 35 15% 95%;  /* #F5F3F0 */
-    --secondary-foreground: 30 13% 9%;
+    --secondary: 60 4% 91%;   /* #E9E9E7 */
+    --secondary-foreground: 0 0% 8%;
 
-    --muted: 35 15% 95%;      /* #F5F3F0 */
-    --muted-foreground: 33 7% 32%; /* #57524C */
+    --muted: 60 4% 91%;
+    --muted-foreground: 60 2% 35%; /* #5A5A57 */
 
-    --accent: 7 83% 51%;
+    --accent: 0 0% 8%;        /* ênfase é tinta, não cor */
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 4 74% 41%; /* #B42318 */
+    --destructive: 4 76% 40%; /* #B42318 */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 38 13% 88%;     /* #E5E1DC */
-    --input: 38 13% 88%;
-    --ring: 7 83% 51%;
+    --border: 60 5% 89%;      /* #E4E4E1 */
+    --input: 60 5% 89%;
+    --ring: 0 0% 8%;
 
-    --radius: 0.75rem;
-
-    /* Palomino Marca v1 Tokens */
-    --pal-primary: #E8341C;
-    --pal-primary-hover: #C9280F;
-    --pal-primary-text: #C42B13;
-    --pal-primary-tint: #FCEDE9;
-    --pal-primary-line: #F2C4B9;
-    --pal-bg: #FAF9F7;
-    --pal-bg-card: #FFFFFF;
-    --pal-bg-subtle: #F5F3F0;
-    --pal-border: #E5E1DC;
-    --pal-text: #1A1714;
-    --pal-text-muted: #57524C;
-    --pal-text-faint: #78716A;
-    --pal-success: #1E7A3B;
-    --pal-success-tint: #E5F3E9;
-    --pal-warning: #8A5300;
-    --pal-warning-tint: #FAF0DC;
-    --pal-danger: #B42318;
-    --pal-danger-tint: #FBEAE8;
+    --radius: 1.25rem;        /* 20 px, card da v2 */
   }
 
   .dark {
-    --background: 20 6% 7%;   /* #131110 */
-    --foreground: 30 18% 93%; /* #F2EEE9 */
+    --background: 0 0% 6%;    /* #0F0F0F */
+    --foreground: 60 6% 94%;  /* #F2F2F0 */
 
-    --card: 20 8% 10%;        /* #1B1816 */
-    --card-foreground: 30 18% 93%;
+    --card: 0 0% 9%;          /* #181818 */
+    --card-foreground: 60 6% 94%;
 
-    --popover: 20 8% 10%;
-    --popover-foreground: 30 18% 93%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 60 6% 94%;
 
-    --primary: 6 100% 64%;    /* #FF5B45 */
-    --primary-foreground: 0 0% 100%;
+    --primary: 8 74% 60%;     /* #E5634F */
+    --primary-foreground: 0 0% 8%;
 
-    --secondary: 20 9% 12%;   /* #221E1B */
-    --secondary-foreground: 30 18% 93%;
+    --secondary: 0 0% 13%;    /* #202020 */
+    --secondary-foreground: 60 6% 94%;
 
-    --muted: 20 9% 12%;
-    --muted-foreground: 30 7% 68%; /* #B6AFA7 */
+    --muted: 0 0% 13%;
+    --muted-foreground: 60 2% 70%; /* #B4B4B0 */
 
-    --accent: 6 100% 64%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 60 6% 94%;
+    --accent-foreground: 0 0% 8%;
 
-    --destructive: 6 100% 74%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 7 100% 74%;
+    --destructive-foreground: 0 0% 8%;
 
-    --border: 24 9% 17%;      /* #302B27 */
-    --input: 24 9% 17%;
-    --ring: 6 100% 64%;
+    --border: 0 0% 16%;       /* #2A2A2A */
+    --input: 0 0% 16%;
+    --ring: 60 6% 94%;
   }
 }
 
@@ -124,8 +107,8 @@
 
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #D9D3CC; border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: #B6AFA7; }
+  ::-webkit-scrollbar-thumb { background: #D4D4D1; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #A3A3A0; }
 }
 
 @layer components {

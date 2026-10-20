@@ -47,19 +47,19 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="servicos" className="section-padding bg-[#FAF9F7] text-[#1A1714]">
+    <section id="servicos" className="section-padding bg-background text-foreground">
       <div className="container-narrow">
         
         {/* Cabeçalho da Seção */}
         <AnimatedSection>
           <div className="max-w-2xl mb-14">
-            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#C42B13] bg-[#FCEDE9] px-3 py-1 rounded-full border border-[#F2C4B9] inline-block mb-3">
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground bg-secondary px-3 py-1 rounded-full border border-border inline-block mb-3">
               Soluções Práticas
             </span>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1714] tracking-tight mb-4">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-4">
               Tecnologia que resolve a rotina do seu negócio.
             </h2>
-            <p className="font-sans text-base text-[#57524C] leading-relaxed">
+            <p className="font-sans text-base text-muted-foreground leading-relaxed">
               Você não precisa entender de programação. Nós entregamos a ferramenta pronta, ensinamos sua equipe a usar e cuidamos de toda a parte técnica.
             </p>
           </div>
@@ -69,29 +69,29 @@ const ServicesSection = () => {
         <div className="grid gap-6 md:grid-cols-3">
           {services.map((s, i) => (
             <AnimatedSection key={i} delay={i * 0.08}>
-              <div className="bg-white rounded-2xl border border-[#E5E1DC] p-6 sm:p-7 flex flex-col justify-between h-full shadow-[0_2px_8px_rgba(26,23,20,0.04)] hover:border-[#E8341C]/40 transition-all">
+              <div className="bg-white rounded-2xl border border-border p-6 sm:p-7 flex flex-col justify-between h-full shadow-[0_2px_8px_rgba(20,20,20,0.04)] hover:border-foreground/40 transition-all">
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-[#FAF9F7] border border-[#E5E1DC] text-[#E8341C] flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-background border border-border text-foreground flex items-center justify-center">
                       <s.icon className="w-6 h-6" />
                     </div>
-                    <span className="font-mono font-bold text-sm text-[#78716A]">
+                    <span className="font-mono font-bold text-sm text-[var(--pal-text-faint)]">
                       {s.num}
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-bold text-xl text-[#1A1714] mb-3 leading-snug">
+                  <h3 className="font-heading font-bold text-xl text-foreground mb-3 leading-snug">
                     {s.title}
                   </h3>
 
-                  <p className="font-sans text-xs sm:text-sm text-[#57524C] leading-relaxed mb-6">
+                  <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6">
                     {s.desc}
                   </p>
 
-                  <div className="space-y-2 mb-6 pb-6 border-b border-[#E5E1DC]">
+                  <div className="space-y-2 mb-6 pb-6 border-b border-border">
                     {s.points.map((pt, pIdx) => (
-                      <div key={pIdx} className="flex items-start gap-2 text-xs text-[#1A1714]">
-                        <Check className="w-4 h-4 text-[#1E7A3B] shrink-0 mt-0.5" />
+                      <div key={pIdx} className="flex items-start gap-2 text-xs text-foreground">
+                        <Check className="w-4 h-4 text-[var(--pal-success)] shrink-0 mt-0.5" />
                         <span>{pt}</span>
                       </div>
                     ))}
@@ -99,14 +99,14 @@ const ServicesSection = () => {
                 </div>
 
                 <div>
-                  <p className="font-mono text-[11px] text-[#78716A] mb-4">
+                  <p className="font-mono text-[11px] text-[var(--pal-text-faint)] mb-4">
                     {s.nicho}
                   </p>
                   <a
                     href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Gostaria de saber mais sobre ${encodeURIComponent(s.title)}.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-heading font-bold uppercase tracking-wider text-[#C42B13] hover:text-[#E8341C] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-heading font-bold uppercase tracking-wider text-foreground hover:text-foreground transition-colors"
                   >
                     <span>Quero para minha empresa</span>
                     <ArrowRight className="w-3.5 h-3.5" />

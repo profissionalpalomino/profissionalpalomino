@@ -1,5 +1,12 @@
 # SESSION.md
 
+## Sessão de 19/10/2026: visual v2 ("Grafite + Vidro"), branch design-v2, só em localhost
+
+- Cores da v1 trocadas pelos papéis da v2 (DESIGN_SYSTEM.md v2 no Cérebro): fundo cinza neutro, tinta #141414, vermelho #D2513F só no botão principal do topo e no botão final (em pílula). Eyebrows, links e botões secundários viraram tinta. Tokens v2 importados no index.html.
+- Logo novo (hexágono, `public/logo.svg`, cópia de `marca/icone-app.svg` do Cérebro) na barra, no rodapé e no bloco final.
+- **Não publicado**: o Rodrigo pediu para ver em localhost (`npx vite --port 5190`). Deploy é manual (ver CLAUDE.md).
+- **Próximo:** ok do Rodrigo, depois merge e deploy; trocar favicon e ícones PNG pelo hexágono; as seções Savings, Cases e Problems não estão na página, mas ainda têm o vermelho antigo.
+
 ## Sessão de 14/10/2026 (Hero Multissetorial Interativo & Fotos Oficiais da Serena)
 
 - **Ajustes Realizados a Pedido do Rodrigo:**

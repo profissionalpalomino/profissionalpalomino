@@ -117,7 +117,7 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
   const next = () => setIdx((i) => (i + 1) % images.length);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-xl aspect-[16/10] bg-[#FAF9F7] group border border-[#E5E1DC]">
+    <div className="relative w-full overflow-hidden rounded-xl aspect-[16/10] bg-background group border border-border">
       <img
         src={images[idx]}
         alt={`Screenshot de ${title}`}
@@ -133,14 +133,14 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
           <button
             onClick={prev}
             aria-label="Imagem anterior"
-            className="absolute left-2.5 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/90 text-[#1A1714] shadow-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/90 text-foreground shadow-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
           <button
             onClick={next}
             aria-label="Próxima imagem"
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/90 text-[#1A1714] shadow-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/90 text-foreground shadow-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
@@ -151,7 +151,7 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
                 onClick={() => setIdx(i)}
                 aria-label={`Ir para imagem ${i + 1}`}
                 className={`h-1.5 rounded-full transition-all ${
-                  i === idx ? "bg-[#E8341C] w-4" : "bg-white/70 w-1.5"
+                  i === idx ? "bg-foreground w-4" : "bg-white/70 w-1.5"
                 }`}
               />
             ))}
@@ -166,32 +166,32 @@ const ProjectsSection = () => {
   const [tab, setTab] = useState<"demos" | "sistemas">("demos");
 
   return (
-    <section id="projetos" className="section-padding bg-[#FAF9F7] text-[#1A1714]">
+    <section id="projetos" className="section-padding bg-background text-foreground">
       <div className="container-narrow">
         
         {/* Cabeçalho */}
         <AnimatedSection>
           <div className="max-w-2xl mb-10">
-            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#C42B13] bg-[#FCEDE9] px-3 py-1 rounded-full border border-[#F2C4B9] inline-block mb-3">
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground bg-secondary px-3 py-1 rounded-full border border-border inline-block mb-3">
               Projetos & Portfólio
             </span>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1714] tracking-tight mb-4">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-4">
               Veja nossos sistemas no ar.
             </h2>
-            <p className="font-sans text-base text-[#57524C] leading-relaxed">
+            <p className="font-sans text-base text-muted-foreground leading-relaxed">
               Você pode testar as demonstrações ao vivo agora mesmo para ver como ficaria na sua empresa:
             </p>
           </div>
         </AnimatedSection>
 
         {/* Seletor de Abas Estilo Segmented Control */}
-        <div className="flex items-center gap-2 p-1 bg-white rounded-xl border border-[#E5E1DC] w-fit mb-12 shadow-xs">
+        <div className="flex items-center gap-2 p-1 bg-white rounded-xl border border-border w-fit mb-12 shadow-xs">
           <button
             onClick={() => setTab("demos")}
             className={`px-4 py-2 rounded-lg font-heading text-xs font-bold uppercase tracking-wider transition-all ${
               tab === "demos"
-                ? "bg-[#1A1714] text-white shadow-xs"
-                : "text-[#57524C] hover:text-[#1A1714]"
+                ? "bg-[#141414] text-white shadow-xs"
+                : "text-muted-foreground hover:text-foreground"
             }`}
           >
             Modelos de Sites & Demos (3)
@@ -200,8 +200,8 @@ const ProjectsSection = () => {
             onClick={() => setTab("sistemas")}
             className={`px-4 py-2 rounded-lg font-heading text-xs font-bold uppercase tracking-wider transition-all ${
               tab === "sistemas"
-                ? "bg-[#1A1714] text-white shadow-xs"
-                : "text-[#57524C] hover:text-[#1A1714]"
+                ? "bg-[#141414] text-white shadow-xs"
+                : "text-muted-foreground hover:text-foreground"
             }`}
           >
             Sistemas & Automações (4)
@@ -213,28 +213,28 @@ const ProjectsSection = () => {
           <div className="grid gap-8 md:grid-cols-3">
             {sitesLandingPages.map((proj, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>
-                <div className="bg-white rounded-2xl border border-[#E5E1DC] p-5 sm:p-6 flex flex-col justify-between h-full shadow-[0_2px_8px_rgba(26,23,20,0.04)] hover:border-[#E8341C]/40 transition-all">
+                <div className="bg-white rounded-2xl border border-border p-5 sm:p-6 flex flex-col justify-between h-full shadow-[0_2px_8px_rgba(20,20,20,0.04)] hover:border-foreground/40 transition-all">
                   <div>
                     <Carousel images={proj.screenshots} title={proj.title} />
 
                     <div className="flex items-center justify-between mt-5 mb-2">
-                      <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#78716A] bg-[#FAF9F7] px-2 py-0.5 rounded border border-[#E5E1DC]">
+                      <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--pal-text-faint)] bg-background px-2 py-0.5 rounded border border-border">
                         {proj.tag}
                       </span>
                     </div>
 
-                    <h3 className="font-heading font-bold text-lg text-[#1A1714] mb-2">
+                    <h3 className="font-heading font-bold text-lg text-foreground mb-2">
                       {proj.title}
                     </h3>
 
-                    <p className="font-sans text-xs text-[#57524C] leading-relaxed mb-5">
+                    <p className="font-sans text-xs text-muted-foreground leading-relaxed mb-5">
                       {proj.description}
                     </p>
 
-                    <div className="space-y-1.5 mb-6 pb-5 border-b border-[#E5E1DC]">
+                    <div className="space-y-1.5 mb-6 pb-5 border-b border-border">
                       {proj.functions.map((fn, fIdx) => (
-                        <div key={fIdx} className="flex items-center gap-2 text-xs text-[#1A1714]">
-                          <Check className="w-3.5 h-3.5 text-[#1E7A3B]" />
+                        <div key={fIdx} className="flex items-center gap-2 text-xs text-foreground">
+                          <Check className="w-3.5 h-3.5 text-[var(--pal-success)]" />
                           <span>{fn}</span>
                         </div>
                       ))}
@@ -247,7 +247,7 @@ const ProjectsSection = () => {
                         href={proj.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#E8341C] hover:bg-[#C9280F] text-white text-xs font-semibold py-2.5 px-3 rounded-xl transition-colors"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 bg-foreground hover:bg-foreground/85 text-white text-xs font-semibold py-2.5 px-3 rounded-xl transition-colors"
                       >
                         <span>Abrir Demo</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -257,10 +257,10 @@ const ProjectsSection = () => {
                       href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Gostei do modelo de ${encodeURIComponent(proj.title)} e quero falar sobre ele.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl border border-[#E5E1DC] hover:bg-[#F5F3F0] text-[#1A1714] transition-colors"
+                      className="p-2.5 rounded-xl border border-border hover:bg-secondary text-foreground transition-colors"
                       title="Conversar sobre este modelo no WhatsApp"
                     >
-                      <MessageCircle className="w-4 h-4 text-[#1E7A3B]" />
+                      <MessageCircle className="w-4 h-4 text-[var(--pal-success)]" />
                     </a>
                   </div>
                 </div>
@@ -275,10 +275,10 @@ const ProjectsSection = () => {
             {gruposSistemas.map((grupo, gIdx) => (
               <div key={gIdx}>
                 <div className="mb-6">
-                  <h3 className="font-heading font-bold text-xl text-[#1A1714] mb-1">
+                  <h3 className="font-heading font-bold text-xl text-foreground mb-1">
                     {grupo.titulo}
                   </h3>
-                  <p className="font-sans text-xs sm:text-sm text-[#57524C]">
+                  <p className="font-sans text-xs sm:text-sm text-muted-foreground">
                     {grupo.dor}
                   </p>
                 </div>
@@ -286,28 +286,28 @@ const ProjectsSection = () => {
                 <div className="grid gap-6 md:grid-cols-2">
                   {grupo.projetos.map((proj, pIdx) => (
                     <AnimatedSection key={pIdx} delay={pIdx * 0.1}>
-                      <div className="bg-white rounded-2xl border border-[#E5E1DC] p-5 sm:p-6 flex flex-col justify-between h-full shadow-[0_2px_8px_rgba(26,23,20,0.04)]">
+                      <div className="bg-white rounded-2xl border border-border p-5 sm:p-6 flex flex-col justify-between h-full shadow-[0_2px_8px_rgba(20,20,20,0.04)]">
                         <div>
                           <Carousel images={proj.screenshots} title={proj.title} />
 
                           <div className="mt-5 mb-2">
-                            <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#78716A] bg-[#FAF9F7] px-2 py-0.5 rounded border border-[#E5E1DC]">
+                            <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--pal-text-faint)] bg-background px-2 py-0.5 rounded border border-border">
                               {proj.tag}
                             </span>
                           </div>
 
-                          <h4 className="font-heading font-bold text-lg text-[#1A1714] mb-2">
+                          <h4 className="font-heading font-bold text-lg text-foreground mb-2">
                             {proj.title}
                           </h4>
 
-                          <p className="font-sans text-xs text-[#57524C] leading-relaxed mb-5">
+                          <p className="font-sans text-xs text-muted-foreground leading-relaxed mb-5">
                             {proj.description}
                           </p>
 
-                          <div className="space-y-1.5 mb-6 pb-5 border-b border-[#E5E1DC]">
+                          <div className="space-y-1.5 mb-6 pb-5 border-b border-border">
                             {proj.functions.map((fn, fIdx) => (
-                              <div key={fIdx} className="flex items-center gap-2 text-xs text-[#1A1714]">
-                                <Check className="w-3.5 h-3.5 text-[#1E7A3B]" />
+                              <div key={fIdx} className="flex items-center gap-2 text-xs text-foreground">
+                                <Check className="w-3.5 h-3.5 text-[var(--pal-success)]" />
                                 <span>{fn}</span>
                               </div>
                             ))}
@@ -319,9 +319,9 @@ const ProjectsSection = () => {
                             href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Vi o sistema ${encodeURIComponent(proj.title)} e quero ver como funciona.`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full inline-flex items-center justify-center gap-2 bg-[#FAF9F7] hover:bg-[#F5F3F0] text-[#1A1714] border border-[#E5E1DC] text-xs font-semibold py-2.5 px-4 rounded-xl transition-colors"
+                            className="w-full inline-flex items-center justify-center gap-2 bg-background hover:bg-secondary text-foreground border border-border text-xs font-semibold py-2.5 px-4 rounded-xl transition-colors"
                           >
-                            <MessageCircle className="w-4 h-4 text-[#1E7A3B]" />
+                            <MessageCircle className="w-4 h-4 text-[var(--pal-success)]" />
                             <span>Solicitar demonstração pelo WhatsApp</span>
                           </a>
                         </div>
