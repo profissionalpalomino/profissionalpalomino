@@ -11,6 +11,7 @@
 - Ajuste pedido pelo Rodrigo: "Apps" no menu virou pílula vermelha clara com selo "novo" (vermelho cheio quando está na página). Página reorganizada: abertura em duas colunas com índice dos apps à direita; Site Finder dentro de um card, com nome e botão na mesma linha, tela e passos lado a lado na mesma altura e os três fatos no rodapé do card. Espaço entre links do menu reduzido (barra rolada encostava no botão do WhatsApp).
 - Testado em localhost (`npx vite --port 5190`): 390 px sem rolagem lateral, menu medido em 1280, 1366, 1440 e 1920.
 - **Publicado em 20/10/2026** com o ok do Rodrigo (deploy.sh), junto com o visual v2. Conferido: /, /apps e sitemap.xml com HTTP 200; /apps mostra os dois apps.
+- **22/10/2026:** removida a foto `serena/images/hero.webp` (rosto de mulher que o Google usava de miniatura). Banner do carrossel agora usa `pele.webp`; vitrine da Serena ficou com 2 imagens.
 - **Próximo:** no Google Search Console, pedir indexação de /apps (opcional); fase 2 (pagamento) só se aparecer procura; limpar Inter/Poppins, cores soltas e emoji apontados pelo guardião visual (nota 66).
 
 ## Sessão de 19/10/2026: visual v2 ("Grafite + Vidro"), branch design-v2, só em localhost

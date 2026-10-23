@@ -51,7 +51,7 @@ const SEGMENTOS: Record<SegmentId, SegmentData> = {
     icon: Stethoscope,
     empresa: "Clínica Serena · Estética Avançada",
     subtitulo: "Dra. Marina Costa · CRM 48.912",
-    bannerImg: "/demos/serena/images/hero.webp",
+    bannerImg: "/demos/serena/images/pele.webp",
     avatarImg: "/demos/serena/images/profissional.webp",
     statusBadge: "9 atendimentos",
     statusClass: "text-[var(--pal-success)] bg-[var(--pal-success-tint)] border border-[#1E7A3B]/20",

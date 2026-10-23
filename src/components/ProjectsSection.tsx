@@ -40,7 +40,6 @@ const sitesLandingPages: Projeto[] = [
       "Landing page de alta autoridade para clínicas de saúde e procedimentos estéticos. Apresentação médica com CRM/RQE, tratamentos clínicos e botão de agendamento.",
     functions: ["Agendamento no WhatsApp", "Tratamentos & Formação Médica", "Perguntas Frequentes"],
     screenshots: [
-      "/demos/serena/images/hero.webp",
       "/demos/serena/images/profissional.webp",
       "/demos/serena/images/pele.webp",
     ],
