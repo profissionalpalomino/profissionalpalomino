@@ -130,4 +130,18 @@
     font-family: 'DM Mono', ui-monospace, monospace;
     font-variant-numeric: tabular-nums;
   }
+
+  /* Archivo largo, só em título de vitrine (DESIGN_SYSTEM.md v2) */
+  .titulo-vitrine {
+    font-family: var(--pal-font-display, 'Archivo'), system-ui, sans-serif;
+    font-stretch: var(--pal-font-display-stretch, 125%);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+  }
+
+  /* Rótulo de seção: DM Mono em caixa alta, sem pílula */
+  .rotulo {
+    @apply font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground;
+  }
 }

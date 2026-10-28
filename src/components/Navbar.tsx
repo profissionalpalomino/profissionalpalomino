@@ -68,28 +68,28 @@ const Navbar = () => {
           {/* Links Desktop */}
           <nav className="hidden xl:flex items-center gap-5 whitespace-nowrap text-xs font-medium text-muted-foreground dark:text-[#B4B4B0]">
             <button 
+              onClick={() => scrollTo('trabalhos')} 
+              className="hover:text-foreground dark:hover:text-[#F2F2F0] transition-colors"
+            >
+              Trabalhos
+            </button>
+            <button 
+              onClick={() => scrollTo('avaliacoes')} 
+              className="hover:text-foreground dark:hover:text-[#F2F2F0] transition-colors"
+            >
+              Avaliações
+            </button>
+            <button 
               onClick={() => scrollTo('servicos')} 
               className="hover:text-foreground dark:hover:text-[#F2F2F0] transition-colors"
             >
-              Soluções
+              O que faço
             </button>
             <button 
               onClick={() => scrollTo('processo')} 
               className="hover:text-foreground dark:hover:text-[#F2F2F0] transition-colors"
             >
-              Como Funciona
-            </button>
-            <button 
-              onClick={() => scrollTo('projetos')} 
-              className="hover:text-foreground dark:hover:text-[#F2F2F0] transition-colors"
-            >
-              Projetos & Demos
-            </button>
-            <button 
-              onClick={() => scrollTo('depoimentos')} 
-              className="hover:text-foreground dark:hover:text-[#F2F2F0] transition-colors"
-            >
-              Clientes
+              Como funciona
             </button>
             <button 
               onClick={() => scrollTo('duvidas')} 
@@ -153,17 +153,17 @@ const Navbar = () => {
       {/* Menu Mobile */}
       {mobileMenuOpen && (
         <div className="xl:hidden mt-2 p-5 bg-white dark:bg-[#181818] rounded-2xl border border-border dark:border-[#2A2A2A] shadow-xl flex flex-col gap-4 text-sm font-medium text-foreground dark:text-[#F2F2F0]">
+          <button onClick={() => scrollTo('trabalhos')} className="text-left py-2 border-b border-border/50">
+            Trabalhos
+          </button>
+          <button onClick={() => scrollTo('avaliacoes')} className="text-left py-2 border-b border-border/50">
+            Avaliações
+          </button>
           <button onClick={() => scrollTo('servicos')} className="text-left py-2 border-b border-border/50">
-            Soluções
+            O que faço
           </button>
           <button onClick={() => scrollTo('processo')} className="text-left py-2 border-b border-border/50">
-            Como Funciona
-          </button>
-          <button onClick={() => scrollTo('projetos')} className="text-left py-2 border-b border-border/50">
-            Projetos & Demos
-          </button>
-          <button onClick={() => scrollTo('depoimentos')} className="text-left py-2 border-b border-border/50">
-            Clientes
+            Como funciona
           </button>
           <button onClick={() => scrollTo('duvidas')} className="text-left py-2 border-b border-border/50">
             Dúvidas

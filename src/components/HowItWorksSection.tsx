@@ -1,124 +1,42 @@
 import AnimatedSection from "./AnimatedSection";
-import { Smartphone, BellRing, Calculator, ArrowRight, Calendar, MessageCircle } from "lucide-react";
 
-const WHATSAPP = "5531984773813";
-const AGENDA_URL = "https://calendar.app.google/RpTN49BD3jJabEB79";
-
-const passosRotina = [
+const passos = [
   {
-    step: "01",
-    icon: Smartphone,
-    title: "O cliente agenda sozinho",
-    desc: "Ele acessa o link pelo celular, escolhe o serviço, o profissional e o horário disponível. Sem esperar ninguém responder no WhatsApp.",
-    highlight: "Funciona 24h por dia, inclusive à noite e nos fins de semana.",
+    titulo: "Você me conta como é hoje",
+    texto: "Uma conversa no WhatsApp ou uma chamada de 15 minutos. Quero entender onde o tempo e o cliente estão escapando.",
   },
   {
-    step: "02",
-    icon: BellRing,
-    title: "Lembrete automático no WhatsApp",
-    desc: "O sistema confirma na hora e dispara uma mensagem de lembrete 2 horas antes do horário. O cliente confirma com um toque.",
-    highlight: "Reduz esquecimentos e furos de agenda a quase zero.",
+    titulo: "Você vê antes de decidir",
+    texto: "Mostro uma prévia com a sua marca e o seu conteúdo. Ajusta o que precisar antes de qualquer coisa ir ao ar.",
   },
   {
-    step: "03",
-    icon: Calculator,
-    title: "Caixa e repasses fechados",
-    desc: "Cada profissional vê seus atendimentos no celular. No fim do dia, o faturamento e as comissões já estão calculados sem erro.",
-    highlight: "Chega de perder horas somando caderninho ou planilha.",
+    titulo: "Vai ao ar e eu continuo por perto",
+    texto: "Publico, ensino a usar e o suporte segue direto comigo no WhatsApp. Sem fila, sem ticket, sem robô.",
   },
 ];
 
 const HowItWorksSection = () => {
   return (
-    <section id="processo" className="section-padding bg-white border-y border-border text-foreground">
+    <section id="processo" className="section-padding bg-[var(--pal-strong)] text-white">
       <div className="container-narrow">
-        
         <AnimatedSection>
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground bg-secondary px-3 py-1 rounded-full border border-border inline-block mb-3">
-              Como Funciona na Prática
-            </span>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-4">
-              A rotina do seu negócio, sem atrito.
-            </h2>
-            <p className="font-sans text-base text-muted-foreground leading-relaxed">
-              Veja como a operação da sua empresa funciona depois que o sistema é implantado:
-            </p>
-          </div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/55 mb-4">Como funciona</p>
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl">
+            Do primeiro "oi" ao site no ar.
+          </h2>
         </AnimatedSection>
 
-        {/* Grade dos 3 Passos da Rotina */}
-        <div className="grid gap-8 md:grid-cols-3 relative mb-16">
-          {passosRotina.map((p, i) => (
-            <AnimatedSection key={i} delay={i * 0.1}>
-              <div className="bg-background rounded-2xl border border-border p-6 sm:p-7 flex flex-col justify-between h-full relative">
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-white border border-border text-foreground flex items-center justify-center">
-                      <p.icon className="w-5 h-5" />
-                    </div>
-                    <span className="font-mono text-xs font-bold text-[var(--pal-text-faint)]">
-                      PASSO {p.step}
-                    </span>
-                  </div>
-
-                  <h3 className="font-heading font-bold text-xl text-foreground mb-3">
-                    {p.title}
-                  </h3>
-
-                  <p className="font-sans text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6">
-                    {p.desc}
-                  </p>
-                </div>
-
-                <div className="p-3 rounded-xl bg-white border border-border/80 font-sans text-xs text-[var(--pal-success)] font-medium">
-                  {p.highlight}
-                </div>
-              </div>
+        <ol className="mt-12 sm:mt-16 grid gap-10 md:grid-cols-3 md:gap-8">
+          {passos.map((p, i) => (
+            <AnimatedSection key={p.titulo} delay={i * 0.08}>
+              <li className="border-t border-white/20 pt-6">
+                <span className="font-mono text-sm text-white/55">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-4 text-xl sm:text-2xl font-bold tracking-tight">{p.titulo}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-white/70">{p.texto}</p>
+              </li>
             </AnimatedSection>
           ))}
-        </div>
-
-        {/* Faixa de Como Trabalhamos */}
-        <AnimatedSection delay={0.3}>
-          <div className="p-6 sm:p-8 rounded-2xl bg-background border border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div className="max-w-xl">
-              <span className="font-mono text-[11px] font-semibold text-[var(--pal-text-faint)] uppercase tracking-wider block mb-1">
-                Do primeiro contato à entrega
-              </span>
-              <h4 className="font-heading font-bold text-lg text-foreground mb-1">
-                Quer saber como implantar na sua empresa?
-              </h4>
-              <p className="font-sans text-xs sm:text-sm text-muted-foreground">
-                Conversamos 15 minutos pelo WhatsApp, entendemos suas regras e mostramos uma demonstração funcionando antes de você fechar qualquer contrato.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 w-full sm:w-auto">
-              <a
-                href={AGENDA_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-foreground hover:bg-foreground/85 text-white text-xs sm:text-sm font-bold px-6 py-3.5 rounded-xl transition-all shadow-[0_4px_12px_-6px_rgba(20,20,20,0.35)] hover:shadow-[0_4px_12px_-6px_rgba(20,20,20,0.35)] shrink-0"
-              >
-                <Calendar className="w-4 h-4" />
-                <span>Agendar demonstração</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-
-              <a
-                href={`https://wa.me/${WHATSAPP}?text=Olá, Rodrigo! Quero ver como funciona a implantação na minha empresa.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-secondary text-foreground border border-border text-xs sm:text-sm font-semibold px-5 py-3.5 rounded-xl transition-colors shrink-0"
-              >
-                <MessageCircle className="w-4 h-4 text-[var(--pal-success)]" />
-                <span>WhatsApp</span>
-              </a>
-            </div>
-          </div>
-        </AnimatedSection>
-
+        </ol>
       </div>
     </section>
   );
