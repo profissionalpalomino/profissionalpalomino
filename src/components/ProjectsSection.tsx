@@ -91,11 +91,11 @@ const gruposSistemas: Grupo[] = [
     dor: "Captação de leads e respostas automatizadas sem perda de tempo.",
     projetos: [
       {
-        title: "Barbearias Finder",
+        title: "Site Finder",
         description:
           "Mapeia comércios locais no Google Maps, filtra estabelecimentos sem site e estabelece primeiro contato via mensagem personalizada.",
         functions: ["Mapeamento no Google", "Filtro de Contatos", "Contato Personalizado"],
-        screenshots: ["/screenshot-barbearias-finder.webp"],
+        screenshots: ["/screenshot-site-finder.webp"],
         tag: "Prospecção Comercial",
       },
       {

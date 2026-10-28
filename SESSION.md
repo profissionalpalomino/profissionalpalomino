@@ -1,5 +1,20 @@
 # SESSION.md
 
+## Sessão 28/10/2026: vitrine Site Finder, telemetria em /apps e sitemap limpo
+
+- **Problema (revisão geral):**
+  - Seção de projetos ainda exibia o Barbearias Finder (desativado) em vez do Site Finder.
+  - Página `/apps` não disparava `initTracker()`, ficando sem telemetria de visualizações.
+  - `sitemap.xml` continha âncoras (`/#projetos`, `/#servicos`), inválidas para indexadores de busca.
+- **Feito:**
+  - `ProjectsSection.tsx`: case atualizado para Site Finder com screenshot oficial `/screenshot-site-finder.webp`.
+  - `Apps.tsx`: disparado `initTracker()` no carregamento da página.
+  - `sitemap.xml`: mantidas apenas URLs canônicas (`/` e `/apps`), removendo âncoras.
+- **Testes:** build Vite concluído com sucesso (14.48s).
+- **Próximo:** continuar etapas seguintes.
+
+---
+
 ## Sessão de 27/10/2026: home refeita e desfeita
 
 - Fiz uma home nova (prints dos sites de clientes, avaliações do Google, seções em lista, título em Archivo largo). O Rodrigo achou "horrível" e pediu para voltar. Revertida com git revert e publicada de novo: o site está igual ao de 22/10.

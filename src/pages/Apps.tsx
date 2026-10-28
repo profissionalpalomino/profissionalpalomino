@@ -3,6 +3,7 @@ import { ArrowUpRight, MapPin, Search, Download, MessageCircle, Star, Monitor, R
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import { initTracker } from "@/lib/tracker";
 
 const WHATSAPP = "5531984773813";
 const zap = (texto: string) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
@@ -158,6 +159,7 @@ const TelaVagas = () => (
 
 const Apps = () => {
   useEffect(() => {
+    initTracker();
     document.title = "Apps · Palomino Tech";
     window.scrollTo(0, 0);
     return () => {
