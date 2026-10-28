@@ -1,5 +1,11 @@
 # SESSION.md
 
+## Sessão de 27/10/2026: home refeita e desfeita
+
+- Fiz uma home nova (prints dos sites de clientes, avaliações do Google, seções em lista, título em Archivo largo). O Rodrigo achou "horrível" e pediu para voltar. Revertida com git revert e publicada de novo: o site está igual ao de 22/10.
+- O que continua valendo: o número do prédio vem do Perfil da Empresa no Google (ocultar endereço lá) e a foto de rosto na busca é cache antigo do Google (pedir reindexação no Search Console).
+- Avaliações do Google podem ser buscadas pela Places API (place_id ChIJ4WffRI6_pgARx2M4Tad4mqo, chave do site-finder). Se for colocá-las no site, encaixar no visual atual, sem refazer a página.
+
 ## Sessão de 20/10/2026: página "Apps" (fase 1 da venda de apps)
 
 - Página nova `/apps` (`src/pages/Apps.tsx`) no visual v2: abertura com título em Archivo largo, Site Finder em "acesso antecipado" (4 passos, tela ilustrada em código com nomes de exemplo, botão vermelho "Entrar na lista" que abre o WhatsApp com mensagem pronta), três fatos e card preto "Na fila" para os próximos apps.
