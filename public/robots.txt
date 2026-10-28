@@ -1,6 +1,14 @@
 User-agent: Googlebot
 Allow: /
 
+# Miniatura da busca: o Google só pode usar a imagem da marca. As fotos dos modelos
+# (rostos de banco de imagem) apareciam como miniatura do palominotech.com.br.
+User-agent: Googlebot-Image
+Allow: /og-palomino.png
+Allow: /logo.svg
+Allow: /logo.png
+Disallow: /
+
 User-agent: Bingbot
 Allow: /
 
