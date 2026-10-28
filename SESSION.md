@@ -1,16 +1,5 @@
 # SESSION.md
 
-## Sessão de 27/10/2026: home refeita, menos cara de IA, avaliações reais
-
-- Pedido do Rodrigo: tirar o visual genérico, parar o Google de mostrar foto de banco de imagem (rosto de mulher) como miniatura e trazer as avaliações do Google como prova social.
-- Home refeita: título em Archivo largo, print real do site da Paulín Baterias no lugar dos mockups com foto de banco; seção "Trabalhos entregues" com SG Advocacia e Faria Quites (prints em `public/trabalhos/`, tirados dos sites publicados; Faria Quites ainda sem DNS, aparece como "em publicação" e sem link); Alça Party e Site Finder em texto.
-- Avaliações: 4 das 13 avaliações do Google (a Places API só devolve 5), texto sem edição, link "Ler todas no Google" (place_id ChIJ4WffRI6_pgARx2M4Tad4mqo).
-- Removidos da home: hero com fotos de procedimento estético, faixa de pilares, vitrine de demos com foto de banco, casos sem cliente nomeado, botão flutuante do Instagram. Arquivos apagados: Pilares, Projects, Testimonials, Cases, Savings, Problems.
-- Serviços, Como funciona e Dúvidas viraram listas editoriais (sem três cards iguais). Texto em primeira pessoa.
-- Contatos centralizados em `src/lib/contato.ts`. Meta description nova e `max-image-preview:large`.
-- Rodapé diz "Grande BH" (antes "Lagoa Santa"). O schema ainda diz Lagoa Santa e o perfil do Google diz Contagem: o Rodrigo precisa decidir qual vale.
-- **Próximo:** pedir reindexação da home no Search Console para a miniatura trocar; ocultar o endereço no Perfil da Empresa (só o Rodrigo pode); limpar Inter/Poppins das páginas de demos (guardião visual 70).
-
 ## Sessão de 20/10/2026: página "Apps" (fase 1 da venda de apps)
 
 - Página nova `/apps` (`src/pages/Apps.tsx`) no visual v2: abertura com título em Archivo largo, Site Finder em "acesso antecipado" (4 passos, tela ilustrada em código com nomes de exemplo, botão vermelho "Entrar na lista" que abre o WhatsApp com mensagem pronta), três fatos e card preto "Na fila" para os próximos apps.
