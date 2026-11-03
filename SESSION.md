@@ -1,5 +1,8 @@
 # SESSION.md
 
+## 03/11/2026: barra vermelha de baixo
+- theme_color do manifest trocado de #E8341C para #141414 (a barra de navegacao do Android pegava o vermelho).
+
 ## Sessão 28/10/2026: vitrine Site Finder, telemetria em /apps e sitemap limpo
 
 - **Problema (revisão geral):**
