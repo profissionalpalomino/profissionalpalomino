@@ -1,6 +1,20 @@
 import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
-import { ChevronLeft, ChevronRight, ExternalLink, MessageCircle, Check, ArrowUpRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  MessageCircle,
+  Check,
+  ArrowUpRight,
+  MessageSquare,
+  Scale,
+  Scissors,
+  MapPin,
+  LayoutGrid,
+  CalendarCheck,
+  Monitor,
+  type LucideIcon,
+} from "lucide-react";
 
 const WHATSAPP = "5531984773813";
 
@@ -11,6 +25,7 @@ type Projeto = {
   screenshots: string[];
   tag: string;
   url?: string;
+  icon?: LucideIcon;
 };
 
 type Grupo = {
@@ -44,7 +59,7 @@ const sitesLandingPages: Projeto[] = [
       "/demos/serena/images/pele.webp",
     ],
     tag: "Saúde & Estética",
-    url: "https://clinicas.palominotech.com.br/modelo",
+    url: "/demos/serena/index.html",
   },
   {
     title: "Venda do Deco · Bar & Petiscaria",
@@ -63,55 +78,118 @@ const sitesLandingPages: Projeto[] = [
 
 const gruposSistemas: Grupo[] = [
   {
-    id: "operacao",
-    titulo: "Organização & Financeiro",
-    dor: "Controle de caixa e contas a pagar centralizado, sem planilhas quebradas.",
+    id: "gestao-nicho",
+    titulo: "Organização & Gestão por Nicho",
+    dor: "Sistemas pensados para a rotina de cada área, sem planilhas nem retrabalho no atendimento.",
     projetos: [
       {
-        title: "Finanças Pro",
+        title: "Gestão Odonto",
         description:
-          "Plataforma que centraliza todos os pagamentos e contas fixas num painel visual com alertas matinais automáticos no WhatsApp no dia do vencimento.",
-        functions: ["Painel de Vencimentos", "Alertas no WhatsApp", "Histórico de Pagamentos"],
-        screenshots: ["/screenshot-financas-pro.webp"],
-        tag: "Gestão Financeira",
+          "Organiza a base de pacientes e leads da clínica, dispara lembretes de retorno automáticos e ajuda a equipe a resgatar orçamentos parados no WhatsApp.",
+        functions: ["Base de Pacientes & Leads", "Retornos Automáticos", "Resgate de Orçamentos no WhatsApp"],
+        screenshots: [],
+        tag: "Clínicas Odontológicas",
+        icon: MessageSquare,
       },
       {
-        title: "Alca Party",
+        title: "Gestão de Advogados",
         description:
-          "Sistema de eventos com cardápio no celular para os convidados fazerem pedidos sem fila e painel na TV atualizando o consumo em tempo real.",
-        functions: ["Cardápio no Celular", "Ranking ao Vivo na TV", "Sem Fila de Balcão"],
-        screenshots: ["/screenshot-alca-party.webp"],
-        tag: "App de Eventos",
+          "Reúne clientes, processos, prazos em dias úteis e controle de honorários num só lugar, com busca automática de publicações no DJEN e andamentos no DataJud.",
+        functions: ["Processos & Clientes", "Prazos Automáticos DJEN / DataJud", "Controle de Honorários"],
+        screenshots: [],
+        tag: "Escritórios de Advocacia",
+        icon: Scale,
+      },
+      {
+        title: "Gestão Barbearia",
+        description:
+          "Agenda prática com link para o cliente marcar horário, cálculo de comissão da equipe e lista de clientes sumidos para chamar de volta no WhatsApp.",
+        functions: ["Agenda & Link de Horários", "Comissão da Equipe", "Clientes Sumidos no WhatsApp"],
+        screenshots: [],
+        tag: "Barbearias & Estúdios",
+        icon: Scissors,
       },
     ],
   },
   {
-    id: "prospeccao",
-    titulo: "Atendimento & Prospecção",
-    dor: "Captação de leads e respostas automatizadas sem perda de tempo.",
+    id: "atendimento-captacao",
+    titulo: "Atendimento, Conteúdo & Captação",
+    dor: "Ferramentas práticas para captar clientes, organizar sessões e manter a presença nas redes com controle.",
     projetos: [
       {
         title: "Site Finder",
         description:
-          "Mapeia comércios locais no Google Maps, filtra estabelecimentos sem site e estabelece primeiro contato via mensagem personalizada.",
-        functions: ["Mapeamento no Google", "Filtro de Contatos", "Contato Personalizado"],
+          "Encontra negócios locais no Google Maps que ainda não têm site, filtra contatos com WhatsApp e prepara prévias personalizadas para apresentar na abordagem.",
+        functions: ["Mapeamento no Google Maps", "Filtro de Negócios sem Site", "Prévias & Contato no WhatsApp"],
         screenshots: ["/screenshot-site-finder.webp"],
-        tag: "Prospecção Comercial",
+        tag: "Captação Comercial",
+        icon: MapPin,
       },
       {
-        title: "Instagram Palomino Tech",
+        title: "Posts Instagram",
         description:
-          "Painel de curadoria de publicações para redes sociais com criação de artes, revisão rápida de textos e aprovação em um toque.",
-        functions: ["Geração de Posts", "Painel de Aprovação", "Agendamento de Conteúdo"],
+          "Prepara carrosséis e stories para escritórios e clínicas com cronograma visual, revisão com trava ética e aprovação em 1 toque antes de publicar.",
+        functions: ["Cronograma para Escritórios e Clínicas", "Aprovação em 1 Toque", "Trava Ética de Conteúdo"],
         screenshots: ["/screenshot-palomino-instagram.webp"],
-        tag: "Gestão de Conteúdo",
+        tag: "Conteúdo & Redes",
+        icon: LayoutGrid,
+      },
+      {
+        title: "Gestão de Psicólogos",
+        description:
+          "Controle simples de agenda e financeiro para consultórios: mostra sessões do dia, pagamentos em aberto e organiza os dados de cada recebimento para o Receita Saúde.",
+        functions: ["Agenda de Sessões", "Controle de Pagamentos", "Dados para o Receita Saúde"],
+        screenshots: [],
+        tag: "Consultórios de Psicologia",
+        icon: CalendarCheck,
       },
     ],
   },
 ];
 
-function Carousel({ images, title }: { images: string[]; title: string }) {
+function Carousel({
+  images,
+  title,
+  tag,
+  Icon = Monitor,
+}: {
+  images: string[];
+  title: string;
+  tag?: string;
+  Icon?: LucideIcon;
+}) {
   const [idx, setIdx] = useState(0);
+
+  if (images.length === 0) {
+    return (
+      <div className="relative w-full overflow-hidden rounded-xl aspect-[16/10] bg-background border border-border flex flex-col">
+        <div className="h-7 px-3 border-b border-border bg-white/80 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-border" />
+            <span className="w-2 h-2 rounded-full bg-border" />
+            <span className="w-2 h-2 rounded-full bg-border" />
+          </div>
+          {tag && (
+            <span className="font-mono text-[10px] text-[var(--pal-text-faint)] truncate max-w-[70%]">
+              {tag}
+            </span>
+          )}
+        </div>
+        <div className="flex-1 flex flex-col items-center justify-center p-5 text-center">
+          <div className="w-11 h-11 rounded-xl bg-white border border-border shadow-2xs flex items-center justify-center mb-2.5 text-foreground">
+            <Icon className="w-5 h-5" strokeWidth={1.6} />
+          </div>
+          <p className="font-heading font-bold text-sm text-foreground tracking-tight">
+            {title}
+          </p>
+          <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--pal-text-faint)] mt-1">
+            Demonstração guiada
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   const prev = () => setIdx((i) => (i - 1 + images.length) % images.length);
   const next = () => setIdx((i) => (i + 1) % images.length);
 
@@ -161,6 +239,8 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
   );
 }
 
+const totalSistemas = gruposSistemas.reduce((acc, g) => acc + g.projetos.length, 0);
+
 const ProjectsSection = () => {
   const [tab, setTab] = useState<"demos" | "sistemas">("demos");
 
@@ -184,7 +264,7 @@ const ProjectsSection = () => {
         </AnimatedSection>
 
         {/* Seletor de Abas Estilo Segmented Control */}
-        <div className="flex items-center gap-2 p-1 bg-white rounded-xl border border-border w-fit mb-12 shadow-xs">
+        <div className="flex flex-wrap items-center gap-2 p-1 bg-white rounded-xl border border-border w-fit max-w-full mb-12 shadow-xs">
           <button
             onClick={() => setTab("demos")}
             className={`px-4 py-2 rounded-lg font-heading text-xs font-bold uppercase tracking-wider transition-all ${
@@ -193,7 +273,7 @@ const ProjectsSection = () => {
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            Modelos de Sites & Demos (3)
+            Modelos de Sites & Demos ({sitesLandingPages.length})
           </button>
           <button
             onClick={() => setTab("sistemas")}
@@ -203,7 +283,7 @@ const ProjectsSection = () => {
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            Sistemas & Automações (4)
+            Sistemas & Automações ({totalSistemas})
           </button>
         </div>
 
@@ -214,7 +294,7 @@ const ProjectsSection = () => {
               <AnimatedSection key={i} delay={i * 0.1}>
                 <div className="bg-white rounded-2xl border border-border p-5 sm:p-6 flex flex-col justify-between h-full shadow-[0_2px_8px_rgba(20,20,20,0.04)] hover:border-foreground/40 transition-all">
                   <div>
-                    <Carousel images={proj.screenshots} title={proj.title} />
+                    <Carousel images={proj.screenshots} title={proj.title} tag={proj.tag} Icon={proj.icon} />
 
                     <div className="flex items-center justify-between mt-5 mb-2">
                       <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--pal-text-faint)] bg-background px-2 py-0.5 rounded border border-border">
@@ -282,12 +362,12 @@ const ProjectsSection = () => {
                   </p>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   {grupo.projetos.map((proj, pIdx) => (
                     <AnimatedSection key={pIdx} delay={pIdx * 0.1}>
                       <div className="bg-white rounded-2xl border border-border p-5 sm:p-6 flex flex-col justify-between h-full shadow-[0_2px_8px_rgba(20,20,20,0.04)]">
                         <div>
-                          <Carousel images={proj.screenshots} title={proj.title} />
+                          <Carousel images={proj.screenshots} title={proj.title} tag={proj.tag} Icon={proj.icon} />
 
                           <div className="mt-5 mb-2">
                             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[var(--pal-text-faint)] bg-background px-2 py-0.5 rounded border border-border">

@@ -1,0 +1,111 @@
+name: Deploy VPS
+
+# Publica palominotech.com.br a cada push na main.
+# Compila no GitHub Actions e envia apenas dist/, Dockerfile e nginx.conf via scp -O.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - '.gitignore'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-portfolio-palomino
+  cancel-in-progress: false
+
+env:
+  VPS_PATH: /root/gha-build/portfolio-palomino
+  IMAGEM: portfolio-palomino
+  SERVICO: palomino-tech_portfolio
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Instalar dependências e compilar
+        run: |
+          npm ci
+          npm run build
+          test -f dist/index.html || { echo "::error::build não gerou dist/index.html"; exit 1; }
+          test -f dist/manifest.webmanifest || { echo "::error::manifest ausente no dist"; exit 1; }
+          test -f dist/sw.js || { echo "::error::service worker ausente no dist"; exit 1; }
+          test -f dist/demos/serena/index.html || { echo "::error::demo da Serena ausente no dist"; exit 1; }
+
+      - name: Preparar chave SSH
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          echo "ALVO=$VPS_USER@$VPS_HOST" >> "$GITHUB_ENV"
+          echo "SSH_CMD=ssh -i $HOME/.ssh/id_deploy -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new $VPS_USER@$VPS_HOST" >> "$GITHUB_ENV"
+
+      - name: Empacotar artefatos de produção
+        run: |
+          tar -cf /tmp/deploy.tar dist Dockerfile nginx.conf
+          ls -lh /tmp/deploy.tar
+
+      - name: Liberar cache antigo na VPS
+        run: |
+          $SSH_CMD "docker builder prune -f >/dev/null 2>&1; docker image prune -f >/dev/null 2>&1"
+
+      - name: Enviar e publicar na VPS
+        run: |
+          TAG="v$(date +%s)-$(git rev-parse --short HEAD)"
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          $SSH_CMD "rm -rf $VPS_PATH && mkdir -p $VPS_PATH"
+          scp -O -i ~/.ssh/id_deploy -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new \
+            /tmp/deploy.tar "$ALVO:$VPS_PATH/deploy.tar"
+          $SSH_CMD "cd $VPS_PATH && tar -xf deploy.tar && rm -f deploy.tar && echo EXTRAIDO"
+          $SSH_CMD "cd $VPS_PATH && docker build -q -t $IMAGEM:$TAG ."
+          $SSH_CMD "docker service update --force --image $IMAGEM:$TAG $SERVICO"
+
+      - name: Conferir em produção
+        run: |
+          OK_IMG=0
+          RODANDO=""
+          for i in 1 2 3 4 5 6; do
+            sleep 5
+            RODANDO=$($SSH_CMD "docker ps --filter name=$SERVICO. --filter status=running --format '{{.Image}}' | head -1")
+            echo "Esperado: $IMAGEM:$TAG | Rodando: $RODANDO ($i/6)"
+            if [ "$RODANDO" = "$IMAGEM:$TAG" ]; then
+              OK_IMG=1
+              break
+            fi
+          done
+          if [ "$OK_IMG" != "1" ]; then
+            echo "::error::Deploy não aplicado (segue em $RODANDO)."
+            exit 1
+          fi
+          OK=0
+          for i in 1 2 3 4 5 6; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' https://palominotech.com.br/)
+            echo "https://palominotech.com.br/ -> HTTP $code ($i/6)"
+            if [ "$code" = "200" ]; then
+              OK=1
+              break
+            fi
+            sleep 5
+          done
+          [ "$OK" = "1" ]
+          demo_code=$(curl -s -o /dev/null -w '%{http_code}' https://palominotech.com.br/demos/serena/index.html)
+          echo "https://palominotech.com.br/demos/serena/index.html -> HTTP $demo_code"
+          [ "$demo_code" = "200" ]
+
+      - name: Limpar imagens antigas
+        run: |
+          $SSH_CMD "docker images $IMAGEM --format '{{.Repository}}:{{.Tag}}' | grep -v '<none>' | tail -n +3 | xargs -r docker rmi" || true

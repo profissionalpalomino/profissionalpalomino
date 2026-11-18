@@ -70,30 +70,11 @@
   <link rel="manifest" href="/manifest.webmanifest" />
 
   <!-- Tema claro por padrão da Palomino Tech (DESIGN_SYSTEM.md) -->
-  <script>
-    (function() {
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark') {
-          localStorage.removeItem('theme');
-        }
-        document.documentElement.classList.remove('dark');
-      } catch (e) {}
-    })();
-  </script>
+  <script src="/theme-init.js"></script>
 </head>
 
   <body class="bg-[#FAF9F7] text-[#1A1714]">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-
-    <!-- Service Worker para PWA instalável no Android / Chrome / iOS -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(() => {});
-        });
-      }
-    </script>
   </body>
 </html>

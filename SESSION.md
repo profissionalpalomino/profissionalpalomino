@@ -1,5 +1,22 @@
 # SESSION.md
 
+## 18/11/2026: Etapa 1.6a — Demo local da Serena, vitrine B2B, CSP e workflow de deploy
+
+- **Problema:**
+  - Card "Serena · Dermatologia & Estética" apontava para `https://clinicas.palominotech.com.br/modelo` (link morto), apesar das imagens reais já estarem em `public/demos/serena/images/*.webp`.
+  - Aba "Sistemas & Automações" ainda listava projetos pessoais/desativados (*Finanças Pro* e *Alca Party*) no lugar dos sistemas B2B atuais.
+  - Faltavam workflow de deploy automatizado para a VPS (`.github/workflows/deploy.yml`) e cabeçalho `Content-Security-Policy` no `nginx.conf`.
+- **Feito:**
+  - `public/demos/serena/index.html`: criada página demonstrativa responsiva (360 px a 1440 px), sem emojis, usando apenas imagens locais em `/demos/serena/images/*.webp`, com tratamentos, apresentação médica (CRM/RQE), perguntas frequentes, localização e crédito para `palominotech.com.br`.
+  - `src/components/ProjectsSection.tsx`: link da Serena alterado para `/demos/serena/index.html`; `gruposSistemas` atualizado para os 6 produtos B2B reais em 2 grupos (*Organização & Gestão por Nicho*: **Gestão Odonto**, **Gestão de Advogados**, **Gestão Barbearia**; *Atendimento, Conteúdo & Captação*: **Site Finder**, **Posts Instagram**, **Gestão de Psicólogos**), grade em 3 colunas no desktop e suporte no `Carousel` para exibir cartão minimalista com ícone e tag quando `screenshots: []`.
+  - `public/theme-init.js`, `index.html`, `src/main.tsx`: extraídos os dois `<script>` inline de `index.html` (tema claro e registro do Service Worker) para permitir `script-src 'self'` estrito no site principal.
+  - `nginx.conf`: adicionada `Content-Security-Policy` para `/index.html` (estrita com `script-src 'self'`) e `/` (compatível com demos e mapas), liberando Google Fonts, `configs.palominotech.com.br`, imagens do Unsplash e scripts Vite, sem interferir nas rotas proxied `/p/` e `/clientes/`.
+  - `.github/workflows/deploy.yml`: criado deploy automático na branch `main` (build no runner, envio de `dist/`, `Dockerfile` e `nginx.conf` com `scp -O` para `/root/gha-build/portfolio-palomino`, `docker build -q`, `docker service update --force`, checagem HTTP `200` e poda de imagens antigas com `tail -n +3 | xargs -r docker rmi`), validado no `deploy-gate` (`DEPLOY_GATE_DRY=1`).
+- **Testes:** `npx tsc --noEmit`, `npm run build`, `npm test`, `eslint` nos arquivos alterados e verificação Playwright (360 px e 1440 px) com CSP simulada.
+- **Próximo:** revisar alterações locais, commitar e dar `git push` para publicar via workflow.
+
+---
+
 ## 03/11/2026: barra vermelha de baixo
 - theme_color do manifest trocado de #E8341C para #141414 (a barra de navegacao do Android pegava o vermelho).
 
